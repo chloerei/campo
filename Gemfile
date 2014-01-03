@@ -42,5 +42,9 @@ group :development do
 
   # Livereload
   gem 'guard-livereload', require: false
-  gem "rack-livereload"
+  gem 'rack-livereload'
+end
+
+group :development, :test do
+  gem 'factory_girl_rails', '~> 4.3.0'
 end
