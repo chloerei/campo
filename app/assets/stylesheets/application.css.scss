@@ -4,3 +4,17 @@
  */
 
 @import "semantic-ui";
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.main.menu {
+  border-radius: 0;
+}
