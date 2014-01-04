@@ -14,4 +14,13 @@ class User < ActiveRecord::Base
     write_attribute :email, value
     write_attribute :email_lower, value.downcase
   end
+
+  def remember_token
+    [id, Digest::SHA512.hexdigest(password_digest)].join('$')
+  end
+
+  def self.find_by_remember_token(token)
+    user = find_by_id(token.split('$').first)
+    (user && user.remember_token == token) ? user : nil
+  end
 end

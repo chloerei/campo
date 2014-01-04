@@ -12,4 +12,11 @@ class UserTest < ActiveSupport::TestCase
   test "should save lower email" do
     assert_equal "lower@example.com", create(:user, email: 'LOWER@example.com').email_lower
   end
+
+  test "should have remember token" do
+    user = create(:user)
+    assert_not_nil user.remember_token
+    assert_equal user, User.find_by_remember_token(user.remember_token)
+    assert_equal nil, User.find_by_remember_token('invalidtoken')
+  end
 end
