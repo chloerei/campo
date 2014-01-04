@@ -3,30 +3,30 @@
     .ui.top.attached.header Sign up
     = form_for @user, html: { class: 'ui attached form segment' } do |f|
       .field
-        = f.label :username
+        = f.label :name
         .ui.labeled.input
-          = f.text_field :username, placeholder: 'username'
+          = f.text_field :name, placeholder: 'name', tabindex: 1
           .ui.corner.label
             i.asterisk.icon
       .field
         = f.label :email
         .ui.labeled.input
-          = f.text_field :email, placeholder: 'email'
+          = f.text_field :email, placeholder: 'email', tabindex: 2
           .ui.corner.label
             i.asterisk.icon
       .field
-        = f.label :name
+        = f.label :username
         .ui.labeled.input
-          = f.text_field :name, placeholder: 'name'
+          = f.text_field :username, placeholder: 'username', tabindex: 3
           .ui.corner.label
             i.asterisk.icon
       .field
         = f.label :password
         .ui.labeled.input
-          = f.password_field :password
+          = f.password_field :password, tabindex: 4
           .ui.corner.label
             i.asterisk.icon
-      = f.submit 'Create Account', class: 'ui green submit button'
+      = f.submit 'Create Account', class: 'ui green submit button', tabindex: 5
 
       coffee:
         $('#new_user').form
