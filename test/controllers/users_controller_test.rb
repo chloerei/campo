@@ -22,4 +22,28 @@ class UsersControllerTest < ActionController::TestCase
     post :create, user: attributes_for(:user)
     assert_redirected_to root_url
   end
+
+  test "should check email" do
+    user = create(:user)
+
+    # exist
+    get :check_email, email: user.email, format: 'json'
+    assert_equal false, JSON.parse(@response.body)['uniqueness']
+
+    # noexist
+    get :check_email, email: build(:user).email, format: 'json'
+    assert_equal true, JSON.parse(@response.body)['uniqueness']
+  end
+
+  test "should check username" do
+    user = create(:user)
+
+    # exist
+    get :check_username, username: user.username, format: 'json'
+    assert_equal false, JSON.parse(@response.body)['uniqueness']
+
+    # noexist
+    get :check_username, username: build(:user).username, format: 'json'
+    assert_equal true, JSON.parse(@response.body)['uniqueness']
+  end
 end
