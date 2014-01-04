@@ -7,7 +7,10 @@ class ActiveSupport::TestCase
 
   include FactoryGirl::Syntax::Methods
 
-  attr_reader :controller
-
-  delegate :login_as, :logout, :current_user, :logined?, to: :controller
+  # Delegate auth private method
+  %w(login_as logout current_user logined?).each do |method|
+    define_method method do |*args|
+      @controller.send method, *args
+    end
+  end
 end

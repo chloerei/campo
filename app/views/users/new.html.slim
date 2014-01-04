@@ -5,25 +5,25 @@
       .field
         = f.label :name
         .ui.labeled.input
-          = f.text_field :name, placeholder: 'name', tabindex: 1
+          = f.text_field :name, placeholder: 'Name', tabindex: 1
           .ui.corner.label
             i.asterisk.icon
       .field
         = f.label :email
         .ui.labeled.input
-          = f.text_field :email, placeholder: 'email', tabindex: 2
+          = f.text_field :email, placeholder: 'Email', tabindex: 2
           .ui.corner.label
             i.asterisk.icon
       .field
         = f.label :username
         .ui.labeled.input
-          = f.text_field :username, placeholder: 'username', tabindex: 3
+          = f.text_field :username, placeholder: 'Username', tabindex: 3
           .ui.corner.label
             i.asterisk.icon
       .field
         = f.label :password
         .ui.labeled.input
-          = f.password_field :password, tabindex: 4
+          = f.password_field :password, placeholder: 'Password', tabindex: 4
           .ui.corner.label
             i.asterisk.icon
       = f.submit 'Create Account', class: 'ui green submit button', tabindex: 5

@@ -13,7 +13,12 @@ html
         .title.item
           | Campo
         .right.menu
-          a.item href=signup_path
-            | Sign up
+          - if logined?
+            .item = current_user.name
+          - else
+            a.item href=signup_path
+              | Sign up
+            a.item href=login_path
+              | Sign in
     .main.container
       = yield

@@ -3,6 +3,10 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
+  helper_method :logined?, :current_user
+
+  private
+
   def require_logined
     unless logined?
       store_location
