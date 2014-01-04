@@ -1,71 +1,73 @@
 .ui.page.grid
   .column
-    .ui.top.attached.header Sign up
-    = form_for @user, html: { class: 'ui attached form segment' } do |f|
-      .field
-        = f.label :name
-        .ui.labeled.input
-          = f.text_field :name, placeholder: 'Name', tabindex: 1
-          .ui.corner.label
-            i.asterisk.icon
-      .field
-        = f.label :email
-        .ui.labeled.input
-          = f.text_field :email, placeholder: 'Email', tabindex: 2
-          .ui.corner.label
-            i.asterisk.icon
-      .field
-        = f.label :username
-        .ui.labeled.input
-          = f.text_field :username, placeholder: 'Username', tabindex: 3
-          .ui.corner.label
-            i.asterisk.icon
-      .field
-        = f.label :password
-        .ui.labeled.input
-          = f.password_field :password, placeholder: 'Password', tabindex: 4
-          .ui.corner.label
-            i.asterisk.icon
-      = f.submit 'Create Account', class: 'ui green submit button', tabindex: 5
+    .ui.stacked.segment
+      .ui.header
+        | Sign up
+      = form_for @user, html: { class: 'ui form' } do |f|
+        .field
+          = f.label :name
+          .ui.labeled.input
+            = f.text_field :name, placeholder: 'Name', tabindex: 1
+            .ui.corner.label
+              i.asterisk.icon
+        .field
+          = f.label :email
+          .ui.labeled.input
+            = f.text_field :email, placeholder: 'Email', tabindex: 2
+            .ui.corner.label
+              i.asterisk.icon
+        .field
+          = f.label :username
+          .ui.labeled.input
+            = f.text_field :username, placeholder: 'Username', tabindex: 3
+            .ui.corner.label
+              i.asterisk.icon
+        .field
+          = f.label :password
+          .ui.labeled.input
+            = f.password_field :password, placeholder: 'Password', tabindex: 4
+            .ui.corner.label
+              i.asterisk.icon
+        = f.submit 'Create Account', class: 'ui green submit button', tabindex: 5
 
-      coffee:
-        $('#new_user').form
-          username:
-            identifier: 'user_username'
-            rules: [
-              type: 'empty'
-              prompt: 'Please enter your username'
-            ,
-              type: 'username'
-              prompt: 'Only allow chars, number and _'
-            ,
-              type: 'check_username'
-              prompt: 'This username already be used'
-            ]
-          email:
-            identifier: 'user_email'
-            rules: [
-              type: 'empty'
-              prompt: 'Please enter your email'
-            ,
-              type: 'email'
-              prompt: 'Please enter an email'
-            ,
-              type: 'check_email'
-              prompt: 'This email already be used'
-            ]
-          name:
-            identifier: 'user_name'
-            rules: [
-              type: 'empty'
-              prompt: 'Please enter your full name'
-            ]
-          password:
-            identifier: 'user_password'
-            rules: [
-              type: 'empty'
-              prompt: 'Please enter your full name'
-            ]
-        ,
-          on: 'blur'
-          inline: true
+        coffee:
+          $('#new_user').form
+            username:
+              identifier: 'user_username'
+              rules: [
+                type: 'empty'
+                prompt: 'Please enter your username'
+              ,
+                type: 'username'
+                prompt: 'Only allow chars, number and _'
+              ,
+                type: 'check_username'
+                prompt: 'This username already be used'
+              ]
+            email:
+              identifier: 'user_email'
+              rules: [
+                type: 'empty'
+                prompt: 'Please enter your email'
+              ,
+                type: 'email'
+                prompt: 'Please enter an email'
+              ,
+                type: 'check_email'
+                prompt: 'This email already be used'
+              ]
+            name:
+              identifier: 'user_name'
+              rules: [
+                type: 'empty'
+                prompt: 'Please enter your full name'
+              ]
+            password:
+              identifier: 'user_password'
+              rules: [
+                type: 'empty'
+                prompt: 'Please enter your full name'
+              ]
+          ,
+            on: 'blur'
+            inline: true

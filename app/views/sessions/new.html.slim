@@ -1,15 +1,17 @@
 .ui.page.grid
   .column
-    .ui.top.attached.header Sign in
-    = form_tag login_path, class: 'ui attached form segment'
-      .field
-        = label_tag :login
-        .ui.left.icon.input
-          i.user.icon
-          = text_field_tag :login, params[:login], placeholder: 'Username or Email', tabindex: 1
-      .field
-        = label_tag :password
-        .ui.left.icon.input
-          i.lock.icon
-          = password_field_tag :password, nil, placeholder: 'Password', tabindex: 4
-      = submit_tag 'Sign in', class: 'ui green submit button', tabindex: 5
+    .ui.stacked.segment
+      .ui.header
+        | Sign in
+      = form_tag login_path, class: 'ui form'
+        .field
+          = label_tag :login
+          .ui.left.icon.input
+            i.user.icon
+            = text_field_tag :login, params[:login], placeholder: 'Username or Email', tabindex: 1
+        .field
+          = label_tag :password
+          .ui.left.icon.input
+            i.lock.icon
+            = password_field_tag :password, nil, placeholder: 'Password', tabindex: 4
+        = submit_tag 'Sign in', class: 'ui green submit button', tabindex: 5
