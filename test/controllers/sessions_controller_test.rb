@@ -12,4 +12,10 @@ class SessionsControllerTest < ActionController::TestCase
     post :create, login: 'Username', password: '12345678'
     assert logined?
   end
+
+  test "should destroy session" do
+    login_as create(:user)
+    delete :destroy
+    assert !logined?
+  end
 end

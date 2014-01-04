@@ -18,4 +18,9 @@ class SessionsController < ApplicationController
       render :new
     end
   end
+
+  def destroy
+    logout
+    redirect_to root_url
+  end
 end
