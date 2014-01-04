@@ -1,0 +1,30 @@
+.ui.page.grid
+  .column
+    .ui.top.attached.header Sign up
+    .ui.attached.form.segment
+      = form_for @user do |f|
+        .field
+          = f.label :username
+          .ui.labeled.input
+            = f.text_field :username, placeholder: 'username'
+            .ui.corner.label
+              i.asterisk.icon
+        .field
+          = f.label :email
+          .ui.labeled.input
+            = f.text_field :email, placeholder: 'eimal'
+            .ui.corner.label
+              i.asterisk.icon
+        .field
+          = f.label :name
+          .ui.labeled.input
+            = f.text_field :name, placeholder: 'name'
+            .ui.corner.label
+              i.asterisk.icon
+        .field
+          = f.label :password
+          .ui.labeled.input
+            = f.password_field :password
+            .ui.corner.label
+              i.asterisk.icon
+        = f.submit 'Create Account', class: 'ui green submit button'

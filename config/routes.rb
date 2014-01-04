@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
   root 'topics#index'
+  get 'signup', to: 'users#new', as: 'signup'
+  resources :users, only: [:create]
+
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

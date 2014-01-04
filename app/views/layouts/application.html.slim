@@ -13,6 +13,7 @@ html
         .title.item
           | Campo
         .right.menu
-          a.item
-            | Sign in
-    = yield
+          a.item href=signup_path
+            | Sign up
+    .main.container
+      = yield
