@@ -39,6 +39,9 @@ gem 'sdoc',             group: :doc, require: false
 # Slim template
 gem 'slim', '~> 2.0.2'
 
+# Use ActiveModel has_secure_password
+gem 'bcrypt-ruby', '~> 3.1.2'
+
 group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/jonleighton/spring
   gem 'spring'

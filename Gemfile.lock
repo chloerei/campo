@@ -80,6 +80,7 @@ GEM
   remote: https://rubygems.org/
   specs:
     atomic (1.1.14)
+    bcrypt-ruby (3.1.2)
     builder (3.2.2)
     celluloid (0.15.2)
       timers (~> 1.1.0)
@@ -188,6 +189,7 @@ PLATFORMS
 
 DEPENDENCIES
   arel!
+  bcrypt-ruby (~> 3.1.2)
   coffee-rails!
   factory_girl_rails (~> 4.3.0)
   guard-livereload
