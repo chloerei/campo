@@ -6,12 +6,23 @@ class UsersControllerTest < ActionController::TestCase
     assert_response :success, @response.body
   end
 
+  test "should store_location" do
+    get :new, return_to: '/foo'
+    assert_equal '/foo', session[:return_to]
+  end
+
   test "should create user" do
     assert !logined?
     assert_difference "User.count" do
       post :create, user: attributes_for(:user)
     end
     assert logined?
+  end
+
+  test "should redirect back after signup" do
+    session[:return_to] = '/foo'
+    post :create, user: attributes_for(:user)
+    assert_redirected_to '/foo'
   end
 
   test "should redirect to root if logined" do

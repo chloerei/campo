@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
   def new
+    store_location params[:return_to] if params[:return_to].present?
   end
 
   def create
@@ -13,7 +14,7 @@ class SessionsController < ApplicationController
     if @user && @user.authenticate(params[:password])
       login_as @user
       remember_me
-      redirect_to root_url
+      redirect_back_or_default root_url
     else
       render :new
     end
