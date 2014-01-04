@@ -5,4 +5,10 @@ class UsersControllerTest < ActionController::TestCase
     get :new
     assert_response :success, @response.body
   end
+
+  test "should create user" do
+    assert_difference "User.count" do
+      post :create, user: attributes_for(:user)
+    end
+  end
 end
