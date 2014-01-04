@@ -1,0 +1,18 @@
+doctype html
+html
+  head
+    title
+      | Campo
+    = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
+    = javascript_include_tag "application", "data-turbolinks-track" => true
+    = csrf_meta_tags
+
+  body
+    .ui.inverted.main.menu
+      .container
+        .title.item
+          | Campo
+        .right.menu
+          a.item
+            | Sign in
+    = yield

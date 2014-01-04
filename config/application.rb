@@ -21,7 +21,11 @@ module Campo
     # config.i18n.default_locale = :de
 
     if Rails.env.development?
+      # LiveReload
       config.middleware.use Rack::LiveReload
+
+      # Slim pretty output
+      Slim::Engine.set_default_options pretty: true, sort_attrs: true
     end
   end
 end
