@@ -1,7 +1,9 @@
 require 'test_helper'
 
 class TopicsControllerTest < ActionController::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  test "should get index" do
+    3.times { create(:topic) }
+    get :index
+    assert_response :success, @response.body
+  end
 end

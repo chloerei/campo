@@ -11,4 +11,6 @@ Rails.application.routes.draw do
       get :check_username
     end
   end
+
+  resources :topics, only: [:new, :create, :edit, :update]
 end
