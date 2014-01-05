@@ -13,4 +13,16 @@ class TopicsControllerTest < ActionController::TestCase
     end
     assert_response :success, @response.body
   end
+
+  test "should create topic" do
+    assert_difference "Topic.count" do
+      assert_require_logined do
+        post :create, topic: { title: 'Title', posts_attributes: [ content: 'Content' ] }
+      end
+    end
+    topic = Topic.last
+    assert_equal 'Title', topic.title
+    assert_equal 'Content', topic.posts.first.content
+    assert_redirected_to topic
+  end
 end
