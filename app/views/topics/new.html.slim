@@ -1,0 +1,17 @@
+.ui.stacked.segment
+  .ui.grid
+    .row.two.column
+      .column
+        .ui.huge.breadcrumb
+          a.section href=root_path Topics
+          .divider
+            |/
+          .active.section New
+
+  = form_for @topic, html: { class: 'ui form' } do |f|
+    .field
+      = f.text_field :title, placeholder: 'Title', tabindex: 1
+    .field
+      = f.fields_for :posts do |builder|
+        = builder.text_area :content, placeholder: 'Content', class: 'large', tabindex: 2
+    = f.submit 'Post', class: 'ui submit button', tabindex: 3

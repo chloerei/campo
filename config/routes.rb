@@ -12,5 +12,5 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :topics, only: [:new, :create, :edit, :update]
+  resources :topics, only: [:show, :new, :create, :edit, :update]
 end
