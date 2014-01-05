@@ -2,6 +2,7 @@ class TopicsController < ApplicationController
   before_filter :require_logined, except: [:index, :show]
 
   def index
+    @topics = Topic.all
   end
 
   def new

@@ -9,4 +9,15 @@
           | New Topic
   .ui.secondary.pointing.menu
     a.active.item Hot
-  .ui.grid
+  .ui.feed
+    - @topics.each do |topic|
+      a.event href=topic_path(topic)
+        .label
+          i.icon.user.circular
+        .content
+          .date
+            = time_ago_in_words topic.created_at
+          .summary
+            = topic.title
+          .extra
+            | 10 points
