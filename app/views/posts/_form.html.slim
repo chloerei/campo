@@ -5,4 +5,12 @@
     = form_for [topic, post], remote: true, html: { class: 'ui post form' } do |f|
       .field
         = f.text_area :content
-      = f.submit 'Add Reply', class: 'ui submit button'
+      - if post.new_record?
+        = f.submit 'Add Reply', class: 'ui submit button'
+      - else
+        = f.submit 'Save Changes', class: 'ui submit button'
+        '
+        | or
+        '
+        a href=topic_post_path(topic, post) data-remote='true'
+          | cancel

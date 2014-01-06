@@ -1,6 +1,14 @@
 require 'test_helper'
 
 class PostsControllerTest < ActionController::TestCase
+  test "should show post for cancel edit" do
+    topic_post = create(:post)
+    assert_require_logined do
+      xhr :get, :show, topic_id: topic_post.topic, id: topic_post
+    end
+    assert_response :success, @response.body
+  end
+
   test "should create post" do
     topic = create(:topic)
     assert_difference "Post.count" do
