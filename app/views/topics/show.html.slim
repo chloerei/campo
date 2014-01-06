@@ -8,21 +8,12 @@
     h2.ui.header
       = @topic.title
     .ui.comments
-      - @topic.posts.each do |post|
-        article.comment
-          .avatar
-            img src="http://gravatar.com/avatar/5aec84cd0b5479a0d1d89b6ffa2a9a20.png?r=G&s=64"
-          .content
-            a.author
-              = post.user.name
-            span.metadata
-              .date
-                = time_ago_in_words post.created_at
-            .text
-              = post.content
-            .actions
-              a Reply
-      = form_for Post.new, html: { class: 'ui reply form' } do |f|
-        .field
-          = f.text_area :content
-        = f.submit 'Add Reply', class: 'ui submit button'
+      = render partial: 'posts/post', collection: @topic.posts
+      .comment
+        .avatar
+          img src="http://gravatar.com/avatar/5aec84cd0b5479a0d1d89b6ffa2a9a20.png?r=G&s=64"
+        .content
+          = form_for [@topic, Post.new], remote: true, html: { class: 'ui post form' } do |f|
+            .field
+              = f.text_area :content
+            = f.submit 'Add Reply', class: 'ui submit button'

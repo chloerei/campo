@@ -35,3 +35,11 @@ a:hover {
   height: 25em;
   max-height: 50em;
 }
+
+.ui.comments .comment .content {
+  max-width: 580px;
+}
+
+.ui.form.post .field {
+  clear: none;
+}
