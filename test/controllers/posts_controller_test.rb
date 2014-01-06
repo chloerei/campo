@@ -5,8 +5,16 @@ class PostsControllerTest < ActionController::TestCase
     topic = create(:topic)
     assert_difference "Post.count" do
       assert_require_logined do
-        post :create, topic_id: topic, post: attributes_for(:post), format: 'js'
+        xhr :post, :create, topic_id: topic, post: attributes_for(:post)
       end
     end
+  end
+
+  test "should edit post" do
+    topic_post = create(:post)
+    assert_require_logined do
+      xhr :get, :edit, topic_id: topic_post.topic, id: topic_post
+    end
+    assert_response :success, @response.body
   end
 end

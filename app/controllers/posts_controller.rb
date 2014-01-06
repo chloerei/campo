@@ -5,9 +5,15 @@ class PostsController < ApplicationController
     @topic = Topic.find params[:topic_id]
     @post = @topic.posts.create post_params.merge user: current_user
     respond_to do |format|
-      format.js {
-        render :create
-      }
+      format.js
+    end
+  end
+
+  def edit
+    @topic = Topic.find params[:topic_id]
+    @post = @topic.posts.find params[:id]
+    respond_to do |format|
+      format.js
     end
   end
 

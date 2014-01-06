@@ -1,4 +1,4 @@
-article.comment
+article.comment id="post_#{post.id}"
   .avatar
     img src="http://gravatar.com/avatar/5aec84cd0b5479a0d1d89b6ffa2a9a20.png?r=G&s=64"
   .content
@@ -9,5 +9,8 @@ article.comment
         = time_ago_in_words post.created_at
     .text
       = post.content
-    .actions
-      a Reply
+    - if logined?
+      .actions
+        - if current_user == post.user
+          a href=edit_topic_post_path(post.topic, post) data-remote='true'
+            | Edit
