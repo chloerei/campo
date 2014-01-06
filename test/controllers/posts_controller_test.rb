@@ -25,4 +25,13 @@ class PostsControllerTest < ActionController::TestCase
     end
     assert_response :success, @response.body
   end
+
+  test "should update post" do
+    topic_post = create(:post)
+    assert_require_logined do
+      xhr :patch, :update, topic_id: topic_post.topic, id: topic_post, post: { content: 'change' }
+    end
+    assert_response :success, @response.body
+    assert_equal 'change', topic_post.reload.content
+  end
 end

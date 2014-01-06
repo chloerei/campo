@@ -22,6 +22,17 @@ class PostsController < ApplicationController
   def edit
     @topic = Topic.find params[:topic_id]
     @post = @topic.posts.find params[:id]
+
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def update
+    @topic = Topic.find params[:topic_id]
+    @post = @topic.posts.find params[:id]
+    @post.update_attributes post_params
+
     respond_to do |format|
       format.js
     end
