@@ -8,7 +8,7 @@
     h2.ui.header
       = @topic.title
     .ui.comments
-      = render partial: 'posts/post', collection: @topic.posts
+      = render @topic.posts
       - if logined?
         = render partial: 'posts/form', locals: { topic: @topic, post: Post.new }
       - else

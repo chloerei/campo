@@ -1,1 +1,1 @@
-$('#post_<%= @post.id %>').replaceWith('<%= j render(partial: 'post', locals: { topic: @topic, post: @post }) %>');
+$('#post_<%= @post.id %>').replaceWith('<%= j render(@post) %>');
