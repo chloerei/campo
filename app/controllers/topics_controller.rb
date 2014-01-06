@@ -16,6 +16,7 @@ class TopicsController < ApplicationController
 
   def create
     @topic = Topic.new topic_params.merge(user: current_user)
+    @topic.posts.first.user = current_user
     if @topic.save
       redirect_to @topic
     else

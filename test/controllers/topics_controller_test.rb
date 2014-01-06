@@ -28,6 +28,8 @@ class TopicsControllerTest < ActionController::TestCase
     topic = Topic.last
     assert_equal 'Title', topic.title
     assert_equal 'Content', topic.posts.first.content
+    assert_not_nil topic.user
+    assert_equal topic.user, topic.posts.first.user
     assert_redirected_to topic
   end
 end
