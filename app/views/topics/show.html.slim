@@ -1,0 +1,24 @@
+.ui.stacked.segment
+  .ui.grid
+    .row.two.column
+      .column
+        .ui.huge.breadcrumb
+          .active.section Topics
+
+  h1.ui.header
+    = @topic.title
+  .ui.comments
+    - @topic.posts.each do |post|
+      .comment
+        .avatar
+          img src="http://gravatar.com/avatar/5aec84cd0b5479a0d1d89b6ffa2a9a20.png?r=G&s=64"
+        .content
+          a.author
+            = post.user.name
+          span.metadata
+            .date
+              = time_ago_in_words post.created_at
+          .text
+            = post.content
+          .actions
+            a Reply

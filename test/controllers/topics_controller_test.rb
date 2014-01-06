@@ -7,6 +7,11 @@ class TopicsControllerTest < ActionController::TestCase
     assert_response :success, @response.body
   end
 
+  test "should get show page" do
+    get :show, id: create(:topic)
+    assert_response :success, @response.body
+  end
+
   test "should get new page" do
     assert_require_logined do
       get :new
