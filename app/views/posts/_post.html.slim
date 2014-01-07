@@ -8,7 +8,7 @@ article.comment id="post_#{post.id}"
       .date
         = time_ago_in_words post.created_at
     .text
-      = post.content
+      = format_post post.content
     - if logined?
       .actions
         - if current_user == post.user

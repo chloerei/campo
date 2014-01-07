@@ -39,6 +39,9 @@ gem 'sdoc',             group: :doc, require: false
 # Slim template
 gem 'slim', '~> 2.0.2'
 
+# Markdown
+gem 'redcarpet', '~> 3.0.0'
+
 # Use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '~> 3.1.2'
 
