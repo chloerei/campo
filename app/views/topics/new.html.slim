@@ -5,7 +5,7 @@
       |/
     .active.section New
 
-  = form_for @topic, html: { class: 'ui form' } do |f|
+  = form_for @topic, html: { class: 'ui form topic' } do |f|
     .field
       = f.text_field :title, placeholder: 'Title', tabindex: 1
     .field

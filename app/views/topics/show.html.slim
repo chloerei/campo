@@ -6,7 +6,7 @@
 
   #topic
     = render partial: 'title', locals: { topic: @topic }
-    .ui.comments
+    .ui.comments.posts
       = render @topic.posts.order(id: :asc)
       - if logined?
         = render partial: 'posts/form', locals: { post: @topic.posts.new }

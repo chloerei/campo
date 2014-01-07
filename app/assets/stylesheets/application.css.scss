@@ -46,17 +46,3 @@ a.quiet {
 a.quiet:hover {
   color: rgba(0, 0, 0, 0.6);
 }
-
-/* form */
-.ui.form textarea.large {
-  height: 25em;
-  max-height: 50em;
-}
-
-.ui.comments .comment .content {
-  max-width: 640px;
-}
-
-.ui.form.post .field {
-  clear: none;
-}

@@ -1,1 +1,2 @@
 $('#post_<%= @post.id %>').replaceWith('<%= j render(partial: 'form', locals: { post: @post }) %>');
+$('#post_<%= @post.id %> textarea').autosize();
