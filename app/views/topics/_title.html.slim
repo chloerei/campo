@@ -1,0 +1,6 @@
+h3.ui.header#topic_title
+  = topic.title
+  - if current_user == topic.user
+    '
+    a href=edit_topic_path(topic) data-remote='true'
+      | Edit

@@ -5,8 +5,7 @@
       | /
 
   #topic
-    h2.ui.header
-      = @topic.title
+    = render partial: 'title', locals: { topic: @topic }
     .ui.comments
       = render @topic.posts
       - if logined?

@@ -7,6 +7,11 @@ class TopicsController < ApplicationController
 
   def show
     @topic = Topic.find params[:id]
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def new
@@ -21,6 +26,23 @@ class TopicsController < ApplicationController
       redirect_to @topic
     else
       render :new
+    end
+  end
+
+  def edit
+    @topic = Topic.find params[:id]
+
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def update
+    @topic = Topic.find params[:id]
+    @topic.update_attributes params.require(:topic).permit(:title)
+
+    respond_to do |format|
+      format.js
     end
   end
 

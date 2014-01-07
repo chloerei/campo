@@ -1,0 +1,11 @@
+.ui.tiny.header#topic_title
+  = form_for topic, remote: true, html: { class: 'ui form' } do |f|
+    .field
+      = f.text_field :title, placeholder: 'Title'
+
+    = f.submit 'Save Changes', class: 'ui submit button'
+    '
+    | or
+    '
+    a href=topic_path(topic) data-remote='true'
+      | cancel
