@@ -42,6 +42,9 @@ gem 'slim', '~> 2.0.2'
 # Markdown
 gem 'redcarpet', '~> 3.0.0'
 
+# Code highlight
+gem 'rouge', '~> 1.3.1'
+
 # Use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '~> 3.1.2'
 
