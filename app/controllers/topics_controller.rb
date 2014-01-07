@@ -30,7 +30,7 @@ class TopicsController < ApplicationController
   end
 
   def edit
-    @topic = Topic.find params[:id]
+    @topic = current_user.topics.find params[:id]
 
     respond_to do |format|
       format.js
@@ -38,7 +38,7 @@ class TopicsController < ApplicationController
   end
 
   def update
-    @topic = Topic.find params[:id]
+    @topic = current_user.topics.find params[:id]
     @topic.update_attributes params.require(:topic).permit(:title)
 
     respond_to do |format|

@@ -2,8 +2,7 @@ class PostsController < ApplicationController
   before_filter :require_logined
 
   def show
-    @topic = Topic.find params[:topic_id]
-    @post = @topic.posts.find params[:id]
+    @post = Post.find_by! topic_id: params[:topic_id], id: params[:id]
 
     respond_to do |format|
       format.js
@@ -20,8 +19,7 @@ class PostsController < ApplicationController
   end
 
   def edit
-    @topic = Topic.find params[:topic_id]
-    @post = @topic.posts.find params[:id]
+    @post = current_user.posts.find_by! topic_id: params[:topic_id], id: params[:id]
 
     respond_to do |format|
       format.js
@@ -29,8 +27,7 @@ class PostsController < ApplicationController
   end
 
   def update
-    @topic = Topic.find params[:topic_id]
-    @post = @topic.posts.find params[:id]
+    @post = current_user.posts.find_by! topic_id: params[:topic_id], id: params[:id]
     @post.update_attributes post_params
 
     respond_to do |format|

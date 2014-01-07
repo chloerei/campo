@@ -9,7 +9,7 @@
     .ui.comments
       = render @topic.posts
       - if logined?
-        = render partial: 'posts/form', locals: { topic: @topic, post: Post.new }
+        = render partial: 'posts/form', locals: { post: @topic.posts.new }
       - else
         .comment
           .avatar

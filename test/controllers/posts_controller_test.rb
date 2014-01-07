@@ -20,7 +20,7 @@ class PostsControllerTest < ActionController::TestCase
 
   test "should edit post" do
     topic_post = create(:post)
-    assert_require_logined do
+    assert_require_logined topic_post.user do
       xhr :get, :edit, topic_id: topic_post.topic, id: topic_post
     end
     assert_response :success, @response.body
@@ -28,7 +28,7 @@ class PostsControllerTest < ActionController::TestCase
 
   test "should update post" do
     topic_post = create(:post)
-    assert_require_logined do
+    assert_require_logined topic_post.user do
       xhr :patch, :update, topic_id: topic_post.topic, id: topic_post, post: { content: 'change' }
     end
     assert_response :success, @response.body

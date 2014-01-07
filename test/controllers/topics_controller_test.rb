@@ -35,7 +35,7 @@ class TopicsControllerTest < ActionController::TestCase
 
   test "should edit topic" do
     topic = create(:topic)
-    assert_require_logined do
+    assert_require_logined topic.user do
       xhr :get, :edit, id: topic
     end
     assert_response :success, @response.body
@@ -49,7 +49,7 @@ class TopicsControllerTest < ActionController::TestCase
 
   test "should update topic" do
     topic = create(:topic)
-    assert_require_logined do
+    assert_require_logined topic.user do
       xhr :patch, :update, id: topic, topic: { title: 'change' }
     end
     assert_response :success, @response.body
