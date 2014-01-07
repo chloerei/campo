@@ -13,4 +13,4 @@ article.comment id="post_#{post.id}"
       .actions
         - if current_user == post.user
           a href=edit_topic_post_path(post.topic, post) data-remote='true'
-            | Edit
+            i.icon.pencil

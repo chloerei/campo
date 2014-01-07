@@ -4,11 +4,16 @@
  *= require_tree .
  */
 
+html {
+  font-size: 15px;
+}
+
 body {
   margin: 0;
   padding: 0;
   background: #f9f9f9;
   color: #333;
+  font-family: "Open Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
 }
 
 .container {
@@ -20,6 +25,10 @@ body {
   border-radius: 0;
 }
 
+.main.container {
+  margin-bottom: 1rem;
+}
+
 /* link */
 a {
   color: #009FDA;
@@ -28,6 +37,14 @@ a {
 
 a:hover {
   color: #00BAFF;
+}
+
+a.quiet {
+  color: rgba(0, 0, 0, 0.3);
+}
+
+a.quiet:hover {
+  color: rgba(0, 0, 0, 0.6);
 }
 
 /* form */
