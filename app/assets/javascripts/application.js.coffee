@@ -1,6 +1,6 @@
 #= require jquery
 #= require jquery_ujs
 #= require turbolinks
-#= require semantic-ui
+#= require bootstrap
 #= require jquery.autosize
 #= require_tree .

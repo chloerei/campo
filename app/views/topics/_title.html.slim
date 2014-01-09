@@ -1,6 +1,9 @@
-h3.ui.header#topic_title
+h1.title#topic_title
   = topic.title
   - if current_user == topic.user
     '
-    a.quiet href=edit_topic_path(topic) data-remote='true'
-      i.icon.pencil
+    small
+      a.quiet href=edit_topic_path(topic) data-remote='true'
+        span.glyphicon.glyphicon-edit
+        '
+        | Edit

@@ -1,4 +1,82 @@
-.ui.form.topic textarea {
-  height: 22em;
-  max-height: none;
+.topics {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  .topic {
+    margin: 0 -15px;
+    border-bottom: 1px solid #ddd;
+    @include clearfix();
+
+    a {
+      display: block;
+      padding: 15px 15px;
+      color: #333;
+
+      @include clearfix();
+
+      &:hover {
+        text-decoration: none;
+        background: #f9f9f9;
+      }
+    }
+
+    .avatar {
+      width: 48px;
+      height: 48px;
+      float: left;
+
+      img {
+        width: 48px;
+        height: 48px;
+
+      }
+    }
+
+    .content {
+      margin-left: 48px;
+      padding: 5px 0 5px 15px;
+    }
+
+    .title {
+      margin: 0;
+      font-size: 1em;
+      font-weight: bold;
+      display: inline;
+    }
+
+    .date {
+      float: right;
+      color: #999;
+    }
+
+    .extra {
+      margin-top: 5px;
+      color: #999;
+    }
+  }
+}
+
+.topic {
+  .title {
+    margin-top: 0;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+
+    a {
+      color: #999;
+
+      &:hover {
+        text-decoration: none;
+        color: #555;
+      }
+    }
+  }
+}
+
+.form-topic {
+  textarea {
+    height: 18em;
+    resize: vertical;
+  }
 }

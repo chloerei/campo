@@ -1,14 +1,15 @@
-.ui.stacked.segment
-  .ui.breadcrumb
-    a.section href=topics_path Topics
-    .divider
-      |/
-    .active.section New
-
-  = form_for @topic, html: { class: 'ui form topic' } do |f|
-    .field
-      = f.text_field :title, placeholder: 'Title', tabindex: 1
-    .field
-      = f.fields_for :posts do |builder|
-        = builder.text_area :content, placeholder: 'Content', class: 'large', tabindex: 2
-    = f.submit 'Post', class: 'ui submit button', tabindex: 3
+.panel.panel-campo
+  .panel-heading
+    ol.breadcrumb
+      li
+        a href=topics_path Topics
+      li.active
+        | New
+  .panel-body
+    = form_for @topic, html: { class: 'form-topic' } do |f|
+      .form-group
+        = f.text_field :title, class: 'form-control', placeholder: 'Title', tabindex: 1
+      .form-group
+        = f.fields_for :posts do |builder|
+          = builder.text_area :content, class: 'form-control', placeholder: 'Content', tabindex: 2
+      = f.submit 'Create Topic', class: 'btn btn-success', tabindex: 3

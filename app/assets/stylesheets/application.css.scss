@@ -1,48 +1,16 @@
-/*
- *= require semantic-ui
- *= require_self
- *= require_tree .
- */
+$font-size-base: 15px;
+$nav-link-hover-bg: transparent;
 
-html {
-  font-size: 15px;
-}
+@import "bootstrap";
+@import "highlight";
+@import "campo";
+@import "topics";
+@import "posts";
 
 body {
-  margin: 0;
-  padding: 0;
   background: #f9f9f9;
-  color: #333;
-  font-family: "Open Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
 }
 
 .container {
   max-width: 960px;
-  margin: 0 auto;
-}
-
-.main.menu {
-  border-radius: 0;
-}
-
-.main.container {
-  margin-bottom: 1rem;
-}
-
-/* link */
-a {
-  color: #009FDA;
-  text-decoration: none;
-}
-
-a:hover {
-  color: #00BAFF;
-}
-
-a.quiet {
-  color: rgba(0, 0, 0, 0.3);
-}
-
-a.quiet:hover {
-  color: rgba(0, 0, 0, 0.6);
 }

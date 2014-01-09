@@ -1,11 +1,9 @@
-.ui.header#topic_title
+#topic_title
   = form_for topic, remote: true, html: { class: 'ui form' } do |f|
-    .field
-      = f.text_field :title, placeholder: 'Title'
+    .form-group
+      = f.text_field :title, placeholder: 'Title', class: 'form-control'
 
-    = f.submit 'Save Changes', class: 'ui submit button'
+    = f.submit 'Save Changes', class: 'btn btn-success'
     '
-    | or
-    '
-    a href=topic_path(topic) data-remote='true'
+    a.btn.btn-default href=topic_path(topic) data-remote='true'
       | cancel

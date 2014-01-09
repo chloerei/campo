@@ -8,19 +8,38 @@ html
     = csrf_meta_tags
 
   body
-    .ui.main.menu
+    nav.navbar.navbar-campo.navbar-static-top
       .container
-        a.title.item href="/"
-          | Campo
-        .right.menu
-          - if logined?
-            .item = current_user.name
-            a.item href=logout_path data-method="delete"
-              | Sign out
-          - else
-            a.item href=signup_path
-              | Sign up
-            a.item href=login_path
-              | Sign in
-    .main.container
+        .navbar-header
+          button.navbar-toggle type="button" data-toggle="collapse" data-target="#navbar"
+            span.sr-only toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a.navbar-brand href="/"
+            | Campo
+        #navbar.collapse.navbar-collapse
+          ul.nav.navbar-nav
+            li.active
+              a href=topics_path Topics
+          ul.nav.navbar-nav.navbar-right
+            - if logined?
+              li.dropdown
+                a.dropdown-toggle data-toggle="dropdown" href='#'
+                  = current_user.name
+                  '
+                  b.caret
+                ul.dropdown-menu
+                  li
+                    a.item href=logout_path data-method="delete"
+                      | Sign out
+            - else
+              li
+                a.item href=signup_path
+                  | Sign up
+              li
+                a.item href=login_path
+                  | Sign in
+
+    .container
       = yield

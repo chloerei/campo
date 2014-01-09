@@ -1,16 +1,19 @@
-article.comment.post id="post_#{post.id}"
+li.post id="post_#{post.id}"
   .avatar
-    img src="http://gravatar.com/avatar/5aec84cd0b5479a0d1d89b6ffa2a9a20.png?r=G&s=64"
+    img.img-circle src="http://gravatar.com/avatar/5aec84cd0b5479a0d1d89b6ffa2a9a20.png?r=G&s=48"
   .content
-    a.author
-      = post.user.name
-    span.metadata
+    .metadata
+      a.author
+        = post.user.name
       .date
         = time_ago_in_words post.created_at
     .text
       = format_post post.content
     - if logined?
-      .actions
-        - if current_user == post.user
-          a href=edit_topic_post_path(post.topic, post) data-remote='true'
-            i.icon.pencil
+      .actions.clearfix
+        .pull-right
+          - if current_user == post.user
+            a href=edit_topic_post_path(post.topic, post) data-remote='true'
+              span.glyphicon.glyphicon-edit
+              '
+              | Edit

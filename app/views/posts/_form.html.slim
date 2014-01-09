@@ -1,16 +1,15 @@
-.comment.post id=(post.new_record? ? 'post_new' : "post_#{post.id}")
+.post id=(post.new_record? ? 'post_new' : "post_#{post.id}")
   .avatar
-    img src="http://gravatar.com/avatar/5aec84cd0b5479a0d1d89b6ffa2a9a20.png?r=G&s=64"
+    img.img-circle src="http://gravatar.com/avatar/5aec84cd0b5479a0d1d89b6ffa2a9a20.png?r=G&s=48"
   .content
-    = form_for [post.topic, post], remote: true, html: { class: 'ui post form' } do |f|
-      .field
-        = f.text_area :content
-      - if post.new_record?
-        = f.submit 'Add Reply', class: 'ui submit button'
-      - else
-        = f.submit 'Save Changes', class: 'ui submit button'
-        '
-        | or
-        '
-        a href=topic_post_path(post.topic, post) data-remote='true'
-          | cancel
+    .text
+      = form_for [post.topic, post], html: { class: 'form-post' }, remote: true do |f|
+        .form-group
+          = f.text_area :content, class: 'form-control'
+        - if post.new_record?
+          = f.submit 'Add Reply', class: 'btn btn-success'
+        - else
+          = f.submit 'Save Changes', class: 'btn btn-success'
+          '
+          a.btn.btn-default href=topic_post_path(post.topic, post) data-remote='true'
+            | cancel

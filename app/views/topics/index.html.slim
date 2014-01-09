@@ -1,23 +1,26 @@
-.ui.stacked.segment
-  .ui.grid
-    .row.two.column
-      .column
-        .ui.huge.breadcrumb
-          .active.section Topics
-      .column.right.aligned
-        a.ui.button href=new_topic_path
-          | New Topic
-  .ui.secondary.pointing.menu
-    a.active.item Hot
-  .ui.feed
-    - @topics.each do |topic|
-      a.event href=topic_path(topic)
-        .label
-          i.icon.user.circular
-        .content
-          .date
-            = time_ago_in_words topic.created_at
-          .summary
-            = topic.title
-          .extra
-            | 10 points
+.panel.panel-campo
+  .panel-body
+    .header
+      h2.title
+        | Topics
+        .pull-right
+          a.btn.btn-primary href=new_topic_path
+            span.glyphicon.glyphicon-plus
+            '
+            | New Topic
+      ul.nav.nav-tabs
+        li.active
+          a href=topics_path Hot
+    ul.topics
+      - @topics.each do |topic|
+        li.topic
+          a href=topic_path(topic)
+            .avatar
+              img.img-circle src="http://gravatar.com/avatar/5aec84cd0b5479a0d1d89b6ffa2a9a20.png?r=G&s=48"
+            .content
+              h3.title
+                = topic.title
+              .date
+                = time_ago_in_words topic.created_at
+              .extra
+                | 10 points

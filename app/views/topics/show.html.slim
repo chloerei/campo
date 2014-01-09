@@ -1,17 +1,17 @@
-.ui.stacked.segment
-  .ui.breadcrumb
-    a.section href=topics_path Topics
-    .divider
-      | /
-
-  #topic
-    = render partial: 'title', locals: { topic: @topic }
-    .ui.comments.posts
+.panel.panel-campo
+  .panel-heading
+    ol.breadcrumb
+      li
+        a href=topics_path Topics
+  .panel-body
+    .topic
+      = render partial: 'title', locals: { topic: @topic }
+    ul.posts
       = render @topic.posts.order(id: :asc)
       - if logined?
         = render partial: 'posts/form', locals: { post: @topic.posts.new }
       - else
-        .comment
+        .post
           .avatar
           .content
-            a.ui.button href=login_path(return_to: url_for) Login to Reply
+            a.btn.btn-default href=login_path(return_to: url_for) Login to Reply
