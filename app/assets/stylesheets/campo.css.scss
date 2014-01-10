@@ -1,6 +1,8 @@
 .navbar-campo {
   background: #fff;
   border-bottom: 1px solid #ddd;
+  @include box-shadow(0 0 10px rgba(0, 0, 0, 0.1));
+
 
   .navbar-toggle .icon-bar {
     background-color: #ccc;
@@ -15,8 +17,42 @@
   }
 }
 
+.nav-campo {
+  border-bottom: 3px solid #ddd;
+
+  li {
+    float: left;
+    margin-bottom: -3px;
+    border-bottom: 3px solid transparent;
+
+    &.active {
+      border-bottom: 3px solid $link-color;
+    }
+
+    &:first-child {
+      a {
+        margin-left: -15px;
+      }
+    }
+
+    &.pull-right {
+      a {
+        margin-right: -15px;
+      }
+    }
+
+    a {
+      color: #555;
+
+      &:hover {
+        color: #333;
+      }
+    }
+  }
+}
+
 .panel-campo {
-  border: 1px solid #ccc;
+  @include box-shadow(0 0 6px #ccc);
 
   .panel-heading {
     background: #f5f5f5;
@@ -25,18 +61,16 @@
     .breadcrumb {
       padding: 0;
       margin: 0;
-      background-color: transparent;
-    }
-  }
+      background: transparent;
 
-  .header {
-    .title {
-      margin: 0 0 45px;
-    }
+      a {
+        color: #555;
 
-    .nav-tabs {
-      padding: 0 15px;
-      margin: 0 -15px;
+        &:hover {
+          color: #333;
+          text-decoration: none;
+        }
+      }
     }
   }
 }

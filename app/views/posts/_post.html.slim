@@ -7,7 +7,7 @@ li.post id="post_#{post.id}"
         = post.user.name
       .date
         = time_ago_in_words post.created_at
-    .text
+    article.text
       = format_post post.content
     - if logined?
       .actions.clearfix

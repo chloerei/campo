@@ -2,10 +2,10 @@
   .panel-heading
     ol.breadcrumb
       li
-        a href=topics_path Topics
+        a href=topics_path All Topics
   .panel-body
-    .topic
-      = render partial: 'title', locals: { topic: @topic }
+    h2.topic-title
+      = @topic.title
     ul.posts
       = render @topic.posts.order(id: :asc)
       - if logined?

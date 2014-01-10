@@ -1,9 +1,0 @@
-#topic_title
-  = form_for topic, remote: true, html: { class: 'ui form' } do |f|
-    .form-group
-      = f.text_field :title, placeholder: 'Title', class: 'form-control'
-
-    = f.submit 'Save Changes', class: 'btn btn-success'
-    '
-    a.btn.btn-default href=topic_path(topic) data-remote='true'
-      | cancel

@@ -4,8 +4,7 @@
   padding: 0;
 
   .post {
-    padding: 15px;
-    margin: 0 -15px;
+    padding: 15px 0;
     border-bottom: 1px solid #ddd;
     @include clearfix();
 

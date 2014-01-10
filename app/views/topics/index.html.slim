@@ -1,19 +1,20 @@
 .panel.panel-campo
   .panel-body
-    .header
-      h2.title
-        | Topics
-        .pull-right
-          a.btn.btn-primary href=new_topic_path
-            span.glyphicon.glyphicon-plus
-            '
-            | New Topic
-      ul.nav.nav-tabs
-        li.active
-          a href=topics_path Hot
+    ul.nav.nav-campo
+      li
+        a All Topics
+      li.active
+        a href=topics_path Hot
+      li
+        a New
+      li.pull-right
+        a href=new_topic_path
+          span.glyphicon.glyphicon-plus
+          '
+          | Create Topic
     ul.topics
       - @topics.each do |topic|
-        li.topic
+        li
           a href=topic_path(topic)
             .avatar
               img.img-circle src="http://gravatar.com/avatar/5aec84cd0b5479a0d1d89b6ffa2a9a20.png?r=G&s=48"
