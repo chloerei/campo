@@ -1,7 +1,3 @@
 #topic_title.topic-title
-  h2
+  h3
     = @topic.title
-    - if current_user == @topic.user
-      span.actions
-        a.btn href=edit_topic_path(topic) data-remote="true"
-          span.glyphicon.glyphicon-edit

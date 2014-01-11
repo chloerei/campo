@@ -3,8 +3,10 @@
     ol.breadcrumb
       li
         a href=topics_path Topics
+      li
+        a href=topic_path(@topic) = @topic.title
       li.active
-        | New
+        | Edit
   .panel-body
     = form_for @topic, html: { class: 'form-topic' } do |f|
       .form-group
@@ -23,4 +25,6 @@
               = f.fields_for :main_post do |builder|
                 = builder.text_area :content, class: 'form-control', placeholder: 'Type here...', tabindex: 2
             .tab-pane.preview id="preview_topic_#{@topic.try(:id) || 'new'}"
-      = f.submit 'Create Topic', class: 'btn btn-success', tabindex: 3
+      = f.submit 'Save Changes', class: 'btn btn-success', tabindex: 3
+      '
+      a.btn.btn-default href=topic_path(@topic) Cancel

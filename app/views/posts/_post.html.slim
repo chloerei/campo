@@ -13,7 +13,13 @@ li.post id="post_#{post.id}"
       .actions.clearfix
         .pull-right
           - if current_user == post.user
-            a.btn href=edit_topic_post_path(post.topic, post) data-remote='true'
-              span.glyphicon.glyphicon-edit
-              '
-              | Edit
+            - if post.post_number == 1
+              a.btn href=edit_topic_path(post.topic)
+                span.glyphicon.glyphicon-edit
+                '
+                | Edit
+            - else
+              a.btn href=edit_topic_post_path(post.topic, post) data-remote='true'
+                span.glyphicon.glyphicon-edit
+                '
+                | Edit
