@@ -1,1 +1,1 @@
-$('#topic_title').replaceWith('<%= j render(partial: 'title', locals: { topic: @topic }) %>');
+$('#topic_title').replaceWith('<%= j render('title', topic: @topic) %>');

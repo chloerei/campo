@@ -1,15 +1,10 @@
 .panel.panel-campo
-  .panel-heading
-    ol.breadcrumb
-      li
-        a href=topics_path All Topics
   .panel-body
-    h2.topic-title
-      = @topic.title
+    = render 'title', topic: @topic
     ul.posts
       = render @topic.posts.order(id: :asc)
       - if logined?
-        = render partial: 'posts/form', locals: { post: @topic.posts.new }
+        = render 'posts/form', post: @topic.posts.new
       - else
         .post
           .avatar

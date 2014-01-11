@@ -5,7 +5,7 @@
 
   .post {
     padding: 15px 0;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #eee;
     @include clearfix();
 
     &:last-child {
@@ -30,7 +30,7 @@
     }
 
     .metadata {
-      margin-bottom: 15px;
+      margin-bottom: 10.5px;
     }
 
     .author {
@@ -48,14 +48,22 @@
     }
 
     .actions {
-      margin-top: 15px;
+      margin-top: 10.5px;
 
-      a {
+      .btn {
         color: #999;
 
         &:hover {
           color: #555;
           text-decoration: none;
+        }
+
+        &:active {
+          @include box-shadow(none);
+        }
+
+        &:last-child {
+          margin-right: -12px;
         }
       }
     }
