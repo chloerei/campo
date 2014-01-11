@@ -5,9 +5,21 @@
     .text
       = form_for [post.topic, post], html: { class: 'form-post' }, remote: true do |f|
         .form-group
-          = f.text_area :content, class: 'form-control'
+          .campo-editor
+            ul.nav.nav-tabs
+              li.active
+                a href="#campo_editor_write_#{post.try(:id)}" data-toggle="tab" Write
+              li
+                a href="#campo_editor_preview_#{post.try(:id)}" data-toggle="tab" Preview
+              li.pull-right
+                a Markdown
+            .tab-content
+              .tab-pane.active id="campo_editor_write_#{post.try(:id)}"
+                = f.text_area :content, class: 'form-control', placeholder: 'Type here...'
+              .tab-pane id="campo_editor_preview_#{post.try(:id)}"
+                | preview
         - if post.new_record?
-          = f.submit 'Add Reply', class: 'btn btn-success'
+          = f.submit 'Post Reply', class: 'btn btn-success'
         - else
           = f.submit 'Save Changes', class: 'btn btn-success'
           '

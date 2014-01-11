@@ -1,0 +1,2 @@
+$ ->
+  $('.campo-editor textarea').autosize()
