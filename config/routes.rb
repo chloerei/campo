@@ -15,4 +15,6 @@ Rails.application.routes.draw do
   resources :topics, only: [:index, :show, :new, :create, :edit, :update] do
     resources :posts, only: [:show, :create, :edit, :update]
   end
+
+  post 'preview', to: 'posts#preview'
 end

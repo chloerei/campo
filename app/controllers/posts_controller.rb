@@ -35,6 +35,11 @@ class PostsController < ApplicationController
     end
   end
 
+  def preview
+    @content = params[:content]
+    render layout: false
+  end
+
   private
 
   def post_params
