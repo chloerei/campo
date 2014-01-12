@@ -1,6 +1,7 @@
 .panel.panel-campo
   .panel-body
-    = render 'title', topic: @topic
+    .topic-title
+      h3 = @topic.title
     ul.posts
       = render @topic.posts.order(id: :asc)
       - if logined?
