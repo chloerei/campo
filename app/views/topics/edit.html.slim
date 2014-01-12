@@ -1,12 +1,10 @@
+ol.breadcrumb.breadcrumb-campo
+  li
+    a href=topics_path Forum
+  li
+    a href=topic_path(@topic) = @topic.title
+  li.active Edit
 .panel.panel-campo
-  .panel-heading
-    ol.breadcrumb
-      li
-        a href=topics_path Topics
-      li
-        a href=topic_path(@topic) = @topic.title
-      li.active
-        | Edit
   .panel-body
     = form_for @topic, html: { class: 'form-topic' } do |f|
       .form-group

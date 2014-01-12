@@ -1,10 +1,8 @@
+ol.breadcrumb.breadcrumb-campo
+  li
+    a href=topics_path Forum
+  li.active Create Topic
 .panel.panel-campo
-  .panel-heading
-    ol.breadcrumb
-      li
-        a href=topics_path Topics
-      li.active
-        | New
   .panel-body
     = form_for @topic, html: { class: 'form-topic' } do |f|
       .form-group
