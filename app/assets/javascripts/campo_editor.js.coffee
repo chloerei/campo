@@ -1,4 +1,4 @@
-$(document).on 'shown.bs.tab', 'a[data-behavior~="preview"]', (e) ->
+$(document).on 'show.bs.tab', 'a[data-behavior~="preview"]', (e) ->
   editor = $(this).closest('.campo-editor')
   preview = editor.find('.tab-pane.preview')
   textarea = editor.find('textarea')
