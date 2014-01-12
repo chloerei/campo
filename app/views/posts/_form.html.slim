@@ -1,26 +1,20 @@
-.post id=(post.new_record? ? 'post_new' : "post_#{post.id}")
-  .avatar
-    img.img-circle src="http://gravatar.com/avatar/5aec84cd0b5479a0d1d89b6ffa2a9a20.png?r=G&s=48"
-  .content
-    .text
-      = form_for [post.topic, post], html: { class: 'form-post' }, remote: true do |f|
-        .form-group
-          .campo-editor
-            ul.nav.nav-tabs
-              li.active
-                a href="#write_#{post.try(:id) || 'new'}" data-toggle="tab" Write
-              li
-                a href="#preview_#{post.try(:id) || 'new'}" data-toggle="tab" data-behavior="preview" Preview
-              li.pull-right
-                a Markdown
-            .tab-content
-              .tab-pane.active id="write_#{post.try(:id) || 'new'}"
-                = f.text_area :content, class: 'form-control', placeholder: 'Type here...'
-              .tab-pane.preview id="preview_#{post.try(:id) || 'new'}"
-        - if post.new_record?
-          = f.submit 'Post Reply', class: 'btn btn-success'
-        - else
-          = f.submit 'Save Changes', class: 'btn btn-success'
-          '
-          a.btn.btn-default href=topic_post_path(post.topic, post) data-remote='true'
-            | cancel
+article.post id=(post.new_record? ? 'post_new' : "post_#{post.id}")
+    = form_for [post.topic, post], html: { class: 'form-post' }, remote: true do |f|
+      .form-group
+        .campo-editor
+          ul.nav.nav-tabs
+            li.active
+              a href="#write_#{post.try(:id) || 'new'}" data-toggle="tab" Write
+            li
+              a href="#preview_#{post.try(:id) || 'new'}" data-toggle="tab" data-behavior="preview" Preview
+          .tab-content
+            .tab-pane.active id="write_#{post.try(:id) || 'new'}"
+              = f.text_area :content, class: 'form-control', placeholder: 'Type here...'
+            .tab-pane.preview id="preview_#{post.try(:id) || 'new'}"
+      - if post.new_record?
+        = f.submit 'Post Reply', class: 'btn btn-success'
+      - else
+        = f.submit 'Save Changes', class: 'btn btn-success'
+        '
+        a.btn.btn-default href=topic_post_path(post.topic, post) data-remote='true'
+          | cancel

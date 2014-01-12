@@ -1,43 +1,32 @@
 .posts {
-  list-style: none;
-  margin: 0;
-  padding: 0;
+  margin-bottom: 15px;
 
   .post {
     padding: 15px 0;
     border-bottom: 1px solid #eee;
     @include clearfix();
 
-    &:last-child {
-      border-bottom: none;
-    }
-
-    .avatar {
-      width: 48px;
-      height: 48px;
-      float: left;
-
-      img {
-        width: 48px;
-        height: 48px;
-
-      }
-    }
-
-    .content {
-      margin-left: 48px;
-      padding-left: 15px;
-    }
-
-    .metadata {
+    .header {
+      @include clearfix();
       margin-bottom: 10.5px;
     }
 
+    .avatar {
+      height: 48px;
+      width: 48px;
+      float: left;
+    }
+
+    .metadata {
+      margin-left: 48px;
+      padding-left: 12px;
+    }
+
     .author {
+      font-weight: bold;
     }
 
     .date {
-      float: right;
       color: #999;
     }
 
@@ -61,8 +50,8 @@
           @include box-shadow(none);
         }
 
-        &:last-child {
-          margin-right: -12px;
+        &:first-child {
+          margin-left: -12px;
         }
       }
     }

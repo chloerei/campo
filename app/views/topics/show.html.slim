@@ -1,17 +1,14 @@
-ol.breadcrumb.breadcrumb-campo
-  li
-    a href=topics_path Forum
-  li.active = @topic.title
 .panel.panel-campo
   .panel-body
     .topic-title
       h3 = @topic.title
-    ul.posts
+    .posts
       = render @topic.posts.order(id: :asc)
-      - if logined?
-        = render 'posts/form', post: @topic.posts.new
-      - else
-        .post
-          .avatar
-          .content
-            a.btn.btn-default href=login_path(return_to: url_for) Login to Reply
+    - if logined?
+      p
+        | You are logined as
+        '
+        = current_user.name
+      = render 'posts/form', post: @topic.posts.new
+    - else
+      a.btn.btn-default href=login_path(return_to: url_for) Login to Reply

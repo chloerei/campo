@@ -1,25 +1,23 @@
-li.post id="post_#{post.id}"
-  .avatar
-    img.img-circle src="http://gravatar.com/avatar/5aec84cd0b5479a0d1d89b6ffa2a9a20.png?r=G&s=48"
-  .content
+.post id="post_#{post.id}"
+  .header
+    img.avatar.img-circle src="http://gravatar.com/avatar/5aec84cd0b5479a0d1d89b6ffa2a9a20.png?r=G&s=48"
     .metadata
-      a.author
+      .author
         = post.user.name
       .date
         = time_ago_in_words post.created_at
-    article.text
-      = format_post post.content
-    - if logined?
-      .actions.clearfix
-        .pull-right
-          - if current_user == post.user
-            - if post.post_number == 1
-              a.btn href=edit_topic_path(post.topic)
-                span.glyphicon.glyphicon-edit
-                '
-                | Edit
-            - else
-              a.btn href=edit_topic_post_path(post.topic, post) data-remote='true'
-                span.glyphicon.glyphicon-edit
-                '
-                | Edit
+  article.text
+    = format_post post.content
+  - if logined?
+    .actions
+      - if current_user == post.user
+        - if post.post_number == 1
+          a.btn href=edit_topic_path(post.topic)
+            span.glyphicon.glyphicon-edit
+            '
+            | Edit
+        - else
+          a.btn href=edit_topic_post_path(post.topic, post) data-remote='true'
+            span.glyphicon.glyphicon-edit
+            '
+            | Edit
