@@ -3,7 +3,6 @@
   border-bottom: 1px solid #ddd;
   @include box-shadow(0 0 10px rgba(0, 0, 0, 0.1));
 
-
   .navbar-toggle .icon-bar {
     background-color: #ccc;
   }
@@ -17,67 +16,35 @@
   }
 }
 
-.nav-campo {
-  border-bottom: 3px solid #ddd;
+.header-campo {
+  margin: 0 0 20px;
 
-  li {
-    float: left;
-    margin-bottom: -3px;
-    border-bottom: 3px solid transparent;
+  h1, h2, h3, h4, h5 {
+    margin: 0;
+  }
 
-    &.active {
-      border-bottom: 3px solid $link-color;
-    }
-
-    &:first-child {
-      a {
-        margin-left: -15px;
-      }
-    }
-
-    &.pull-right {
-      a {
-        margin-right: -15px;
-      }
-    }
+  .breadcrumb {
+    padding: 0;
+    background: transparent;
+    margin-bottom: 10px;
 
     a {
       color: #555;
 
       &:hover {
-        color: #333;
+        color: 333;
       }
     }
   }
 }
 
-.breadcrumb-campo {
-  background: white;
-  @include box-shadow(0 0 6px #ccc);
+.list-group-campo {
 }
 
-.panel-campo {
-  @include box-shadow(0 0 6px #ccc);
-
-  .panel-heading {
-    background: #f5f5f5;
-    border-color: #ddd;
-
-    .breadcrumb {
-      padding: 0;
-      margin: 0;
-      background: transparent;
-
-      a {
-        color: #555;
-
-        &:hover {
-          color: #333;
-          text-decoration: none;
-        }
-      }
-    }
-  }
+.list-group-item-campo {
+  padding: 15px;
+  margin-bottom: 2px;
+  border: none;
 }
 
 .campo-editor {
@@ -103,3 +70,4 @@
     }
   }
 }
+

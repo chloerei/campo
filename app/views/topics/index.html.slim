@@ -1,27 +1,32 @@
-.panel.panel-campo
-  .panel-body
-    ul.nav.nav-campo
-      li
-        a All Topics
-      li.active
-        a href=topics_path Hot
-      li
-        a New
-      li.pull-right
-        a href=new_topic_path
-          span.glyphicon.glyphicon-plus
-          '
-          | Create Topic
-    ul.topics
+.header-campo
+  h2 Forum
+
+.row
+  .col-md-9
+    ul.list-group.list-group-topics
       - @topics.each do |topic|
-        li
-          a href=topic_path(topic)
-            .avatar
-              img.img-circle src="http://gravatar.com/avatar/5aec84cd0b5479a0d1d89b6ffa2a9a20.png?r=G&s=48"
-            .content
-              h3.title
-                = topic.title
-              .date
-                = time_ago_in_words topic.created_at
-              .extra
-                | 10 points
+        li.list-group-item.list-group-item-campo
+          .topic
+            a href=topic_path(topic)
+              span.icon.glyphicon.glyphicon-envelope
+              .content
+                h3.title
+                  = topic.title
+                  .date
+                    = time_ago_in_words topic.created_at
+                .extra
+                  | 10 points by
+                  '
+                  = topic.user.name
+  .col-md-3
+    .panel
+      a.btn.btn-success.btn-block href=new_topic_path Create Topic
+    ul.nav.nav-pills.nav-stacked
+      li.active
+        a Forum 1
+      li
+        a Forum 2
+      li
+        a Forum 3
+      li
+        a Forum 4

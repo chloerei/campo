@@ -1,2 +1,2 @@
-$('ul.posts li.post:last-of-type').after('<%= j render(@post) %>');
+$('#posts').append('<%= j render(@post) %>');
 $('#new_post textarea').val('');

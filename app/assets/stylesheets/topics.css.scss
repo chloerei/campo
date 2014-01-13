@@ -1,85 +1,45 @@
-.topics {
-  list-style: none;
-  margin: 0;
-  padding: 0;
+.topic {
+  margin: -15px;
 
-  li {
-    border-bottom: 1px solid #ddd;
+  &:hover {
+    background: #f9f9f9;
+  }
+
+  a {
+    display: block;
+    padding: 15px;
+    color: #333;
     @include clearfix();
 
-    a {
-      display: block;
-      padding: 15px 0;
-      color: #333;
-      @include clearfix();
-
-      &:hover {
-        text-decoration: none;
-      }
-    }
-
-    .avatar {
-      width: 48px;
-      height: 48px;
-      float: left;
-
-      img {
-        width: 48px;
-        height: 48px;
-
-      }
-    }
-
-    .content {
-      margin-left: 48px;
-      padding: 2px 0 2px 15px;
-    }
-
-    .title {
-      margin: 0;
-      font-size: 1em;
-      font-weight: bold;
-      display: inline;
-    }
-
-    .date {
-      float: right;
-      color: #999;
-    }
-
-    .extra {
-      margin-top: 2px;
-      color: #999;
+    &:hover {
+      text-decoration: none;
     }
   }
-}
 
-.topic-title {
-  padding-bottom: 15px;
-  border-bottom: 1px solid #ddd;
+  .icon {
+    float: left;
+    color: #999;
+    line-height: inherit;
+  }
 
-  h3 {
+  .content {
+    margin-left: 24px;
+  }
+
+  .title {
     margin: 0;
+    font-size: 1em;
+    font-weight: bold;
+    line-height: inherit;
   }
 
-  .actions {
-    .btn {
-      color: #999;
-
-      &:hover {
-        color: #555;
-      }
-
-      &:active {
-        @include box-shadow(none);
-      }
-    }
+  .date {
+    float: right;
+    font-weight: normal;
+    color: #999;
   }
-}
 
-.form-topic {
-  textarea {
-    height: 18em;
-    resize: vertical;
+  .extra {
+    color: #999;
   }
 }

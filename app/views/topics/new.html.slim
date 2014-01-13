@@ -1,24 +1,30 @@
-ol.breadcrumb.breadcrumb-campo
-  li
-    a href=topics_path Forum
-  li.active Create Topic
-.panel.panel-campo
-  .panel-body
-    = form_for @topic, html: { class: 'form-topic' } do |f|
-      .form-group
-        = f.text_field :title, class: 'form-control', placeholder: 'Title', tabindex: 1
-      .form-group
-        .campo-editor
-          ul.nav.nav-tabs
-            li.active
-              a href="#write_topic_#{@topic.try(:id) || 'new'}" data-toggle="tab" Write
-              li
-                a href="#preview_topic_#{@topic.try(:id) || 'new'}" data-toggle="tab" data-behavior="preview" Preview
-              li.pull-right
-                a Markdown
-          .tab-content
-            .tab-pane.active id="write_topic_#{@topic.try(:id) || 'new'}"
-              = f.fields_for :main_post do |builder|
-                = builder.text_area :content, class: 'form-control', placeholder: 'Type here...', tabindex: 2
-            .tab-pane.preview id="preview_topic_#{@topic.try(:id) || 'new'}"
-      = f.submit 'Create Topic', class: 'btn btn-success', tabindex: 3
+.header-campo
+  ol.breadcrumb
+    li
+      a href=topics_path Forum
+    li
+      a href=topics_path All Topics
+    li.active Create
+
+.row
+  .col-md-9
+    .panel.panel-campo
+      .panel-body
+        = form_for @topic, html: { class: 'form-topic' } do |f|
+          .form-group
+            = f.text_field :title, class: 'form-control', placeholder: 'Title', tabindex: 1
+          .form-group
+            .campo-editor
+              ul.nav.nav-tabs
+                li.active
+                  a href="#write_topic_#{@topic.try(:id) || 'new'}" data-toggle="tab" Write
+                  li
+                    a href="#preview_topic_#{@topic.try(:id) || 'new'}" data-toggle="tab" data-behavior="preview" Preview
+                  li.pull-right
+                    a Markdown
+              .tab-content
+                .tab-pane.active id="write_topic_#{@topic.try(:id) || 'new'}"
+                  = f.fields_for :main_post do |builder|
+                    = builder.text_area :content, class: 'form-control', placeholder: 'Type here...', tabindex: 2
+                .tab-pane.preview id="preview_topic_#{@topic.try(:id) || 'new'}"
+          = f.submit 'Create Topic', class: 'btn btn-success', tabindex: 3

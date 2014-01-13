@@ -1,14 +1,19 @@
-.panel.panel-campo
-  .panel-body
-    .topic-title
-      h3 = @topic.title
-    .posts
+.header-campo
+  ol.breadcrumb
+    li
+      a href=topics_path Forum
+    li
+      a href=topics_path All Topics
+  h3 = @topic.title
+
+.row
+  .col-md-9
+    ul#posts.list-group.list-group-posts
       = render @topic.posts.order(id: :asc)
     - if logined?
-      p
-        | You are logined as
-        '
-        = current_user.name
-      = render 'posts/form', post: @topic.posts.new
+      .panel
+        .panel-body
+          = render 'posts/form', post: @topic.posts.new
     - else
       a.btn.btn-default href=login_path(return_to: url_for) Login to Reply
+  .col-md-3
