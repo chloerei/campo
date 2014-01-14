@@ -5,11 +5,18 @@ class PostVote < ActiveRecord::Base
 
   validates :value, presence: true
 
-  after_save :update_post_votes
+  after_create do
+    post.increment! :votes, VALUE[value]
+  end
 
-  def update_post_votes
+  after_update do
     if value_changed?
-      post.increment! :votes, VALUE[value]
+      # TODO value and value_was type is different, maybe change later.
+      post.increment! :votes, (VALUE[value] - value_was)
     end
+  end
+
+  after_destroy do
+    post.decrement! :votes, VALUE[value]
   end
 end

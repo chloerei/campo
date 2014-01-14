@@ -40,6 +40,20 @@ class PostsController < ApplicationController
     render layout: false
   end
 
+  def vote
+    @post = Post.find_by! id: params[:id]
+    if PostVote::VALUE.keys.include? params[:type]
+      post_vote = @post.post_votes.find_or_initialize_by(user_id: current_user.id)
+      post_vote.update_attribute :value, params[:type]
+    elsif params[:type] == 'cancel'
+      @post.post_votes.find_by(user_id: current_user.id).try(:destroy)
+    end
+
+    respond_to do |format|
+      format.js { render :show }
+    end
+  end
+
   private
 
   def post_params

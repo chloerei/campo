@@ -26,6 +26,12 @@ class PostVoteTest < ActiveSupport::TestCase
     assert_equal 1, post.votes
 
     vote.update_attribute :value, 'down'
+    assert_equal(-1, post.votes)
+
+    vote.update_attribute :value, 'up'
+    assert_equal 1, post.votes
+
+    vote.destroy
     assert_equal 0, post.votes
   end
 end

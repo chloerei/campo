@@ -34,4 +34,18 @@ class PostsControllerTest < ActionController::TestCase
     assert_response :success, @response.body
     assert_equal 'change', topic_post.reload.content
   end
+
+  test "should vote post" do
+    topic_post = create(:post)
+    assert_require_logined do
+      xhr :patch, :vote, id: topic_post, type: 'up'
+    end
+    assert_equal 1, topic_post.reload.votes
+
+    xhr :patch, :vote, id: topic_post, type: 'down'
+    assert_equal(-1, topic_post.reload.votes)
+
+    xhr :patch, :vote, id: topic_post, type: 'cancel'
+    assert_equal(0, topic_post.reload.votes)
+  end
 end

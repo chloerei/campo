@@ -19,5 +19,9 @@ Rails.application.routes.draw do
     collection do
       post 'preview'
     end
+
+    member do
+      patch :vote
+    end
   end
 end
