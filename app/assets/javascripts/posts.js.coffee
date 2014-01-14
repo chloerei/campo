@@ -16,7 +16,12 @@ $(document).on 'click', '.post [data-vote]', ->
       else
         button.attr('data-voted', true)
 
-      if data.votes is 0
-        post.find('.votes').text('')
-      else
-        post.find('.votes').text(data.votes)
+      votes = post.find('.votes')
+
+      switch
+        when data.votes > 0
+          votes.text(data.votes).removeClass('down').addClass('up')
+        when data.votes < 0
+          votes.text(data.votes).removeClass('up').addClass('down')
+        else
+          votes.text('').removeClass('up down')

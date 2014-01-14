@@ -21,7 +21,7 @@ li.list-group-item.list-group-item-campo.post id="post_#{post.id}" data-id=post.
             a.btn href=edit_post_path(post) data-remote='true'
               span.glyphicon.glyphicon-edit
       .pull-right
-        span.votes
+        span.votes class=(post.votes > 0 ? 'up' : 'down')
           - if post.votes != 0
             = post.votes
         a.btn data-vote="up"

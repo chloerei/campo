@@ -58,10 +58,18 @@
     }
 
     .votes {
-      padding: 6px;
+      padding: 6px 12px;
       display: inline-block;
       vertical-align: middle;
       color: #999;
+
+      &.up {
+        color: $btn-success-bg;
+      }
+
+      &.down {
+        color: $btn-danger-bg;
+      }
     }
   }
 }
