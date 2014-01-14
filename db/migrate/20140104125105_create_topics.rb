@@ -1,8 +1,8 @@
 class CreateTopics < ActiveRecord::Migration
   def change
     create_table :topics do |t|
-      t.string :title
       t.references :user, index: true
+      t.string :title
 
       t.timestamps
     end

@@ -7,4 +7,25 @@ class PostVoteTest < ActiveSupport::TestCase
     assert_equal 'up', vote.value
     assert vote.up?
   end
+
+  test "should inc post votes" do
+    post = create(:post)
+    assert_equal 0, post.votes
+
+    create(:post_vote, post: post, value: 'up')
+    assert_equal 1, post.votes
+
+    create(:post_vote, post: post, value: 'down')
+    assert_equal 0, post.votes
+  end
+
+  test "should inc post votes after vote update" do
+    post = create(:post)
+
+    vote = create(:post_vote, post: post, value: 'up')
+    assert_equal 1, post.votes
+
+    vote.update_attribute :value, 'down'
+    assert_equal 0, post.votes
+  end
 end
