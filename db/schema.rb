@@ -11,10 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140104130551) do
+ActiveRecord::Schema.define(version: 20140114124558) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "post_votes", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "post_id"
+    t.integer  "value"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "post_votes", ["post_id"], name: "index_post_votes_on_post_id", using: :btree
+  add_index "post_votes", ["user_id", "post_id"], name: "index_post_votes_on_user_id_and_post_id", unique: true, using: :btree
+  add_index "post_votes", ["user_id"], name: "index_post_votes_on_user_id", using: :btree
 
   create_table "posts", force: true do |t|
     t.text     "content"
