@@ -1,7 +1,7 @@
 .post
   img.avatar.img-rounded src="http://gravatar.com/avatar/5aec84cd0b5479a0d1d89b6ffa2a9a20.png?r=G&s=48"
   article.text
-    = form_for [post.topic, post], html: { class: 'form-post' }, remote: true do |f|
+    = form_for post, html: { class: 'form-post' }, remote: true do |f|
       .form-group
         .campo-editor
           ul.nav.nav-tabs
@@ -14,9 +14,10 @@
               = f.text_area :content, class: 'form-control', placeholder: 'Type here...'
             .tab-pane.preview id="preview_#{post.try(:id) || 'new'}"
       - if post.new_record?
-        = f.submit 'Post Reply', class: 'btn btn-success'
+        = f.hidden_field :topic_id
+        = f.submit 'Add Post', class: 'btn btn-success'
       - else
         = f.submit 'Save Changes', class: 'btn btn-success'
         '
-        a.btn.btn-default href=topic_post_path(post.topic, post) data-remote='true'
+        a.btn.btn-default href=post_path(post) data-remote='true'
           | cancel

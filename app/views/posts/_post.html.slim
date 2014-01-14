@@ -18,5 +18,5 @@ li.list-group-item.list-group-item-campo id="post_#{post.id}"
             a.btn href=edit_topic_path(post.topic)
               span.glyphicon.glyphicon-edit
           - else
-            a.btn href=edit_topic_post_path(post.topic, post) data-remote='true'
+            a.btn href=edit_post_path(post) data-remote='true'
               span.glyphicon.glyphicon-edit

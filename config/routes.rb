@@ -13,8 +13,11 @@ Rails.application.routes.draw do
   end
 
   resources :topics, only: [:index, :show, :new, :create, :edit, :update] do
-    resources :posts, only: [:show, :create, :edit, :update]
   end
 
-  post 'preview', to: 'posts#preview'
+  resources :posts, only: [:show, :create, :edit, :update] do
+    collection do
+      post 'preview'
+    end
+  end
 end
