@@ -38,14 +38,14 @@ class PostsControllerTest < ActionController::TestCase
   test "should vote post" do
     topic_post = create(:post)
     assert_require_logined do
-      xhr :patch, :vote, id: topic_post, type: 'up'
+      patch :vote, id: topic_post, type: 'up', format: 'json'
     end
     assert_equal 1, topic_post.reload.votes
 
-    xhr :patch, :vote, id: topic_post, type: 'down'
+    patch :vote, id: topic_post, type: 'down', format: 'json'
     assert_equal(-1, topic_post.reload.votes)
 
-    xhr :patch, :vote, id: topic_post, type: 'cancel'
+    patch :vote, id: topic_post, type: 'cancel', format: 'json'
     assert_equal(0, topic_post.reload.votes)
   end
 end

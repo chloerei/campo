@@ -50,7 +50,11 @@ class PostsController < ApplicationController
     end
 
     respond_to do |format|
-      format.js { render :show }
+      format.json do
+        render json: {
+          votes:  @post.reload.votes
+        }
+      end
     end
   end
 
