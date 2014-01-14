@@ -44,7 +44,13 @@
 .list-group-item-campo {
   padding: 15px;
   margin-bottom: 2px;
-  border: none;
+  border: 1px solid transparent;
+  @include box-shadow(0 1px 1px rgba(0, 0, 0, 0.05));
+
+  &:first-child,
+  &:last-child {
+    border-radius: 0;
+  }
 }
 
 .campo-editor {

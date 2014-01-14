@@ -1,5 +1,5 @@
 .topic {
-  margin: -15px;
+  margin: -16px;
 
   &:hover {
     background: #f9f9f9;
@@ -7,7 +7,7 @@
 
   a {
     display: block;
-    padding: 15px;
+    padding: 16px;
     color: #333;
     @include clearfix();
 
@@ -42,4 +42,9 @@
   .extra {
     color: #999;
   }
+}
+
+.form-topic textarea {
+  height: 12em;
+  resize: vertical;
 }
