@@ -24,4 +24,8 @@ Rails.application.routes.draw do
       patch :vote
     end
   end
+
+  if Rails.env.development?
+    get 'qunit', to: 'qunit#index'
+  end
 end
