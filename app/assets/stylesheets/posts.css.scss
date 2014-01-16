@@ -68,10 +68,18 @@
 
   &[data-post-voted="up"] [data-post-vote-action="up"] {
     color: $btn-success-bg;
+
+    &:hover {
+      color: $btn-success-bg;
+    }
   }
 
   &[data-post-voted="down"] [data-post-vote-action="down"] {
     color: $btn-danger-bg;
+
+    &:hover {
+      color: $btn-danger-bg;
+    }
   }
 
 }
