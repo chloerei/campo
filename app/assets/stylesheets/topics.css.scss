@@ -1,5 +1,5 @@
 .topic {
-  margin: -16px;
+  padding: 0;
 
   &:hover {
     background: #f9f9f9;
@@ -47,4 +47,8 @@
 .form-topic textarea {
   height: 12em;
   resize: vertical;
+}
+
+.form-topic .preview {
+  min-height: 12em;
 }

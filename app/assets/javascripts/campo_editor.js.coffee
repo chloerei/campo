@@ -6,7 +6,7 @@ $(document).on 'show.bs.tab', 'a[data-behavior~="preview"]', (e) ->
   preview.css height: textarea.css('height')
 
   $.ajax
-    url: '/preview'
+    url: '/posts/preview'
     data: { content: textarea.val() }
     type: 'POST'
     success: (data) ->
