@@ -1,4 +1,4 @@
-module('posts_test')
+module('Posts')
 
 test 'should update votes', ->
   $fixture = $('#qunit-fixture')
@@ -10,7 +10,7 @@ test 'should update votes', ->
   </ul
   ")
 
-  Post.updateVotes([
+  Posts.updateVotes([
     { post_id: 1, value: 'up' }
     { post_id: 2, value: 'down' }
   ])

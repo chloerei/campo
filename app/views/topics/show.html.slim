@@ -20,4 +20,4 @@
 
 - if logined?
   javascript:
-    Post.updateVotes(#{ raw post_votes(@topic.posts, current_user).to_json });
+    Posts.updateVotes(#{ raw post_votes(@topic.posts, current_user).to_json });
