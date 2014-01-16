@@ -56,7 +56,7 @@ class PostsController < ApplicationController
       format.json do
         render json: {
           post_id: @post.id,
-          votes:  @post.reload.votes,
+          score:  @post.reload.score,
           type: params[:type]
         }
       end

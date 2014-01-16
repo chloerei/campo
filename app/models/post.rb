@@ -11,7 +11,7 @@ class Post < ActiveRecord::Base
     end
   end
 
-  def votes
+  def score
     votes_up - votes_down
   end
 end

@@ -11,18 +11,17 @@ li.list-group-item.list-group-item-campo.post id="post_#{post.id}" data-post-id=
   article.text
     = format_post post.content
   .actions.clearfix
-    - if current_user == post.user
-      .pull-left data-visible-to="creator"
-        - if post.post_number == 1
-          a.btn href=edit_topic_path(post.topic)
-            span.glyphicon.glyphicon-edit
-        - else
-          a.btn href=edit_post_path(post) data-remote='true'
-            span.glyphicon.glyphicon-edit
+    .pull-left data-visible-to="creator"
+      - if post.post_number == 1
+        a.btn href=edit_topic_path(post.topic)
+          span.glyphicon.glyphicon-edit
+      - else
+        a.btn href=edit_post_path(post) data-remote='true'
+          span.glyphicon.glyphicon-edit
     .pull-right
-      span.votes class=(post.votes > 0 ? 'up' : 'down')
-        - if post.votes != 0
-          = post.votes
+      span.score class=(post.score > 0 ? 'up' : 'down')
+        - if post.score != 0
+          = post.score
       a.btn data-post-vote-action="up"
         span.glyphicon.glyphicon-thumbs-up
       a.btn data-post-vote-action="down"

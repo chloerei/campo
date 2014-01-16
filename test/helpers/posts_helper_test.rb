@@ -11,7 +11,7 @@ class PostsHelperTest < ActionView::TestCase
     create(:post_vote, post: post_down, up: false, user: user)
 
     assert_equal(
-      [{ post_id: post_up.id, value: 'up'}, { post_id: post_down.id, value: 'down' }].sort_by{ |v| v[:post_id] },
+      [{ post_id: post_up.id, type: 'up'}, { post_id: post_down.id, type: 'down' }].sort_by{ |v| v[:post_id] },
       post_votes(topic.posts, user).sort_by{ |v| v[:post_id] }
     )
   end

@@ -4,14 +4,14 @@ class PostVoteTest < ActiveSupport::TestCase
   test "should create post vote" do
     vote = create(:post_vote, up: true)
     assert_not_nil vote
-    assert_equal 'up', vote.value
+    assert_equal 'up', vote.type
     assert vote.up?
   end
 
   test "should inc post votes" do
     post = create(:post)
     topic = post.topic
-    assert_equal 0, post.votes
+    assert_equal 0, post.score
     assert_equal 0, topic.score
 
     create(:post_vote, post: post, up: true)

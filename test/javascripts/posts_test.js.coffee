@@ -11,8 +11,8 @@ test 'should update votes', ->
   ")
 
   campo.Posts.updateVotes([
-    { post_id: 1, value: 'up' }
-    { post_id: 2, value: 'down' }
+    { post_id: 1, type: 'up' }
+    { post_id: 2, type: 'down' }
   ])
 
   equal( 'up', $fixture.find('[data-post-id=1]').data('post-voted') )

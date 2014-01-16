@@ -36,7 +36,7 @@ class PostVote < ActiveRecord::Base
     end
   end
 
-  def value
+  def type
     up? ? 'up' : 'down'
   end
 end

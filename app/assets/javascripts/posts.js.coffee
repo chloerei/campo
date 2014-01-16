@@ -4,7 +4,7 @@ campo.Posts =
 
   updateVotes: (postVotes) ->
     for post_vote in postVotes
-      $("[data-post-id=#{post_vote.post_id}]").attr('data-post-voted', post_vote.value)
+      $("[data-post-id=#{post_vote.post_id}]").attr('data-post-voted', post_vote.type)
 
   bindPostVoteAction: ->
     $(document).on 'click', '[data-behavior~=post-votable] [data-post-vote-action]', ->
@@ -30,13 +30,13 @@ campo.Posts =
           else
             post.attr('data-post-voted', type)
 
-          votes = post.find('.votes')
+          score = post.find('.score')
           switch
-            when data.votes > 0
-              votes.text(data.votes).removeClass('down').addClass('up')
-            when data.votes < 0
-              votes.text(data.votes).removeClass('up').addClass('down')
+            when data.score > 0
+              score.text(data.score).removeClass('down').addClass('up')
+            when data.score < 0
+              score.text(data.score).removeClass('up').addClass('down')
             else
-              votes.text('').removeClass('up down')
+              score.text('').removeClass('up down')
 
 @campo.Posts.init()
