@@ -1,3 +1,8 @@
+@Post =
+  updateVotes: (postVotes) ->
+    for id, value of postVotes
+      $("[data-post-id=#{id}]").attr('data-post-vote', value)
+
 $(document).on 'click', '.post [data-vote]', ->
   button = $(this)
   post = button.closest('.post')
