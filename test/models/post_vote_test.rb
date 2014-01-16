@@ -12,7 +12,7 @@ class PostVoteTest < ActiveSupport::TestCase
     post = create(:post)
     topic = post.topic
     assert_equal 0, post.votes
-    assert_equal 0, topic.votes
+    assert_equal 0, topic.score
 
     create(:post_vote, post: post, up: true)
     post.reload

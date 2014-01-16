@@ -5,6 +5,7 @@ class CreateTopics < ActiveRecord::Migration
       t.string :title
       t.integer :votes_up, default: 0
       t.integer :votes_down, default: 0
+      t.float :hot, index: true, default: 0.0
 
       t.timestamps
     end
