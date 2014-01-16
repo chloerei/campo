@@ -14,12 +14,12 @@
       rules = $element.data('visible-to').split(/\s/)
 
       if 'user' in rules
-        if campo.currentUser is null
+        if !campo.currentUser?
           return $element.remove()
 
       if 'creator' in rules
         creator_id = $element.closest('[data-creator-id]').data('creator-id')
-        if (campo.currentUser is null) or (campo.currentUser.id != creator_id)
+        if (!campo.currentUser?) or (campo.currentUser.id != creator_id)
           return $element.remove()
 
 $ ->
