@@ -33,7 +33,8 @@ ActiveRecord::Schema.define(version: 20140114124558) do
     t.integer  "user_id"
     t.text     "content"
     t.integer  "post_number"
-    t.integer  "votes",       default: 0
+    t.integer  "votes_up",    default: 0
+    t.integer  "votes_down",  default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end

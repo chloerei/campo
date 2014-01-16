@@ -13,25 +13,37 @@ class PostVoteTest < ActiveSupport::TestCase
     assert_equal 0, post.votes
 
     create(:post_vote, post: post, value: 'up')
-    assert_equal 1, post.votes
+    post.reload
+    assert_equal 1, post.votes_up
+    assert_equal 0, post.votes_down
 
     create(:post_vote, post: post, value: 'down')
-    assert_equal 0, post.votes
+    post.reload
+    assert_equal 1, post.votes_up
+    assert_equal 1, post.votes_down
   end
 
   test "should inc post votes after vote update" do
     post = create(:post)
 
     vote = create(:post_vote, post: post, value: 'up')
-    assert_equal 1, post.votes
+    post.reload
+    assert_equal 1, post.votes_up
+    assert_equal 0, post.votes_down
 
     vote.update_attribute :value, 'down'
-    assert_equal(-1, post.votes)
+    post.reload
+    assert_equal 0, post.votes_up
+    assert_equal 1, post.votes_down
 
     vote.update_attribute :value, 'up'
-    assert_equal 1, post.votes
+    post.reload
+    assert_equal 1, post.votes_up
+    assert_equal 0, post.votes_down
 
     vote.destroy
-    assert_equal 0, post.votes
+    post.reload
+    assert_equal 0, post.votes_up
+    assert_equal 0, post.votes_down
   end
 end

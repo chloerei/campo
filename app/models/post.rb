@@ -10,4 +10,8 @@ class Post < ActiveRecord::Base
       update_column :post_number, topic.posts.where('id < ?', id).count + 1
     end
   end
+
+  def votes
+    votes_up - votes_down
+  end
 end
