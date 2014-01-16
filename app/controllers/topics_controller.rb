@@ -2,7 +2,7 @@ class TopicsController < ApplicationController
   before_filter :require_logined, except: [:index, :show]
 
   def index
-    @topics = Topic.order(id: :desc)
+    @topics = Topic.order(hot: :desc)
   end
 
   def show

@@ -12,6 +12,7 @@ class PostVote < ActiveRecord::Base
       Post.update_counters post_id, votes_down: 1
       Topic.update_counters post.topic_id, votes_down: 1
     end
+    post.topic.reload.calculate_hot!
   end
 
   after_update do
@@ -24,6 +25,7 @@ class PostVote < ActiveRecord::Base
         Topic.update_counters post.topic_id, votes_down: 1, votes_up: -1
       end
     end
+    post.topic.reload.calculate_hot!
   end
 
   after_destroy do
@@ -34,6 +36,7 @@ class PostVote < ActiveRecord::Base
       Post.update_counters post_id, votes_down: -1
       Topic.update_counters post.topic_id, votes_down: -1
     end
+    post.topic.reload.calculate_hot!
   end
 
   def type

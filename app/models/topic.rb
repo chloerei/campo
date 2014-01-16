@@ -18,10 +18,10 @@ class Topic < ActiveRecord::Base
            else
              0
            end
-    order + sign * created_at.to_i / 45000.to_f
+    order + sign * created_at.to_i / 45000
   end
 
   def calculate_hot!
-    update_attribute :score, calculate_hot
+    update_attribute :hot, calculate_hot
   end
 end

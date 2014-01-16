@@ -67,4 +67,19 @@ class PostVoteTest < ActiveSupport::TestCase
     assert_equal 0, topic.votes_up
     assert_equal 0, topic.votes_down
   end
+
+  test "should calculate topic hot" do
+    post = create(:post)
+    topic = post.topic
+
+    puts '#####'
+    post_vote = create(:post_vote, post: post, up: true)
+    assert topic.reload.hot > 0
+
+    post_vote.update_attribute :up, false
+    assert topic.reload.hot < 0
+
+    post_vote.destroy
+    assert (topic.reload.hot - 0) < 1
+  end
 end
