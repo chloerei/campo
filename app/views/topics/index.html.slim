@@ -5,22 +5,23 @@
   .col-md-9
     ul.list-group.list-group-campo
       - @topics.each do |topic|
-        li.list-group-item.list-group-item-campo.topic
-          a href=topic_path(topic)
-            span.icon.glyphicon.glyphicon-envelope
-            .content
-              h3.title
-                .date
-                  = time_ago_in_words topic.created_at
-                = topic.title
-              .extra
-                = topic.score
-                '
-                | point
-                '
-                | by
-                '
-                = topic.user.name
+        li.list-group-item.list-group-item-campo
+          .topic
+            a href=topic_path(topic)
+              span.icon.glyphicon.glyphicon-envelope
+              .content
+                h3.title
+                  .date
+                    = time_ago_in_words topic.created_at
+                  = topic.title
+                .extra
+                  = topic.score
+                  '
+                  | point
+                  '
+                  | by
+                  '
+                  = topic.user.name
   .col-md-3
     .panel
       .panel-body

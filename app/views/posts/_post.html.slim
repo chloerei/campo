@@ -1,28 +1,29 @@
-li.list-group-item.list-group-item-campo.post id="post_#{post.id}" data-post-id=post.id data-behavior="post-votable" data-creator-id=post.user_id
-  img.avatar.img-rounded src="http://gravatar.com/avatar/5aec84cd0b5479a0d1d89b6ffa2a9a20.png?r=G&s=48"
-  .metadata
-    span.post-number
-      | #
-      = post.post_number
-    span.author
-      = post.user.name
-    span.date
-      = time_ago_in_words post.created_at
-  article.text
-    = format_post post.content
-  .actions.clearfix
-    .pull-left data-visible-to="creator"
-      - if post.post_number == 1
-        a.btn href=edit_topic_path(post.topic)
-          span.glyphicon.glyphicon-edit
-      - else
-        a.btn href=edit_post_path(post) data-remote='true'
-          span.glyphicon.glyphicon-edit
-    .pull-right
-      span.score class=(post.score > 0 ? 'up' : 'down')
-        - if post.score != 0
-          = post.score
-      a.btn data-post-vote-action="up"
-        span.glyphicon.glyphicon-thumbs-up
-      a.btn data-post-vote-action="down"
-        span.glyphicon.glyphicon-thumbs-down
+li.list-group-item.list-group-item-campo id="post_#{post.id}" data-post-id=post.id data-behavior="post-votable" data-creator-id=post.user_id
+  .post
+    img.avatar.img-rounded src="http://gravatar.com/avatar/5aec84cd0b5479a0d1d89b6ffa2a9a20.png?r=G&s=48"
+    .metadata
+      span.post-number
+        | #
+        = post.post_number
+      span.author
+        = post.user.name
+      span.date
+        = time_ago_in_words post.created_at
+    article.text
+      = format_post post.content
+    .actions.clearfix
+      .pull-left data-visible-to="creator"
+        - if post.post_number == 1
+          a.btn href=edit_topic_path(post.topic)
+            span.glyphicon.glyphicon-edit
+        - else
+          a.btn href=edit_post_path(post) data-remote='true'
+            span.glyphicon.glyphicon-edit
+      .pull-right
+        span.score class=(post.score > 0 ? 'up' : 'down')
+          - if post.score != 0
+            = post.score
+        a.btn data-post-vote-action="up"
+          span.glyphicon.glyphicon-thumbs-up
+        a.btn data-post-vote-action="down"
+          span.glyphicon.glyphicon-thumbs-down
