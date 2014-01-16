@@ -18,68 +18,50 @@ class PostVoteTest < ActiveSupport::TestCase
     post.reload
     assert_equal 1, post.votes_up
     assert_equal 0, post.votes_down
-    topic.reload
-    assert_equal 1, topic.votes_up
-    assert_equal 0, topic.votes_down
 
     create(:post_vote, post: post, up: false)
     post.reload
     assert_equal 1, post.votes_up
     assert_equal 1, post.votes_down
-    topic.reload
-    assert_equal 1, topic.votes_up
-    assert_equal 1, topic.votes_down
   end
 
   test "should inc post votes after vote update" do
     post = create(:post)
-    topic = post.topic
 
     vote = create(:post_vote, post: post, up: true)
     post.reload
     assert_equal 1, post.votes_up
     assert_equal 0, post.votes_down
-    topic.reload
-    assert_equal 1, topic.votes_up
-    assert_equal 0, topic.votes_down
 
     vote.update_attribute :up, false
     post.reload
     assert_equal 0, post.votes_up
     assert_equal 1, post.votes_down
-    topic.reload
-    assert_equal 0, topic.votes_up
-    assert_equal 1, topic.votes_down
 
     vote.update_attribute :up, true
     post.reload
     assert_equal 1, post.votes_up
     assert_equal 0, post.votes_down
-    topic.reload
-    assert_equal 1, topic.votes_up
-    assert_equal 0, topic.votes_down
 
     vote.destroy
     post.reload
     assert_equal 0, post.votes_up
     assert_equal 0, post.votes_down
-    topic.reload
-    assert_equal 0, topic.votes_up
-    assert_equal 0, topic.votes_down
   end
 
-  test "should calculate topic hot" do
-    post = create(:post)
-    topic = post.topic
+  test "should calculate hot for topic if vote for main_post" do
+    topic = create(:topic)
+    post = topic.main_post
+    assert_equal 0.0, topic.hot
 
-    puts '#####'
-    post_vote = create(:post_vote, post: post, up: true)
+    create(:post_vote, post: post, up: true)
     assert topic.reload.hot > 0
 
-    post_vote.update_attribute :up, false
-    assert topic.reload.hot < 0
+    2.times do
+      post.reload
+      create(:post_vote, post: post, up: false)
+    end
 
-    post_vote.destroy
-    assert (topic.reload.hot - 0) < 1
+    assert topic.reload.hot < 0
   end
 end

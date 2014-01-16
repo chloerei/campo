@@ -45,8 +45,6 @@ ActiveRecord::Schema.define(version: 20140114124558) do
   create_table "topics", force: true do |t|
     t.integer  "user_id"
     t.string   "title"
-    t.integer  "votes_up",   default: 0
-    t.integer  "votes_down", default: 0
     t.float    "hot",        default: 0.0
     t.datetime "created_at"
     t.datetime "updated_at"
