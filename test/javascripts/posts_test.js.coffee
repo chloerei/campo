@@ -15,6 +15,6 @@ test 'should update votes', ->
     { post_id: 2, value: 'down' }
   ])
 
-  equal( 'up', $fixture.find('[data-post-id=1]').data('post-vote') )
-  equal( 'down', $fixture.find('[data-post-id=2]').data('post-vote') )
-  equal( null, $fixture.find('[data-post-id=3]').data('post-vote') )
+  equal( 'up', $fixture.find('[data-post-id=1]').data('post-voted') )
+  equal( 'down', $fixture.find('[data-post-id=2]').data('post-voted') )
+  equal( null, $fixture.find('[data-post-id=3]').data('post-voted') )
