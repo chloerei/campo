@@ -1,4 +1,4 @@
-li.list-group-item.list-group-item-campo.post id="post_#{post.id}" data-post-id=post.id data-behavior="post-votable"
+li.list-group-item.list-group-item-campo.post id="post_#{post.id}" data-post-id=post.id data-behavior="post-votable" data-creator-id=post.user_id
   img.avatar.img-rounded src="http://gravatar.com/avatar/5aec84cd0b5479a0d1d89b6ffa2a9a20.png?r=G&s=48"
   .metadata
     span.post-number
@@ -12,7 +12,7 @@ li.list-group-item.list-group-item-campo.post id="post_#{post.id}" data-post-id=
     = format_post post.content
   .actions.clearfix
     - if current_user == post.user
-      .pull-left
+      .pull-left data-visible-to="creator"
         - if post.post_number == 1
           a.btn href=edit_topic_path(post.topic)
             span.glyphicon.glyphicon-edit

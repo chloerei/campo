@@ -1,6 +1,6 @@
 module('visible-to')
 
-test 'should keep element for user if logined', ->
+test 'should remove element unless logined', ->
   $fixture = $('#qunit-fixture')
   $fixture.append("
   <div data-visible-to='user'></div>
@@ -8,18 +8,22 @@ test 'should keep element for user if logined', ->
 
   campo.currentUser = { id: 1 }
   campo.VisibleTo.check()
-
   ok($fixture.find('div').length)
 
-  # clear
   campo.currentUser = null
+  campo.VisibleTo.check()
+  ok(!$fixture.find('div').length)
 
-test 'should remove element for user if logined', ->
+test 'should remove element unless creator', ->
   $fixture = $('#qunit-fixture')
   $fixture.append("
-  <div data-visible-to='user'></div>
+  <div data-creator-id='1' data-visible-to='creator'></div>
   ")
 
+  campo.currentUser = { id: 1 }
   campo.VisibleTo.check()
+  ok($fixture.find('div').length)
 
+  campo.currentUser = { id: 2 }
+  campo.VisibleTo.check()
   ok(!$fixture.find('div').length)
