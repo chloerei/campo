@@ -52,7 +52,9 @@ class PostsController < ApplicationController
     respond_to do |format|
       format.json do
         render json: {
-          votes:  @post.reload.votes
+          post_id: @post.id,
+          votes:  @post.reload.votes,
+          type: params[:type]
         }
       end
     end

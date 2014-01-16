@@ -1,13 +1,14 @@
 @Post =
   updateVotes: (postVotes) ->
     for post_vote in postVotes
-      $("[data-post-id=#{post_vote.post_id}]").attr('data-post-vote', post_vote.value)
+      $("[data-post-id=#{post_vote.post_id}]").attr('data-post-voted', post_vote.value)
 
-$(document).on 'click', '.post [data-vote]', ->
-  button = $(this)
-  post = button.closest('.post')
-  id = post.data('id')
-  type = if button.attr('data-voted')? then 'cancel' else button.data('vote')
+$(document).on 'click', '[data-behavior~=post-votable] [data-post-vote-action]', ->
+  action = $(this)
+  post = action.closest('[data-post-id]')
+  id = post.data('post-id')
+  action_type = action.data('post-vote-action')
+  type = if post.attr('data-post-voted') is action_type then 'cancel' else action_type
 
   $.ajax
     url: "/posts/#{id}/vote"
@@ -15,14 +16,12 @@ $(document).on 'click', '.post [data-vote]', ->
     method: 'PATCH'
     datatype: 'json'
     success: (data) ->
-      button.siblings('[data-voted]').attr('data-voted', null)
-      if type is 'cancel'
-        button.attr('data-voted', null)
+      if type == 'cancel'
+        post.attr('data-post-voted', null)
       else
-        button.attr('data-voted', true)
+        post.attr('data-post-voted', type)
 
       votes = post.find('.votes')
-
       switch
         when data.votes > 0
           votes.text(data.votes).removeClass('down').addClass('up')
