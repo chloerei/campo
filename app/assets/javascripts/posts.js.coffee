@@ -1,13 +1,18 @@
-@campo.Posts =
+campo.Posts =
   init: ->
-    @bindActions()
+    @bindPostVoteAction()
 
   updateVotes: (postVotes) ->
     for post_vote in postVotes
       $("[data-post-id=#{post_vote.post_id}]").attr('data-post-voted', post_vote.value)
 
-  bindActions: ->
+  bindPostVoteAction: ->
     $(document).on 'click', '[data-behavior~=post-votable] [data-post-vote-action]', ->
+      if not campo.currentUser?
+        # TODO show login modal
+        Turbolinks.visit "/login?return_to=#{encodeURIComponent window.location.pathname}"
+        return
+
       action = $(this)
       post = action.closest('[data-post-id]')
       id = post.data('post-id')
