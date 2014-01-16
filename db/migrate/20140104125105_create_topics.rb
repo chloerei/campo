@@ -3,6 +3,8 @@ class CreateTopics < ActiveRecord::Migration
     create_table :topics do |t|
       t.references :user, index: true
       t.string :title
+      t.integer :votes_up, default: 0
+      t.integer :votes_down, default: 0
 
       t.timestamps
     end

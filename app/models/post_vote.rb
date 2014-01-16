@@ -7,8 +7,10 @@ class PostVote < ActiveRecord::Base
   after_create do
     if up?
       Post.update_counters post_id, votes_up: 1
+      Topic.update_counters post.topic_id, votes_up: 1
     else
       Post.update_counters post_id, votes_down: 1
+      Topic.update_counters post.topic_id, votes_down: 1
     end
   end
 
@@ -16,8 +18,10 @@ class PostVote < ActiveRecord::Base
     if up_changed?
       if up?
         Post.update_counters post_id, votes_up: 1, votes_down: -1
+        Topic.update_counters post.topic_id, votes_up: 1, votes_down: -1
       else
         Post.update_counters post_id, votes_down: 1, votes_up: -1
+        Topic.update_counters post.topic_id, votes_down: 1, votes_up: -1
       end
     end
   end
@@ -25,8 +29,10 @@ class PostVote < ActiveRecord::Base
   after_destroy do
     if up?
       Post.update_counters post_id, votes_up: -1
+      Topic.update_counters post.topic_id, votes_up: -1
     else
       Post.update_counters post_id, votes_down: -1
+      Topic.update_counters post.topic_id, votes_down: -1
     end
   end
 

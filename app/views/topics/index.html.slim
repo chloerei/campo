@@ -14,7 +14,11 @@
                   = time_ago_in_words topic.created_at
                 = topic.title
               .extra
-                | 10 points by
+                = topic.votes
+                '
+                | votes
+                '
+                | by
                 '
                 = topic.user.name
   .col-md-3
