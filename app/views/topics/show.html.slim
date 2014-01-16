@@ -17,3 +17,7 @@
     - else
       a.btn.btn-default href=login_path(return_to: url_for) Login to Reply
   .col-md-3
+
+- if logined?
+  javascript:
+    Post.updateVotes(#{ raw post_votes(@topic.posts, current_user).to_json });

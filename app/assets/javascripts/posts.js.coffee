@@ -1,7 +1,7 @@
 @Post =
   updateVotes: (postVotes) ->
-    for id, value of postVotes
-      $("[data-post-id=#{id}]").attr('data-post-vote', value)
+    for post_vote in postVotes
+      $("[data-post-id=#{post_vote.post_id}]").attr('data-post-vote', post_vote.value)
 
 $(document).on 'click', '.post [data-vote]', ->
   button = $(this)

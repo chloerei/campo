@@ -50,14 +50,6 @@
       margin-right: -12px;
     }
 
-    .btn[data-vote="up"][data-voted] {
-      color: $btn-success-bg;
-    }
-
-    .btn[data-vote="down"][data-voted] {
-      color: $btn-danger-bg;
-    }
-
     .votes {
       padding: 6px 12px;
       display: inline-block;
@@ -73,7 +65,17 @@
       }
     }
   }
+
+  &[data-post-vote="up"] [data-post-vote-action="up"] {
+    color: $btn-success-bg;
+  }
+
+  &[data-post-vote="down"] [data-post-vote-action="down"] {
+    color: $btn-danger-bg;
+  }
+
 }
+
 
 .form-post textarea {
   height: 8em;

@@ -1,4 +1,4 @@
-li.list-group-item.list-group-item-campo.post id="post_#{post.id}" data-id=post.id
+li.list-group-item.list-group-item-campo.post id="post_#{post.id}" data-post-id=post.id
   img.avatar.img-rounded src="http://gravatar.com/avatar/5aec84cd0b5479a0d1d89b6ffa2a9a20.png?r=G&s=48"
   .metadata
     span.post-number
@@ -24,7 +24,7 @@ li.list-group-item.list-group-item-campo.post id="post_#{post.id}" data-id=post.
         span.votes class=(post.votes > 0 ? 'up' : 'down')
           - if post.votes != 0
             = post.votes
-        a.btn data-vote="up"
+        a.btn data-post-vote-action="up"
           span.glyphicon.glyphicon-thumbs-up
-        a.btn data-vote="down"
+        a.btn data-post-vote-action="down"
           span.glyphicon.glyphicon-thumbs-down
