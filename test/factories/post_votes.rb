@@ -2,6 +2,6 @@ FactoryGirl.define do
   factory :post_vote do
     user
     post
-    value 'up'
+    up true
   end
 end

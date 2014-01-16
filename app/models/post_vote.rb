@@ -1,9 +1,8 @@
 class PostVote < ActiveRecord::Base
   belongs_to :user
   belongs_to :post
-  enum value: { down: -1, up: 1 }
 
-  validates :value, presence: true
+  validates :user, :post, presence: true
 
   after_create do
     if up?
@@ -14,7 +13,7 @@ class PostVote < ActiveRecord::Base
   end
 
   after_update do
-    if value_changed?
+    if up_changed?
       if up?
         Post.update_counters post_id, votes_up: 1, votes_down: -1
       else
@@ -29,5 +28,9 @@ class PostVote < ActiveRecord::Base
     else
       Post.update_counters post_id, votes_down: -1
     end
+  end
+
+  def value
+    up? ? 'up' : 'down'
   end
 end

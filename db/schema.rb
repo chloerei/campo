@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 20140114124558) do
   create_table "post_votes", force: true do |t|
     t.integer  "user_id"
     t.integer  "post_id"
-    t.integer  "value"
+    t.boolean  "up"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
