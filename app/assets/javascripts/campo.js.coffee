@@ -1,1 +1,1 @@
-@Campo = {}
+@campo = {}

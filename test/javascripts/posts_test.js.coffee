@@ -10,7 +10,7 @@ test 'should update votes', ->
   </ul
   ")
 
-  Posts.updateVotes([
+  campo.Posts.updateVotes([
     { post_id: 1, value: 'up' }
     { post_id: 2, value: 'down' }
   ])

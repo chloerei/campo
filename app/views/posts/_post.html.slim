@@ -10,21 +10,20 @@ li.list-group-item.list-group-item-campo.post id="post_#{post.id}" data-post-id=
       = time_ago_in_words post.created_at
   article.text
     = format_post post.content
-  - if logined?
-    .actions.clearfix
-      - if current_user == post.user
-        .pull-left
-          - if post.post_number == 1
-            a.btn href=edit_topic_path(post.topic)
-              span.glyphicon.glyphicon-edit
-          - else
-            a.btn href=edit_post_path(post) data-remote='true'
-              span.glyphicon.glyphicon-edit
-      .pull-right
-        span.votes class=(post.votes > 0 ? 'up' : 'down')
-          - if post.votes != 0
-            = post.votes
-        a.btn data-post-vote-action="up"
-          span.glyphicon.glyphicon-thumbs-up
-        a.btn data-post-vote-action="down"
-          span.glyphicon.glyphicon-thumbs-down
+  .actions.clearfix
+    - if current_user == post.user
+      .pull-left
+        - if post.post_number == 1
+          a.btn href=edit_topic_path(post.topic)
+            span.glyphicon.glyphicon-edit
+        - else
+          a.btn href=edit_post_path(post) data-remote='true'
+            span.glyphicon.glyphicon-edit
+    .pull-right
+      span.votes class=(post.votes > 0 ? 'up' : 'down')
+        - if post.votes != 0
+          = post.votes
+      a.btn data-post-vote-action="up"
+        span.glyphicon.glyphicon-thumbs-up
+      a.btn data-post-vote-action="down"
+        span.glyphicon.glyphicon-thumbs-down

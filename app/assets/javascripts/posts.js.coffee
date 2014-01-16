@@ -1,4 +1,4 @@
-@Posts =
+@campo.Posts =
   init: ->
     @bindActions()
 
@@ -34,4 +34,4 @@
             else
               votes.text('').removeClass('up down')
 
-@Posts.init()
+@campo.Posts.init()
