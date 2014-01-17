@@ -38,5 +38,11 @@ campo.Posts =
               score.text(data.score).removeClass('up').addClass('down')
             else
               score.text('').removeClass('up down')
+        error: (xhr) ->
+          try
+            json = $.parseJSON(xhr.responseText)
+            alert(json.message)
+          catch
+            alert('something error')
 
 @campo.Posts.init()

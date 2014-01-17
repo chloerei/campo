@@ -48,4 +48,13 @@ class PostsControllerTest < ActionController::TestCase
     patch :vote, id: topic_post, type: 'cancel', format: 'json'
     assert_equal 0, topic_post.reload.score
   end
+
+  test "should not vote self" do
+    self_post = create(:post)
+    login_as self_post.user
+    assert_no_difference "self_post.post_votes.count" do
+      patch :vote, id: self_post, type: 'up', format: 'json'
+    end
+    assert_response 403, @response.body
+  end
 end

@@ -43,6 +43,17 @@ class PostsController < ApplicationController
   def vote
     @post = Post.find_by! id: params[:id]
 
+    if @post.user == current_user
+      respond_to do |format|
+        format.json do
+          render json: {
+            message: "Could not vote self post"
+          }, status: 403
+        end
+      end
+      return
+    end
+
     case params[:type]
     when 'up'
       @post.post_votes.find_or_initialize_by(user_id: current_user.id).update_attribute :up, true
