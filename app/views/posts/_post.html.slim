@@ -20,10 +20,4 @@ li.list-group-item.list-group-item-campo id="post_#{post.id}" data-post-id=post.
           a.btn href=edit_post_path(post) data-remote='true'
             span.glyphicon.glyphicon-edit
       .pull-right
-        span.score class=(post.score > 0 ? 'up' : 'down')
-          - if post.score != 0
-            = post.score
-        a.btn data-post-vote-action="up"
-          span.glyphicon.glyphicon-thumbs-up
-        a.btn data-post-vote-action="down"
-          span.glyphicon.glyphicon-thumbs-down
+        = render 'post_votes/post_vote', post: post

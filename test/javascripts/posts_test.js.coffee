@@ -4,9 +4,18 @@ test 'should update votes', ->
   $fixture = $('#qunit-fixture')
   $('#qunit-fixture').append("
   <ul>
-    <li data-post-id='1'></li>
-    <li data-post-id='2'></li>
-    <li data-post-id='3'></li>
+    <li id='post_1'>
+      <a class='post-vote-up' data-method='put'></a>
+      <a class='post-vote-down' data-method='put'></a>
+    </li>
+    <li id='post_2'>
+      <a class='post-vote-up' data-method='put'></a>
+      <a class='post-vote-down' data-method='put'></a>
+    </li>
+    <li id='post_3'>
+      <a class='post-vote-up' data-method='put'></a>
+      <a class='post-vote-down' data-method='put'></a>
+    </li>
   </ul
   ")
 
@@ -15,6 +24,6 @@ test 'should update votes', ->
     { post_id: 2, type: 'down' }
   ])
 
-  equal( 'up', $fixture.find('[data-post-id=1]').data('post-voted') )
-  equal( 'down', $fixture.find('[data-post-id=2]').data('post-voted') )
-  equal( null, $fixture.find('[data-post-id=3]').data('post-voted') )
+  equal( $fixture.find('#post_1 .post-vote-up').data('method'), 'delete' )
+  equal( $fixture.find('#post_2 .post-vote-down').data('method'), 'delete' )
+  equal( $fixture.find('#post_3 .post-vote-down').data('method'), 'put' )

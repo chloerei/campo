@@ -40,40 +40,6 @@ class PostsController < ApplicationController
     render layout: false
   end
 
-  def vote
-    @post = Post.find_by! id: params[:id]
-
-    if @post.user == current_user
-      respond_to do |format|
-        format.json do
-          render json: {
-            message: "Could not vote self post"
-          }, status: 403
-        end
-      end
-      return
-    end
-
-    case params[:type]
-    when 'up'
-      @post.post_votes.find_or_initialize_by(user_id: current_user.id).update_attribute :up, true
-    when 'down'
-      @post.post_votes.find_or_initialize_by(user_id: current_user.id).update_attribute :up, false
-    else params[:type] == 'cancel'
-      @post.post_votes.find_by(user_id: current_user.id).try(:destroy)
-    end
-
-    respond_to do |format|
-      format.json do
-        render json: {
-          post_id: @post.id,
-          score:  @post.reload.score,
-          type: params[:type]
-        }
-      end
-    end
-  end
-
   private
 
   def post_params

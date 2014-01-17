@@ -34,27 +34,4 @@ class PostsControllerTest < ActionController::TestCase
     assert_response :success, @response.body
     assert_equal 'change', topic_post.reload.content
   end
-
-  test "should vote post" do
-    topic_post = create(:post)
-    assert_require_logined do
-      patch :vote, id: topic_post, type: 'up', format: 'json'
-    end
-    assert_equal 1, topic_post.reload.score
-
-    patch :vote, id: topic_post, type: 'down', format: 'json'
-    assert_equal(-1, topic_post.reload.score)
-
-    patch :vote, id: topic_post, type: 'cancel', format: 'json'
-    assert_equal 0, topic_post.reload.score
-  end
-
-  test "should not vote self" do
-    self_post = create(:post)
-    login_as self_post.user
-    assert_no_difference "self_post.post_votes.count" do
-      patch :vote, id: self_post, type: 'up', format: 'json'
-    end
-    assert_response 403, @response.body
-  end
 end

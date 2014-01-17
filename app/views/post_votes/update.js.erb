@@ -1,0 +1,1 @@
+$('#post_<%= @post.id %>').find('.post-vote').replaceWith('<%= j render 'post_vote', post: @post.reload, user: current_user %>');

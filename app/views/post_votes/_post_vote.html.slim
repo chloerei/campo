@@ -1,0 +1,11 @@
+- user ||= nil
+.post-vote
+  - if post.score != 0
+    span.score class=(post.score > 0 ? 'up' : 'down')
+      = post.score
+  - voted_up = user && post_voted_up?(post, user)
+  a.btn.post-vote-up class=(voted_up ? 'active' : nil ) href=(vote_post_path(post, type: 'up')) data-remote='true' data-method=(voted_up ? 'delete' : 'put')
+    span.glyphicon.glyphicon-thumbs-up
+  - voted_down = user && post_voted_down?(post, user)
+  a.btn.post-vote-down class=(voted_down ? 'active' : nil ) href=(vote_post_path(post, type: 'down')) data-remote='true' data-method=(voted_down ? 'delete' : 'put')
+    span.glyphicon.glyphicon-thumbs-down

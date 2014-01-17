@@ -21,7 +21,8 @@ Rails.application.routes.draw do
     end
 
     member do
-      patch :vote
+      put :vote, to: 'post_votes#update'
+      delete :vote, to: 'post_votes#destroy'
     end
   end
 

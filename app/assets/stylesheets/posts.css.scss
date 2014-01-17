@@ -42,44 +42,13 @@
       }
     }
 
-    .btn:first-child {
+    .pull-left {
       margin-left: -12px;
     }
 
-    .btn:last-child {
+    .pull-right {
       margin-right: -12px;
     }
-
-    .score {
-      padding: 6px 12px;
-      display: inline-block;
-      vertical-align: middle;
-      color: #999;
-
-      &.up {
-        color: $btn-success-bg;
-      }
-
-      &.down {
-        color: $btn-danger-bg;
-      }
-    }
-  }
-}
-
-[data-post-voted="up"] .btn[data-post-vote-action="up"] {
-  color: $btn-success-bg;
-
-  &:hover {
-    color: $btn-success-bg;
-  }
-}
-
-[data-post-voted="down"] .btn[data-post-vote-action="down"] {
-  color: $btn-danger-bg;
-
-  &:hover {
-    color: $btn-danger-bg;
   }
 }
 
