@@ -23,6 +23,14 @@ class PostVotesControllerTest < ActionController::TestCase
     assert !@post.post_votes.last.up?
   end
 
+  test "should not vote self post" do
+    assert_no_difference "@post.post_votes.count" do
+      assert_require_logined(@post.user) do
+        xhr :put, :update, id: @post, type: 'down'
+      end
+    end
+  end
+
   test "should destroy vote" do
     user = create(:user)
     create(:post_vote, post: @post, user: user)
