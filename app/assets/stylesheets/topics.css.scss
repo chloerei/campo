@@ -1,13 +1,12 @@
-.topic {
-  margin: -16px;
+.topics {
+}
 
-  &:hover {
-    background: #f9f9f9;
-  }
+.topic {
+  margin: -15px 0;
 
   a {
     display: block;
-    padding: 16px;
+    padding: 15px 0;
     color: #333;
     @include clearfix();
 

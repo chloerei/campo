@@ -7,6 +7,7 @@ class TopicsController < ApplicationController
 
   def show
     @topic = Topic.find params[:id]
+    @posts = @topic.posts.order(id: :asc).page(params[:page])
 
     respond_to do |format|
       format.html

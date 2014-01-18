@@ -38,14 +38,36 @@
   }
 }
 
+.panel-campo {
+  .panel-heading {
+    padding: 15px 15px 0;
+  }
+
+  .panel-title {
+    line-height: 35px;
+    font-size: 1.2em;
+  }
+
+  .panel-footer {
+    border-top-color: transparent;
+    padding-top: 0;
+    background: transparent;
+  }
+}
+
 .list-group-campo {
+  margin: 0;
 }
 
 .list-group-item-campo {
-  padding: 15px;
-  margin-bottom: 2px;
+  padding: 15px 0;
   border: 1px solid transparent;
-  @include box-shadow(0 1px 1px rgba(0, 0, 0, 0.05));
+  border-bottom: 1px solid #eee;
+  margin-bottom: 0;
+
+  &:first-child {
+    border-top: 1px solid #eee;
+  }
 
   &:first-child,
   &:last-child {
