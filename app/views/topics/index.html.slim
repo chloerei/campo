@@ -22,6 +22,10 @@
                   | by
                   '
                   = topic.user.name
+    .panel
+      .panel-body.clearfix
+        .pull-right
+          = paginate @topics, theme: 'campo', left: 1, right: 1, window: 2
   .col-md-3
     .panel
       .panel-body

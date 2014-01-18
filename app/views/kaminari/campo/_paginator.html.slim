@@ -1,0 +1,21 @@
+= paginator.render do
+  nav.pagination-campo
+    a.btn data-behaviors="pagination-popover" data-placement="top"
+      | Page
+      '
+      = current_page
+      '
+      | /
+      '
+      = total_pages
+    .popover
+      .popover-content
+        ul.pages
+          - each_page do |page|
+            - if page.left_outer? || page.right_outer? || page.inside_window?
+              == page_tag page
+            - elsif !page.was_truncated?
+              == gap_tag
+    .btn-group
+      = prev_page_tag
+      = next_page_tag

@@ -77,3 +77,42 @@
   }
 }
 
+.pagination-campo {
+  .pages {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    @include clearfix();
+
+    .page {
+      display: block;
+      float: left;
+
+      &.gap {
+        .btn {
+          padding-left: 0;
+          padding-right: 0;
+        }
+      }
+    }
+
+    .btn {
+      padding: 3px 9px;
+      margin: 0 1px;
+
+      &.active,
+      &:hover {
+        background: $brand-primary;
+        color: white;
+      }
+    }
+  }
+
+  .popover {
+    max-width: 480px;
+  }
+
+  .popover-content {
+    padding: 4px;
+  }
+}

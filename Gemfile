@@ -35,7 +35,7 @@ gem 'bootstrap-sass', '~> 3.0.3.0'
 gem 'jbuilder', '~> 1.2'
 
 # bundle exec rake doc:rails generates the API under doc/api.
-gem 'sdoc',             group: :doc, require: false
+#gem 'sdoc',             group: :doc, require: false
 
 # Slim template
 gem 'slim', '~> 2.0.2'
@@ -48,6 +48,9 @@ gem 'rouge', '~> 1.3.1'
 
 # Use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '~> 3.1.2'
+
+# Paignator
+gem 'kaminari', '~> 0.15.1'
 
 group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/jonleighton/spring

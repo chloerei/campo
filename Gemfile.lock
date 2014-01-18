@@ -127,6 +127,9 @@ GEM
       railties (>= 3.1.0)
       turbolinks
     json (1.8.1)
+    kaminari (0.15.1)
+      actionpack (>= 3.0.0)
+      activesupport (>= 3.0.0)
     listen (2.4.0)
       celluloid (>= 0.15.2)
       rb-fsevent (>= 0.9.3)
@@ -154,14 +157,9 @@ GEM
     rb-fsevent (0.9.4)
     rb-inotify (0.9.3)
       ffi (>= 0.5.0)
-    rdoc (3.12.2)
-      json (~> 1.4)
     redcarpet (3.0.0)
     rouge (1.3.1)
     sass (3.2.13)
-    sdoc (0.3.20)
-      json (>= 1.1.3)
-      rdoc (~> 3.10)
     slim (2.0.2)
       temple (~> 0.6.6)
       tilt (>= 1.3.3, < 2.1)
@@ -202,13 +200,13 @@ DEPENDENCIES
   jbuilder (~> 1.2)
   jquery-rails
   jquery-turbolinks (~> 2.0.1)
+  kaminari (~> 0.15.1)
   pg
   rack-livereload
   rails!
   redcarpet (~> 3.0.0)
   rouge (~> 1.3.1)
   sass-rails!
-  sdoc
   slim (~> 2.0.2)
   spring
   sprockets-rails!
