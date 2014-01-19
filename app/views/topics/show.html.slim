@@ -17,7 +17,7 @@
           = render @posts
       .panel-footer.clearfix
         .pull-right
-          = paginate @posts, theme: 'campo', left: 1, right: 1, window: 2
+          = paginate @posts, theme: 'campo', left: 1, right: 1, window: 2, placement: 'top'
     - if logined?
       .panel
         .panel-body
