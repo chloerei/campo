@@ -55,26 +55,6 @@
   }
 }
 
-.list-group-campo {
-  margin: 0;
-}
-
-.list-group-item-campo {
-  padding: 15px 0;
-  border: 1px solid transparent;
-  border-bottom: 1px solid #eee;
-  margin-bottom: 0;
-
-  &:first-child {
-    border-top: 1px solid #eee;
-  }
-
-  &:first-child,
-  &:last-child {
-    border-radius: 0;
-  }
-}
-
 .campo-editor {
   padding: 15px;
   border: 1px solid #ccc;

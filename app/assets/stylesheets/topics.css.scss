@@ -1,5 +1,18 @@
-.topics {
+.list-group-topic {
+  margin: 0 -16px;
+  padding: 0;
+  list-style: none;
 }
+
+.list-group-item-topic {
+  padding: 16px;
+  border-bottom: 1px solid #eee;
+
+  &:first-child {
+    border-top: 1px solid #eee;
+  }
+}
+
 
 .topic {
   margin: -15px 0;

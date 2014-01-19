@@ -12,9 +12,9 @@
         .pull-right
           = paginate @topics, theme: 'campo', left: 1, right: 1, window: 2
       .panel-body
-        ul.list-group.list-group-campo.topics
+        ul.list-group-topic
           - @topics.each do |topic|
-            li.list-group-item.list-group-item-campo
+            li.list-group-item-topic
               .topic
                 a href=topic_path(topic)
                   span.icon.glyphicon.glyphicon-envelope
