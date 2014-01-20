@@ -55,6 +55,9 @@ gem 'bcrypt-ruby', '~> 3.1.2'
 # Paignator
 gem 'kaminari', '~> 0.15.1'
 
+# Nokogiri XML parser
+gem 'nokogiri', '~> 1.6.1'
+
 group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/jonleighton/spring
   gem 'spring'
