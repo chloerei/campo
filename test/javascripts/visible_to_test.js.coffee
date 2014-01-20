@@ -27,3 +27,17 @@ test 'should remove element unless creator', ->
   campo.currentUser = { id: 2 }
   campo.VisibleTo.check()
   ok(!$fixture.find('div').length)
+
+test 'should remove element if creator', ->
+  $fixture = $('#qunit-fixture')
+  $fixture.append("
+  <div data-creator-id='1' data-visible-to='no-creator'></div>
+  ")
+
+  campo.currentUser = { id: 2 }
+  campo.VisibleTo.check()
+  ok($fixture.find('div').length)
+
+  campo.currentUser = { id: 1 }
+  campo.VisibleTo.check()
+  ok(!$fixture.find('div').length)

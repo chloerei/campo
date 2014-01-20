@@ -1,4 +1,4 @@
-@campo.VisibleTo =
+campo.VisibleTo =
   # data-visible-to="options"
   #
   # options:
@@ -20,6 +20,11 @@
       if 'creator' in rules
         creator_id = $element.closest('[data-creator-id]').data('creator-id')
         if (!campo.currentUser?) or (campo.currentUser.id != creator_id)
+          return $element.remove()
+
+      if 'no-creator' in rules
+        creator_id = $element.closest('[data-creator-id]').data('creator-id')
+        if campo.currentUser? and (campo.currentUser.id == creator_id)
           return $element.remove()
 
 $ ->
