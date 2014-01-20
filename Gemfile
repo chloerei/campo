@@ -31,6 +31,9 @@ gem 'jquery-turbolinks', '~> 2.0.1'
 # Bootstrap
 gem 'bootstrap-sass', '~> 3.0.3.0'
 
+# Font Awesome
+gem 'font-awesome-sass', '~> 4.0.2'
+
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 

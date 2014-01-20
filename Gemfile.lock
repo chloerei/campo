@@ -103,6 +103,8 @@ GEM
       factory_girl (~> 4.3.0)
       railties (>= 3.0.0)
     ffi (1.9.3)
+    font-awesome-sass (4.0.2)
+      sass-rails (>= 3.1.1)
     formatador (0.2.4)
     guard (2.2.5)
       formatador (>= 0.2.4)
@@ -196,6 +198,7 @@ DEPENDENCIES
   bootstrap-sass (~> 3.0.3.0)
   coffee-rails!
   factory_girl_rails (~> 4.3.0)
+  font-awesome-sass (~> 4.0.2)
   guard-livereload
   jbuilder (~> 1.2)
   jquery-rails
