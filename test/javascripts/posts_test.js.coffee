@@ -27,3 +27,14 @@ test 'should update votes', ->
   equal( $fixture.find('#post_1 .post-vote-up').data('method'), 'delete' )
   equal( $fixture.find('#post_2 .post-vote-down').data('method'), 'delete' )
   equal( $fixture.find('#post_3 .post-vote-down').data('method'), 'put' )
+
+test 'should acitve reply-to button', ->
+  $fixture = $('#qunit-fixture')
+  $fixture.append("""
+  <a data-post-reply-to="@user #1"></a>
+  <div id="new_post">
+    <textarea></textarea>
+  </div>
+  """)
+  $fixture.find('a').trigger 'click'
+  equal( $fixture.find('textarea').val(), '@user #1 ')

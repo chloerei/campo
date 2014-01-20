@@ -18,5 +18,7 @@ li.list-group-item-post id="post_#{post.id}" data-post-id=post.id data-behavior=
           a.btn href=edit_topic_path(post.topic) data-visible-to="creator"
             i.fa.fa-edit
         - else
-          a.btn href=edit_post_path(post) data-remote='true'data-visible-to="creator"
+          a.btn href=edit_post_path(post) data-remote='true' data-visible-to="creator"
             i.fa.fa-edit
+        a.btn data-visible-to="user" data-post-reply-to="@#{post.user.username} ##{post.post_number}"
+          i.fa.fa-reply
