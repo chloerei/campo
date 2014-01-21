@@ -19,6 +19,7 @@ class Post < ActiveRecord::Base
 
   def create_notifications
     create_post_topic_notification
+    create_mention_notification
   end
 
   def create_post_topic_notification
@@ -38,5 +39,13 @@ class Post < ActiveRecord::Base
     }.flatten.compact.uniq
 
     usernames.any? ? User.where(username: usernames) : []
+  end
+
+  def create_mention_notification
+    mentions.each do |user|
+      Notification.create(user: user,
+                          subject: self,
+                          name: 'post_mention')
+    end
   end
 end

@@ -33,4 +33,12 @@ class PostTest < ActiveSupport::TestCase
     assert_equal [user1, user2].sort, post.mentions
     assert_equal [], create(:post).mentions
   end
+
+  test "should create post_mention notification" do
+    user = create :user, username: 'user'
+    assert_difference "user.notifications.named('post_mention').count" do
+      post = create(:post, content: '@user')
+      assert_equal [user], post.mentions
+    end
+  end
 end
