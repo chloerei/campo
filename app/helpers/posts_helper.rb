@@ -6,7 +6,7 @@ module PostsHelper
   end
 
   def format_post(text)
-    sanitize(link_post_content(markdown_post(text)),
+    sanitize(link_post_content(markdown(text)),
              tags: %w(p br img h1 h2 h3 h4 blockquote pre code strong em a ul ol li span),
              attributes: %w(href src class title alt target rel))
   end

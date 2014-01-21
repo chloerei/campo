@@ -1,4 +1,6 @@
 class Post < ActiveRecord::Base
+  include MarkdownHelper
+
   belongs_to :topic
   belongs_to :user
   has_many :post_votes
@@ -23,5 +25,16 @@ class Post < ActiveRecord::Base
     Notification.create(user: topic.user,
                         subject: self,
                         name: 'post_topic')
+  end
+
+  def mentions
+    doc = Nokogiri::HTML.fragment(markdown(content))
+    usernames = doc.search('text()').map { |node|
+      unless node.ancestors('a, pre, code').any?
+        node.text.scan(/@(\w+)/).flatten
+      end
+    }.flatten.compact.uniq
+
+    usernames.any? ? User.where(username: usernames) : []
   end
 end

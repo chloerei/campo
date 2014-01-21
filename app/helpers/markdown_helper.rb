@@ -5,14 +5,13 @@ module MarkdownHelper
     include Rouge::Plugins::Redcarpet
   end
 
-  def markdown_post(content)
+  def markdown(content)
     renderer = HTMLRender.new(hard_wrap: true,
                               filter_html: true,
                               link_attributes: { rel: 'nofollow' })
 
     markdown = Redcarpet::Markdown.new(renderer,
                                        autolink: true,
-                                       space_after_headers: true,
                                        space_after_headers: true,
                                        fenced_code_blocks: true)
 
