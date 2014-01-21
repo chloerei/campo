@@ -7,7 +7,6 @@ module MarkdownHelper
 
   def markdown_post(content)
     renderer = HTMLRender.new(hard_wrap: true,
-
                               filter_html: true,
                               link_attributes: { rel: 'nofollow' })
 
