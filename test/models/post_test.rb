@@ -40,5 +40,10 @@ class PostTest < ActiveSupport::TestCase
       post = create(:post, content: '@user')
       assert_equal [user], post.mentions
     end
+
+    # skip author
+    assert_no_difference "user.notifications.named('post_mention').count" do
+      create(:post, user: user, content: '@user')
+    end
   end
 end

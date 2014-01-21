@@ -43,9 +43,11 @@ class Post < ActiveRecord::Base
 
   def create_mention_notification
     mentions.each do |user|
-      Notification.create(user: user,
-                          subject: self,
-                          name: 'post_mention')
+      if user != self.user
+        Notification.create(user: user,
+                            subject: self,
+                            name: 'post_mention')
+      end
     end
   end
 end
