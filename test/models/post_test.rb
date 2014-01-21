@@ -7,4 +7,11 @@ class PostTest < ActiveSupport::TestCase
     assert_equal 2, create(:post).post_number
     assert_equal 3, create(:post, :topic => Topic.last).post_number
   end
+
+  test "should create post_topic notification after create post" do
+    topic = create(:topic)
+    assert_difference "topic.user.notifications.where(name: 'post_topic').count" do
+      create :post, topic: topic
+    end
+  end
 end

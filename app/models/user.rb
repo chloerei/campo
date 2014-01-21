@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   has_many :topics
   has_many :posts
   has_many :post_votes
+  has_many :notifications
 
   validates :username, uniqueness: { case_sensitive: false }, presence: true, format: { with: /\A\w+\z/ }
   validates :name, presence: true
