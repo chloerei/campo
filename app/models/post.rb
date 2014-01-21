@@ -22,9 +22,11 @@ class Post < ActiveRecord::Base
   end
 
   def create_post_topic_notification
-    Notification.create(user: topic.user,
-                        subject: self,
-                        name: 'post_topic')
+    if user != topic.user
+      Notification.create(user: topic.user,
+                          subject: self,
+                          name: 'post_topic')
+    end
   end
 
   def mentions

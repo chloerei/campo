@@ -13,6 +13,17 @@ class PostTest < ActiveSupport::TestCase
     assert_difference "topic.user.notifications.where(name: 'post_topic').count" do
       create :post, topic: topic
     end
+
+    # skip author
+    assert_no_difference "topic.user.notifications.where(name: 'post_topic').count" do
+      create :post, topic: topic, user: topic.user
+    end
+
+    # skip top floor
+    user = create(:user)
+    assert_no_difference "user.notifications.where(name: 'post_topic').count" do
+      create :topic, user: user
+    end
   end
 
   test "should extract mentions" do
