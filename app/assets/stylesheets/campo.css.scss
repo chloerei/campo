@@ -58,6 +58,21 @@
   }
 }
 
+.list-group-campo {
+  margin: 0 -16px;
+  padding: 0;
+  list-style: none;
+}
+
+.list-group-item-campo {
+  padding: 16px;
+  border-bottom: 1px solid #eee;
+
+  &:first-child {
+    border-top: 1px solid #eee;
+  }
+}
+
 .campo-editor {
   padding: 15px;
   border: 1px solid #ccc;

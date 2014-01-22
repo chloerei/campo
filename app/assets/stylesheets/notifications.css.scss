@@ -1,4 +1,4 @@
-.notifications {
+.notifications-bell {
   position: relative;
 
   .badge {
@@ -6,20 +6,5 @@
     position: absolute;
     top: 5px;
     right: 5px;
-  }
-}
-
-.list-group-notification {
-  margin: 0 -16px;
-  padding: 0;
-  list-style: none;
-}
-
-.list-group-item-notification {
-  padding: 16px;
-  border-bottom: 1px solid #eee;
-
-  &:first-child {
-    border-top: 1px solid #eee;
   }
 }

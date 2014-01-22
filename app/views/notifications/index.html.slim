@@ -6,10 +6,10 @@
           = paginate @notifications, theme: 'campo', left: 1, right: 1, window: 2
         h3.panel-title Notifications
       .panel-body
-        ul.list-group-notification
+        ul.list-group-campo
           - @notifications.each do |notification|
             - begin
               = render "notification/#{notification.name}"
             - rescue
-              .list-group-item-notification
+              .list-group-item-campo
                 = "##{notification.id} Missing template for #{notification.name} notification."
