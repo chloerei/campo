@@ -1,5 +1,5 @@
 - post = notification.subject
-.notification
+.notification class=('read' if notification.read)
   .actions
     a.btn.btn-remove href=notification_path(notification) data-remote="true" data-method="delete" data-confirm="Are you sure you want to delete this notification?"
       i.fa.fa-times

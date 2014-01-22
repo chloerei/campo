@@ -21,3 +21,5 @@
                       i.fa.fa-question
                     .content
                       = "##{notification.id} Missing template for #{notification.name} notification."
+
+- current_user.notifications.unread.where(id: @notifications.pluck(:id)).update_all(read: true)

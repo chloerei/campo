@@ -2,7 +2,7 @@ class NotificationsController < ApplicationController
   before_filter :require_logined
 
   def index
-    @notifications = current_user.notifications.page(params[:page])
+    @notifications = current_user.notifications.order(id: :desc).page(params[:page])
   end
 
   def destroy

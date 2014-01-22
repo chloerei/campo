@@ -13,6 +13,10 @@
   margin: -15px -16px;
   @include clearfix();
 
+  &.read {
+    background: #f9f9f9;
+  }
+
   .icon {
     float: left;
     width: 24px;
