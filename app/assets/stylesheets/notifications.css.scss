@@ -8,3 +8,57 @@
     right: 5px;
   }
 }
+
+.notification {
+  margin: -15px -16px;
+  @include clearfix();
+
+  .icon {
+    float: left;
+    width: 24px;
+    height: 24px;
+  }
+
+  .content {
+    margin-left: 34px;
+  }
+
+  .extra {
+  }
+
+  .link-block {
+    display: block;
+    padding: 15px 16px;
+    color: #333;
+    @include clearfix();
+
+    .title {
+      color: $link-color;
+    }
+
+    &:hover {
+      text-decoration: none;
+      background: #f9f9f9;
+    }
+  }
+
+  .actions {
+    float: right;
+
+    .btn {
+      padding: 15px 16px;
+      color: #999;
+      @include box-shadow(none);
+
+      &:hover {
+        color: $link-color;
+      }
+    }
+
+    .btn-remove {
+      &:hover {
+        color: $brand-danger;
+      }
+    }
+  }
+}

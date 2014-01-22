@@ -9,7 +9,7 @@
         ul.list-group-campo
           - @notifications.each do |notification|
             - begin
-              = render "notification/#{notification.name}"
-            - rescue
+              = render "notifications/notification/#{notification.name}", notification: notification
+            - rescue ActionView::MissingTemplate
               .list-group-item-campo
                 = "##{notification.id} Missing template for #{notification.name} notification."

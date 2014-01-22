@@ -1,0 +1,22 @@
+- post = notification.subject
+.list-group-item-campo
+  .notification
+    .actions
+      a.btn.btn-remove
+        i.fa.fa-times
+    a.link-block href=topic_path(post.topic)
+      .icon
+        img.avatar.img-rounded src="http://gravatar.com/avatar/5aec84cd0b5479a0d1d89b6ffa2a9a20.png?r=G&s=24"
+      .content
+        = post.user.name
+        '
+        | post on
+        '
+        span.title = post.topic.title
+        '
+        | at
+        '
+        span.date
+          = time_ago_in_words post.created_at
+        .extra
+          = truncate post.content, length: 140
