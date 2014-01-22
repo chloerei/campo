@@ -8,10 +8,10 @@
       .panel-body
         ul.list-group-campo
           - @notifications.each do |notification|
-            - begin
-              = render "notifications/notification/#{notification.name}", notification: notification
-            - rescue ActionView::MissingTemplate
-              .list-group-item-campo
+            .list-group-item-campo id="notification_#{notification.id}"
+              - begin
+                = render "notifications/notification/#{notification.name}", notification: notification
+              - rescue ActionView::MissingTemplate
                 .notification
                   .actions
                     a.btn.btn-remove

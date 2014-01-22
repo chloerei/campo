@@ -4,4 +4,13 @@ class NotificationsController < ApplicationController
   def index
     @notifications = current_user.notifications.page(params[:page])
   end
+
+  def destroy
+    @notification = current_user.notifications.find params[:id]
+    @notification.destroy
+
+    respond_to do |format|
+      format.js
+    end
+  end
 end
