@@ -30,7 +30,8 @@ html
               li
                 a.notifications-bell href=notifications_path
                   i.fa.fa-bell-o
-                  .badge 1
+                  - if current_user.notifications.unread.count > 0
+                    .badge = current_user.notifications.unread.count
               li.dropdown
                 a.dropdown-toggle data-toggle="dropdown" href='#'
                   = current_user.name

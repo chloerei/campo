@@ -30,7 +30,7 @@ class PostTest < ActiveSupport::TestCase
     user1 = create :user, username: 'user1'
     user2 = create :user, username: 'user2'
     post = create(:post, content: '@user1 @user2 @user3')
-    assert_equal [user1, user2].sort, post.mentions
+    assert_equal [user1, user2].sort, post.mentions.sort
     assert_equal [], create(:post).mentions
   end
 

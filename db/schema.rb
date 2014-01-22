@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20140121065043) do
     t.integer  "subject_id"
     t.string   "subject_type"
     t.string   "name"
+    t.boolean  "read",         default: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
