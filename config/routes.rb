@@ -26,6 +26,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :notifications, only: [:index]
+
   if Rails.env.development?
     get 'qunit', to: 'qunit#index'
   end

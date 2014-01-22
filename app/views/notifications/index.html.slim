@@ -1,0 +1,15 @@
+.row
+  .col-md-9
+    .panel.panel-campo
+      .panel-heading.clearfix
+        .pull-right
+          = paginate @notifications, theme: 'campo', left: 1, right: 1, window: 2
+        h3.panel-title Notifications
+      .panel-body
+        ul.list-group-notification
+          - @notifications.each do |notification|
+            - begin
+              = render "notification/#{notification.name}"
+            - rescue
+              .list-group-item-notification
+                = "##{notification.id} Missing template for #{notification.name} notification."

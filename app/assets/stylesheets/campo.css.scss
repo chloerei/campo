@@ -7,11 +7,14 @@
     background-color: #ccc;
   }
 
-  a {
-    color: #555;
+  li {
+    a {
+      color: #555;
 
-    &:hover {
-      color: #333;
+      &:hover {
+        color: #333;
+        background-color: #f9f9f9;
+      }
     }
   }
 }

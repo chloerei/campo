@@ -27,6 +27,10 @@ html
         #navbar.collapse.navbar-collapse
           ul.nav.navbar-nav.navbar-right
             - if logined?
+              li
+                a.notifications href=notifications_path
+                  i.fa.fa-bell-o
+                  .badge 1
               li.dropdown
                 a.dropdown-toggle data-toggle="dropdown" href='#'
                   = current_user.name
