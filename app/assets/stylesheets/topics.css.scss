@@ -1,9 +1,9 @@
 .topic {
-  margin: -15px 0;
+  margin: -15px -16px;
 
   a {
     display: block;
-    padding: 15px 0;
+    padding: 15px 16px;
     color: #333;
     @include clearfix();
 
