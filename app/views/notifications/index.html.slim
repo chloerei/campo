@@ -12,4 +12,12 @@
               = render "notifications/notification/#{notification.name}", notification: notification
             - rescue ActionView::MissingTemplate
               .list-group-item-campo
-                = "##{notification.id} Missing template for #{notification.name} notification."
+                .notification
+                  .actions
+                    a.btn.btn-remove
+                      i.fa.fa-times
+                  .link-block
+                    .icon
+                      i.fa.fa-question-circle
+                    .content
+                      = "##{notification.id} Missing template for #{notification.name} notification."
