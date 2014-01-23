@@ -41,4 +41,12 @@ class NotificationsControllerTest < ActionController::TestCase
       end
     end
   end
+
+  test "shuold mark all as read" do
+    user = create(:user)
+    login_as user
+    3.times { create :notification, user: user }
+    xhr :post, :mark
+    assert_equal 0, user.notifications.unread.count
+  end
 end

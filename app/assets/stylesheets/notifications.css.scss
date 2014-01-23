@@ -14,7 +14,9 @@
   @include clearfix();
 
   &.read {
-    background: #f9f9f9;
+    .link-block {
+      color: #999;
+    }
   }
 
   .icon {
@@ -41,10 +43,6 @@
     padding: 15px 16px;
     color: #333;
     @include clearfix();
-
-    .title {
-      color: $link-color;
-    }
 
     &:hover {
       text-decoration: none;

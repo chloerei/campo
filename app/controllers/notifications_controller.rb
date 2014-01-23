@@ -13,4 +13,12 @@ class NotificationsController < ApplicationController
       format.js
     end
   end
+
+  def mark
+    current_user.notifications.unread.update_all(read: true)
+
+    respond_to do |format|
+      format.js
+    end
+  end
 end
