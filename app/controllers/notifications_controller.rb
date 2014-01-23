@@ -21,4 +21,12 @@ class NotificationsController < ApplicationController
       format.js
     end
   end
+
+  def clear
+    current_user.notifications.delete_all
+
+    respond_to do |format|
+      format.js
+    end
+  end
 end

@@ -42,11 +42,19 @@ class NotificationsControllerTest < ActionController::TestCase
     end
   end
 
-  test "shuold mark all as read" do
+  test "should mark all as read" do
     user = create(:user)
     login_as user
     3.times { create :notification, user: user }
     xhr :post, :mark
     assert_equal 0, user.notifications.unread.count
+  end
+
+  test "should destroy all notification" do
+    user = create(:user)
+    login_as user
+    3.times { create :notification, user: user }
+    xhr :delete, :clear
+    assert_equal 0, user.notifications.count
   end
 end

@@ -29,6 +29,7 @@ Rails.application.routes.draw do
   resources :notifications, only: [:index, :destroy] do
     collection do
       post :mark
+      delete :clear
     end
   end
 

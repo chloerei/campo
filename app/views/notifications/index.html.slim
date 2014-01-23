@@ -2,7 +2,9 @@
   .col-md-3.col-md-push-9
     .panel
       .panel-body
-        a.btn.btn-default href=mark_notifications_path data-remote="true" data-method="post" Mark all as read
+        .btn-group
+          a.btn.btn-default href=mark_notifications_path data-remote="true" data-method="post" Mark all as read
+          a.btn.btn-danger href=clear_notifications_path data-remote="true" data-method="delete" data-confirm="Are you sure you want to clear notifications?" Clear
   .col-md-9.col-md-pull-3
     .panel.panel-campo
       .panel-heading.clearfix
