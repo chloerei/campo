@@ -1,0 +1,34 @@
+doctype html
+html
+  head
+    title
+      | Campo
+    = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
+    = javascript_include_tag "application", "data-turbolinks-track" => true
+    meta name="viewport" content="width=device-width, initial-scale=1.0"
+    = csrf_meta_tags
+    - if login?
+      javascript:
+        campo.currentUser = {
+          id: #{current_user.id}
+        };
+
+  body
+    nav.navbar.navbar-campo.navbar-static-top.navbar-inverse
+      .container
+        .navbar-header
+          button.navbar-toggle type="button" data-toggle="collapse" data-target="#navbar"
+            span.sr-only toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a.navbar-brand href=admin_root_path
+            | Campo Admin
+        #navbar.collapse.navbar-collapse
+          ul.nav.navbar-nav
+          ul.nav.navbar-nav.navbar-right
+            li
+              a href=root_path Quit
+
+    .container
+      = yield

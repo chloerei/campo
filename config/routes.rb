@@ -34,6 +34,10 @@ Rails.application.routes.draw do
 
   root 'topics#index'
 
+  namespace :admin do
+    root to: 'dashboard#show'
+  end
+
   if Rails.env.development?
     get 'qunit', to: 'qunit#index'
   end

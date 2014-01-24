@@ -6,4 +6,8 @@ FactoryGirl.define do
     password '12345678'
     bio 'bio'
   end
+
+  factory :admin, parent: 'user' do
+    email CONFIG['admin_emails'].first
+  end
 end
