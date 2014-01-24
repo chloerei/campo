@@ -1,16 +1,10 @@
-.header-campo
-  h2 Forum
-
 .row
   .col-md-9
     .panel.panel-campo
       .panel-heading.clearfix
-        .pull-left
-          .btn-group
-            a.btn.btn-default.active Hot
-            a.btn.btn-default New
         .pull-right
           = paginate @topics, theme: 'campo', left: 1, right: 1, window: 2
+        h2.panel-title Topics
       .panel-body
         ul.list-group-campo
           - @topics.each do |topic|
@@ -38,6 +32,11 @@
     .panel
       .panel-body
         a.btn.btn-success.btn-block href=new_topic_path Create Topic
+    .panel
+      .panel-body
+        .btn-group
+          a.btn.btn-default.active Hot
+          a.btn.btn-default New
     .panel
       .panel-body
         ul.nav.nav-pills.nav-stacked

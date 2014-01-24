@@ -19,24 +19,15 @@
   }
 }
 
-.header-campo {
-  margin: 0 0 20px;
+.breadcrumb-campo {
+  padding: 0;
+  background: transparent;
 
-  h1, h2, h3, h4, h5 {
-    margin: 0;
-  }
+  a {
+    color: #555;
 
-  .breadcrumb {
-    padding: 0;
-    background: transparent;
-    margin-bottom: 10px;
-
-    a {
-      color: #555;
-
-      &:hover {
-        color: 333;
-      }
+    &:hover {
+      color: 333;
     }
   }
 }
@@ -53,7 +44,7 @@
 
   .panel-footer {
     border-top-color: transparent;
-    padding-top: 0;
+    padding: 0 15px 15px;
     background: transparent;
   }
 }
