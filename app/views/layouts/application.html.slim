@@ -25,14 +25,16 @@ html
           a.navbar-brand href="/"
             | Campo
         #navbar.collapse.navbar-collapse
+          ul.nav.navbar-nav
+            li
+              a href=topics_path Topics
           ul.nav.navbar-nav.navbar-right
             - if logined?
               li
                 a.notifications-bell href=notifications_path
                   i.fa.fa-bell-o
-                  - unread_count = current_user.notifications.unread.count
-                  - if unread_count > 0
-                    .badge = unread_count > 99 ? '99+' : current_user.notifications.unread.count
+                  - if unread_notifications_count > 0
+                    .badge = unread_notifications_count > 99 ? '99+' : unread_notifications_count
               li.dropdown
                 a.dropdown-toggle data-toggle="dropdown" href='#'
                   = current_user.name

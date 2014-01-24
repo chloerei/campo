@@ -3,9 +3,12 @@
 
   .badge {
     background: $brand-primary;
-    position: absolute;
-    top: 5px;
-    right: 5px;
+
+    @media (min-width: $grid-float-breakpoint) {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+    }
   }
 }
 
