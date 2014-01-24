@@ -35,8 +35,8 @@
     .panel
       .panel-body
         .btn-group
-          a.btn.btn-default.active Hot
-          a.btn.btn-default New
+          a.btn.btn-default class=('active' if params[:sort].blank?) href=topics_path Hot
+          a.btn.btn-default class=('active' if params[:sort] == 'newest') href=topics_path(sort: 'newest') Newest
     .panel
       .panel-body
         ul.nav.nav-pills.nav-stacked

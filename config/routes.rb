@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  root 'topics#index'
   get 'signup', to: 'users#new', as: 'signup'
   get 'login', to: 'sessions#new', as: 'login'
   post 'login', to: 'sessions#create'
@@ -32,6 +31,8 @@ Rails.application.routes.draw do
       delete :clear
     end
   end
+
+  root 'topics#index'
 
   if Rails.env.development?
     get 'qunit', to: 'qunit#index'

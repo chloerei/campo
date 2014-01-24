@@ -2,7 +2,14 @@ class TopicsController < ApplicationController
   before_filter :require_logined, except: [:index, :show]
 
   def index
-    @topics = Topic.order(hot: :desc).page(params[:page])
+    @topics = Topic.page(params[:page])
+
+    case params[:sort]
+    when 'newest'
+      @topics = @topics.order(id: :desc)
+    else
+      @topics = @topics.order(hot: :desc)
+    end
   end
 
   def show
