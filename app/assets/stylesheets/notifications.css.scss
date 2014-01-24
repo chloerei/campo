@@ -14,12 +14,12 @@
   @include clearfix();
 
   &.read {
-    .link-block {
+    .notification-link {
       color: #999;
     }
   }
 
-  .icon {
+  .notification-icon {
     float: left;
     width: 24px;
     height: 24px;
@@ -31,14 +31,15 @@
     }
   }
 
-  .content {
+  .notification-title,
+  .notification-body {
     margin-left: 34px;
   }
 
   .extra {
   }
 
-  .link-block {
+  .notification-link {
     display: block;
     padding: 15px 16px;
     color: #333;
@@ -50,7 +51,7 @@
     }
   }
 
-  .actions {
+  .notification-actions {
     float: right;
 
     .btn {

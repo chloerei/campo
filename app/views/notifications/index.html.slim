@@ -18,14 +18,14 @@
               - begin
                 = render "notifications/notification/#{notification.name}", notification: notification
               - rescue ActionView::MissingTemplate
-                .notification
-                  .actions
-                    a.btn.btn-remove
+                .notification class=('read' if notification.read)
+                  .notification-actions
+                    a.btn.btn-remove href=notification_path(notification) data-remote="true" data-method="delete" data-confirm="Are you sure you want to delete this notification?"
                       i.fa.fa-times
-                  .link-block
-                    .icon
+                  .notification-link
+                    .notification-icon
                       i.fa.fa-question
-                    .content
+                    .notification-title
                       = "##{notification.id} Missing template for #{notification.name} notification."
 
 - current_user.notifications.unread.where(id: @notifications.pluck(:id)).update_all(read: true)

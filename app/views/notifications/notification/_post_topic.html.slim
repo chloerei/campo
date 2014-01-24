@@ -1,12 +1,12 @@
 - post = notification.subject
 .notification class=('read' if notification.read)
-  .actions
+  .notification-actions
     a.btn.btn-remove href=notification_path(notification) data-remote="true" data-method="delete" data-confirm="Are you sure you want to delete this notification?"
       i.fa.fa-times
-  a.link-block href=topic_path(post.topic)
-    .icon
+  a.notification-link href=topic_path(post.topic)
+    .notification-icon
       img.avatar.img-rounded src="http://gravatar.com/avatar/5aec84cd0b5479a0d1d89b6ffa2a9a20.png?r=G&s=24"
-    .content
+    .notification-title
       = post.user.name
       '
       | posted on
@@ -17,5 +17,5 @@
       '
       span.date
         = time_ago_in_words post.created_at
-      .extra
-        = truncate post.content, length: 140
+    .notification-body
+      = truncate post.content, length: 140
