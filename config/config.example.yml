@@ -1,0 +1,12 @@
+default: &default
+  admin_emails:
+    # - admin@exampo.com
+
+development:
+  <<: *default
+
+test:
+  <<: *default
+
+production:
+  <<: *default
