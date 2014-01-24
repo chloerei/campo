@@ -1,5 +1,5 @@
 class PostVotesController < ApplicationController
-  before_filter :require_logined, :find_post, :reject_self_vote
+  before_filter :login_required, :find_post, :reject_self_vote
 
   def update
     post_vote = @post.post_votes.find_or_initialize_by(user_id: current_user.id)

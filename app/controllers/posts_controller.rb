@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_filter :require_logined
+  before_filter :login_required
 
   def show
     @post = Post.find_by! id: params[:id]

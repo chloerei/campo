@@ -7,7 +7,7 @@ html
     = javascript_include_tag "application", "data-turbolinks-track" => true
     meta name="viewport" content="width=device-width, initial-scale=1.0"
     = csrf_meta_tags
-    - if logined?
+    - if login?
       javascript:
         campo.currentUser = {
           id: #{current_user.id}
@@ -29,7 +29,7 @@ html
             li
               a href=topics_path Topics
           ul.nav.navbar-nav.navbar-right
-            - if logined?
+            - if login?
               li
                 a.notifications-bell href=notifications_path
                   i.fa.fa-bell-o

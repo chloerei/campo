@@ -5,7 +5,7 @@ class NotificationsControllerTest < ActionController::TestCase
     user = create(:user)
     create(:notification, user: user)
 
-    assert_require_logined(user) do
+    assert_login_required(user) do
       get :index
     end
     assert_response :success, @response.body
@@ -36,7 +36,7 @@ class NotificationsControllerTest < ActionController::TestCase
     user = create(:user)
     notification = create(:notification, user: user)
     assert_difference "user.notifications.count", -1 do
-      assert_require_logined(user) do
+      assert_login_required(user) do
         xhr :delete, :destroy, id: notification
       end
     end

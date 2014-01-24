@@ -13,7 +13,7 @@ class TopicsControllerTest < ActionController::TestCase
   end
 
   test "should get new page" do
-    assert_require_logined do
+    assert_login_required do
       get :new
     end
     assert_response :success, @response.body
@@ -21,7 +21,7 @@ class TopicsControllerTest < ActionController::TestCase
 
   test "should create topic" do
     assert_difference "Topic.count" do
-      assert_require_logined do
+      assert_login_required do
         post :create, topic: { title: 'Title', main_post_attributes: { content: 'Content' } }
       end
     end
@@ -36,7 +36,7 @@ class TopicsControllerTest < ActionController::TestCase
 
   test "should edit topic" do
     topic = create(:topic)
-    assert_require_logined topic.user do
+    assert_login_required topic.user do
       xhr :get, :edit, id: topic
     end
     assert_response :success, @response.body
@@ -50,7 +50,7 @@ class TopicsControllerTest < ActionController::TestCase
 
   test "should update topic" do
     topic = create(:topic)
-    assert_require_logined topic.user do
+    assert_login_required topic.user do
       xhr :patch, :update, id: topic, topic: { title: 'change', main_post_attributes: { content: 'change' } }
     end
     topic.reload

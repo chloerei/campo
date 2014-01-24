@@ -1,5 +1,5 @@
 class TopicsController < ApplicationController
-  before_filter :require_logined, except: [:index, :show]
+  before_filter :login_required, except: [:index, :show]
 
   def index
     @topics = Topic.page(params[:page])

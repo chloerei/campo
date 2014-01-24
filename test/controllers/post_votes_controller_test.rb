@@ -7,7 +7,7 @@ class PostVotesControllerTest < ActionController::TestCase
 
   test "should vote up post" do
     assert_difference "@post.post_votes.count" do
-      assert_require_logined do
+      assert_login_required do
         xhr :put, :update, id: @post, type: 'up'
       end
     end
@@ -16,7 +16,7 @@ class PostVotesControllerTest < ActionController::TestCase
 
   test "should vote down post" do
     assert_difference "@post.post_votes.count" do
-      assert_require_logined do
+      assert_login_required do
         xhr :put, :update, id: @post, type: 'down'
       end
     end
@@ -25,7 +25,7 @@ class PostVotesControllerTest < ActionController::TestCase
 
   test "should not vote self post" do
     assert_no_difference "@post.post_votes.count" do
-      assert_require_logined(@post.user) do
+      assert_login_required(@post.user) do
         xhr :put, :update, id: @post, type: 'down'
       end
     end
@@ -36,7 +36,7 @@ class PostVotesControllerTest < ActionController::TestCase
     create(:post_vote, post: @post, user: user)
 
     assert_difference "@post.post_votes.count", -1 do
-      assert_require_logined(user) do
+      assert_login_required(user) do
         xhr :delete, :destroy, id: @post
       end
     end

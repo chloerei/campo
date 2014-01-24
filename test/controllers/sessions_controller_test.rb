@@ -13,15 +13,15 @@ class SessionsControllerTest < ActionController::TestCase
 
   test "should create session" do
     create(:user, username: 'Username', password: '12345678')
-    assert !logined?
+    assert !login?
     post :create, login: 'Username', password: '12345678'
-    assert logined?
+    assert login?
   end
 
   test "should destroy session" do
     login_as create(:user)
     delete :destroy
-    assert !logined?
+    assert !login?
   end
 
   test "should redirect back after login" do

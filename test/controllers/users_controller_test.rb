@@ -12,11 +12,11 @@ class UsersControllerTest < ActionController::TestCase
   end
 
   test "should create user" do
-    assert !logined?
+    assert !login?
     assert_difference "User.count" do
       post :create, user: attributes_for(:user)
     end
-    assert logined?
+    assert login?
   end
 
   test "should redirect back after signup" do
