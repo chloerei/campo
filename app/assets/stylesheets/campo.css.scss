@@ -19,15 +19,19 @@
   }
 }
 
-.breadcrumb-campo {
-  padding: 0;
-  background: transparent;
+.header-campo {
+  margin-bottom: $line-height-computed;
 
-  a {
-    color: #555;
+  .breadcrumb {
+    padding: 0;
+    background: transparent;
 
-    &:hover {
-      color: 333;
+    a {
+      color: #555;
+
+      &:hover {
+        color: 333;
+      }
     }
   }
 }
