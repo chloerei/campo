@@ -5,8 +5,7 @@ class CreatePosts < ActiveRecord::Migration
       t.references :user, index: true
       t.text :content
       t.integer :post_number
-      t.integer :votes_up, default: 0
-      t.integer :votes_down, default: 0
+      t.integer :like_users_count, default: 0
 
       t.timestamps
     end

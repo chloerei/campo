@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140121065043) do
+ActiveRecord::Schema.define(version: 20140125050740) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,25 +29,19 @@ ActiveRecord::Schema.define(version: 20140121065043) do
   add_index "notifications", ["subject_id", "subject_type"], name: "index_notifications_on_subject_id_and_subject_type", using: :btree
   add_index "notifications", ["user_id"], name: "index_notifications_on_user_id", using: :btree
 
-  create_table "post_votes", force: true do |t|
-    t.integer  "user_id"
-    t.integer  "post_id"
-    t.boolean  "up"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+  create_table "post_likes", id: false, force: true do |t|
+    t.integer "post_id"
+    t.integer "user_id"
   end
 
-  add_index "post_votes", ["post_id"], name: "index_post_votes_on_post_id", using: :btree
-  add_index "post_votes", ["user_id", "post_id"], name: "index_post_votes_on_user_id_and_post_id", unique: true, using: :btree
-  add_index "post_votes", ["user_id"], name: "index_post_votes_on_user_id", using: :btree
+  add_index "post_likes", ["user_id", "post_id"], name: "index_post_likes_on_user_id_and_post_id", unique: true, using: :btree
 
   create_table "posts", force: true do |t|
     t.integer  "topic_id"
     t.integer  "user_id"
     t.text     "content"
     t.integer  "post_number"
-    t.integer  "votes_up",    default: 0
-    t.integer  "votes_down",  default: 0
+    t.integer  "like_users_count", default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end

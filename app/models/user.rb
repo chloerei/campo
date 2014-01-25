@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   has_many :topics
   has_many :posts
   has_many :notifications
+  has_and_belongs_to_many :like_posts, class_name: 'Post', join_table: 'post_likes', counter_cache: true
 
   validates :username, uniqueness: { case_sensitive: false }, presence: true, format: { with: /\A\w+\z/ }
   validates :name, presence: true
