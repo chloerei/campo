@@ -33,13 +33,13 @@
                         = time_ago_in_words topic.created_at
                       = topic.title
                     .extra
-                      = topic.score
-                      '
-                      | point
-                      '
                       | by
                       '
                       = topic.user.name
+                      '
+                      = topic.posts.count
+                      '
+                      | comments
       .panel-footer.clearfix
         .pull-right
           = paginate @topics, theme: 'campo', left: 1, right: 1, window: 2, placement: 'top'

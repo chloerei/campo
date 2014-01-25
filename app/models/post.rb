@@ -5,7 +5,7 @@ class Post < ActiveRecord::Base
   belongs_to :user
   has_and_belongs_to_many :like_users, class_name: 'User', join_table: 'post_likes'
 
-  after_create :get_post_number, :create_notifications
+  after_create :get_post_number, :create_notifications, :calculate_topic_hot
 
   def get_post_number
     if post_number.blank?
@@ -45,5 +45,9 @@ class Post < ActiveRecord::Base
                             name: 'post_mention')
       end
     end
+  end
+
+  def calculate_topic_hot
+    topic.calculate_hot!
   end
 end
