@@ -7,7 +7,6 @@ campo.Posts =
       console.log $("#post_#{id} .post-like")
       $("#post_#{id} .post-like").addClass('active').attr('data-method', 'delete')
 
-
   replyTo: ->
     $textarea = $('#new_post').find('textarea')
     $textarea.focus()

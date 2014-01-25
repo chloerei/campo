@@ -11,7 +11,7 @@
               a href="#preview_#{post.try(:id) || 'new'}" data-toggle="tab" data-behavior="preview" Preview
           .tab-content
             .tab-pane.active id="write_#{post.try(:id) || 'new'}"
-              = f.text_area :content, class: 'form-control', placeholder: 'Type here...'
+              = f.text_area :content, class: 'form-control', placeholder: 'Type here...', data: { behaviors: 'autosize' }
             .tab-pane.preview id="preview_#{post.try(:id) || 'new'}"
       - if post.new_record?
         = f.hidden_field :topic_id

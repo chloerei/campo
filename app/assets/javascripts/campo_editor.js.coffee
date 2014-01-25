@@ -12,6 +12,3 @@ $(document).on 'show.bs.tab', 'a[data-behavior~="preview"]', (e) ->
     success: (data) ->
       preview.html(data)
       preview.css height: 'auto'
-
-$ ->
-  $('.campo-editor textarea').autosize()

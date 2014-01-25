@@ -1,2 +1,1 @@
 $('#post_<%= @post.id %>').html('<%= j render(partial: 'form', locals: { post: @post }) %>');
-$('#post_<%= @post.id %> textarea').autosize();

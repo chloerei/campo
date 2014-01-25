@@ -1,2 +1,4 @@
 $('#post_<%= @post.id %>').replaceWith('<%= j render(@post) %>');
-campo.VisibleTo.check();
+<% if current_user.like_posts.exists? id: @post.id %>
+  campo.Posts.updateLikes([<%= @post.id %>])
+<% end %>

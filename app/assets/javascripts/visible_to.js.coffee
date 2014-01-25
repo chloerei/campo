@@ -8,6 +8,8 @@ campo.VisibleTo =
   #   - creator: Visible to creator
   #     Find closest element witch has data-creator-id,
   #     and compare with campo.currentUser.id.
+  #
+  #   - no-creator: Visible to anyone except creator
   check: ->
     $('[data-visible-to]').each ->
       $element = $(this)
@@ -27,5 +29,5 @@ campo.VisibleTo =
         if campo.currentUser? and (campo.currentUser.id == creator_id)
           return $element.remove()
 
-$ ->
+$(document).on 'page:update', ->
   campo.VisibleTo.check()
