@@ -6,7 +6,8 @@ class Topic < ActiveRecord::Base
   accepts_nested_attributes_for :main_post
 
   def score
-    main_post.score
+    # TODO
+    0
   end
 
   def calculate_hot

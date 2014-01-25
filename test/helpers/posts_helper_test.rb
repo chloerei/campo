@@ -1,21 +1,6 @@
 require 'test_helper'
 
 class PostsHelperTest < ActionView::TestCase
-  test "post_votes" do
-    user = create(:user)
-    topic = create(:topic)
-    create(:post, topic: topic)
-    post_up = create(:post, topic: topic)
-    post_down= create(:post, topic: topic)
-    create(:post_vote, post: post_up, up: true, user: user)
-    create(:post_vote, post: post_down, up: false, user: user)
-
-    assert_equal(
-      [{ post_id: post_up.id, type: 'up'}, { post_id: post_down.id, type: 'down' }].sort_by{ |v| v[:post_id] },
-      post_votes(topic.posts, user).sort_by{ |v| v[:post_id] }
-    )
-  end
-
   test "should link mentions" do
     assert_equal %q|<p><a href="/~username">@username</a></p>|, link_post_content('<p>@username</p>')
     assert_equal %q|<a href="http://example.org/">@username</a>|, link_post_content(%q|<a href="http://example.org/">@username</a>|)

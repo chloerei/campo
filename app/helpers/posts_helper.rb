@@ -1,10 +1,4 @@
 module PostsHelper
-  def post_votes(posts, user)
-    user.post_votes.where(post_id: posts.pluck(:id)).map { |post_vote|
-      { post_id: post_vote.post_id, type: post_vote.type }
-    }
-  end
-
   def format_post(text)
     sanitize(link_post_content(markdown(text)),
              tags: %w(p br img h1 h2 h3 h4 blockquote pre code strong em a ul ol li span),

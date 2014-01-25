@@ -18,11 +18,6 @@ Rails.application.routes.draw do
     collection do
       post 'preview'
     end
-
-    member do
-      put :vote, to: 'post_votes#update'
-      delete :vote, to: 'post_votes#destroy'
-    end
   end
 
   resources :notifications, only: [:index, :destroy] do
