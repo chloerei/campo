@@ -36,6 +36,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root to: 'dashboard#show'
+    resources :topics, only: [:index, :show, :destroy]
   end
 
   if Rails.env.development?
