@@ -35,9 +35,27 @@ class PostsController < ApplicationController
     end
   end
 
+  def like
+    @post = Post.find params[:id]
+    @post.like_users.push current_user
+
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def unlike
+    @post = Post.find params[:id]
+    @post.like_users.delete current_user
+  end
+
   def preview
     @content = params[:content]
     render layout: false
+
+    respond_to do |format|
+      format.js
+    end
   end
 
   private

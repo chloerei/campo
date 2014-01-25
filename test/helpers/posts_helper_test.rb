@@ -1,6 +1,18 @@
 require 'test_helper'
 
 class PostsHelperTest < ActionView::TestCase
+  test "should ouput post_likes data" do
+    post1 = create(:post)
+    post2 = create(:post)
+    create(:post)
+    user = create(:user)
+
+    post1.like_users.push user
+    post2.like_users.push user
+
+    assert_equal [post1.id, post2.id].sort, like_post_ids(user, Post.all).sort
+  end
+
   test "should link mentions" do
     assert_equal %q|<p><a href="/~username">@username</a></p>|, link_post_content('<p>@username</p>')
     assert_equal %q|<a href="http://example.org/">@username</a>|, link_post_content(%q|<a href="http://example.org/">@username</a>|)

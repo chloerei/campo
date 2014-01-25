@@ -42,6 +42,11 @@
       }
     }
 
+    .post-like.active {
+      color: $brand-danger;
+      @include box-shadow(none);
+    }
+
     .pull-left {
       margin-left: -12px;
     }

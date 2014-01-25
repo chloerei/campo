@@ -16,7 +16,12 @@ Rails.application.routes.draw do
 
   resources :posts, only: [:show, :create, :edit, :update] do
     collection do
-      post 'preview'
+      post :preview
+    end
+
+    member do
+      post :like
+      delete :like, action: 'unlike'
     end
   end
 

@@ -19,5 +19,10 @@ li.list-group-item-campo id="post_#{post.id}" data-post-id=post.id data-creator-
         - else
           a.btn href=edit_post_path(post) data-remote='true' data-visible-to="creator"
             i.fa.fa-edit
+        a.btn.post-like href=like_post_path(post) data-remote='true' data-method="post"
+          i.fa.fa-heart
+          '
+          span.count
+            = post.like_users_count
         a.btn data-visible-to="user" data-post-reply-to="@#{post.user.username} ##{post.post_number}"
           i.fa.fa-reply

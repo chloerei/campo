@@ -1,4 +1,8 @@
 module PostsHelper
+  def like_post_ids(user, posts)
+    user.like_posts.where(id: posts.pluck(:id)).pluck(:id)
+  end
+
   def format_post(text)
     sanitize(link_post_content(markdown(text)),
              tags: %w(p br img h1 h2 h3 h4 blockquote pre code strong em a ul ol li span),

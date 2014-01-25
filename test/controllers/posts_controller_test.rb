@@ -34,4 +34,24 @@ class PostsControllerTest < ActionController::TestCase
     assert_response :success, @response.body
     assert_equal 'change', topic_post.reload.content
   end
+
+  test "should like post" do
+    topic_post = create(:post)
+    assert_login_required do
+      xhr :post, :like, id: topic_post
+    end
+    assert_response :success, @response.body
+    assert_equal 1, topic_post.reload.like_users_count
+  end
+
+  test "should unlike post" do
+    topic_post = create(:post)
+    user = create(:user)
+    topic_post.like_users << user
+    assert_login_required(user) do
+      xhr :delete, :unlike, id: topic_post
+    end
+    assert_response :success, @response.body
+    assert_equal 0, topic_post.reload.like_users_count
+  end
 end

@@ -25,3 +25,7 @@
     - else
       a.btn.btn-default href=login_path(return_to: url_for) Login to Reply
   .col-md-3
+
+- if login?
+  javascript:
+    campo.Posts.updateLikes(#{like_post_ids(current_user, @posts)});
