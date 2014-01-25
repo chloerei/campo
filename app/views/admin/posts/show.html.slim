@@ -1,0 +1,23 @@
+ol.breadcrumb
+  li
+    a href=admin_posts_path Posts
+  li.active
+    = @post.id
+
+.row
+  .col-md-9
+    .panel
+      .panel-body
+        dl
+          dt ID
+          dd = @post.id
+          dt Author
+          dd = @post.user.name
+          dt Created At
+          dd = @post.created_at
+          dt Content
+          dd = @post.content
+  .col-md-3
+    .panel
+      .panel-body
+        a.btn.btn-danger href=admin_post_path(@post) data-method="delete" data-confirm="Are you sure you want to delete this post?" Delete

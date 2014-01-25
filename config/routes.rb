@@ -38,6 +38,7 @@ Rails.application.routes.draw do
     root to: 'dashboard#show'
     resources :users, only: [:index, :show, :destroy]
     resources :topics, only: [:index, :show, :destroy]
+    resources :posts, only: [:index, :show, :destroy]
   end
 
   if Rails.env.development?

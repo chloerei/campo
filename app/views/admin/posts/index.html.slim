@@ -1,0 +1,31 @@
+.panel.panel-campo
+  .panel-heading.clearfix
+    .pull-right
+      = paginate @posts, theme: 'campo', left: 1, right: 1, window: 2, placement: 'bottom'
+    h2.panel-title Posts
+  .panel-body
+    table.table
+      thead
+        tr
+          th #
+          th Content
+          th Author
+          th Topic
+          th Created at
+      tbody
+        - @posts.each do |post|
+          tr
+            td = post.id
+            td
+              a href=admin_post_path(post)
+                = truncate post.content
+            td
+              a href=admin_user_path(post.user)
+                = post.user.name
+            td
+              a href=admin_topic_path(post.topic)
+                = truncate post.topic.title
+            td = post.created_at
+  .panel-footer.clearfix
+    .pull-right
+      = paginate @posts, theme: 'campo', left: 1, right: 1, window: 2, placement: 'top'
