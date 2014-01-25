@@ -22,8 +22,6 @@
                   a href="#write_topic_#{@topic.try(:id) || 'new'}" data-toggle="tab" Write
                   li
                     a href="#preview_topic_#{@topic.try(:id) || 'new'}" data-toggle="tab" data-behavior="preview" Preview
-                  li.pull-right
-                    a Markdown
               .tab-content
                 .tab-pane.active id="write_topic_#{@topic.try(:id) || 'new'}"
                   = f.fields_for :main_post do |builder|
