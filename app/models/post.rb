@@ -1,7 +1,7 @@
 class Post < ActiveRecord::Base
   include MarkdownHelper
 
-  belongs_to :topic
+  belongs_to :topic, counter_cache: true
   belongs_to :user
   has_and_belongs_to_many :like_users, class_name: 'User', join_table: 'post_likes'
 

@@ -3,11 +3,9 @@ require 'test_helper'
 class TopicTest < ActiveSupport::TestCase
   test "should calculate hot" do
     topic = create(:topic)
-    assert_equal topic.created_at.to_i / 45000, topic.reload.hot
-
+    assert topic.calculate_hot > 0
     old_hot = topic.hot
-
-    create(:post, topic: topic)
-    assert topic.reload.hot > old_hot
+    topic.posts_count += 1
+    assert topic.calculate_hot > old_hot
   end
 end
