@@ -15,6 +15,8 @@ ol.breadcrumb
           dd = @post.user.name
           dt Created At
           dd = @post.created_at
+          dt Topic
+          dd = link_to_admin_topic @post.topic
           dt Content
           dd = @post.content
   .col-md-3

@@ -23,8 +23,7 @@
               a href=admin_user_path(post.user)
                 = post.user.name
             td
-              a href=admin_topic_path(post.topic)
-                = truncate post.topic.title
+              = link_to_admin_topic(post.topic)
             td = post.created_at
   .panel-footer.clearfix
     .pull-right

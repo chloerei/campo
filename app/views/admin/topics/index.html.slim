@@ -18,7 +18,9 @@
             td
               a href=admin_topic_path(topic)
                 = topic.title
-            td = topic.user.name
+            td
+              a href=admin_user_path(topic.user)
+                = topic.user.name
             td = topic.created_at
   .panel-footer.clearfix
     .pull-right
