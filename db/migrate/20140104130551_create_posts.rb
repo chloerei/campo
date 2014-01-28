@@ -6,6 +6,7 @@ class CreatePosts < ActiveRecord::Migration
       t.text :content
       t.integer :post_number
       t.integer :like_users_count, default: 0
+      t.boolean :deleted, default: false
 
       t.timestamps
     end

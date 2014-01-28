@@ -8,4 +8,17 @@ class TopicTest < ActiveSupport::TestCase
     topic.posts_count += 1
     assert topic.calculate_hot > old_hot
   end
+
+  test "should delete topic" do
+    topic = create(:topic)
+    assert_difference "Topic.visible.count", -1 do
+      topic.delete
+    end
+    assert topic.deleted?
+
+    assert_difference "Topic.visible.count" do
+      topic.restore
+    end
+    assert !topic.deleted?
+  end
 end

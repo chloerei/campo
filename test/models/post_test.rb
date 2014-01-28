@@ -46,4 +46,17 @@ class PostTest < ActiveSupport::TestCase
       create(:post, user: user, content: '@user')
     end
   end
+
+  test "should delete post" do
+    post = create(:post)
+    assert_difference "Post.visible.count", -1 do
+      post.delete
+    end
+    assert post.deleted?
+
+    assert_difference "Post.visible.count" do
+      post.restore
+    end
+    assert !post.deleted?
+  end
 end

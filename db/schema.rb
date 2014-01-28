@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 20140125050740) do
     t.text     "content"
     t.integer  "post_number"
     t.integer  "like_users_count", default: 0
+    t.boolean  "deleted",          default: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -54,6 +55,7 @@ ActiveRecord::Schema.define(version: 20140125050740) do
     t.string   "title"
     t.float    "hot",         default: 0.0
     t.integer  "posts_count", default: 0
+    t.boolean  "deleted",     default: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
