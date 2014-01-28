@@ -4,24 +4,27 @@
       = paginate @topics, theme: 'campo', left: 1, right: 1, window: 2, placement: 'bottom'
     h2.panel-title Topics
   .panel-body
-    table.table
-      thead
-        tr
-          th #
-          th Title
-          th Author
-          th Created at
-      tbody
-        - @topics.each do |topic|
+    .table-responsive
+      table.table
+        thead
           tr
-            td = topic.id
-            td
-              a href=admin_topic_path(topic)
-                = topic.title
-            td
-              a href=admin_user_path(topic.user)
-                = topic.user.name
-            td = topic.created_at
+            th #
+            th Title
+            th Author
+            th Deleted
+            th Created at
+        tbody
+          - @topics.each do |topic|
+            tr
+              td = topic.id
+              td
+                a href=admin_topic_path(topic)
+                  = topic.title
+              td
+                a href=admin_user_path(topic.user)
+                  = topic.user.name
+              td = topic.deleted
+              td = topic.created_at
   .panel-footer.clearfix
     .pull-right
       = paginate @topics, theme: 'campo', left: 1, right: 1, window: 2, placement: 'top'

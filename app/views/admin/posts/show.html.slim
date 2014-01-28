@@ -13,13 +13,18 @@ ol.breadcrumb
           dd = @post.id
           dt Author
           dd = @post.user.name
-          dt Created At
-          dd = @post.created_at
           dt Topic
           dd = link_to_admin_topic @post.topic
           dt Content
           dd = @post.content
+          dt Deleted
+          dd = @post.deleted
+          dt Created At
+          dd = @post.created_at
   .col-md-3
     .panel
       .panel-body
-        a.btn.btn-danger href=admin_post_path(@post) data-method="delete" data-confirm="Are you sure you want to delete this post?" Delete
+        - if @post.deleted?
+          a.btn.btn-default href=restore_admin_post_path(@post) data-method="Patch" Restore
+        - else
+          a.btn.btn-danger href=admin_post_path(@post) data-method="delete" data-confirm="Are you sure you want to delete this post?" Delete

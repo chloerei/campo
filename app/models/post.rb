@@ -6,6 +6,8 @@ class Post < ActiveRecord::Base
   belongs_to :user
   has_and_belongs_to_many :like_users, class_name: 'User', join_table: 'post_likes'
 
+  scope :visible, -> { where(deleted: false) }
+
   after_create :get_post_number, :create_notifications, :calculate_topic_hot
 
   def get_post_number
