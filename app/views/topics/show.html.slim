@@ -1,31 +1,25 @@
-.header-campo
-  ol.breadcrumb.breadcrumb-campo
-    li
-      a href=topics_path Forum
-    li
-      a href=topics_path All Topics
-
 .row
   .col-md-9
     .panel.panel-campo
-      .panel-heading.clearfix
-        .pull-right
-          = paginate @posts, theme: 'campo', left: 1, right: 1, window: 2
-        h3.panel-title = @topic.title
       .panel-body
-        ul#posts.list-group-campo
-          = render @posts
-      .panel-footer.clearfix
-        .pull-right
-          = paginate @posts, theme: 'campo', left: 1, right: 1, window: 2, placement: 'top'
-    - if login?
-      .panel
-        .panel-body
-          = render 'posts/form', post: @topic.posts.new
-    - else
-      a.btn.btn-default href=login_path(return_to: url_for) Login to Reply
-  .col-md-3
-
-- if login?
-  javascript:
-    campo.Posts.updateLikes(#{like_post_ids(current_user, @posts)});
+        .topic-detail
+          .topic-detail-heading
+            h1.title = @topic.title
+            img.avatar.media-object.img-circle src="http://gravatar.com/avatar/5aec84cd0b5479a0d1d89b6ffa2a9a20.png?r=G&s=64"
+            .meta.clearfix
+              .date.pull-right = time_ago_in_words @topic.created_at
+              .author.pull-left = @topic.user.name
+          .topic-detail-body
+            = sanitize markdown @topic.body
+          .topic-detail-actions.clearfix
+            .pull-right
+              .dropdown
+                a.btn
+                  i.fa.fa-heart
+                a.btn
+                  i.fa.fa-reply
+                a.btn.dropdown-toggle data-toggle="dropdown"
+                  i.fa.fa-ellipsis-h
+                ul.dropdown-menu.pull-right
+                  li
+                    a href=edit_topic_path(@topic) Edit

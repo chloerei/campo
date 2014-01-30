@@ -22,40 +22,30 @@ class TopicsControllerTest < ActionController::TestCase
   test "should create topic" do
     assert_difference "Topic.count" do
       assert_login_required do
-        post :create, topic: { title: 'Title', main_post_attributes: { content: 'Content' } }
+        post :create, topic: attributes_for(:topic)
       end
     end
     topic = Topic.last
-    assert_equal 'Title', topic.title
-    assert_not_nil topic.main_post
-    assert_equal 'Content', topic.main_post.content
-    assert_not_nil topic.user
-    assert_equal topic.user, topic.main_post.user
+    assert_equal topic.user, topic.user
     assert_redirected_to topic
   end
 
   test "should edit topic" do
     topic = create(:topic)
     assert_login_required topic.user do
-      xhr :get, :edit, id: topic
+      get :edit, id: topic
     end
-    assert_response :success, @response.body
-  end
-
-  test "should get topic for cancel edit" do
-    topic = create(:topic)
-    xhr :get, :show, id: topic
     assert_response :success, @response.body
   end
 
   test "should update topic" do
     topic = create(:topic)
     assert_login_required topic.user do
-      xhr :patch, :update, id: topic, topic: { title: 'change', main_post_attributes: { content: 'change' } }
+      patch :update, id: topic, topic: { title: 'change', body: 'change' }
     end
     topic.reload
     assert_equal 'change', topic.title
-    assert_equal 'change', topic.main_post.content
+    assert_equal 'change', topic.body
     assert_redirected_to topic
   end
 end

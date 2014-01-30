@@ -37,9 +37,9 @@
                       '
                       = topic.user.name
                       '
-                      = topic.posts_count
+                      = topic.comments_count
                       '
-                      | posts
+                      | comments
       .panel-footer.clearfix
         .pull-right
           = paginate @topics, theme: 'campo', left: 1, right: 1, window: 2, placement: 'top'
