@@ -2,6 +2,7 @@ class Topic < ActiveRecord::Base
   include Deletable
 
   belongs_to :user
+  has_many :comments, as: 'commentable'
   has_many :posts
   has_one :main_post, -> { where post_number: 1 }, class_name: 'Post'
 
