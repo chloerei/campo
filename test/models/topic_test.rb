@@ -5,7 +5,7 @@ class TopicTest < ActiveSupport::TestCase
     topic = create(:topic)
     assert topic.calculate_hot > 0
     old_hot = topic.hot
-    topic.posts_count += 1
+    topic.comments_count += 1
     assert topic.calculate_hot > old_hot
   end
 

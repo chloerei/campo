@@ -11,19 +11,8 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :topics, only: [:index, :show, :new, :create, :edit, :update] do
-  end
-
-  resources :posts, only: [:show, :create, :edit, :update] do
-    collection do
-      post :preview
-    end
-
-    member do
-      post :like
-      delete :like, action: 'unlike'
-    end
-  end
+  resources :topics, only: [:index, :show, :new, :create, :edit, :update]
+  resources :comments, only: [:create]
 
   resources :notifications, only: [:index, :destroy] do
     collection do
