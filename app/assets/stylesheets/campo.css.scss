@@ -60,15 +60,16 @@
 .list-group-campo {
   margin: 0 -16px;
   padding: 0;
-  list-style: none;
-}
 
-.list-group-item-campo {
-  padding: 15px 16px;
-  border-bottom: 1px solid #eee;
+  .list-group-item {
+    padding: 15px 16px;
+    border: none;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 0;
 
-  &:first-child {
-    border-top: 1px solid #eee;
+    &:first-child {
+      border-top: 1px solid #eee;
+    }
   }
 }
 

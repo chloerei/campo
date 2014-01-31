@@ -40,53 +40,6 @@
   }
 }
 
-.topic-detail {
-}
-
-.topic-detail-heading {
-  margin-bottom: $line-height-computed;
-  line-height: 64px;
-  @include clearfix();
-
-  .title {
-    font-size: 1.5em;
-    margin: 0 0 $line-height-computed;
-    padding-bottom: $line-height-computed;
-    border-bottom: 1px solid #ddd;
-  }
-
-  .avatar {
-    width: 64px;
-    height: 64px;
-    float: left;
-  }
-
-  .meta {
-    margin-left: 80px;
-  }
-
-  .author {
-    font-weight: bold;
-  }
-
-  .date {
-    color: #999;
-  }
-}
-
-.topic-detail-actions {
-  margin: (-$padding-base-vertical) (-$padding-base-horizontal);
-
-  .btn {
-    color: #aaa;
-
-    &:hover {
-      color: #555;
-      @include box-shadow(none);
-    }
-  }
-}
-
 .form-topic textarea {
   height: 12em;
   resize: vertical;

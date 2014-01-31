@@ -1,0 +1,43 @@
+.comment {
+  @include clearfix();
+
+  .comment-avatar {
+    float: left;
+    width: 48px;
+    height: 48px;
+  }
+
+  .comment-heading {
+    margin-left: 60px;
+    margin-bottom: $line-height-computed / 2;
+
+    .author {
+      font-weight: bold;
+    }
+
+    .date {
+      float: right;
+      color: #999;
+    }
+  }
+
+  .comment-content {
+    margin-left: 60px;
+  }
+
+  .comment-actions {
+    margin-left: 60px;
+
+    .btn {
+      color: #aaa;
+
+      &:hover {
+        color: #555;
+      }
+
+      &:active {
+        @include box-shadow(none);
+      }
+    }
+  }
+}

@@ -1,25 +1,50 @@
 .row
   .col-md-9
     .panel.panel-campo
+      .panel-heading
+        h1.panel-title = @topic.title
       .panel-body
-        .topic-detail
-          .topic-detail-heading
-            h1.title = @topic.title
-            img.avatar.media-object.img-circle src="http://gravatar.com/avatar/5aec84cd0b5479a0d1d89b6ffa2a9a20.png?r=G&s=64"
-            .meta.clearfix
-              .date.pull-right = time_ago_in_words @topic.created_at
-              .author.pull-left = @topic.user.name
-          .topic-detail-body
+        .comment
+          img.comment-avatar.img-rounded src="http://gravatar.com/avatar/5aec84cd0b5479a0d1d89b6ffa2a9a20.png?r=G&s=48"
+          .comment-heading
+            .date = time_ago_in_words @topic.created_at
+            .author = @topic.user.name
+          .comment-content
             = sanitize markdown @topic.content
-          .topic-detail-actions.clearfix
+          .comment-actions.clearfix
             .pull-right
-              .dropdown
-                a.btn
-                  i.fa.fa-heart
-                a.btn
-                  i.fa.fa-reply
+              a.btn
+                i.fa.fa-heart
+              span.dropdown
                 a.btn.dropdown-toggle data-toggle="dropdown"
                   i.fa.fa-ellipsis-h
                 ul.dropdown-menu.pull-right
                   li
                     a href=edit_topic_path(@topic) Edit
+
+    .panel.panel-campo
+      .panel-heading
+        h3.panel-title Comments
+      .panel-body
+        ul#comments.list-group.list-group-campo
+          - @comments.each do |comment|
+            li.list-group-item
+              .comment
+                img.comment-avatar.img-rounded src="http://gravatar.com/avatar/5aec84cd0b5479a0d1d89b6ffa2a9a20.png?r=G&s=48"
+                .comment-heading
+                  .date = time_ago_in_words comment.created_at
+                  .author = comment.user.name
+                .comment-content
+                  = sanitize markdown comment.content
+                .comment-actions.clearfix
+                  .pull-right
+                    a.btn
+                      i.fa.fa-reply
+                    a.btn
+                      i.fa.fa-heart
+                    span.dropdown
+                      a.btn.dropdown-toggle data-toggle="dropdown"
+                        i.fa.fa-ellipsis-h
+                      ul.dropdown-menu.pull-right
+                        li
+                          a Edit
