@@ -18,7 +18,7 @@
     .panel.panel-campo
       .panel-heading.clearfix
         .pull-right
-          = paginate @topics, theme: 'campo', left: 1, right: 1, window: 2
+          = paginate @topics, theme: 'campo'
         h2.panel-title Topics
       .panel-body
         ul.list-group.list-group-campo
@@ -42,7 +42,7 @@
                       | comments
       .panel-footer.clearfix
         .pull-right
-          = paginate @topics, theme: 'campo', left: 1, right: 1, window: 2, placement: 'top'
+          = paginate @topics, theme: 'campo', placement: 'top'
   .col-md-3
     .panel
       .panel-body

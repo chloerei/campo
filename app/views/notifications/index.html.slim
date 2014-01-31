@@ -9,7 +9,7 @@
     .panel.panel-campo
       .panel-heading.clearfix
         .pull-right
-          = paginate @notifications, theme: 'campo', left: 1, right: 1, window: 2
+          = paginate @notifications, theme: 'campo'
         h3.panel-title Notifications
       .panel-body
         ul.list-group-campo
@@ -27,5 +27,8 @@
                       i.fa.fa-question
                     .notification-title
                       = "##{notification.id} Missing template for #{notification.name} notification."
+      .panel-footer.clearfix
+        .pull-right
+          = paginate @notifications, theme: 'campo'
 
 - current_user.notifications.unread.where(id: @notifications.pluck(:id)).update_all(read: true)

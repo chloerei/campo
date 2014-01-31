@@ -23,7 +23,9 @@
                     a href=edit_topic_path(@topic) Edit
 
     .panel.panel-campo
-      .panel-heading
+      .panel-heading.clearfix
+        .pull-right
+          = paginate @comments, theme: 'campo'
         h3.panel-title Comments
       .panel-body
         ul#comments.list-group.list-group-campo
