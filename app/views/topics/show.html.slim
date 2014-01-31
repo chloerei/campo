@@ -10,7 +10,7 @@
               .date.pull-right = time_ago_in_words @topic.created_at
               .author.pull-left = @topic.user.name
           .topic-detail-body
-            = sanitize markdown @topic.body
+            = sanitize markdown @topic.content
           .topic-detail-actions.clearfix
             .pull-right
               .dropdown

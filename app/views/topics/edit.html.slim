@@ -24,7 +24,7 @@
                     a href="#preview_topic_#{@topic.try(:id) || 'new'}" data-toggle="tab" data-behavior="preview" Preview
               .tab-content
                 .tab-pane.active id="write_topic_#{@topic.try(:id) || 'new'}"
-                  = f.text_area :body, class: 'form-control', placeholder: 'Type here ...', tabindex: 2, data: { behaviors: 'autosize' }
+                  = f.text_area :content, class: 'form-control', placeholder: 'Type here ...', tabindex: 2, data: { behaviors: 'autosize' }
                 .tab-pane.preview id="preview_topic_#{@topic.try(:id) || 'new'}"
           = f.submit 'Save Changes', class: 'btn btn-success', tabindex: 3
           '

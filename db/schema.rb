@@ -51,7 +51,7 @@ ActiveRecord::Schema.define(version: 20140130122905) do
   create_table "topics", force: true do |t|
     t.integer  "user_id"
     t.string   "title"
-    t.text     "body"
+    t.text     "content"
     t.float    "hot",            default: 0.0
     t.integer  "comments_count", default: 0
     t.boolean  "deleted",        default: false
