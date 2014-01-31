@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   has_secure_password
   has_many :topics, dependent: :delete_all
+  has_many :comments, dependent: :delete_all
   has_many :notifications, dependent: :delete_all
   has_and_belongs_to_many :like_posts, class_name: 'Post', join_table: 'post_likes', counter_cache: true
 

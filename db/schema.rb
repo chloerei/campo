@@ -48,20 +48,6 @@ ActiveRecord::Schema.define(version: 20140130122905) do
 
   add_index "post_likes", ["user_id", "post_id"], name: "index_post_likes_on_user_id_and_post_id", unique: true, using: :btree
 
-  create_table "posts", force: true do |t|
-    t.integer  "topic_id"
-    t.integer  "user_id"
-    t.text     "content"
-    t.integer  "post_number"
-    t.integer  "like_users_count", default: 0
-    t.boolean  "deleted",          default: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "posts", ["topic_id"], name: "index_posts_on_topic_id", using: :btree
-  add_index "posts", ["user_id"], name: "index_posts_on_user_id", using: :btree
-
   create_table "topics", force: true do |t|
     t.integer  "user_id"
     t.string   "title"
