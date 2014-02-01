@@ -10,7 +10,7 @@
             .date = time_ago_in_words @topic.created_at
             .author = @topic.user.name
           .comment-content
-            = sanitize markdown @topic.content
+            = campo_markdown @topic.content
           .comment-actions.clearfix
             .pull-right
               a.btn
