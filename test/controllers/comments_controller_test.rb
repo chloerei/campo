@@ -17,4 +17,12 @@ class CommentsControllerTest < ActionController::TestCase
     xhr :get, :edit, id: comment
     assert_response :success, @response.body
   end
+
+  test "shuold update comment" do
+    comment = create(:comment)
+    login_as comment.user
+
+    xhr :patch, :update, id: comment, comment: { content: 'change' }
+    assert_equal 'change', comment.reload.content
+  end
 end
