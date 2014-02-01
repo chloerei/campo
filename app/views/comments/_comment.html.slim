@@ -5,7 +5,7 @@ li.list-group-item id="comment_#{comment.id}" data-creator-id=comment.user_id
       .date = time_ago_in_words comment.created_at
       .author = comment.user.name
     .comment-content
-      = campo_markdown comment.content
+      = format_comment comment.content
     .comment-actions.clearfix
       .pull-right
         a.btn
