@@ -1,4 +1,4 @@
-li.list-group-item
+li.list-group-item id="comment_#{comment.id}" data-creator-id=comment.user_id
   .comment
     img.comment-avatar.img-rounded src="http://gravatar.com/avatar/5aec84cd0b5479a0d1d89b6ffa2a9a20.png?r=G&s=48"
     .comment-heading
@@ -12,9 +12,9 @@ li.list-group-item
           i.fa.fa-reply
         a.btn
           i.fa.fa-heart
-        span.dropdown
+        span.btn-group
           a.btn.dropdown-toggle data-toggle="dropdown"
             i.fa.fa-ellipsis-h
           ul.dropdown-menu.pull-right
-            li
-              a Edit
+            li data-visible-to="creator"
+              a href=edit_comment_path(comment) data-remote="true" Edit

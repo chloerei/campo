@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   end
 
   resources :topics, only: [:index, :show, :new, :create, :edit, :update]
-  resources :comments, only: [:create] do
+  resources :comments, only: [:create, :edit, :update] do
     collection do
       post :preview
     end

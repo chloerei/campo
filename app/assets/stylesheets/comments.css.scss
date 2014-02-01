@@ -27,6 +27,7 @@
 
   .comment-actions {
     margin-left: 60px;
+    margin-right: -$padding-base-horizontal;
 
     .btn {
       color: #aaa;
@@ -38,6 +39,11 @@
       &:active {
         @include box-shadow(none);
       }
+    }
+
+    .btn-group.open .dropdown-toggle {
+      color: #555;
+      @include box-shadow(none);
     }
   }
 }

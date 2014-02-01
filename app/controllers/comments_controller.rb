@@ -5,6 +5,10 @@ class CommentsController < ApplicationController
     @comment = current_user.comments.create params.require(:comment).permit(:commentable_type, :commentable_id, :content)
   end
 
+  def edit
+    @comment = current_user.comments.find params[:id]
+  end
+
   def preview
     @content = params[:content]
     render layout: false
