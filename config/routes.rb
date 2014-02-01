@@ -12,7 +12,11 @@ Rails.application.routes.draw do
   end
 
   resources :topics, only: [:index, :show, :new, :create, :edit, :update]
-  resources :comments, only: [:create]
+  resources :comments, only: [:create] do
+    collection do
+      post :preview
+    end
+  end
 
   resources :notifications, only: [:index, :destroy] do
     collection do

@@ -1,0 +1,20 @@
+li.list-group-item
+  .comment
+    img.comment-avatar.img-rounded src="http://gravatar.com/avatar/5aec84cd0b5479a0d1d89b6ffa2a9a20.png?r=G&s=48"
+    .comment-heading
+      .date = time_ago_in_words comment.created_at
+      .author = comment.user.name
+    .comment-content
+      = sanitize markdown comment.content
+    .comment-actions.clearfix
+      .pull-right
+        a.btn
+          i.fa.fa-reply
+        a.btn
+          i.fa.fa-heart
+        span.dropdown
+          a.btn.dropdown-toggle data-toggle="dropdown"
+            i.fa.fa-ellipsis-h
+          ul.dropdown-menu.pull-right
+            li
+              a Edit

@@ -28,25 +28,35 @@
           = paginate @comments, theme: 'campo'
         h3.panel-title Comments
       .panel-body
-        ul#comments.list-group.list-group-campo
-          - @comments.each do |comment|
-            li.list-group-item
-              .comment
-                img.comment-avatar.img-rounded src="http://gravatar.com/avatar/5aec84cd0b5479a0d1d89b6ffa2a9a20.png?r=G&s=48"
-                .comment-heading
-                  .date = time_ago_in_words comment.created_at
-                  .author = comment.user.name
-                .comment-content
-                  = sanitize markdown comment.content
-                .comment-actions.clearfix
-                  .pull-right
-                    a.btn
-                      i.fa.fa-reply
-                    a.btn
-                      i.fa.fa-heart
-                    span.dropdown
-                      a.btn.dropdown-toggle data-toggle="dropdown"
-                        i.fa.fa-ellipsis-h
-                      ul.dropdown-menu.pull-right
-                        li
-                          a Edit
+        ul.list-group.list-group-campo id="comments_for_topic_#{@topic.id}"
+          = render @comments
+      .panel-footer.clearfix
+        .pull-right
+          = paginate @comments, theme: 'campo', placement: 'top'
+
+    .panel.panel-campo
+      .panel-heading
+        h3.panel-title Add Comment
+      .panel-body
+        - if login?
+          .comment
+            img.comment-avatar.img-rounded src="http://gravatar.com/avatar/5aec84cd0b5479a0d1d89b6ffa2a9a20.png?r=G&s=48"
+            .comment-content
+              = form_for @topic.comments.new, remote: true do |f|
+                = f.hidden_field :commentable_type
+                = f.hidden_field :commentable_id
+                .form-group
+                  - write_pane_id = "write_comment_#{f.object.try(:id) || 'new'}"
+                  - preview_pane_id = "preview_comment_#{f.object.try(:id) || 'new'}"
+                  .campo-editor
+                    ul.nav.nav-tabs
+                      li.active
+                        a href="##{write_pane_id}" data-toggle="tab" Write
+                      li
+                        a href="##{preview_pane_id}" data-toggle="tab" data-behaviors="preview" Preview
+                    .tab-content
+                      .tab-pane.active id=write_pane_id
+                        = f.text_area :content, class: 'form-control', placeholder: 'Comment here...', data: { behaviors: 'autosize' }
+                      .tab-pane id=preview_pane_id
+                        .preview
+                = f.submit 'Comment', class: 'btn btn-success'

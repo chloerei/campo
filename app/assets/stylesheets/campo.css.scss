@@ -43,7 +43,7 @@
 .panel-campo {
   .panel-heading {
     margin: 0 -1px;
-    padding: 15px 16px;
+    padding: 10px 16px;
     border-bottom: 1px solid #eee;
   }
 
@@ -54,7 +54,7 @@
 
   .panel-footer {
     margin: 0 -1px;
-    padding: 15px 16px;
+    padding: 10px 16px;
     border-top: 1px solid #eee;
     background: transparent;
   }
@@ -91,12 +91,18 @@
     margin: 0;
     padding: 0;
     border: none;
+    resize: vertical;
+    height: 8em;
     @include box-shadow(none);
 
     &:focus {
       border: none;
       @include box-shadow(none);
     }
+  }
+
+  .preview {
+    min-height: 8em;
   }
 }
 
