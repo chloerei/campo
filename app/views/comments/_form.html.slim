@@ -7,7 +7,7 @@
       .form-group
         - write_pane_id = "write_comment_#{f.object.try(:id) || 'new'}"
         - preview_pane_id = "preview_comment_#{f.object.try(:id) || 'new'}"
-        .campo-editor
+        .comment-editor
           ul.nav.nav-tabs
             li.active
               a href="##{write_pane_id}" data-toggle="tab" Write

@@ -40,10 +40,12 @@
   }
 }
 
-.form-topic textarea {
-  height: 12em;
-}
+.form-topic .comment-editor {
+  textarea {
+    height: 12em;
+  }
 
-.form-topic .preview {
-  min-height: 12em;
+  .preview {
+    min-height: 12em;
+  }
 }

@@ -1,5 +1,5 @@
-$(document).on 'show.bs.tab', 'a[data-behaviors~="preview"]', (e) ->
-  editor = $(this).closest('.campo-editor')
+$(document).on 'click', 'a[data-behaviors~="preview"]', (e) ->
+  editor = $(this).closest('.comment-editor')
   preview = editor.find('.preview')
   textarea = editor.find('textarea')
   preview.html('')
