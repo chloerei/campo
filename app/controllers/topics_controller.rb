@@ -14,7 +14,12 @@ class TopicsController < ApplicationController
 
   def show
     @topic = Topic.find params[:id]
-    @comments = @topic.comments.page(params[:page])
+
+    if params[:comment_id] and comment = @topic.comments.find_by(id: params[:comment_id])
+      redirect_to topic_url(page: (comment.page != 1 ? comment.page : nil), anchor: "comment-#{comment.id}") and return
+    end
+
+    @comments = @topic.comments.order(id: :asc).page(params[:page])
 
     respond_to do |format|
       format.html

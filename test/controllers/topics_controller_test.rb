@@ -12,6 +12,14 @@ class TopicsControllerTest < ActionController::TestCase
     assert_response :success, @response.body
   end
 
+  test "should redirect to comment page" do
+    topic = create(:topic)
+    (Comment.default_per_page + 1).times { create :comment, commentable: topic, user: topic.user }
+    comment = topic.comments.order(id: :asc).last
+    get :show, id: topic, comment_id: comment
+    assert_redirected_to topic_url(topic, page: comment.page, anchor: "comment-#{comment.id}")
+  end
+
   test "should get new page" do
     assert_login_required do
       get :new

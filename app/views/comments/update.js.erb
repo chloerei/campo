@@ -1,4 +1,4 @@
 <% if @comment.errors.empty? %>
-  $('#comment_<%= @comment.id %>').replaceWith('<%= j render @comment %>');
+  $('#comment-<%= @comment.id %>').replaceWith('<%= j render @comment %>');
 <% else %>
 <% end %>
