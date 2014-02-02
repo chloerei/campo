@@ -1,2 +1,2 @@
-$('#comments_for_<%= @comment.commentable_type.downcase %>_<%= @comment.commentable_id %>').append('<%= j render @comment %>');
+$('#comments-for-<%= @comment.commentable_type.downcase %>-<%= @comment.commentable_id %>').append('<%= j render @comment %>');
 $('#new_comment textarea').val('');
