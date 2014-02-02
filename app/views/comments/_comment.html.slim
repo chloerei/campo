@@ -8,7 +8,7 @@ li.list-group-item id="comment_#{comment.id}" data-creator-id=comment.user_id
       = format_comment comment.content
     .comment-actions.clearfix
       .pull-right
-        a.btn
+        a.btn data-reply-to="@#{comment.user.username} ##{comment.id} "
           i.fa.fa-reply
         a.btn
           i.fa.fa-heart
