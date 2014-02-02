@@ -9,7 +9,7 @@ class CommentsHelperTest < ActionView::TestCase
   end
 
   test "should link floor" do
-    assert_equal %Q|<p><a href="?comment_id=1">#1</a></p>|, link_comments('<p>#1</p>')
+    assert_equal %Q|<p><a href="?comment_id=1#comment-1">#1</a></p>|, link_comments('<p>#1</p>')
     assert_equal %q|<a href="http://example.org/">#1</a>|, link_mentions(%q|<a href="http://example.org/">#1</a>|)
     assert_equal %q|<pre>#1</pre>|, link_mentions(%q|<pre>#1</pre>|)
     assert_equal %q|<code>#1</code>|, link_mentions(%q|<code>#1</code>|)

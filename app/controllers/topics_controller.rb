@@ -15,8 +15,8 @@ class TopicsController < ApplicationController
   def show
     @topic = Topic.find params[:id]
 
-    if params[:comment_id] and comment = @topic.comments.find_by(id: params[:comment_id])
-      redirect_to topic_url(page: (comment.page != 1 ? comment.page : nil), anchor: "comment-#{comment.id}") and return
+    if params[:comment_id] and comment = @topic.comments.find_by(id: params.delete(:comment_id))
+      params[:page] = comment.page
     end
 
     @comments = @topic.comments.order(id: :asc).page(params[:page])

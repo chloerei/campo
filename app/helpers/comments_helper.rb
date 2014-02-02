@@ -33,7 +33,7 @@ module CommentsHelper
 
         # link #comment_id
         text.gsub!(/#(\d+)/) { |match|
-          %Q|<a href="?comment_id=#{$1}">#{match}</a>|
+          %Q|<a href="?comment_id=#{$1}#comment-#{$1}">#{match}</a>|
         }
 
         node.replace text

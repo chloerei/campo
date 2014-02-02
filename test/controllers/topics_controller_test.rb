@@ -17,7 +17,7 @@ class TopicsControllerTest < ActionController::TestCase
     (Comment.default_per_page + 1).times { create :comment, commentable: topic, user: topic.user }
     comment = topic.comments.order(id: :asc).last
     get :show, id: topic, comment_id: comment
-    assert_redirected_to topic_url(topic, page: comment.page, anchor: "comment-#{comment.id}")
+    assert_equal comment.page, assigns(:comments).current_page
   end
 
   test "should get new page" do
