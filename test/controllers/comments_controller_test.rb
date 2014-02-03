@@ -1,6 +1,14 @@
 require 'test_helper'
 
 class CommentsControllerTest < ActionController::TestCase
+  test "should cancel edit" do
+    comment = create(:comment)
+    login_as comment.user
+
+    xhr :get, :cancel, id: comment
+    assert_response :success, @response.body
+  end
+
   test "should create comment" do
     login_as create(:user)
     topic = create(:topic)

@@ -1,12 +1,15 @@
 class CommentsController < ApplicationController
   before_filter :login_required
-  before_filter :find_comment, only: [:edit, :update]
+  before_filter :find_comment, only: [:edit, :cancel, :update]
 
   def create
     @comment = current_user.comments.create params.require(:comment).permit(:commentable_type, :commentable_id, :content)
   end
 
   def edit
+  end
+
+  def cancel
   end
 
   def update

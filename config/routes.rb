@@ -16,6 +16,10 @@ Rails.application.routes.draw do
     collection do
       post :preview
     end
+
+    member do
+      get :cancel
+    end
   end
 
   resources :notifications, only: [:index, :destroy] do

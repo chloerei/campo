@@ -9,13 +9,9 @@ li.list-group-item id="comment-#{comment.id}" data-creator-id=comment.user_id
       = format_comment comment.content
     .comment-actions.clearfix
       .pull-right
+        a.btn href=edit_comment_path(comment) data-remote="true" data-visible-to="creator"
+          i.fa.fa-pencil
         a.btn data-reply-to="@#{comment.user.username} ##{comment.id} "
           i.fa.fa-reply
         a.btn
           i.fa.fa-heart
-        span.btn-group
-          a.btn.dropdown-toggle data-toggle="dropdown"
-            i.fa.fa-ellipsis-h
-          ul.dropdown-menu.pull-right
-            li data-visible-to="creator"
-              a href=edit_comment_path(comment) data-remote="true" Edit
