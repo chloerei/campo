@@ -42,4 +42,11 @@ module CommentsHelper
 
     doc.to_html
   end
+
+  def comment_permarlink(comment)
+    case comment.commentable
+    when Topic
+      topic_path(comment.commentable, page: comment.page, anchor: "comment-#{comment.id}")
+    end
+  end
 end

@@ -12,9 +12,9 @@
           = paginate @notifications, theme: 'campo'
         h3.panel-title Notifications
       .panel-body
-        ul.list-group-campo
+        ul.list-group.list-group-campo
           - @notifications.each do |notification|
-            .list-group-item-campo id="notification_#{notification.id}"
+            .list-group-item id="notification_#{notification.id}"
               - begin
                 = render "notifications/notification/#{notification.name}", notification: notification
               - rescue ActionView::MissingTemplate
