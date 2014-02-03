@@ -2,7 +2,7 @@ class TopicsController < ApplicationController
   before_filter :login_required, except: [:index, :show]
 
   def index
-    @topics = Topic.page(params[:page])
+    @topics = Topic.untrashed.page(params[:page])
 
     case params[:sort]
     when 'newest'
@@ -19,7 +19,7 @@ class TopicsController < ApplicationController
       params[:page] = comment.page
     end
 
-    @comments = @topic.comments.order(id: :asc).page(params[:page])
+    @comments = @topic.comments.untrashed.order(id: :asc).page(params[:page])
 
     respond_to do |format|
       format.html

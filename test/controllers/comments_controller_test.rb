@@ -33,4 +33,13 @@ class CommentsControllerTest < ActionController::TestCase
     xhr :patch, :update, id: comment, comment: { content: 'change' }
     assert_equal 'change', comment.reload.content
   end
+
+  test "should trash comment" do
+    comment = create(:comment)
+    login_as comment.user
+
+    assert_difference "Comment.trashed.count" do
+      xhr :delete, :trash, id: comment
+    end
+  end
 end

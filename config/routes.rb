@@ -19,6 +19,7 @@ Rails.application.routes.draw do
 
     member do
       get :cancel
+      delete :trash
     end
   end
 
