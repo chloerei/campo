@@ -1,0 +1,32 @@
+ol.breadcrumb
+  li
+    a href=admin_comments_path Comments
+  li.active
+    = truncate @comment.content
+
+.row
+  .col-md-9
+    .panel
+      .panel-body
+        dl
+          dt ID
+          dd = @comment.id
+          dt Author
+          dd
+            a href=admin_user_path(@comment.user)
+              = @comment.user.name
+          dt Content
+          dd = @comment.content
+          dt Commentable
+          dd = link_to_commentable @comment.commentable
+          dt Trashed
+          dd = @comment.trashed
+          dt Created At
+          dd = @comment.user.name
+  .col-md-3
+    .panel
+      .panel-body
+        - if @comment.trashed?
+          a.btn.btn-default href=restore_admin_comment_path(@comment) data-method="patch" Restore
+        - else
+          a.btn.btn-danger href=trash_admin_comment_path(@comment) data-method="delete" data-confirm="Are you sure you want to trash this comment?" Trash

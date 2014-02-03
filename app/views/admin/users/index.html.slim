@@ -1,7 +1,7 @@
 .panel.panel-campo
   .panel-heading.clearfix
     .pull-right
-      = paginate @users, theme: 'campo', left: 1, right: 1, window: 2, placement: 'bottom'
+      = paginate @users, theme: 'campo'
     h2.panel-title Users
   .panel-body
     .table-responsive
@@ -25,4 +25,4 @@
               td = user.created_at
   .panel-footer.clearfix
     .pull-right
-      = paginate @users, theme: 'campo', left: 1, right: 1, window: 2, placement: 'top'
+      = paginate @users, theme: 'campo', placement: 'top'

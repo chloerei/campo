@@ -1,4 +1,5 @@
 class Comment < ActiveRecord::Base
+  include Trashable
   include MarkdownHelper
 
   belongs_to :user

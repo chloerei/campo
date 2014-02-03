@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20140130122905) do
     t.integer  "commentable_id"
     t.string   "commentable_type"
     t.text     "content"
+    t.boolean  "trashed",          default: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

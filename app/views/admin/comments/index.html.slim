@@ -1,0 +1,33 @@
+.panel.panel-campo
+  .panel-heading.clearfix
+    .pull-right
+      = paginate @comments, theme: 'campo'
+    h2.panel-title Comments
+  .panel-body
+    .table-responsive
+      table.table
+        thead
+          tr
+            th #
+            th Content
+            th Commentable
+            th Author
+            th Trashed
+            th Created at
+        tbody
+          - @comments.each do |comment|
+            tr
+              td = comment.id
+              td
+                a href=admin_comment_path(comment)
+                  = truncate comment.content
+              td
+                = link_to_commentable(comment.commentable)
+              td
+                a href=admin_user_path(comment.user)
+                  = comment.user.name
+              td = comment.trashed
+              td = comment.created_at
+  .panel-footer.clearfix
+    .pull-right
+      = paginate @comments, theme: 'campo', placement: 'top'

@@ -36,6 +36,12 @@ Rails.application.routes.draw do
         patch :restore
       end
     end
+    resources :comments, only: [:index, :show] do
+      member do
+        delete :trash
+        patch :restore
+      end
+    end
   end
 
   if Rails.env.development?
