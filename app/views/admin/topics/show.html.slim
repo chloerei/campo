@@ -27,4 +27,4 @@ ol.breadcrumb
         - if @topic.trashed?
           a.btn.btn-default href=restore_admin_topic_path(@topic) data-method="patch" Restore
         - else
-          a.btn.btn-danger href=admin_topic_path(@topic) data-method="delete" data-confirm="Are you sure you want to delete this topic?" Delete
+          a.btn.btn-danger href=trash_admin_topic_path(@topic) data-method="delete" data-confirm="Are you sure you want to trash this topic?" Trash

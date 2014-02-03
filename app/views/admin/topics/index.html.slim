@@ -11,7 +11,7 @@
             th #
             th Title
             th Author
-            th Deleted
+            th Trashed
             th Created at
         tbody
           - @topics.each do |topic|
@@ -23,7 +23,7 @@
               td
                 a href=admin_user_path(topic.user)
                   = topic.user.name
-              td = topic.deleted
+              td = topic.trashed
               td = topic.created_at
   .panel-footer.clearfix
     .pull-right

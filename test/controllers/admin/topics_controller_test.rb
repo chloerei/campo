@@ -6,6 +6,7 @@ class Admin::TopicsControllerTest < ActionController::TestCase
   end
 
   test "should get index" do
+    create :topic
     get :index
     assert_response :success, @response.body
   end
@@ -19,7 +20,7 @@ class Admin::TopicsControllerTest < ActionController::TestCase
   test "should destroy topic" do
     topic = create(:topic)
     assert_difference "Topic.trashed.count" do
-      delete :destroy, id: topic
+      delete :trash, id: topic
     end
     assert_redirected_to admin_topic_path(topic)
   end

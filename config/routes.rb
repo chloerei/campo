@@ -30,13 +30,9 @@ Rails.application.routes.draw do
   namespace :admin do
     root to: 'dashboard#show'
     resources :users, only: [:index, :show, :destroy]
-    resources :topics, only: [:index, :show, :destroy] do
+    resources :topics, only: [:index, :show] do
       member do
-        patch :restore
-      end
-    end
-    resources :posts, only: [:index, :show, :destroy] do
-      member do
+        delete :trash
         patch :restore
       end
     end
