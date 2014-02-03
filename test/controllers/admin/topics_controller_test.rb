@@ -18,15 +18,15 @@ class Admin::TopicsControllerTest < ActionController::TestCase
 
   test "should destroy topic" do
     topic = create(:topic)
-    assert_difference "Topic.visible.count", -1 do
+    assert_difference "Topic.trashed.count" do
       delete :destroy, id: topic
     end
     assert_redirected_to admin_topic_path(topic)
   end
 
   test "should restore topic" do
-    topic = create(:topic, deleted: true)
-    assert_difference "Topic.visible.count" do
+    topic = create(:topic, trashed: true)
+    assert_difference "Topic.trashed.count", -1 do
       patch :restore, id: topic
     end
     assert_redirected_to admin_topic_path(topic)

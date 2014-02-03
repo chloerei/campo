@@ -54,7 +54,7 @@ ActiveRecord::Schema.define(version: 20140130122905) do
     t.text     "content"
     t.float    "hot",            default: 0.0
     t.integer  "comments_count", default: 0
-    t.boolean  "deleted",        default: false
+    t.boolean  "trashed",        default: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

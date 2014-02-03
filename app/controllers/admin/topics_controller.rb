@@ -9,7 +9,7 @@ class Admin::TopicsController < Admin::ApplicationController
   end
 
   def destroy
-    @topic.delete
+    @topic.trash
     redirect_to admin_topic_path(@topic)
   end
 

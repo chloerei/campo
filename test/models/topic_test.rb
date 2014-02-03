@@ -9,16 +9,21 @@ class TopicTest < ActiveSupport::TestCase
     assert topic.calculate_hot > old_hot
   end
 
-  test "should delete topic" do
+  test "should trash" do
     topic = create(:topic)
-    assert_difference "Topic.visible.count", -1 do
-      topic.delete
-    end
-    assert topic.deleted?
 
-    assert_difference "Topic.visible.count" do
-      topic.restore
+    assert_difference "Topic.trashed.count" do
+      assert_difference "Topic.untrashed.count", -1 do
+        topic.trash
+        assert_equal true, topic.trashed?
+      end
     end
-    assert !topic.deleted?
+
+    assert_difference "Topic.trashed.count", -1 do
+      assert_difference "Topic.untrashed.count" do
+        topic.restore
+        assert_equal false, topic.trashed?
+      end
+    end
   end
 end
