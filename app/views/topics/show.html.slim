@@ -47,7 +47,7 @@
                 = f.submit 'Add this comment', class: 'btn btn-success'
 
 - if login?
-  - if current_user.likes.where(likeable: @topic).exists?
+  - if @topic.liked_by?(current_user)
     javascript:
       campo.Likes.updateLike('topic', #{@topic.id});
 

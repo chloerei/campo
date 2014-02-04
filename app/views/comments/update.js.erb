@@ -1,6 +1,6 @@
 <% if @comment.errors.empty? %>
   $('#comment-<%= @comment.id %>').replaceWith('<%= j render @comment %>');
-  <% if current_user.likes.where(likeable: @comment).exists? %>
+  <% if @comment.liked_by?(current_user) %>
     campo.Likes.updateLike('comment', <%= @comment.id %>);
   <% end %>
 <% end %>

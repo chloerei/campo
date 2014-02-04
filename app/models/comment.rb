@@ -1,10 +1,10 @@
 class Comment < ActiveRecord::Base
+  include Likeable
   include Trashable
   include MarkdownHelper
 
   belongs_to :user
   belongs_to :commentable, polymorphic: true
-  has_many :likes, as: 'likeable'
 
   validates :commentable_type, inclusion: { in: %w(Topic) }
   validates :commentable, :user, presence: true

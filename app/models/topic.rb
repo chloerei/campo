@@ -1,9 +1,9 @@
 class Topic < ActiveRecord::Base
+  include Likeable
   include Trashable
 
   belongs_to :user
   has_many :comments, as: 'commentable'
-  has_many :likes, as: 'likeable'
 
   def calculate_hot
     order = Math.log10([comments_count, 1].max)
