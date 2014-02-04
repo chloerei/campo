@@ -1,0 +1,13 @@
+- write_pane_id = "write_comment_#{form.object.try(:id) || 'new'}"
+- preview_pane_id = "preview_comment_#{form.object.try(:id) || 'new'}"
+.comment-editor
+  ul.nav.nav-tabs
+    li.active
+      a href="##{write_pane_id}" data-toggle="tab" Write
+    li
+      a href="##{preview_pane_id}" data-toggle="tab" data-behaviors="preview" Preview
+  .tab-content
+    .tab-pane.active id=write_pane_id
+      = form.text_area :content, class: 'form-control', placeholder: 'Type here...', data: { behaviors: 'autosize' }
+    .tab-pane id=preview_pane_id
+      .preview

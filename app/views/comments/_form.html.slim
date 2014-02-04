@@ -5,23 +5,10 @@
       = f.hidden_field :commentable_type
       = f.hidden_field :commentable_id
       .form-group
-        - write_pane_id = "write_comment_#{f.object.try(:id) || 'new'}"
-        - preview_pane_id = "preview_comment_#{f.object.try(:id) || 'new'}"
-        .comment-editor
-          ul.nav.nav-tabs
-            li.active
-              a href="##{write_pane_id}" data-toggle="tab" Write
-            li
-              a href="##{preview_pane_id}" data-toggle="tab" data-behaviors="preview" Preview
-          .tab-content
-            .tab-pane.active id=write_pane_id
-              = f.text_area :content, class: 'form-control', placeholder: 'Comment here...', data: { behaviors: 'autosize' }
-            .tab-pane id=preview_pane_id
-              .preview
+        = render 'share/markdown_area', form: f
       - if comment.new_record?
         = f.submit 'Add this comment', class: 'btn btn-success'
       - else
         = f.submit 'Save changes', class: 'btn btn-success'
         '
         a.btn.btn-default href=cancel_comment_path(comment) data-remote="true" Cancel
-

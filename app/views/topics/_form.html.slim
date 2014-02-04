@@ -2,19 +2,7 @@
   .form-group
     = f.text_field :title, class: 'form-control', placeholder: 'Title', tabindex: 1
   .form-group
-    .comment-editor
-      - write_pane_id = "write_topic_#{@topic.try(:id) || 'new'}"
-      - preview_pane_id = "preview_topic_#{@topic.try(:id) || 'new'}"
-      ul.nav.nav-tabs
-        li.active
-          a href="##{write_pane_id}" data-toggle="tab" Write
-        li
-          a href="##{preview_pane_id}" data-toggle="tab" data-behaviors="preview" Preview
-      .tab-content
-        .tab-pane.active id=write_pane_id
-          = f.text_area :content, class: 'form-control', placeholder: 'Type here ...', tabindex: 2, data: { behaviors: 'autosize' }
-        .tab-pane id=preview_pane_id
-          .preview
+    = render 'share/markdown_area', form: f
   - if topic.new_record?
     = f.submit 'Add this topic', class: 'btn btn-success', tabindex: 3
   - else
