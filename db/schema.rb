@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140204053314) do
+ActiveRecord::Schema.define(version: 20140204164212) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,14 +61,27 @@ ActiveRecord::Schema.define(version: 20140204053314) do
 
   add_index "post_likes", ["user_id", "post_id"], name: "index_post_likes_on_user_id_and_post_id", unique: true, using: :btree
 
+  create_table "subscriptions", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "subscribable_id"
+    t.string   "subscribable_type"
+    t.integer  "status",            default: 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "subscriptions", ["subscribable_id", "subscribable_type"], name: "index_subscriptions_on_subscribable_id_and_subscribable_type", using: :btree
+  add_index "subscriptions", ["user_id"], name: "index_subscriptions_on_user_id", using: :btree
+
   create_table "topics", force: true do |t|
     t.integer  "user_id"
     t.string   "title"
     t.text     "content"
-    t.float    "hot",            default: 0.0
-    t.integer  "comments_count", default: 0
-    t.integer  "likes_count",    default: 0
-    t.boolean  "trashed",        default: false
+    t.float    "hot",                 default: 0.0
+    t.integer  "comments_count",      default: 0
+    t.integer  "likes_count",         default: 0
+    t.integer  "subscriptions_count", default: 0
+    t.boolean  "trashed",             default: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

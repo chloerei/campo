@@ -1,6 +1,7 @@
 class Topic < ActiveRecord::Base
   include Likeable
   include Trashable
+  include Subscribable
 
   belongs_to :user
   has_many :comments, as: 'commentable'
