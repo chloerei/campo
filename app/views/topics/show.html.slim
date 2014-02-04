@@ -7,7 +7,8 @@
         .comment
           img.comment-avatar.img-rounded src="http://gravatar.com/avatar/5aec84cd0b5479a0d1d89b6ffa2a9a20.png?r=G&s=48"
           .comment-heading
-            .date = time_ago_in_words @topic.created_at
+            a.date href=topic_path(@topic)
+              = time_ago_in_words @topic.created_at
             .author = @topic.user.name
           .comment-content
             = format_comment @topic.content
