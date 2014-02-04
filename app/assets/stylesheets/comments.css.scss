@@ -45,6 +45,14 @@
       color: #555;
       @include box-shadow(none);
     }
+
+    .liked {
+      color: $brand-danger;
+
+      &:hover {
+        color: $brand-danger;
+      }
+    }
   }
 }
 

@@ -2,11 +2,11 @@ class LikesController < ApplicationController
   before_filter :login_required, :find_likeable
 
   def create
-    @likeable.likes.create user: current_user
+    @likeable.likes.find_or_create_by user: current_user
   end
 
   def destroy
-    @likeable.likes.find_by(user_id: current_user.id).try(:destroy)
+    @likeable.likes.where(user: current_user).destroy_all
   end
 
   private
