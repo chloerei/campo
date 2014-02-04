@@ -11,8 +11,13 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :topics, only: [:index, :show, :new, :create, :edit, :update]
-  resources :comments, only: [:create, :edit, :update] do
+  concern :likeable do
+    resource :like, only: [:create, :destroy]
+  end
+
+  resources :topics, only: [:index, :show, :new, :create, :edit, :update], concerns: [:likeable]
+
+  resources :comments, only: [:create, :edit, :update], concerns: [:likeable] do
     collection do
       post :preview
     end
