@@ -1,20 +1,12 @@
 require 'test_helper'
 
 class CommentsControllerTest < ActionController::TestCase
-  test "should cancel edit" do
-    comment = create(:comment)
-    login_as comment.user
-
-    xhr :get, :cancel, id: comment
-    assert_response :success, @response.body
-  end
-
   test "should create comment" do
     login_as create(:user)
     topic = create(:topic)
 
     assert_difference "topic.comments.count" do
-      xhr :post, :create, comment: { commentable_type: 'Topic', commentable_id: topic, content: 'Content' }
+      xhr :post, :create, topic_id: topic, comment: { content: 'Content' }
     end
   end
 
@@ -23,6 +15,14 @@ class CommentsControllerTest < ActionController::TestCase
     login_as comment.user
 
     xhr :get, :edit, id: comment
+    assert_response :success, @response.body
+  end
+
+  test "should cancel edit" do
+    comment = create(:comment)
+    login_as comment.user
+
+    xhr :get, :cancel, id: comment
     assert_response :success, @response.body
   end
 

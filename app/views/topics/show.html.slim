@@ -38,7 +38,13 @@
     .panel.panel-campo
       .panel-body
         - if login?
-          = render 'comments/form', comment: @topic.comments.new
+          .comment
+            img.comment-avatar.img-rounded src="http://gravatar.com/avatar/5aec84cd0b5479a0d1d89b6ffa2a9a20.png?r=G&s=48"
+            .comment-content
+              = form_for @topic.comments.new, url: topic_comments_path(@topic), remote: true do |f|
+                .form-group
+                  = render 'share/markdown_area', form: f
+                = f.submit 'Add this comment', class: 'btn btn-success'
 
 - if login?
   - if current_user.likes.where(likeable: @topic).exists?
