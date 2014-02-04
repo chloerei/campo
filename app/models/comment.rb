@@ -4,6 +4,7 @@ class Comment < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :commentable, polymorphic: true
+  has_many :likes, as: 'likeable'
 
   validates :commentable_type, inclusion: { in: %w(Topic) }
   validates :commentable, :user, presence: true

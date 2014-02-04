@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140130122905) do
+ActiveRecord::Schema.define(version: 20140204053314) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20140130122905) do
     t.integer  "commentable_id"
     t.string   "commentable_type"
     t.text     "content"
+    t.integer  "likes_count",      default: 0
     t.boolean  "trashed",          default: false
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -28,6 +29,17 @@ ActiveRecord::Schema.define(version: 20140130122905) do
 
   add_index "comments", ["commentable_id", "commentable_type"], name: "index_comments_on_commentable_id_and_commentable_type", using: :btree
   add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
+
+  create_table "likes", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "likeable_id"
+    t.string   "likeable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "likes", ["likeable_id", "likeable_type"], name: "index_likes_on_likeable_id_and_likeable_type", using: :btree
+  add_index "likes", ["user_id"], name: "index_likes_on_user_id", using: :btree
 
   create_table "notifications", force: true do |t|
     t.integer  "user_id"
@@ -55,6 +67,7 @@ ActiveRecord::Schema.define(version: 20140130122905) do
     t.text     "content"
     t.float    "hot",            default: 0.0
     t.integer  "comments_count", default: 0
+    t.integer  "likes_count",    default: 0
     t.boolean  "trashed",        default: false
     t.datetime "created_at"
     t.datetime "updated_at"
