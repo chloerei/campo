@@ -26,4 +26,23 @@ class TopicTest < ActiveSupport::TestCase
       end
     end
   end
+
+  test "should add user to subscribers" do
+    topic = create(:topic)
+    assert topic.subscribed_by?(topic.user)
+  end
+
+  test "should subscribe_by user" do
+    topic = create(:topic)
+    user = create(:user)
+    topic.subscribe_by user
+    assert topic.subscribed_by? user
+  end
+
+  test "should ignore_by user" do
+    topic = create(:topic)
+    user = create(:user)
+    topic.ignore_by user
+    assert topic.ignored_by? user
+  end
 end

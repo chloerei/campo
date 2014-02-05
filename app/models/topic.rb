@@ -6,6 +6,8 @@ class Topic < ActiveRecord::Base
   belongs_to :user
   has_many :comments, as: 'commentable'
 
+  after_create :owner_subscribe
+
   def calculate_hot
     order = Math.log10([comments_count, 1].max)
     order + created_at.to_i / 45000
@@ -13,5 +15,9 @@ class Topic < ActiveRecord::Base
 
   def calculate_hot!
     update_attribute :hot, calculate_hot
+  end
+
+  def owner_subscribe
+    subscribe_by user
   end
 end
