@@ -1,12 +1,12 @@
 GIT
   remote: git://github.com/rails/arel.git
-  revision: 1b084a82cf80625044e6c8c43a6887912e15d32b
+  revision: f0ba9e4e56cf4dfa266147fad7e8f58ca577d614
   specs:
     arel (5.0.0.20131204235845)
 
 GIT
   remote: git://github.com/rails/coffee-rails.git
-  revision: 471ae515b57d484d494eba7e0a1f1016ebcc57e4
+  revision: 4a0ad7630602589b8b9646c438eb0e73f74368f7
   specs:
     coffee-rails (4.0.1)
       coffee-script (>= 2.2.0)
@@ -14,7 +14,7 @@ GIT
 
 GIT
   remote: git://github.com/rails/rails.git
-  revision: 5aa869861c192daceafe3a3ee50eb93f5a2b7bd2
+  revision: 10867a77bef192ddbbf42331292a5f66eaafc1de
   specs:
     actionmailer (4.1.0.beta1)
       actionpack (= 4.1.0.beta1)
@@ -60,7 +60,7 @@ GIT
 
 GIT
   remote: git://github.com/rails/sass-rails.git
-  revision: f65b9005de112b74cd09e5dedeae23603c3b1413
+  revision: 6d4e551a114a7e3458ce3cb1edb39da07935919e
   specs:
     sass-rails (4.0.1)
       railties (>= 4.0.0, < 5.0)
@@ -69,7 +69,7 @@ GIT
 
 GIT
   remote: git://github.com/rails/sprockets-rails.git
-  revision: 25eee989fbb3a11d96241d1a7e79bb9670e51f5b
+  revision: 8bf70f674ec714dc1082d279fd021075fa036a74
   specs:
     sprockets-rails (2.0.1)
       actionpack (>= 3.0)
@@ -90,7 +90,7 @@ GEM
     coffee-script (2.2.0)
       coffee-script-source
       execjs
-    coffee-script-source (1.6.3)
+    coffee-script-source (1.7.0)
     em-websocket (0.5.0)
       eventmachine (>= 0.12.9)
       http_parser.rb (~> 0.5.3)
@@ -106,13 +106,13 @@ GEM
     font-awesome-sass (4.0.2)
       sass-rails (>= 3.1.1)
     formatador (0.2.4)
-    guard (2.2.5)
+    guard (2.3.0)
       formatador (>= 0.2.4)
       listen (~> 2.1)
       lumberjack (~> 1.0)
       pry (>= 0.9.12)
       thor (>= 0.18.1)
-    guard-livereload (2.1.0)
+    guard-livereload (2.1.1)
       em-websocket (~> 0.5)
       guard (~> 2.0)
       multi_json (~> 1.8)
@@ -122,7 +122,7 @@ GEM
     jbuilder (1.5.3)
       activesupport (>= 3.0.0)
       multi_json (>= 1.2.0)
-    jquery-rails (3.0.4)
+    jquery-rails (3.1.0)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
     json (1.8.1)
@@ -140,13 +140,13 @@ GEM
     method_source (0.8.2)
     mime-types (1.25.1)
     mini_portile (0.5.2)
-    minitest (5.2.0)
-    multi_json (1.8.2)
+    minitest (5.2.2)
+    multi_json (1.8.4)
     nokogiri (1.6.1)
       mini_portile (~> 0.5.0)
     pg (0.17.1)
     polyglot (0.3.3)
-    pry (0.9.12.4)
+    pry (0.9.12.6)
       coderay (~> 1.0)
       method_source (~> 0.8)
       slop (~> 3.4)
@@ -160,13 +160,13 @@ GEM
     rb-inotify (0.9.3)
       ffi (>= 0.5.0)
     redcarpet (3.0.0)
-    rouge (1.3.1)
-    sass (3.2.13)
+    rouge (1.3.2)
+    sass (3.2.14)
     slim (2.0.2)
       temple (~> 0.6.6)
       tilt (>= 1.3.3, < 2.1)
     slop (3.4.7)
-    spring (1.0.0)
+    spring (1.1.0)
     sprockets (2.10.1)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -181,7 +181,7 @@ GEM
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
-    turbolinks (2.1.0)
+    turbolinks (2.2.1)
       coffee-rails
     tzinfo (1.1.0)
       thread_safe (~> 0.1)
