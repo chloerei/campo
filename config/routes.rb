@@ -19,7 +19,11 @@ Rails.application.routes.draw do
     resource :like, only: [:create, :destroy]
   end
 
-  resources :topics, only: [:index, :show, :new, :create, :edit, :update], concerns: [:commentable, :likeable]
+  concern :subscribable do
+    resource :subscription, only: [:update, :destroy]
+  end
+
+  resources :topics, only: [:index, :show, :new, :create, :edit, :update], concerns: [:commentable, :likeable, :subscribable]
 
   resources :comments, only: [:edit, :update], concerns: [:likeable] do
     collection do

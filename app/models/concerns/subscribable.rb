@@ -3,8 +3,8 @@ module Subscribable
 
   included do
     has_many :subscriptions, as: 'subscribable', dependent: :delete_all
-    has_many :subscribed_users, -> { where(subscriptions: { status: 'subscribed'}) }, through: :subscriptions, source: :user
-    has_many :ignored_users, -> { where(subscriptions: { status: 'ignored'}) }, through: :subscriptions, source: :user
+    has_many :subscribed_users, -> { where(subscriptions: { status: Subscription::STATUS['subscribed'] }) }, through: :subscriptions, source: :user
+    has_many :ignored_users, -> { where(subscriptions: { status: Subscription::STATUS['ignored'] }) }, through: :subscriptions, source: :user
   end
 
   def subscribe_by(user)
