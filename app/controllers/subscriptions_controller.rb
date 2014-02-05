@@ -12,6 +12,7 @@ class SubscriptionsController < ApplicationController
 
   def destroy
     @subscribable.subscriptions.where(user: current_user).destroy_all
+    render :update
   end
 
   private

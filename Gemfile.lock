@@ -81,7 +81,7 @@ GEM
   specs:
     atomic (1.1.14)
     bcrypt-ruby (3.1.2)
-    bootstrap-sass (3.0.3.0)
+    bootstrap-sass (3.1.0.1)
       sass (~> 3.2)
     builder (3.2.2)
     celluloid (0.15.2)
@@ -195,7 +195,7 @@ PLATFORMS
 DEPENDENCIES
   arel!
   bcrypt-ruby (~> 3.1.2)
-  bootstrap-sass (~> 3.0.3.0)
+  bootstrap-sass (~> 3.1.0)
   coffee-rails!
   factory_girl_rails (~> 4.3.0)
   font-awesome-sass (~> 4.0.2)

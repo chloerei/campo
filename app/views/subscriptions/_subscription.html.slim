@@ -1,0 +1,44 @@
+- subscription = subscribable.subscriptions.find_by(user: current_user)
+.btn-group id="subscription-for-#{subscribable.class.name.downcase}-#{subscribable.id}"
+  .btn.btn-default.dropdown-toggle data-toggle="dropdown"
+    - if subscription.nil?
+      i.fa.fa-eye
+      '
+      | Watch
+      '
+      i.fa.fa-caret-down
+    - elsif subscription.subscribed?
+      i.fa.fa-eye-slash
+      '
+      | Unwatch
+      '
+      i.fa.fa-caret-down
+    - elsif subscription.ignored?
+      i.fa.fa-ban
+      '
+      | Stop ignoring
+      '
+      i.fa.fa-caret-down
+  ul.dropdown-menu.dropdown-menu-right.dropdown-menu-subscription
+    li class=('selected' if subscription.nil?)
+      a href=polymorphic_url([subscribable, :subscription]) data-remote="true" data-method="delete"
+        .subscription-status
+          i.fa.fa-check
+        .subscription-description
+          label Not Watching
+          p You only receive notifications if you are @mentioned
+    li class=('selected' if subscription && subscription.subscribed?)
+      a href=polymorphic_url([subscribable, :subscription], status: 'subscribed') data-remote="true" data-method="put"
+        .subscription-status
+          i.fa.fa-check
+        .subscription-description
+          label Watching
+          p You will receive notifications for all comments.
+    li class=('selected' if subscription && subscription.ignored?)
+      a href=polymorphic_url([subscribable, :subscription], status: 'ignored') data-remote="true" data-method="put"
+        .subscription-status
+          i.fa.fa-check
+        .subscription-description
+          label Ignoring
+          p You do not receive any notifications.
+

@@ -1,0 +1,1 @@
+$('#subscription-for-<%= @subscribable.class.name.downcase %>-<%= @subscribable.id %>').replaceWith('<%= j render 'subscription', subscribable: @subscribable %>');

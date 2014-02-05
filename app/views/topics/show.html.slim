@@ -1,7 +1,11 @@
 .row
   .col-md-9
     .panel.panel-campo
-      .panel-heading
+      .panel-heading.clearfix
+        .pull-right
+          - if login?
+            = render 'subscriptions/subscription', subscribable: @topic
+
         h1.panel-title = @topic.title
       .panel-body
         .comment data-creator-id=@topic.user_id
