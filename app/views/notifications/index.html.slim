@@ -15,18 +15,7 @@
         ul.list-group.list-group-campo
           - @notifications.each do |notification|
             .list-group-item id="notification_#{notification.id}"
-              - begin
-                = render "notifications/notification/#{notification.name}", notification: notification
-              - rescue ActionView::MissingTemplate
-                .notification class=('read' if notification.read)
-                  .notification-actions
-                    a.btn.btn-remove href=notification_path(notification) data-remote="true" data-method="delete" data-confirm="Are you sure you want to delete this notification?"
-                      i.fa.fa-times
-                  .notification-link
-                    .notification-icon
-                      i.fa.fa-question
-                    .notification-title
-                      = "##{notification.id} Missing template for #{notification.name} notification."
+              = render "notifications/notification/#{notification.name}", notification: notification
       .panel-footer.clearfix
         .pull-right
           = paginate @notifications, theme: 'campo'

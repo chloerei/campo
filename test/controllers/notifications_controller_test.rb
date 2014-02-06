@@ -3,7 +3,8 @@ require 'test_helper'
 class NotificationsControllerTest < ActionController::TestCase
   test "should get index" do
     user = create(:user)
-    create(:notification, user: user)
+    create(:notification, user: user, subject: create(:comment), name: 'comment')
+    create(:notification, user: user, subject: create(:comment), name: 'mention')
 
     assert_login_required(user) do
       get :index

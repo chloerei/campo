@@ -3,6 +3,7 @@
 FactoryGirl.define do
   factory :notification do
     user
-    name "name_type"
+    association :subject, factory: 'comment'
+    name "comment"
   end
 end
