@@ -14,8 +14,8 @@
             a.date href=topic_path(@topic)
               = time_ago_in_words @topic.created_at
             .author = @topic.user.name
-          .comment-content
-            = format_comment @topic.content
+          .comment-body
+            = format_comment @topic.body
           .comment-actions.clearfix
             .pull-right
               a.btn id="like-for-topic-#{@topic.id}" href=topic_like_path(@topic) data-remote="true" data-method="post"
@@ -44,7 +44,7 @@
         - if login?
           .comment
             img.comment-avatar.img-rounded src="http://gravatar.com/avatar/5aec84cd0b5479a0d1d89b6ffa2a9a20.png?r=G&s=48"
-            .comment-content
+            .comment-body
               = form_for @topic.comments.new, url: topic_comments_path(@topic), remote: true do |f|
                 .form-group
                   = render 'share/markdown_area', form: f

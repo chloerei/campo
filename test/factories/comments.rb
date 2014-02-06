@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :comment do
     user
-    content "Content"
+    body "Content"
     association :commentable, factory: 'topic'
   end
 end

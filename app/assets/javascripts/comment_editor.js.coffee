@@ -7,7 +7,7 @@ $(document).on 'click', 'a[data-behaviors~="preview"]', (e) ->
 
   $.ajax
     url: '/comments/preview'
-    data: { content: textarea.val() }
+    data: { body: textarea.val() }
     type: 'POST'
     success: (data) ->
       console.log preview

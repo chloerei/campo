@@ -2,7 +2,7 @@ ol.breadcrumb
   li
     a href=admin_comments_path Comments
   li.active
-    = truncate @comment.content
+    = truncate @comment.body
 
 .row
   .col-md-9
@@ -15,8 +15,8 @@ ol.breadcrumb
           dd
             a href=admin_user_path(@comment.user)
               = @comment.user.name
-          dt Content
-          dd = @comment.content
+          dt Body
+          dd = @comment.body
           dt Commentable
           dd = link_to_commentable @comment.commentable
           dt Trashed

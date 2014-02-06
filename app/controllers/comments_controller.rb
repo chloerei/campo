@@ -5,7 +5,7 @@ class CommentsController < ApplicationController
   def create
     resource, id = request.path.split('/')[1, 2]
     @commentable = resource.singularize.classify.constantize.find(id)
-    @comment = @commentable.comments.create params.require(:comment).permit(:content).merge(user: current_user)
+    @comment = @commentable.comments.create params.require(:comment).permit(:body).merge(user: current_user)
   end
 
   def edit
@@ -15,7 +15,7 @@ class CommentsController < ApplicationController
   end
 
   def update
-    @comment.update_attributes params.require(:comment).permit(:content)
+    @comment.update_attributes params.require(:comment).permit(:body)
   end
 
   def trash
@@ -23,7 +23,7 @@ class CommentsController < ApplicationController
   end
 
   def preview
-    @content = params[:content]
+    @body = params[:body]
     render layout: false
   end
 

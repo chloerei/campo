@@ -18,7 +18,7 @@ class Comment < ActiveRecord::Base
   def mention_users
     return @menton_users if defined?(@menton_users)
 
-    doc = Nokogiri::HTML.fragment(markdown(content))
+    doc = Nokogiri::HTML.fragment(markdown(body))
     usernames = doc.search('text()').map { |node|
       unless node.ancestors('a, pre, code').any?
         node.text.scan(/@(\w+)/).flatten

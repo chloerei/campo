@@ -4,6 +4,6 @@ FactoryGirl.define do
   factory :topic do
     user
     title "MyString"
-    content "MyString"
+    body "MyString"
   end
 end

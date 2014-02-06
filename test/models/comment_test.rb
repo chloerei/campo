@@ -12,7 +12,7 @@ class CommentTest < ActiveSupport::TestCase
   test "should get mention_users" do
     user1 = create :user, username: 'user1'
     user2 = create :user, username: 'user2'
-    comment = build(:comment, content: '@user1 @user2')
+    comment = build(:comment, body: '@user1 @user2')
     assert_equal [user1, user2].sort, comment.mention_users.sort
   end
 
@@ -20,7 +20,7 @@ class CommentTest < ActiveSupport::TestCase
     user = create(:user)
 
     assert_difference "user.notifications.named('mention').count" do
-    create(:comment, content: "@#{user.username}")
+    create(:comment, body: "@#{user.username}")
     end
   end
 

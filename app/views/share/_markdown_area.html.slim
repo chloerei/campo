@@ -8,6 +8,6 @@
       a href="##{preview_pane_id}" data-toggle="tab" data-behaviors="preview" Preview
   .tab-content
     .tab-pane.active id=write_pane_id
-      = form.text_area :content, class: 'form-control', placeholder: 'Type here...', data: { behaviors: 'autosize' }
+      = form.text_area :body, class: 'form-control', placeholder: 'Type here...', data: { behaviors: 'autosize' }
     .tab-pane id=preview_pane_id
       .preview

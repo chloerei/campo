@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 20140204164212) do
     t.integer  "user_id"
     t.integer  "commentable_id"
     t.string   "commentable_type"
-    t.text     "content"
+    t.text     "body"
     t.integer  "likes_count",      default: 0
     t.boolean  "trashed",          default: false
     t.datetime "created_at"
@@ -76,7 +76,7 @@ ActiveRecord::Schema.define(version: 20140204164212) do
   create_table "topics", force: true do |t|
     t.integer  "user_id"
     t.string   "title"
-    t.text     "content"
+    t.text     "body"
     t.float    "hot",                 default: 0.0
     t.integer  "comments_count",      default: 0
     t.integer  "likes_count",         default: 0

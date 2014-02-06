@@ -3,7 +3,7 @@ class CreateTopics < ActiveRecord::Migration
     create_table :topics do |t|
       t.belongs_to :user, index: true
       t.string :title
-      t.text :content
+      t.text :body
       t.float :hot, index: true, default: 0.0
       t.integer :comments_count, default: 0
       t.integer :likes_count, default: 0

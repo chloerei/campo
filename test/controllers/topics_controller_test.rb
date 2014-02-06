@@ -49,11 +49,11 @@ class TopicsControllerTest < ActionController::TestCase
   test "should update topic" do
     topic = create(:topic)
     assert_login_required topic.user do
-      patch :update, id: topic, topic: { title: 'change', content: 'change' }
+      patch :update, id: topic, topic: { title: 'change', body: 'change' }
     end
     topic.reload
     assert_equal 'change', topic.title
-    assert_equal 'change', topic.content
+    assert_equal 'change', topic.body
     assert_redirected_to topic
   end
 end

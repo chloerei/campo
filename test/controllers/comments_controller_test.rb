@@ -6,7 +6,7 @@ class CommentsControllerTest < ActionController::TestCase
     topic = create(:topic)
 
     assert_difference "topic.comments.count" do
-      xhr :post, :create, topic_id: topic, comment: { content: 'Content' }
+      xhr :post, :create, topic_id: topic, comment: { body: 'body' }
     end
   end
 
@@ -30,8 +30,8 @@ class CommentsControllerTest < ActionController::TestCase
     comment = create(:comment)
     login_as comment.user
 
-    xhr :patch, :update, id: comment, comment: { content: 'change' }
-    assert_equal 'change', comment.reload.content
+    xhr :patch, :update, id: comment, comment: { body: 'change' }
+    assert_equal 'change', comment.reload.body
   end
 
   test "should trash comment" do
