@@ -18,10 +18,19 @@ class CommentTest < ActiveSupport::TestCase
 
   test "should create_mention_notifications" do
     user = create(:user)
-    comment = create(:comment, content: "@#{user.username}")
 
-    assert_difference "user.notifications.named('comment_mention').count" do
-      comment.create_mention_notification
+    assert_difference "user.notifications.named('mention').count" do
+    create(:comment, content: "@#{user.username}")
+    end
+  end
+
+  test "shuold create_comment_notifications for subscribed_users" do
+    user = create(:user)
+    topic = create(:topic)
+    topic.subscribe_by user
+
+    assert_difference "user.notifications.named('comment').count" do
+      create(:comment, commentable: topic)
     end
   end
 end
