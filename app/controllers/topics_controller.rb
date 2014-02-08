@@ -4,6 +4,11 @@ class TopicsController < ApplicationController
   def index
     @topics = Topic.untrashed.page(params[:page])
 
+    if params[:category_slug]
+      @category = Category.find_by! slug_lower: params[:category_slug].downcase
+      @topics = @topics.where(category: @category)
+    end
+
     case params[:sort]
     when 'newest'
       @topics = @topics.order(id: :desc)

@@ -1,10 +1,11 @@
-.header-campo
-  ol.breadcrumb
+ol.breadcrumb
+  li
+    a href=topics_path Forum
+  - if @topic.category
     li
-      a href=topics_path Forum
-    li
-      a href=topics_path All Topics
-    li.active Create
+      a href=category_path(category_slug: @topic.category.slug)
+        = @topic.category.name
+  li.active Create
 
 .row
   .col-md-9

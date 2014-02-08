@@ -26,6 +26,7 @@ Rails.application.routes.draw do
   end
 
   resources :topics, only: [:index, :show, :new, :create, :edit, :update], concerns: [:commentable, :likeable, :subscribable]
+  get 'topics/categoried/:category_slug', to: 'topics#index', as: :category
 
   resources :comments, only: [:edit, :update], concerns: [:likeable] do
     member do

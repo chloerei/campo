@@ -1,25 +1,10 @@
-.header-campo
-  .row
-    .col-md-12
-      .btn-group
-        a.btn.btn-default Forum Name
-        a.btn.btn-default.dropdown-toggle data-toggle="dropdown"
-          span.caret
-        ul.dropdown-menu
-          - 3.times do
-            li
-              a Form
-      .btn-group
-        a.btn.btn-default class=('active' if params[:sort].blank?) href=topics_path Hot
-        a.btn.btn-default class=('active' if params[:sort] == 'newest') href=topics_path(sort: 'newest') Newest
-
 .row
   .col-md-9
     .panel.panel-campo
       .panel-heading.clearfix
         .pull-right
           = paginate @topics, theme: 'campo'
-        h2.panel-title Topics
+        h2.panel-title = @category.try(:name) || 'Topics'
       .panel-body
         ul.list-group.list-group-campo
           - @topics.each do |topic|
@@ -49,4 +34,24 @@
         a.btn.btn-success.btn-block href=new_topic_path Create Topic
     .panel
       .panel-body
-        | Forum Sidebar
+        .btn-group
+          a.btn.btn-default class=('active' if params[:sort].blank?) href=topics_path Hot
+          a.btn.btn-default class=('active' if params[:sort] == 'newest') href=topics_path(sort: 'newest') Newest
+
+    -if @category
+      .panel
+        .panel-body
+          = markdown_format @category.description
+
+    .panel
+      .panel-body
+        ul.nav.nav-pills.nav-stacked
+          li class=('active' unless @category)
+            a href=topics_path
+              span.pull-right = Topic.untrashed.count
+              | All topics
+          - Category.order(topics_count: :desc).each do |category|
+            li class=('active' if @category == category)
+              a href=category_path(category_slug: category.slug)
+                span.pull-right = category.topics_count
+                = category.name

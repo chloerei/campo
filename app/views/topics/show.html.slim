@@ -3,7 +3,8 @@ ol.breadcrumb
     a href=topics_path Topics
   - if @topic.category
     li
-      a = @topic.category.name
+      a href=category_path(category_slug: @topic.category.slug)
+        = @topic.category.name
   li.active
     = @topic.title
 
