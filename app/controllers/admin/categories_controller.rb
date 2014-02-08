@@ -8,6 +8,10 @@ class Admin::CategoriesController < Admin::ApplicationController
   def show
   end
 
+  def new
+    @category = Category.new
+  end
+
   private
 
   def find_category

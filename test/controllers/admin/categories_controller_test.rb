@@ -15,4 +15,9 @@ class Admin::CategoriesControllerTest < ActionController::TestCase
     get :show, id: create(:category)
     assert_response :success, @response.body
   end
+
+  test "should get new page" do
+    get :new
+    assert_response :success, @response.body
+  end
 end
