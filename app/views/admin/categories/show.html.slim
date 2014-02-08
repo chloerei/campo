@@ -1,0 +1,19 @@
+ol.breadcrumb
+  li
+    a href=admin_categories_path Categories
+  li.active
+    = @category.name
+
+.row
+  .col-md-9
+    .panel
+      .panel-body
+        dl
+          dt Name
+          dd = @category.name
+          dt Slug
+          dd = @category.slug
+          dt Description
+          dd = @category.description
+          dt Topics count
+          dd = @category.topics_count

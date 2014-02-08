@@ -28,6 +28,8 @@ html
           ul.nav.navbar-nav
             li class=('active' if controller_name == 'users')
               a href=admin_users_path Users
+            li class=('active' if controller_name == 'categories')
+              a href=admin_categories_path Categories
             li class=('active' if controller_name == 'topics')
               a href=admin_topics_path Topics
             li class=('active' if controller_name == 'comments')
