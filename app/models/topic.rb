@@ -4,6 +4,7 @@ class Topic < ActiveRecord::Base
   include Subscribable
 
   belongs_to :user
+  belongs_to :category, counter_cache: true
   has_many :comments, as: 'commentable'
 
   after_create :owner_subscribe
