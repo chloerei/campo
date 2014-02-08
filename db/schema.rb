@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20140208060708) do
   create_table "categories", force: true do |t|
     t.string   "name"
     t.string   "slug"
+    t.string   "slug_lower"
     t.text     "description"
     t.integer  "topics_count", default: 0
     t.datetime "created_at"
