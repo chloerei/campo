@@ -3,7 +3,7 @@
   .comment-body
     = form_for comment, remote: true do |f|
       .form-group
-        = render 'share/markdown_area', form: f
+        = markdown_area f, :body
       = f.submit 'Save changes', class: 'btn btn-success'
       '
       a.btn.btn-default href=cancel_comment_path(comment) data-remote="true" Cancel

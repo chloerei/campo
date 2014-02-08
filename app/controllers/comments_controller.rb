@@ -22,11 +22,6 @@ class CommentsController < ApplicationController
     @comment.trash
   end
 
-  def preview
-    @body = params[:body]
-    render layout: false
-  end
-
   private
 
   def find_comment

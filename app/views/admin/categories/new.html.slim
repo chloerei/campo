@@ -16,5 +16,5 @@ ol.breadcrumb
             = f.text_field :slug, class: 'form-control'
           .form-group
             = f.label :description
-            = f.text_area :description, class: 'form-control'
+            = markdown_area f, :description
           = f.submit 'Create category', class: 'btn btn-success'

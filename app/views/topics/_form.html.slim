@@ -2,7 +2,7 @@
   .form-group
     = f.text_field :title, class: 'form-control', placeholder: 'Title', tabindex: 1
   .form-group
-    = render 'share/markdown_area', form: f
+    = markdown_area f, :body
   - if topic.new_record?
     = f.submit 'Add this topic', class: 'btn btn-success', tabindex: 3
   - else

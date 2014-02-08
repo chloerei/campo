@@ -55,34 +55,3 @@
     }
   }
 }
-
-.comment-editor {
-  padding: 15px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  @include box-shadow(0 2px 0 #ddd);
-
-  .nav-tabs {
-    margin: 0 -15px 15px;
-    padding: 0 15px;
-  }
-
-  textarea {
-    margin: 0;
-    padding: 0;
-    border: none;
-    resize: vertical;
-    height: 8em;
-    @include box-shadow(none);
-
-    &:focus {
-      border: none;
-      @include box-shadow(none);
-    }
-  }
-
-  .preview {
-    min-height: 8em;
-  }
-}
-

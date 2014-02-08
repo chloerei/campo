@@ -15,7 +15,7 @@
               = time_ago_in_words @topic.created_at
             .author = @topic.user.name
           .comment-body
-            = format_comment @topic.body
+            = markdown_format @topic.body
           .comment-actions.clearfix
             .pull-right
               a.btn id="like-for-topic-#{@topic.id}" href=topic_like_path(@topic) data-remote="true" data-method="post"
@@ -47,7 +47,7 @@
             .comment-body
               = form_for @topic.comments.new, url: topic_comments_path(@topic), remote: true do |f|
                 .form-group
-                  = render 'share/markdown_area', form: f
+                  = markdown_area f, :body
                 = f.submit 'Add this comment', class: 'btn btn-success'
 
 - if login?
