@@ -37,4 +37,11 @@ class Admin::CategoriesControllerTest < ActionController::TestCase
     patch :update, id: category, category: { name: 'change' }
     assert_equal 'change', category.reload.name
   end
+
+  test "should destroy category" do
+    category = create(:category)
+    assert_difference "Category.count", -1 do
+      delete :destroy, id: category
+    end
+  end
 end
