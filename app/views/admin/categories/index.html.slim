@@ -8,6 +8,7 @@
       table.table
         thead
           tr
+            th #
             th Name
             th Slug
             th Description
@@ -15,6 +16,7 @@
         tbody
           - @categories.each do |category|
             tr
+              td = category.id
               td
                 a href=admin_category_path(category)
                   = category.name

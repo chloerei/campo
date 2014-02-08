@@ -7,14 +7,4 @@ ol.breadcrumb
   .col-md-9
     .panel
       .panel-body
-        = form_for @category, url: admin_categories_path do |f|
-          .form-group
-            = f.label :name
-            = f.text_field :name, class: 'form-control'
-          .form-group
-            = f.label :slug
-            = f.text_field :slug, class: 'form-control'
-          .form-group
-            = f.label :description
-            = markdown_area f, :description
-          = f.submit 'Create category', class: 'btn btn-success'
+        = render 'form', category: @category
