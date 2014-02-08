@@ -20,4 +20,10 @@ class Admin::CategoriesControllerTest < ActionController::TestCase
     get :new
     assert_response :success, @response.body
   end
+
+  test "should create category" do
+    assert_difference "Category.count" do
+      post :create, category: attributes_for(:category)
+    end
+  end
 end
