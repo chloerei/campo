@@ -1,0 +1,22 @@
+ol.breadcrumb
+  li
+    a href=admin_categories_path Categories
+  li
+    a href=admin_category_path(@category) = @category.name
+  li.active Edit
+
+.row
+  .col-md-9
+    .panel
+      .panel-body
+        = form_for @category, url: admin_category_path(@category) do |f|
+          .form-group
+            = f.label :name
+            = f.text_field :name, class: 'form-control'
+          .form-group
+            = f.label :slug
+            = f.text_field :slug, class: 'form-control'
+          .form-group
+            = f.label :description
+            = markdown_area f, :description
+          = f.submit 'Save changes', class: 'btn btn-success'

@@ -22,6 +22,17 @@ class Admin::CategoriesController < Admin::ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    if @category.update_attributes category_params
+      redirect_to admin_category_path(@category)
+    else
+      render :edit
+    end
+  end
+
   private
 
   def category_params

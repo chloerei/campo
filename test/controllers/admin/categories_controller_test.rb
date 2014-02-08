@@ -26,4 +26,15 @@ class Admin::CategoriesControllerTest < ActionController::TestCase
       post :create, category: attributes_for(:category)
     end
   end
+
+  test "should edit category" do
+    get :edit, id: create(:category)
+    assert_response :success, @response.body
+  end
+
+  test "should update category" do
+    category = create(:category)
+    patch :update, id: category, category: { name: 'change' }
+    assert_equal 'change', category.reload.name
+  end
 end
