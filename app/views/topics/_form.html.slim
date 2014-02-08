@@ -1,6 +1,11 @@
 = form_for @topic, html: { class: 'form-topic' } do |f|
-  .form-group
-    = f.text_field :title, class: 'form-control', placeholder: 'Title', tabindex: 1
+  .row
+    .col-md-9
+      .form-group
+        = f.text_field :title, class: 'form-control', placeholder: 'Title', tabindex: 1
+    .col-md-3
+      .form-group
+        = f.collection_select :category_id, Category.order(topics_count: :desc), :id, :name, { prompt: 'No category' }, class: 'form-control'
   .form-group
     = markdown_area f, :body
   - if topic.new_record?

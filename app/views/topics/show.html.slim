@@ -1,3 +1,12 @@
+ol.breadcrumb
+  li
+    a href=topics_path Topics
+  - if @topic.category
+    li
+      a = @topic.category.name
+  li.active
+    = @topic.title
+
 .row
   .col-md-9
     .panel.panel-campo
@@ -49,6 +58,7 @@
                 .form-group
                   = markdown_area f, :body
                 = f.submit 'Add this comment', class: 'btn btn-success'
+  .col-md-3
 
 - if login?
   - if @topic.liked_by?(current_user)
