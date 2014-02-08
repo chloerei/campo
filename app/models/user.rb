@@ -4,7 +4,6 @@ class User < ActiveRecord::Base
   has_many :comments, dependent: :delete_all
   has_many :notifications, dependent: :delete_all
   has_many :likes, dependent: :delete_all
-  has_and_belongs_to_many :like_posts, class_name: 'Post', join_table: 'post_likes', counter_cache: true
 
   validates :username, uniqueness: { case_sensitive: false }, presence: true, format: { with: /\A[a-zA-Z0-9-]+\z/ }
   validates :name, presence: true

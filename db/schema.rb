@@ -26,6 +26,9 @@ ActiveRecord::Schema.define(version: 20140208060708) do
     t.datetime "updated_at"
   end
 
+  add_index "categories", ["slug"], name: "index_categories_on_slug", unique: true, using: :btree
+  add_index "categories", ["slug_lower"], name: "index_categories_on_slug_lower", unique: true, using: :btree
+
   create_table "comments", force: true do |t|
     t.integer  "user_id"
     t.integer  "commentable_id"
@@ -64,13 +67,6 @@ ActiveRecord::Schema.define(version: 20140208060708) do
   add_index "notifications", ["subject_id", "subject_type"], name: "index_notifications_on_subject_id_and_subject_type", using: :btree
   add_index "notifications", ["user_id"], name: "index_notifications_on_user_id", using: :btree
 
-  create_table "post_likes", id: false, force: true do |t|
-    t.integer "post_id"
-    t.integer "user_id"
-  end
-
-  add_index "post_likes", ["user_id", "post_id"], name: "index_post_likes_on_user_id_and_post_id", unique: true, using: :btree
-
   create_table "subscriptions", force: true do |t|
     t.integer  "user_id"
     t.integer  "subscribable_id"
@@ -98,6 +94,7 @@ ActiveRecord::Schema.define(version: 20140208060708) do
   end
 
   add_index "topics", ["category_id"], name: "index_topics_on_category_id", using: :btree
+  add_index "topics", ["hot"], name: "index_topics_on_hot", using: :btree
   add_index "topics", ["user_id"], name: "index_topics_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
@@ -111,5 +108,10 @@ ActiveRecord::Schema.define(version: 20140208060708) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["email_lower"], name: "index_users_on_email_lower", unique: true, using: :btree
+  add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
+  add_index "users", ["username_lower"], name: "index_users_on_username_lower", unique: true, using: :btree
 
 end
