@@ -1,4 +1,4 @@
-ol.breadcrumb
+ol.breadcrumb.breadcrumb-campo
   li
     a href=admin_topics_path Topics
   li.active
@@ -8,23 +8,31 @@ ol.breadcrumb
   .col-md-9
     .panel
       .panel-body
-        dl
-          dt ID
-          dd = @topic.id
-          dt Title
-          dd = @topic.title
-          dt Author
-          dd = @topic.user.name
-          dt Body
-          dd = @topic.body
-          dt Trashed
-          dd = @topic.trashed
-          dt Created At
-          dd = @topic.user.name
+        = form_for [:admin, @topic] do |f|
+          .row
+            .col-md-9
+              .form-group
+                = f.text_field :title, class: 'form-control', tabIndex: 1
+            .col-md-3
+              .form-group
+                = f.collection_select :category_id, Category.order(topics_count: :desc), :id, :name, { prompt: 'No category' }, class: 'form-control', tabIndex: 2
+          .form-group
+            = markdown_area f, :body, tabIndex: 3
+          = f.submit 'Save changes', class: 'btn btn-success', tabIndex: 4
+
   .col-md-3
     .panel
       .panel-body
+        dl
+          dt User
+          dd
+            a href=admin_user_path(@topic.user) = @topic.user.name
+          dt Created at
+          dd = @topic.created_at
+          dt Comments
+          dd = @topic.comments_count
+        hr
         - if @topic.trashed?
-          a.btn.btn-default href=restore_admin_topic_path(@topic) data-method="patch" Restore
+          a.btn.btn-default.btn-block href=restore_admin_topic_path(@topic) data-method="patch" Restore
         - else
-          a.btn.btn-danger href=trash_admin_topic_path(@topic) data-method="delete" data-confirm="Are you sure you want to trash this topic?" Trash
+          a.btn.btn-danger.btn-block href=trash_admin_topic_path(@topic) data-method="delete" data-confirm="Are you sure you want to trash this topic?" Trash

@@ -1,11 +1,21 @@
 class Admin::TopicsController < Admin::ApplicationController
-  before_filter :find_topic, except: [:index]
+  before_filter :find_topic, only: [:show, :update, :trash, :restore]
 
   def index
-    @topics = Topic.order(id: :desc).page(params[:page])
+    @topics = Topic.untrashed.order(id: :desc).page(params[:page])
+  end
+
+  def trashed
+    @topics = Topic.trashed.order(id: :desc).page(params[:page])
+    render :index
   end
 
   def show
+  end
+
+  def update
+    @topic.update_attributes params.require(:topic).permit(:title, :category_id, :body)
+    redirect_to admin_topic_url(@topic)
   end
 
   def trash

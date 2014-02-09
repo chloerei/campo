@@ -1,30 +1,36 @@
-.panel.panel-campo
-  .panel-heading.clearfix
-    .pull-right
-      = paginate @topics, theme: 'campo'
-    h2.panel-title Topics
-  .panel-body
-    .table-responsive
-      table.table
-        thead
-          tr
-            th #
-            th Title
-            th Author
-            th Trashed
-            th Created at
-        tbody
+.row
+  .col-md-9
+    .panel.panel-campo
+      .panel-heading.clearfix
+        .pull-right
+          = paginate @topics, theme: 'campo'
+        h2.panel-title Topics
+      .panel-body
+        ul.list-group.list-group-campo
           - @topics.each do |topic|
-            tr
-              td = topic.id
-              td
-                a href=admin_topic_path(topic)
-                  = truncate topic.title
-              td
-                a href=admin_user_path(topic.user)
-                  = topic.user.name
-              td = topic.trashed
-              td = topic.created_at
-  .panel-footer.clearfix
-    .pull-right
-      = paginate @topics, theme: 'campo', placement: 'top'
+            li.list-group-item
+              a.list-group-link.clearfix href=admin_topic_path(topic)
+                span.pull-right.text-muted
+                  = time_ago_in_words topic.created_at
+                .list-group-item-heading
+                  = topic.id
+                  = '. '
+                  b = truncate topic.title
+                | Created by
+                '
+                = topic.user.name
+                '
+                = topic.comments_count
+                '
+                | comments
+      .panel-footer.clearfix
+        .pull-right
+          = paginate @topics, theme: 'campo', placement: 'top'
+  .col-md-3
+    .panel.panel-campo
+      .panel-body
+        ul.nav.nav-pills.nav-stacked
+          li class=('active' if action_name == 'index')
+            a href=admin_topics_path Normal
+          li class=('active' if action_name == 'trashed')
+            a href=trashed_admin_topics_path Trashed

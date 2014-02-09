@@ -17,6 +17,12 @@ class Admin::TopicsControllerTest < ActionController::TestCase
     assert_response :success, @response.body
   end
 
+  test "should update topic" do
+    topic = create(:topic)
+    patch :update, id: topic, topic: { title: 'change' }
+    assert_equal 'change', topic.reload.title
+  end
+
   test "should destroy topic" do
     topic = create(:topic)
     assert_difference "Topic.trashed.count" do
