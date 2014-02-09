@@ -8,20 +8,26 @@ ol.breadcrumb.breadcrumb-campo
   .col-md-9
     .panel
       .panel-body
-        dl
-          dt ID
-          dd = @user.id
-          dt Username
-          dd = @user.username
-          dt Email
-          dd = @user.email
-          dt Name
-          dd = @user.name
-          dt Created at
-          dd = @user.created_at
-          dt Bio
-          dd = @user.bio
+        = form_for [:admin, @user] do |f|
+          .form-group
+            = f.label :name
+            = f.text_field :name, class: 'form-control', tabIndex: 1
+          .form-group
+            = f.label :username
+            = f.text_field :username, class: 'form-control', tabIndex: 2
+
+          .form-group
+            = f.label :email
+            = f.text_field :email, class: 'form-control', tabIndex: 3
+          .form-group
+            = f.label :bio
+            = f.text_area :bio, class: 'form-control', tabIndex: 4
+          = f.submit 'Save changes', class: 'btn btn-success', tabIndex: 5
   .col-md-3
     .panel
       .panel-body
-        a.btn.btn-danger href=admin_user_path(@user) data-method="delete" data-confirm="Are you sure you want to destroy this user and all contents?" Destroy
+        dl
+          dt Created at
+          dd = @user.created_at
+        hr
+        a.btn.btn-danger.btn-block href=admin_user_path(@user) data-method="delete" data-confirm="Are you sure you want to destroy this user and all contents?" Destroy

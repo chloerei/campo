@@ -16,6 +16,12 @@ class Admin::UsersControllerTest < ActionController::TestCase
     assert_response :success, @response.body
   end
 
+  test "shuold update user" do
+    user = create(:user)
+    patch :update, id: user, user: { name: 'change' }
+    assert_equal 'change', user.reload.name
+  end
+
   test "should destroy user" do
     user = create(:user)
     assert_difference "User.count", -1 do
