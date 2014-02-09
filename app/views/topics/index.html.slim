@@ -33,7 +33,7 @@
         .pull-right
           = paginate @topics, theme: 'campo', placement: 'top'
   .col-md-3
-    .panel
+    .panel.panel-campo
       .panel-body
         a.btn.btn-success.btn-block href=new_topic_path Create Topic
 
@@ -42,7 +42,7 @@
         .panel-body
           = markdown_format @category.description
 
-    .panel
+    .panel.panel-campo
       .panel-body
         ul.nav.nav-pills.nav-stacked
           li class=('active' unless @category)

@@ -1,17 +1,28 @@
 .markdown-area {
-  padding: 15px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  @include box-shadow(0 2px 0 #ddd);
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+  @include transition(border-color ease-in-out .15s, box-shadow ease-in-out .15s);
+
+  &.focus {
+    $color: $input-border-focus;
+    $color-rgba: rgba(red($color), green($color), blue($color), .6);
+    border-color: $color;
+    @include box-shadow(inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px $color-rgba);
+
+  }
 
   .nav-tabs {
-    margin: 0 -15px 15px;
-    padding: 0 15px;
+    padding: $padding-base-horizontal $padding-base-horizontal 0;
+
+    li a {
+      padding: $padding-base-vertical $padding-base-horizontal;
+    }
   }
 
   textarea {
     margin: 0;
-    padding: 0;
+    padding: $padding-base-vertical $padding-base-horizontal;
     border: none;
     resize: vertical;
     height: 8em;
@@ -25,5 +36,6 @@
 
   .preview {
     min-height: 8em;
+    padding: $padding-base-vertical $padding-base-horizontal;
   }
 }

@@ -1,14 +1,14 @@
 = form_for category, url: url_for([:admin, category]) do |f|
   .form-group
     = f.label :name
-    = f.text_field :name, class: 'form-control'
+    = f.text_field :name, class: 'form-control', tabIndex: 1
   .form-group
     = f.label :slug
-    = f.text_field :slug, class: 'form-control'
+    = f.text_field :slug, class: 'form-control', tabIndex: 2
   .form-group
     = f.label :description
-    = markdown_area f, :description
+    = markdown_area f, :description, tabIndex: 3
   - if category.new_record?
-    = f.submit 'Create category', class: 'btn btn-success'
+    = f.submit 'Create category', class: 'btn btn-success', tabIndex: 4
   - else
-    = f.submit 'Save changes', class: 'btn btn-success'
+    = f.submit 'Save changes', class: 'btn btn-success', tabIndex: 4

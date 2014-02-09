@@ -58,7 +58,7 @@ ol.breadcrumb.breadcrumb-campo
               = form_for @topic.comments.new, url: topic_comments_path(@topic), remote: true do |f|
                 .form-group
                   = markdown_area f, :body
-                = f.submit 'Add this comment', class: 'btn btn-success'
+                = f.submit 'Add this comment', class: 'btn btn-success', tabIndex: 2
   .col-md-3
 
 - if login?

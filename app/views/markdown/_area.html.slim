@@ -2,6 +2,7 @@
 - resource_name = resource.class.name.downcase
 - write_pane_id = "write_#{resource_name}_#{resource.try(:id) || 'new'}"
 - preview_pane_id = "preview_#{resource_name}_#{resource.try(:id) || 'new'}"
+- tabIndex ||= 1
 
 .markdown-area
   ul.nav.nav-tabs
@@ -11,6 +12,6 @@
       a href="##{preview_pane_id}" data-toggle="tab" data-behaviors="preview" Preview
   .tab-content
     .tab-pane.active id=write_pane_id
-      = form.text_area name, class: 'form-control', placeholder: 'Type here...', data: { behaviors: 'autosize' }
+      = form.text_area name, class: 'form-control', placeholder: 'Type here...', data: { behaviors: 'autosize' }, tabIndex: tabIndex
     .tab-pane id=preview_pane_id
-      .preview
+      article.preview

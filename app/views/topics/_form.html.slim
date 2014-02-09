@@ -5,12 +5,12 @@
         = f.text_field :title, class: 'form-control', placeholder: 'Title', tabindex: 1
     .col-md-3
       .form-group
-        = f.collection_select :category_id, Category.order(topics_count: :desc), :id, :name, { prompt: 'No category' }, class: 'form-control'
+        = f.collection_select :category_id, Category.order(topics_count: :desc), :id, :name, { prompt: 'No category' }, class: 'form-control', tabIndex: 2
   .form-group
-    = markdown_area f, :body
+    = markdown_area f, :body, tabIndex: 3
   - if topic.new_record?
-    = f.submit 'Add this topic', class: 'btn btn-success', tabindex: 3
+    = f.submit 'Add this topic', class: 'btn btn-success', tabIndex: 4
   - else
-    = f.submit 'Save changes', class: 'btn btn-success', tabindex: 3
+    = f.submit 'Save changes', class: 'btn btn-success', tabIndex: 4
     '
-    a.btn.btn-default href=topic_path(@topic) Cancel
+    a.btn.btn-default href=topic_path(@topic) tabIndex="5" Cancel
