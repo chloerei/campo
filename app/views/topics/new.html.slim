@@ -3,7 +3,7 @@ ol.breadcrumb.breadcrumb-campo
     a href=topics_path Forum
   - if @topic.category
     li
-      a href=category_path(category_slug: @topic.category.slug)
+      a href=category_path(category_id: @topic.category.slug)
         = @topic.category.name
   li.active Create
 

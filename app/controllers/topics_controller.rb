@@ -4,8 +4,8 @@ class TopicsController < ApplicationController
   def index
     @topics = Topic.untrashed.page(params[:page])
 
-    if params[:category_slug]
-      @category = Category.find_by! slug_lower: params[:category_slug].downcase
+    if params[:category_id]
+      @category = Category.find_by! slug_lower: params[:category_id].downcase
       @topics = @topics.where(category: @category)
     end
 
@@ -33,7 +33,8 @@ class TopicsController < ApplicationController
   end
 
   def new
-    @topic = Topic.new
+    @category = Category.find_by slug_lower: params[:category_id].downcase if params[:category_id].present?
+    @topic = Topic.new category: @category
   end
 
   def create

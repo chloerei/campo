@@ -42,7 +42,7 @@
   .col-md-3
     .panel.panel-campo
       .panel-body
-        a.btn.btn-success.btn-block href=new_topic_path Create Topic
+        a.btn.btn-success.btn-block href=new_topic_path(category_id: @category.try(:slug)) Create Topic
 
     .panel.panel-campo
       .panel-body
@@ -53,7 +53,7 @@
               | All topics
           - Category.order(topics_count: :desc).each do |category|
             li class=('active' if @category == category)
-              a href=category_path(category_slug: category.slug)
+              a href=category_path(category_id: category.slug)
                 span.pull-right = category.topics_count
                 = category.name
 
