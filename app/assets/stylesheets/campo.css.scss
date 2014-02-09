@@ -23,28 +23,15 @@
   }
 }
 
-.header-campo {
-  margin-bottom: $line-height-computed;
-
-  .breadcrumb {
-    padding: 0;
-    background: transparent;
-
-    a {
-      color: #555;
-
-      &:hover {
-        color: 333;
-      }
-    }
-  }
-}
-
 .panel-campo {
   .panel-heading {
     margin: 0 -1px;
     padding: 10px 16px;
     border-bottom: 1px solid #eee;
+
+    .nav li a {
+      padding: $padding-base-vertical $padding-base-horizontal;
+    }
   }
 
   .panel-title {

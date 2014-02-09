@@ -4,7 +4,11 @@
       .panel-heading.clearfix
         .pull-right
           = paginate @topics, theme: 'campo'
-        h2.panel-title = @category.try(:name) || 'Topics'
+        ul.nav.nav-pills
+          li class=('active' if params[:sort].nil?)
+            a href=url_for(sort: nil) Hot
+          li class=('active' if params[:sort] == 'newest')
+            a href=url_for(sort: 'newest') Newest
       .panel-body
         ul.list-group.list-group-campo
           - @topics.each do |topic|
@@ -32,13 +36,8 @@
     .panel
       .panel-body
         a.btn.btn-success.btn-block href=new_topic_path Create Topic
-    .panel
-      .panel-body
-        .btn-group
-          a.btn.btn-default class=('active' if params[:sort].blank?) href=topics_path Hot
-          a.btn.btn-default class=('active' if params[:sort] == 'newest') href=topics_path(sort: 'newest') Newest
 
-    -if @category
+    -if @category and @category.description.present?
       .panel
         .panel-body
           = markdown_format @category.description

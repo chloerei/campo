@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   has_many :comments, dependent: :delete_all
   has_many :notifications, dependent: :delete_all
   has_many :likes, dependent: :delete_all
+  has_many :like_topics, through: :likes, source: :likeable, source_type: 'Topic'
 
   validates :username, uniqueness: { case_sensitive: false }, presence: true, format: { with: /\A[a-zA-Z0-9-]+\z/ }
   validates :name, presence: true

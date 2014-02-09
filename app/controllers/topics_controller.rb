@@ -12,8 +12,9 @@ class TopicsController < ApplicationController
     case params[:sort]
     when 'newest'
       @topics = @topics.order(id: :desc)
-    else
+    else # hot
       @topics = @topics.order(hot: :desc)
+      params.delete(:sort) # clean for other
     end
   end
 
