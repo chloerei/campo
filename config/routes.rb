@@ -47,7 +47,7 @@ Rails.application.routes.draw do
   namespace :admin do
     root to: 'dashboard#show'
     resources :users, only: [:index, :show, :destroy]
-    resources :categories
+    resources :categories, except: [:edit]
     resources :topics, only: [:index, :show, :update] do
       collection do
         get :trashed

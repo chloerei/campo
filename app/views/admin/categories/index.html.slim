@@ -1,25 +1,21 @@
-.panel.panel-campo
-  .panel-heading.clearfix
-    .pull-right
-      a.btn.btn-default href=new_admin_category_path New category
-    h2.panel-title Categories
-  .panel-body
-    .table-responsive
-      table.table
-        thead
-          tr
-            th #
-            th Name
-            th Slug
-            th Description
-            th Topics count
-        tbody
+.row
+  .col-md-9
+    .panel.panel-campo
+      .panel-heading
+        h2.panel-title Categories
+      .panel-body
+        ul.list-group.list-group-campo
           - @categories.each do |category|
-            tr
-              td = category.id
-              td
-                a href=admin_category_path(category)
-                  = category.name
-              td = category.slug
-              td = truncate category.description
-              td = category.topics_count
+            li.list-group-item
+              a.list-group-link href=admin_category_path(category)
+                .list-group-item-heading
+                  b = category.name
+                  '
+                  span.text-muted = category.slug
+                = category.topics_count
+                '
+                | topics
+  .col-md-3
+    .panel.panel-campo
+      .panel-body
+        a.btn.btn-default.btn-block href=new_admin_category_path New category
