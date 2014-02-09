@@ -1,11 +1,21 @@
 class Admin::CommentsController < Admin::ApplicationController
-  before_filter :find_comment, except: [:index]
+  before_filter :find_comment, except: [:index, :trashed]
 
   def index
-    @comments = Comment.order(id: :desc).page(params[:page])
+    @comments = Comment.untrashed.order(id: :desc).page(params[:page])
+  end
+
+  def trashed
+    @comments = Comment.trashed.order(id: :desc).page(params[:page])
+    render :index
   end
 
   def show
+  end
+
+  def update
+    @comment.update_attributes params.require(:comment).permit(:body)
+    redirect_to admin_comment_path(@comment)
   end
 
   def trash

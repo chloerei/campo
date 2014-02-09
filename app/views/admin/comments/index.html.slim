@@ -1,33 +1,32 @@
-.panel.panel-campo
-  .panel-heading.clearfix
-    .pull-right
-      = paginate @comments, theme: 'campo'
-    h2.panel-title Comments
-  .panel-body
-    .table-responsive
-      table.table
-        thead
-          tr
-            th #
-            th Content
-            th Commentable
-            th Author
-            th Trashed
-            th Created at
-        tbody
+.row
+  .col-md-9
+    .panel.panel-campo
+      .panel-heading.clearfix
+        .pull-right
+          = paginate @comments, theme: 'campo'
+        h2.panel-title Comments
+      .panel-body
+        ul.list-group.list-group-campo
           - @comments.each do |comment|
-            tr
-              td = comment.id
-              td
-                a href=admin_comment_path(comment)
+            li.list-group-item
+              a.list-group-link.clearfix href=admin_comment_path(comment)
+                span.pull-right.text-muted = time_ago_in_words comment.created_at
+                .list-group-item-heading
+                  = comment.id
+                  = '. '
                   = truncate comment.body
-              td
-                = link_to_commentable(comment.commentable)
-              td
-                a href=admin_user_path(comment.user)
+                .text-muted
+                  | Created by
+                  '
                   = comment.user.name
-              td = comment.trashed
-              td = comment.created_at
-  .panel-footer.clearfix
-    .pull-right
-      = paginate @comments, theme: 'campo', placement: 'top'
+      .panel-footer.clearfix
+        .pull-right
+          = paginate @comments, theme: 'campo', placement: 'top'
+  .col-md-3
+    .panel.panel-campo
+      .panel-body
+        ul.nav.nav-pills.nav-stacked
+          li class=('active' if action_name == 'index')
+            a href=admin_comments_path Normal
+          li class=('active' if action_name == 'trashed')
+            a href=trashed_admin_comments_path Trashed

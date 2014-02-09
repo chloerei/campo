@@ -27,11 +27,6 @@ class Admin::CategoriesControllerTest < ActionController::TestCase
     end
   end
 
-  test "should edit category" do
-    get :edit, id: create(:category)
-    assert_response :success, @response.body
-  end
-
   test "should update category" do
     category = create(:category)
     patch :update, id: category, category: { name: 'change' }

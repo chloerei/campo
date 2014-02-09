@@ -48,6 +48,7 @@ Rails.application.routes.draw do
     root to: 'dashboard#show'
     resources :users, only: [:index, :show, :destroy]
     resources :categories, except: [:edit]
+
     resources :topics, only: [:index, :show, :update] do
       collection do
         get :trashed
@@ -58,7 +59,12 @@ Rails.application.routes.draw do
         patch :restore
       end
     end
-    resources :comments, only: [:index, :show] do
+
+    resources :comments, only: [:index, :show, :update] do
+      collection do
+        get :trashed
+      end
+
       member do
         delete :trash
         patch :restore

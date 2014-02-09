@@ -17,6 +17,12 @@ class Admin::CommentsControllerTest < ActionController::TestCase
     assert_response :success, @response.body
   end
 
+  test "should update comment" do
+    comment = create(:comment)
+    patch :update, id: comment, comment: { body: 'change' }
+    assert_equal 'change', comment.reload.body
+  end
+
   test "should destroy comment" do
     comment = create(:comment)
     assert_difference "Comment.trashed.count" do
