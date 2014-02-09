@@ -1,3 +1,10 @@
+- if @category
+  ol.breadcrumb.breadcrumb-campo
+    li
+      a href=topics_path Topics
+    li.active
+      = @category.name
+
 .row
   .col-md-9
     .panel.panel-campo
@@ -37,11 +44,6 @@
       .panel-body
         a.btn.btn-success.btn-block href=new_topic_path Create Topic
 
-    -if @category and @category.description.present?
-      .panel
-        .panel-body
-          = markdown_format @category.description
-
     .panel.panel-campo
       .panel-body
         ul.nav.nav-pills.nav-stacked
@@ -54,3 +56,8 @@
               a href=category_path(category_slug: category.slug)
                 span.pull-right = category.topics_count
                 = category.name
+
+    -if @category and @category.description.present?
+      .panel
+        .panel-body
+          = markdown_format @category.description
