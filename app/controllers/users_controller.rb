@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :require_no_logined
+  before_filter :no_login_required
 
   def new
     store_location params[:return_to] if params[:return_to].present?

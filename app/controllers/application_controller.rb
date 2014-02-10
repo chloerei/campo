@@ -22,7 +22,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def require_no_logined
+  def no_login_required
     if login?
       redirect_to root_url
     end
