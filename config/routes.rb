@@ -25,7 +25,11 @@ Rails.application.routes.draw do
     resource :subscription, only: [:update, :destroy]
   end
 
-  resources :topics, only: [:index, :show, :new, :create, :edit, :update], concerns: [:commentable, :likeable, :subscribable]
+  resources :topics, only: [:index, :show, :new, :create, :edit, :update], concerns: [:commentable, :likeable, :subscribable] do
+    member do
+      delete :trash
+    end
+  end
   get 'topics/categoried/:category_id', to: 'topics#index', as: :category
 
   resources :comments, only: [:edit, :update], concerns: [:likeable] do

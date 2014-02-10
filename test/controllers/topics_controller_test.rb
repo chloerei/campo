@@ -63,4 +63,13 @@ class TopicsControllerTest < ActionController::TestCase
       end
     end
   end
+
+  test "should trash topic" do
+    topic = create(:topic)
+    login_as topic.user
+
+    assert_difference "Topic.trashed.count" do
+      delete :trash, id: topic
+    end
+  end
 end

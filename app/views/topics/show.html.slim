@@ -36,6 +36,8 @@ ol.breadcrumb.breadcrumb-campo
                     = @topic.likes_count
               a.btn data-visible-to="creator" href=edit_topic_path(@topic)
                 i.fa.fa-pencil
+              a.btn data-visible-to="creator" href=trash_topic_path(@topic) data-confirm="Are you sure you want to delete this topic?"
+                i.fa.fa-trash-o
 
     .panel.panel-campo#comments
       .panel-heading.clearfix

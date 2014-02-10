@@ -1,5 +1,6 @@
 class TopicsController < ApplicationController
   before_filter :login_required, :no_locked_required, except: [:index, :show]
+  before_filter :find_topic, only: [:edit, :update, :trash]
 
   def index
     @topics = Topic.no_trashed.page(params[:page])
@@ -48,12 +49,9 @@ class TopicsController < ApplicationController
   end
 
   def edit
-    @topic = current_user.topics.find params[:id]
   end
 
   def update
-    @topic = current_user.topics.find params[:id]
-
     if @topic.update_attributes topic_params
       redirect_to @topic
     else
@@ -61,9 +59,18 @@ class TopicsController < ApplicationController
     end
   end
 
+  def trash
+    @topic.trash
+    redirect_to topics_path
+  end
+
   private
 
   def topic_params
     params.require(:topic).permit(:title, :category_id, :body)
+  end
+
+  def find_topic
+    @topic = current_user.topics.find params[:id]
   end
 end
