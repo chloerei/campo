@@ -21,17 +21,15 @@ class TopicsControllerTest < ActionController::TestCase
   end
 
   test "should get new page" do
-    assert_login_required do
-      get :new
-    end
+    login_as create(:user)
+    get :new
     assert_response :success, @response.body
   end
 
   test "should create topic" do
+    login_as create(:user)
     assert_difference "Topic.count" do
-      assert_login_required do
-        post :create, topic: attributes_for(:topic)
-      end
+      post :create, topic: attributes_for(:topic)
     end
     topic = Topic.last
     assert_equal topic.user, topic.user
@@ -40,17 +38,15 @@ class TopicsControllerTest < ActionController::TestCase
 
   test "should edit topic" do
     topic = create(:topic)
-    assert_login_required topic.user do
-      get :edit, id: topic
-    end
+    login_as topic.user
+    get :edit, id: topic
     assert_response :success, @response.body
   end
 
   test "should update topic" do
     topic = create(:topic)
-    assert_login_required topic.user do
-      patch :update, id: topic, topic: { title: 'change', body: 'change' }
-    end
+    login_as topic.user
+    patch :update, id: topic, topic: { title: 'change', body: 'change' }
     topic.reload
     assert_equal 'change', topic.title
     assert_equal 'change', topic.body

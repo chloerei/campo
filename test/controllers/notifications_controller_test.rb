@@ -6,9 +6,8 @@ class NotificationsControllerTest < ActionController::TestCase
     create(:notification, user: user, subject: create(:comment), name: 'comment')
     create(:notification, user: user, subject: create(:comment), name: 'mention')
 
-    assert_login_required(user) do
-      get :index
-    end
+    login_as user
+    get :index
     assert_response :success, @response.body
   end
 
@@ -36,10 +35,9 @@ class NotificationsControllerTest < ActionController::TestCase
   test "should destroy notification" do
     user = create(:user)
     notification = create(:notification, user: user)
+    login_as user
     assert_difference "user.notifications.count", -1 do
-      assert_login_required(user) do
-        xhr :delete, :destroy, id: notification
-      end
+      xhr :delete, :destroy, id: notification
     end
   end
 
