@@ -25,6 +25,6 @@ class CommentsController < ApplicationController
   private
 
   def find_comment
-    @comment = current_user.comments.find params[:id]
+    @comment = current_user.comments.no_trashed.find params[:id]
   end
 end

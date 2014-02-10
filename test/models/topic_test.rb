@@ -13,14 +13,14 @@ class TopicTest < ActiveSupport::TestCase
     topic = create(:topic)
 
     assert_difference "Topic.trashed.count" do
-      assert_difference "Topic.untrashed.count", -1 do
+      assert_difference "Topic.no_trashed.count", -1 do
         topic.trash
         assert_equal true, topic.trashed?
       end
     end
 
     assert_difference "Topic.trashed.count", -1 do
-      assert_difference "Topic.untrashed.count" do
+      assert_difference "Topic.no_trashed.count" do
         topic.restore
         assert_equal false, topic.trashed?
       end

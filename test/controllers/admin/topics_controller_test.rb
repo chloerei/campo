@@ -32,7 +32,8 @@ class Admin::TopicsControllerTest < ActionController::TestCase
   end
 
   test "should restore topic" do
-    topic = create(:topic, trashed: true)
+    topic = create(:topic)
+    topic.trash
     assert_difference "Topic.trashed.count", -1 do
       patch :restore, id: topic
     end

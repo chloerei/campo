@@ -32,7 +32,8 @@ class Admin::CommentsControllerTest < ActionController::TestCase
   end
 
   test "should restore comment" do
-    comment = create(:comment, trashed: true)
+    comment = create(:comment)
+    comment.trash
     assert_difference "Comment.trashed.count", -1 do
       patch :restore, id: comment
     end

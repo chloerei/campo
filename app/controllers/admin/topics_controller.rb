@@ -2,7 +2,7 @@ class Admin::TopicsController < Admin::ApplicationController
   before_filter :find_topic, only: [:show, :update, :trash, :restore]
 
   def index
-    @topics = Topic.untrashed.order(id: :desc).page(params[:page])
+    @topics = Topic.no_trashed.order(id: :desc).page(params[:page])
   end
 
   def trashed

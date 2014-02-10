@@ -2,7 +2,7 @@ class TopicsController < ApplicationController
   before_filter :login_required, :no_locked_required, except: [:index, :show]
 
   def index
-    @topics = Topic.untrashed.page(params[:page])
+    @topics = Topic.no_trashed.page(params[:page])
 
     if params[:category_id]
       @category = Category.find_by! slug_lower: params[:category_id].downcase
@@ -21,11 +21,11 @@ class TopicsController < ApplicationController
   def show
     @topic = Topic.find params[:id]
 
-    if params[:comment_id] and comment = @topic.comments.find_by(id: params.delete(:comment_id))
+    if params[:comment_id] and comment = @topic.comments.no_trashed.find_by(id: params.delete(:comment_id))
       params[:page] = comment.page
     end
 
-    @comments = @topic.comments.untrashed.order(id: :asc).page(params[:page])
+    @comments = @topic.comments.no_trashed.order(id: :asc).page(params[:page])
 
     respond_to do |format|
       format.html

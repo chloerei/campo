@@ -2,7 +2,7 @@ class Admin::CommentsController < Admin::ApplicationController
   before_filter :find_comment, except: [:index, :trashed]
 
   def index
-    @comments = Comment.untrashed.order(id: :desc).page(params[:page])
+    @comments = Comment.no_trashed.order(id: :desc).page(params[:page])
   end
 
   def trashed
