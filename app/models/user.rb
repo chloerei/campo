@@ -10,6 +10,9 @@ class User < ActiveRecord::Base
   validates :name, presence: true
   validates :email, uniqueness: { case_sensitive: false }, presence: true, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }
 
+  scope :unlocked, -> { where(locked_at: nil) }
+  scope :locked, -> { where.not(locked_at: nil) }
+
   def username=(value)
     write_attribute :username, value
     write_attribute :username_lower, value.downcase
@@ -31,5 +34,17 @@ class User < ActiveRecord::Base
 
   def admin?
     CONFIG['admin_emails'].include? email
+  end
+
+  def lock
+    update_attribute :locked_at, current_time_from_proper_timezone
+  end
+
+  def unlock
+    update_attribute :locked_at, nil
+  end
+
+  def locked?
+    locked_at.present?
   end
 end

@@ -105,6 +105,7 @@ ActiveRecord::Schema.define(version: 20140208060708) do
     t.string   "username_lower"
     t.string   "password_digest"
     t.text     "bio"
+    t.datetime "locked_at"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

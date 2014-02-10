@@ -8,6 +8,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :username_lower
       t.string :password_digest
       t.text   :bio
+      t.datetime :locked_at
 
       t.timestamps
     end

@@ -29,5 +29,13 @@ ol.breadcrumb.breadcrumb-campo
         dl
           dt Created at
           dd = @user.created_at
+          - if @user.locked?
+            dt Locked at
+            dd = @user.locked_at
+        hr
+        - if @user.locked?
+          a.btn.btn-default.btn-block href=lock_admin_user_path(@user) data-method="delete" Unlock
+        - else
+          a.btn.btn-default.btn-block href=lock_admin_user_path(@user) data-method="patch" Lock
         hr
         a.btn.btn-danger.btn-block href=admin_user_path(@user) data-method="delete" data-confirm="Are you sure you want to destroy this user and all contents?" Destroy

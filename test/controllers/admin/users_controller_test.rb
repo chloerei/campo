@@ -29,4 +29,19 @@ class Admin::UsersControllerTest < ActionController::TestCase
     end
     assert_redirected_to admin_users_path
   end
+
+  test "should lock user" do
+    user = create(:user)
+
+    patch :lock, id: user
+    assert user.reload.locked?
+  end
+
+  test "should unlock user" do
+    user = create(:user)
+    user.lock
+
+    delete :unlock, id: user
+    assert !user.reload.locked?
+  end
 end

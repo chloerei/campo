@@ -46,7 +46,18 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root to: 'dashboard#show'
-    resources :users, only: [:index, :show, :update, :destroy]
+
+    resources :users, only: [:index, :show, :update, :destroy] do
+      collection do
+        get :locked
+      end
+
+      member do
+        patch :lock
+        delete :lock, action: 'unlock'
+      end
+    end
+
     resources :categories, except: [:edit]
 
     resources :topics, only: [:index, :show, :update] do

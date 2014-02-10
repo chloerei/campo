@@ -1,8 +1,13 @@
 class Admin::UsersController < Admin::ApplicationController
-  before_filter :find_user, except: [:index]
+  before_filter :find_user, except: [:index, :locked]
 
   def index
-    @users = User.order(id: :desc).page(params[:page])
+    @users = User.unlocked.order(id: :desc).page(params[:page])
+  end
+
+  def locked
+    @users = User.locked.order(id: :desc).page(params[:page])
+    render :index
   end
 
   def show
@@ -16,6 +21,16 @@ class Admin::UsersController < Admin::ApplicationController
   def destroy
     @user.destroy
     redirect_to admin_users_path
+  end
+
+  def lock
+    @user.lock
+    redirect_to admin_user_url(@user)
+  end
+
+  def unlock
+    @user.unlock
+    redirect_to admin_user_url(@user)
   end
 
   private
