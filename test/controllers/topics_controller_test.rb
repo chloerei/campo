@@ -56,4 +56,15 @@ class TopicsControllerTest < ActionController::TestCase
     assert_equal 'change', topic.body
     assert_redirected_to topic
   end
+
+  test "should not create topic for locked user" do
+    user = create(:user)
+    user.lock
+    login_as user
+    assert_no_difference "Topic.count" do
+      assert_raise(ApplicationController::AccessDenied) do
+        post :create, topic: attributes_for(:topic)
+      end
+    end
+  end
 end

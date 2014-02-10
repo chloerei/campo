@@ -1,5 +1,5 @@
 class TopicsController < ApplicationController
-  before_filter :login_required, except: [:index, :show]
+  before_filter :login_required, :no_locked_required, except: [:index, :show]
 
   def index
     @topics = Topic.untrashed.page(params[:page])

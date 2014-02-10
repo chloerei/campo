@@ -1,5 +1,5 @@
 class LikesController < ApplicationController
-  before_filter :login_required, :find_likeable
+  before_filter :login_required, :no_locked_required, :find_likeable
 
   def create
     @likeable.likes.find_or_create_by user: current_user

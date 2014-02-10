@@ -16,6 +16,12 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def no_locked_required
+    if login? and current_user.locked?
+      raise AccessDenied
+    end
+  end
+
   def require_no_logined
     if login?
       redirect_to root_url

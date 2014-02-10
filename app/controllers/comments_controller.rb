@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_filter :login_required
+  before_filter :login_required, :no_locked_required
   before_filter :find_comment, only: [:edit, :cancel, :update, :trash]
 
   def create
