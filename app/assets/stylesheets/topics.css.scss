@@ -1,46 +1,23 @@
 .topic {
-  margin: -15px -16px;
-
-  a {
-    display: block;
-    padding: 15px 16px;
-    color: #333;
-    @include clearfix();
-
-    &:hover {
-      text-decoration: none;
-    }
-  }
-
-  .icon {
-    float: left;
-    color: #999;
-    line-height: inherit;
-  }
-
-  .content {
-    margin-left: 24px;
-  }
-
-  .title {
-    margin: 0;
+  .topic-heading {
+    margin-top: 0;
+    margin-bottom: 5px;
     font-size: 1em;
     font-weight: bold;
     line-height: inherit;
   }
 
-  .date {
-    float: right;
-    font-weight: normal;
+  .topic-icon {
+    float: left;
     color: #999;
   }
 
-  .extra {
-    color: #999;
+  .topic-content {
+    margin-left: 24px;
   }
 }
 
-.form-topic .comment-editor {
+.form-topic .markdown-area {
   textarea {
     height: 12em;
   }

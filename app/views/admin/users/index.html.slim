@@ -6,19 +6,19 @@
           = paginate @users, theme: 'campo'
         h2.panel-title Users
       .panel-body
-        ul.list-group.list-group-campo
+        .list-group.list-group-campo
           - @users.each do |user|
-            li.list-group-item
-              a.list-group-link href=admin_user_path(user)
-                span.pull-right.text-muted
-                  = time_ago_in_words user.created_at
-                .list-group-item-heading
-                  = user.id
-                  = '. '
-                  b = user.name
-                  '
-                  span.text-muted = "@#{user.username}"
-                .text-muted = user.email
+            a.list-group-item href=admin_user_path(user)
+              .list-group-item-heading
+                = user.id
+                = '. '
+                b = user.name
+                '
+                span.text-muted = "@#{user.username}"
+              .text-muted
+                = user.email
+                = ' · '
+                = time_ago_in_words user.created_at
       .panel-footer.clearfix
         .pull-right
           = paginate @users, theme: 'campo', placement: 'top'

@@ -1,10 +1,15 @@
-li.list-group-item id="comment-#{comment.id}" data-creator-id=comment.user_id
-  .comment
-    img.comment-avatar.img-rounded src="http://gravatar.com/avatar/5aec84cd0b5479a0d1d89b6ffa2a9a20.png?r=G&s=48"
-    .comment-heading
-      a.date href=comment_permalink(comment)
+li.list-group-item.comment id="comment-#{comment.id}" data-creator-id=comment.user_id
+  .comment-avatar
+    img.img-rounded src="http://gravatar.com/avatar/5aec84cd0b5479a0d1d89b6ffa2a9a20.png?r=G&s=48"
+  .comment-content
+    .comment-heading.text-muted
+      a.comment-user href="/~#{comment.user.username}"
+        b = comment.user.name
+        '
+        = "@#{comment.user.username}"
+      = ' · '
+      a href=comment_permalink(comment)
         = time_ago_in_words comment.created_at
-      .author = comment.user.name
     .comment-body
       = markdown_format comment.body
     .comment-actions.clearfix

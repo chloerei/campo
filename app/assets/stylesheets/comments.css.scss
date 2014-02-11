@@ -7,34 +7,47 @@
     height: 48px;
   }
 
-  .comment-heading {
-    margin-left: 60px;
-    margin-bottom: $line-height-computed / 2;
-
-    .author {
-      font-weight: bold;
-    }
-
-    .date {
-      float: right;
-      color: #999;
-    }
-  }
-
-  .comment-body {
+  .comment-content {
     margin-left: 60px;
     overflow: hidden;
   }
 
-  .comment-actions {
-    margin-left: 60px;
-    margin-right: -$padding-base-horizontal;
+  .comment-heading {
+    margin-bottom: $line-height-computed / 2;
 
-    .btn {
-      color: #aaa;
+    a {
+      color: $gray-light;
+    }
+
+    .comment-user {
+      b {
+        color: $gray-dark;
+      }
 
       &:hover {
-        color: #555;
+        text-decoration: none;
+
+        b {
+          color: $link-hover-color;
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+
+  .comment-body {
+    overflow: hidden;
+  }
+
+  .comment-actions {
+    margin-right: -$padding-base-horizontal;
+    margin-bottom: -$padding-base-vertical;
+
+    .btn {
+      color: $gray-light;
+
+      &:hover {
+        color: $gray-dark;
       }
 
       &:active {

@@ -17,25 +17,28 @@
           li class=('active' if params[:sort] == 'newest')
             a href=url_for(sort: 'newest') Newest
       .panel-body
-        ul.list-group.list-group-campo
+        .list-group.list-group-campo
           - @topics.each do |topic|
-            li.list-group-item
-              .topic
-                a href=topic_path(topic)
-                  span.icon.glyphicon.glyphicon-envelope
-                  .content
-                    h3.title
-                      .date
-                        = time_ago_in_words topic.created_at
-                      = topic.title
-                    .extra
-                      | by
-                      '
-                      = topic.user.name
-                      '
-                      = topic.comments_count
-                      '
-                      | comments
+            a.list-group-item.topic href=topic_path(topic)
+              .topic-icon
+                i.fa.fa-comments-o
+              .topic-content
+                h3.topic-heading
+                  = topic.title
+                .text-muted
+                  - if topic.category
+                    span.label.label-default
+                      = topic.category.name
+                    = ' · '
+                  | by
+                  '
+                  = topic.user.name
+                  = ' · '
+                  = time_ago_in_words topic.created_at
+                  = ' · '
+                  = topic.comments_count
+                  '
+                  | comments
       .panel-footer.clearfix
         .pull-right
           = paginate @topics, theme: 'campo', placement: 'top'

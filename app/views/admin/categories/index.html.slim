@@ -4,14 +4,14 @@
       .panel-heading
         h2.panel-title Categories
       .panel-body
-        ul.list-group.list-group-campo
+        .list-group.list-group-campo
           - @categories.each do |category|
-            li.list-group-item
-              a.list-group-link href=admin_category_path(category)
-                .list-group-item-heading
-                  b = category.name
-                  '
-                  span.text-muted = category.slug
+            a.list-group-item href=admin_category_path(category)
+              .list-group-item-heading
+                b = category.name
+                '
+                span.text-muted = category.slug
+              .text-muted
                 = category.topics_count
                 '
                 | topics

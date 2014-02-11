@@ -13,7 +13,6 @@
 }
 
 .notification {
-  margin: -15px -16px;
   @include clearfix();
 
   &.read {
@@ -22,29 +21,10 @@
     }
   }
 
-  .notification-icon {
-    float: left;
-    width: 24px;
-    height: 24px;
-    text-align: center;
-
-    i.fa {
-      font-size: 24px;
-      color: #555;
-    }
-  }
-
-  .notification-title,
-  .notification-body {
-    margin-left: 34px;
-  }
-
-  .extra {
-  }
-
   .notification-link {
-    display: block;
+    margin: -15px -16px;
     padding: 15px 16px;
+    display: block;
     color: #333;
     @include clearfix();
 
@@ -54,22 +34,37 @@
     }
   }
 
+  .notification-icon {
+    float: left;
+    text-align: center;
+
+    i.fa {
+      color: #555;
+    }
+  }
+
+  .notification-content {
+    margin-left: 24px;
+  }
+
+  .notification-title {
+    margin-bottom: 5px;
+  }
+
+  .notification-body {
+  }
+
   .notification-actions {
+    margin-top: -$padding-base-vertical;
+    margin-right: -$padding-base-horizontal;
     float: right;
 
     .btn {
-      padding: 15px 16px;
-      color: #aaa;
-      @include box-shadow(none);
+      color: $gray-light;
 
       &:hover {
-        color: $link-color;
-      }
-    }
-
-    .btn-remove {
-      &:hover {
-        color: $brand-danger;
+        color: $gray-dark;
+        box-shadow: none;
       }
     }
   }

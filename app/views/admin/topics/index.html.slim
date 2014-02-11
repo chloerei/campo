@@ -6,20 +6,20 @@
           = paginate @topics, theme: 'campo'
         h2.panel-title Topics
       .panel-body
-        ul.list-group.list-group-campo
+        .list-group.list-group-campo
           - @topics.each do |topic|
-            li.list-group-item
-              a.list-group-link.clearfix href=admin_topic_path(topic)
-                span.pull-right.text-muted
-                  = time_ago_in_words topic.created_at
-                .list-group-item-heading
-                  = topic.id
-                  = '. '
-                  b = truncate topic.title
-                | Created by
+            a.list-group-item href=admin_topic_path(topic)
+              .list-group-item-heading
+                = topic.id
+                = '. '
+                b = truncate topic.title
+              .text-muted
+                | by
                 '
                 = topic.user.name
-                '
+                = ' · '
+                = time_ago_in_words topic.created_at
+                = ' · '
                 = topic.comments_count
                 '
                 | comments

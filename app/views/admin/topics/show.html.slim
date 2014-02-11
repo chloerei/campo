@@ -8,7 +8,7 @@ ol.breadcrumb.breadcrumb-campo
   .col-md-9
     .panel
       .panel-body
-        = form_for [:admin, @topic] do |f|
+        = form_for [:admin, @topic], html: { class: 'form-topic' } do |f|
           .row
             .col-md-9
               .form-group
