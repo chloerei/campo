@@ -1,4 +1,10 @@
 .dropdown-menu-subscription {
+  width: 360px;
+
+  li a {
+    white-space: normal;
+  }
+
   .subscription-status {
     float: left;
     display: none;
