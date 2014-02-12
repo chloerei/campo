@@ -66,6 +66,50 @@
       border-bottom: none;
     }
   }
+
+  .list-group-item-icon {
+    float: left;
+  }
+
+  .list-group-item-icon + .list-group-item-content {
+    margin-left: 24px;
+  }
+
+  .list-group-item-avatar {
+    float: left;
+  }
+
+  .list-group-item-avatar + .list-group-item-content {
+    margin-left: 60px;
+  }
+
+  .list-group-item-content {
+    overflow: hidden;
+  }
+
+  .list-group-item-actions {
+    margin-top: $padding-base-vertical;
+    margin-right: -$padding-base-horizontal;
+    margin-bottom: -$padding-base-vertical;
+    margin-left: -$padding-base-horizontal;
+
+    .btn {
+      color: $gray-light;
+
+      &:hover {
+        color: $gray-dark;
+      }
+
+      &:active {
+        @include box-shadow(none);
+      }
+    }
+
+    .btn-group.open .dropdown-toggle {
+      color: #555;
+      @include box-shadow(none);
+    }
+  }
 }
 
 .pagination-campo {

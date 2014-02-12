@@ -18,32 +18,33 @@ ol.breadcrumb.breadcrumb-campo
 
         h1.panel-title = @topic.title
       .panel-body
-        .comment data-creator-id=@topic.user_id
-          .comment-avatar
-            img.img-rounded alt="avatar" src=@topic.user.gravatar_url
-          .comment-content
-            .comment-heading
-              a.comment-user href="/~#{@topic.user.username}"
-                b = @topic.user.name
-                '
-                = "@#{@topic.user.username}"
-              = ' · '
-              a href=topic_path(@topic)
-                = time_ago_in_words @topic.created_at
-            .comment-body
-              = markdown_format @topic.body
-            .comment-actions.clearfix
-              .pull-right
-                a.btn id="like-for-topic-#{@topic.id}" href=topic_like_path(@topic) data-remote="true" data-method="post"
-                  i.fa.fa-heart
+        .list-group.list-group-campo
+          .list-group-item.comment data-creator-id=@topic.user_id
+            .list-group-item-avatar
+              img.img-rounded alt="avatar" src=@topic.user.gravatar_url
+            .list-group-item-content
+              .list-group-item-heading
+                a.comment-user href="/~#{@topic.user.username}"
+                  b = @topic.user.name
                   '
-                  span.count
-                    - if @topic.likes_count > 0
-                      = @topic.likes_count
-                a.btn data-visible-to="creator" href=edit_topic_path(@topic)
-                  i.fa.fa-pencil
-                a.btn data-visible-to="creator" href=trash_topic_path(@topic) data-confirm="Are you sure you want to delete this topic?"
-                  i.fa.fa-trash-o
+                  = "@#{@topic.user.username}"
+                = ' · '
+                a href=topic_path(@topic)
+                  = time_ago_in_words @topic.created_at
+              .comment-body
+                = markdown_format @topic.body
+              .list-group-item-actions.clearfix
+                .pull-right
+                  a.btn id="like-for-topic-#{@topic.id}" href=topic_like_path(@topic) data-remote="true" data-method="post"
+                    i.fa.fa-heart
+                    '
+                    span.count
+                      - if @topic.likes_count > 0
+                        = @topic.likes_count
+                  a.btn data-visible-to="creator" href=edit_topic_path(@topic)
+                    i.fa.fa-pencil
+                  a.btn data-visible-to="creator" href=trash_topic_path(@topic) data-confirm="Are you sure you want to delete this topic?"
+                    i.fa.fa-trash-o
 
     .panel.panel-campo#comments
       .panel-heading.clearfix
@@ -61,14 +62,15 @@ ol.breadcrumb.breadcrumb-campo
       .panel-body
         - if login?
           - unless current_user.locked?
-            .comment
-              .comment-avatar
-                img.img-rounded alt="avatar" src=current_user.gravatar_url
-              .comment-content
-                = form_for @topic.comments.new, url: topic_comments_path(@topic), remote: true do |f|
-                  .form-group
-                    = markdown_area f, :body
-                  = f.submit 'Add this comment', class: 'btn btn-success', tabIndex: 2
+            .list-group.list-group-campo
+              .list-group-item
+                .list-group-item-avatar
+                  img.img-rounded alt="avatar" src=current_user.gravatar_url
+                .list-group-item-content
+                  = form_for @topic.comments.new, url: topic_comments_path(@topic), remote: true do |f|
+                    .form-group
+                      = markdown_area f, :body
+                    = f.submit 'Add this comment', class: 'btn btn-success', tabIndex: 2
           - else
             | Your account is locked.
         - else

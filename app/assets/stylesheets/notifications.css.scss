@@ -13,8 +13,6 @@
 }
 
 .notification {
-  @include clearfix();
-
   &.read {
     .notification-link {
       color: #999;
@@ -32,26 +30,6 @@
       text-decoration: none;
       background: #f9f9f9;
     }
-  }
-
-  .notification-icon {
-    float: left;
-    text-align: center;
-
-    i.fa {
-      color: #555;
-    }
-  }
-
-  .notification-content {
-    margin-left: 24px;
-  }
-
-  .notification-title {
-    margin-bottom: 5px;
-  }
-
-  .notification-body {
   }
 
   .notification-actions {

@@ -1,19 +1,7 @@
 .comment {
-  @include clearfix();
-
-  .comment-avatar {
-    float: left;
-    width: 48px;
-    height: 48px;
-  }
-
-  .comment-content {
-    margin-left: 60px;
-    overflow: hidden;
-  }
-
-  .comment-heading {
+  .list-group-item-heading {
     margin-bottom: $line-height-computed / 2;
+    color: $gray-light;
 
     a {
       color: $gray-light;
@@ -35,31 +23,7 @@
     }
   }
 
-  .comment-body {
-    overflow: hidden;
-  }
-
-  .comment-actions {
-    margin-right: -$padding-base-horizontal;
-    margin-bottom: -$padding-base-vertical;
-
-    .btn {
-      color: $gray-light;
-
-      &:hover {
-        color: $gray-dark;
-      }
-
-      &:active {
-        @include box-shadow(none);
-      }
-    }
-
-    .btn-group.open .dropdown-toggle {
-      color: #555;
-      @include box-shadow(none);
-    }
-
+  .list-group-item-actions {
     .liked {
       color: $brand-danger;
 
@@ -71,20 +35,4 @@
 }
 
 .commentable {
-  .commentable-heading {
-    margin-top: 0;
-    margin-bottom: 5px;
-    font-size: 1em;
-    line-height: inherit;
-  }
-
-  .commentable-icon {
-    float: left;
-    color: #999;
-  }
-
-  .commentable-content {
-    margin-left: 24px;
-  }
 }
-

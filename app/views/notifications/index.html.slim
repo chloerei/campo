@@ -14,7 +14,6 @@
       .panel-body
         ul.list-group.list-group-campo
           - @notifications.each do |notification|
-            li.list-group-item.notification id="notification_#{notification.id}" class=('reada' if notification.read)
               = render "notifications/notification/#{notification.name}", notification: notification
       .panel-footer.clearfix
         .pull-right

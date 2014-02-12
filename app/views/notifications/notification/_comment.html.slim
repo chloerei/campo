@@ -1,22 +1,23 @@
 - comment = notification.subject
 
-.notification-actions
-  a.btn href=notification_path(notification) data-remote="true" data-method="delete"
-    i.fa.fa-times
+li.list-group-item.notification id="notification_#{notification.id}" class=('read' if notification.read)
+  .notification-actions
+    a.btn href=notification_path(notification) data-remote="true" data-method="delete"
+      i.fa.fa-times
 
-a.notification-link href=comment_permalink(comment)
-  .notification-icon
-    i.fa.fa-comment-o
-  .notification-content
-    .notification-title
-      b = comment.user.name
-      '
-      | commented on
-      '
-      b = comment.commentable.title
-      '
-      = time_ago_in_words comment.created_at
-      '
-      | ago
-    .notification-body
-      = truncate comment.body, length: 140
+  a.notification-link href=comment_permalink(comment)
+    .list-group-item-icon
+      i.fa.fa-comment-o
+    .list-group-item-content
+      .list-group-item-heading
+        b = comment.user.name
+        '
+        | commented on
+        '
+        b = comment.commentable.title
+        '
+        = time_ago_in_words comment.created_at
+        '
+        | ago
+      .text-muted
+        = truncate comment.body, length: 140

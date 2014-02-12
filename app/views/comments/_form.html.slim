@@ -1,6 +1,6 @@
-.comment-avatar
+.list-group-item-avatar
   img.img-rounded alt="avatar" src=comment.user.gravatar_url
-.comment-content
+.list-group-item-content
   = form_for comment, remote: true do |f|
     .form-group
       = markdown_area f, :body
