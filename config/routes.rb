@@ -48,6 +48,12 @@ Rails.application.routes.draw do
 
   root 'topics#index'
 
+  scope path: '~:username', module: 'users', as: 'user' do
+    resources :topics, only: [:index]
+
+    root to: 'topics#index'
+  end
+
   namespace :admin do
     root to: 'dashboard#show'
 

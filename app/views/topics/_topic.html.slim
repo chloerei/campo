@@ -1,0 +1,20 @@
+a.list-group-item.topic href=topic_path(topic)
+  .topic-icon
+    i.fa.fa-comments-o
+  .topic-content
+    h3.topic-heading
+      = topic.title
+    .text-muted
+      - if topic.category
+        span.label.label-default
+          = topic.category.name
+        = ' · '
+      | by
+      '
+      = topic.user.name
+      = ' · '
+      = time_ago_in_words topic.created_at
+      = ' · '
+      = topic.comments_count
+      '
+      | comments
