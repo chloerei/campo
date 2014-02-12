@@ -1,8 +1,6 @@
 .row
   .col-md-9
-    .panel.panel-campo
-      .panel-body
-        | profile
+    = render 'users/profile', user: @user
     #comments.panel.panel-campo
       .panel-heading.clearfix
         .pull-right
@@ -17,4 +15,4 @@
           = paginate @comments, theme: 'campo', params: { anchor: 'comments' }, placement: 'top'
 
   .col-md-3
-    = render 'users/sidebar'
+    = render 'users/sidebar', user: @user

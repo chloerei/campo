@@ -1,0 +1,18 @@
+.user-profile {
+  text-align: center;
+}
+
+.user-profile-avatar {
+  margin-bottom: $line-height-computed / 2;
+
+  img {
+    width: 80px;
+    height: 80px;
+  }
+}
+
+.user-profile-name {
+  font-size: 1.2em;
+  font-weight: bold;
+  margin-bottom: $line-height-computed / 2;
+}

@@ -2,6 +2,6 @@
   .panel-body
     ul.nav.nav-pills.nav-stacked
       li class=('active' if controller_name == 'topics')
-        a href=user_topics_path(username: @user.username) Topics
+        a href=user_topics_path(username: user.username) Topics
       li class=('active' if controller_name == 'comments')
-        a href=user_comments_path(username: @user.username) Comments
+        a href=user_comments_path(username: user.username) Comments
