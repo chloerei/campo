@@ -1,6 +1,6 @@
 li.list-group-item.comment id="comment-#{comment.id}" data-creator-id=comment.user_id
   .comment-avatar
-    img.img-rounded src="http://gravatar.com/avatar/5aec84cd0b5479a0d1d89b6ffa2a9a20.png?r=G&s=48"
+    img.img-rounded alt="avatar" src=comment.user.gravatar_url
   .comment-content
     .comment-heading.text-muted
       a.comment-user href="/~#{comment.user.username}"

@@ -10,6 +10,10 @@ ol.breadcrumb.breadcrumb-campo
       .panel-body
         = form_for [:admin, @user] do |f|
           .form-group
+            label Avatar
+            p
+              img.img-rounded alt="avatar" src=@user.gravatar_url height="48" width="48"
+          .form-group
             = f.label :name
             = f.text_field :name, class: 'form-control', tabIndex: 1
           .form-group

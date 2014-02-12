@@ -106,6 +106,7 @@ GEM
     font-awesome-sass (4.0.2)
       sass-rails (>= 3.1.1)
     formatador (0.2.4)
+    gravtastic (3.2.6)
     guard (2.3.0)
       formatador (>= 0.2.4)
       listen (~> 2.1)
@@ -199,6 +200,7 @@ DEPENDENCIES
   coffee-rails!
   factory_girl_rails (~> 4.3.0)
   font-awesome-sass (~> 4.0.2)
+  gravtastic (~> 3.2.6)
   guard-livereload
   jbuilder (~> 1.2)
   jquery-rails
