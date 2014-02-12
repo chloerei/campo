@@ -69,3 +69,22 @@
     }
   }
 }
+
+.commentable {
+  .commentable-heading {
+    margin-top: 0;
+    margin-bottom: 5px;
+    font-size: 1em;
+    line-height: inherit;
+  }
+
+  .commentable-icon {
+    float: left;
+    color: #999;
+  }
+
+  .commentable-content {
+    margin-left: 24px;
+  }
+}
+

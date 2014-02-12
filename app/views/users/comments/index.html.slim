@@ -1,0 +1,20 @@
+.row
+  .col-md-9
+    .panel.panel-campo
+      .panel-body
+        | profile
+    #comments.panel.panel-campo
+      .panel-heading.clearfix
+        .pull-right
+          = paginate @comments, theme: 'campo', params: { anchor: 'comments' }
+        h3.panel-title Comments
+      .panel-body
+        .list-group.list-group-campo
+          - @comments.each do |comment|
+              = render "users/comments/comment/#{comment.commentable_type.downcase}", comment: comment
+      .panel-footer.clearfix
+        .pull-right
+          = paginate @comments, theme: 'campo', params: { anchor: 'comments' }, placement: 'top'
+
+  .col-md-3
+    = render 'users/sidebar'

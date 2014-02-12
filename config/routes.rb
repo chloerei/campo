@@ -50,6 +50,7 @@ Rails.application.routes.draw do
 
   scope path: '~:username', module: 'users', as: 'user' do
     resources :topics, only: [:index]
+    resources :comments, only: [:index]
 
     root to: 'topics#index'
   end

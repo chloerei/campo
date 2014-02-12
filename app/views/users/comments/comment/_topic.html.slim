@@ -1,0 +1,12 @@
+- topic = comment.commentable
+
+a.list-group-item.commentable href=comment_permalink(comment)
+  .commentable-icon
+    i.fa.fa-comments-o
+  .commentable-content
+    .commentable-heading
+      b = comment.commentable.title
+      span.text-muted
+        = ' · '
+        = time_ago_in_words comment.created_at
+    = truncate comment.body, length: 140

@@ -9,8 +9,6 @@ a.list-group-item.topic href=topic_path(topic)
         span.label.label-default
           = topic.category.name
         = ' · '
-      | by
-      '
       = topic.user.name
       = ' · '
       = time_ago_in_words topic.created_at
