@@ -31,15 +31,18 @@ html
           ul.nav.navbar-nav.navbar-right
             - if login?
               li
+                a href=user_root_path(username: current_user.username)
+                  i.fa.fa-user
+                  '
+                  = current_user.name
+              li
                 a.notifications-bell href=notifications_path
                   i.fa.fa-bell-o
                   - if unread_notifications_count > 0
                     .badge = unread_notifications_count > 99 ? '99+' : unread_notifications_count
               li.dropdown
                 a.dropdown-toggle data-toggle="dropdown" href='#'
-                  = current_user.name
-                  '
-                  b.caret
+                  i.fa.fa-cog
                 ul.dropdown-menu
                   li
                     a.item href=logout_path data-method="delete"
