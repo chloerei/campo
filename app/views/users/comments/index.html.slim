@@ -9,7 +9,7 @@
       .panel-body
         .list-group.list-group-campo
           - @comments.each do |comment|
-              = render "users/comments/comment/#{comment.commentable_type.downcase}", comment: comment
+            = render "users/comments/comment/#{comment.commentable_type.downcase}", comment: comment
       .panel-footer.clearfix
         .pull-right
           = paginate @comments, theme: 'campo', params: { anchor: 'comments' }, placement: 'top'

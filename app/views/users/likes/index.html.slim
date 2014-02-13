@@ -1,0 +1,18 @@
+.row
+  .col-md-9
+    = render 'users/profile', user: @user
+    #likes.panel.panel-campo
+      .panel-heading.clearfix
+        .pull-right
+          = paginate @likes, theme: 'campo', params: { anchor: 'likes' }
+        h3.panel-title Likes
+      .panel-body
+        ul.list-group.list-group-campo data-creator-id=@user.id
+          - @likes.each do |like|
+            = render "users/likes/like/#{like.likeable_type.downcase}", like: like
+      .panel-footer.clearfix
+        .pull-right
+          = paginate @likes, theme: 'campo', params: { anchor: 'likes' }, placement: 'top'
+
+  .col-md-3
+    = render 'users/sidebar', user: @user

@@ -5,3 +5,5 @@
         a href=user_topics_path(username: user.username) Topics
       li class=('active' if controller_name == 'comments')
         a href=user_comments_path(username: user.username) Comments
+      li class=('active' if controller_name == 'likes')
+        a href=user_likes_path(username: user.username) Likes

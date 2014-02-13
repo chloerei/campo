@@ -67,6 +67,34 @@
     }
   }
 
+  .list-group-item-remove {
+    margin-top: -$padding-base-vertical;
+    margin-right: -$padding-base-horizontal;
+    float: right;
+
+    .btn {
+      color: $gray-light;
+
+      &:hover {
+        color: $gray-dark;
+        box-shadow: none;
+      }
+    }
+  }
+
+  .list-group-item-link {
+    margin: -15px -16px;
+    padding: 15px 16px;
+    display: block;
+    color: #333;
+    @include clearfix();
+
+    &:hover {
+      text-decoration: none;
+      background: #f9f9f9;
+    }
+  }
+
   .list-group-item-icon {
     float: left;
   }
