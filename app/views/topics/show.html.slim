@@ -1,22 +1,12 @@
-ol.breadcrumb.breadcrumb-campo
-  li
-    a href=topics_path Topics
-  - if @topic.category
-    li
-      a href=category_path(category_id: @topic.category.slug)
-        = @topic.category.name
-  li.active
-    = @topic.title
-
 .row
   .col-md-9
     .panel.panel-campo
-      .panel-heading.clearfix
-        .pull-right
-          - if login?
-            = render 'subscriptions/subscription', subscribable: @topic
-
-        h1.panel-title = @topic.title
+      .panel-heading
+        ol.breadcrumb.panel-title
+          li
+            a href=topics_path
+              | Topics
+          li.active = @topic.title
       .panel-body
         .list-group.list-group-campo
           .list-group-item.comment data-creator-id=@topic.user_id
@@ -81,7 +71,12 @@ ol.breadcrumb.breadcrumb-campo
           | or
           '
           a href=signup_path Sign up
+
   .col-md-3
+    - if login?
+      .panel.panel-campo
+        .panel-body
+          = render 'subscriptions/subscription', subscribable: @topic
 
 - if login?
   - if @topic.liked_by?(current_user)

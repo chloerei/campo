@@ -19,7 +19,7 @@
       | Stop ignoring
       '
       i.fa.fa-caret-down
-  ul.dropdown-menu.dropdown-menu-right.dropdown-menu-subscription
+  ul.dropdown-menu.dropdown-menu-subscription
     li class=('selected' if subscription.nil?)
       a href=polymorphic_url([subscribable, :subscription]) data-remote="true" data-method="delete"
         .subscription-status

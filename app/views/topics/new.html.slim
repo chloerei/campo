@@ -1,14 +1,16 @@
-ol.breadcrumb.breadcrumb-campo
-  li
-    a href=topics_path Forum
-  - if @topic.category
-    li
-      a href=category_path(category_id: @topic.category.slug)
-        = @topic.category.name
-  li.active Create
-
 .row
   .col-md-9
     .panel.panel-campo
+      .panel-heading
+        ol.breadcrumb.panel-title
+          li
+            - if @category
+              a href=category_path(category_id: @category.slug)
+                = @category.name
+            - else
+              a href=topics_path
+                | Topics
+          li.active New Topic
+
       .panel-body
         = render 'form', topic: @topic

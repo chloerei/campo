@@ -1,12 +1,12 @@
-ol.breadcrumb.breadcrumb-campo
-  li
-    a href=admin_topics_path Topics
-  li.active
-    = @topic.title
-
 .row
   .col-md-9
-    .panel
+    .panel.panel-campo
+      .panel-heading
+        ol.breadcrumb.panel-title
+          li
+            a href=admin_topics_path
+              | Topics
+          li.active = @topic.title
       .panel-body
         = form_for [:admin, @topic], html: { class: 'form-topic' } do |f|
           .row
@@ -21,7 +21,7 @@ ol.breadcrumb.breadcrumb-campo
           = f.submit 'Save changes', class: 'btn btn-success', tabIndex: 4
 
   .col-md-3
-    .panel
+    .panel.panel-campo
       .panel-body
         dl
           dt User
@@ -35,4 +35,4 @@ ol.breadcrumb.breadcrumb-campo
         - if @topic.trashed?
           a.btn.btn-default.btn-block href=restore_admin_topic_path(@topic) data-method="patch" Restore
         - else
-          a.btn.btn-danger.btn-block href=trash_admin_topic_path(@topic) data-method="delete" data-confirm="Are you sure you want to trash this topic?" Trash
+          a.btn.btn-default.btn-block href=trash_admin_topic_path(@topic) data-method="delete" data-confirm="Are you sure you want to trash this topic?" Trash

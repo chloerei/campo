@@ -1,12 +1,12 @@
-ol.breadcrumb.breadcrumb-campo
-  li
-    a href=admin_comments_path Comments
-  li.active
-    = truncate @comment.body
-
 .row
   .col-md-9
-    .panel
+    .panel.panel-campo
+      .panel-heading
+        ol.breadcrumb.panel-title
+          li
+            a href=admin_comments_path
+              | Comments
+          li.active = truncate @comment.body
       .panel-body
         = form_for [:admin, @comment] do |f|
           .form-group
@@ -14,7 +14,7 @@ ol.breadcrumb.breadcrumb-campo
           = f.submit 'Save changes', class: 'btn btn-success', tabIndex: 2
 
   .col-md-3
-    .panel
+    .panel.panel-campo
       .panel-body
         dl
           dt User
@@ -25,8 +25,10 @@ ol.breadcrumb.breadcrumb-campo
           dd = link_to_commentable @comment.commentable
           dt Created At
           dd = @comment.created_at
+          dt Trashed At
+          dd = @comment.trashed_at
         hr
         - if @comment.trashed?
           a.btn.btn-default.btn-block href=restore_admin_comment_path(@comment) data-method="patch" Restore
         - else
-          a.btn.btn-danger.btn-block href=trash_admin_comment_path(@comment) data-method="delete" data-confirm="Are you sure you want to trash this comment?" Trash
+          a.btn.btn-default.btn-block href=trash_admin_comment_path(@comment) data-method="delete" data-confirm="Are you sure you want to trash this comment?" Trash
