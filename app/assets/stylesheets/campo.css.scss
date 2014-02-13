@@ -71,14 +71,11 @@
     margin-top: -$padding-base-vertical;
     margin-right: -$padding-base-horizontal;
     float: right;
+    color: $gray-light;
 
-    .btn {
-      color: $gray-light;
-
-      &:hover {
-        color: $gray-dark;
-        box-shadow: none;
-      }
+    &:hover {
+      color: $gray-dark;
+      box-shadow: none;
     }
   }
 
