@@ -1,9 +1,9 @@
 li.list-group-item.comment id="comment-#{comment.id}" data-creator-id=comment.user_id
-  .list-group-item-avatar
+  a.list-group-item-avatar href=user_link(comment.user)
     img.img-rounded alt="avatar" src=comment.user.gravatar_url
   .list-group-item-content
     .list-group-item-heading
-      a.comment-user href="/~#{comment.user.username}"
+      a.comment-user href=user_link(comment.user)
         b = comment.user.name
         '
         = "@#{comment.user.username}"

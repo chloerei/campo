@@ -20,11 +20,11 @@ ol.breadcrumb.breadcrumb-campo
       .panel-body
         .list-group.list-group-campo
           .list-group-item.comment data-creator-id=@topic.user_id
-            .list-group-item-avatar
+            a.list-group-item-avatar href=user_link(@topic.user)
               img.img-rounded alt="avatar" src=@topic.user.gravatar_url
             .list-group-item-content
               .list-group-item-heading
-                a.comment-user href="/~#{@topic.user.username}"
+                a.comment-user href=user_link(@topic.user)
                   b = @topic.user.name
                   '
                   = "@#{@topic.user.username}"
@@ -64,7 +64,7 @@ ol.breadcrumb.breadcrumb-campo
           - unless current_user.locked?
             .list-group.list-group-campo
               .list-group-item
-                .list-group-item-avatar
+                a.list-group-item-avatar href=user_link(current_user)
                   img.img-rounded alt="avatar" src=current_user.gravatar_url
                 .list-group-item-content
                   = form_for @topic.comments.new, url: topic_comments_path(@topic), remote: true do |f|
