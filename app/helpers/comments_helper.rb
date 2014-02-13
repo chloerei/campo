@@ -1,5 +1,5 @@
 module CommentsHelper
-  def comment_permalink(comment)
+  def comment_link(comment)
     case comment.commentable
     when Topic
       topic_path(comment.commentable, comment_id: comment.id, anchor: "comment-#{comment.id}")

@@ -5,7 +5,7 @@ li.list-group-item.notification id="notification_#{notification.id}" class=('rea
     a.btn href=notification_path(notification) data-remote="true" data-method="delete"
       i.fa.fa-times
 
-  a.notification-link href=comment_permalink(comment)
+  a.notification-link href=comment_link(comment)
     .list-group-item-icon
       i.fa.fa-comment-o
     .list-group-item-content
@@ -14,7 +14,7 @@ li.list-group-item.notification id="notification_#{notification.id}" class=('rea
         '
         | mentioned you on
         '
-        b = comment.commentable.title
+        b = comment_title(comment)
         '
         = time_ago_in_words comment.created_at
         '

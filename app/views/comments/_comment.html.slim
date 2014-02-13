@@ -8,7 +8,7 @@ li.list-group-item.comment id="comment-#{comment.id}" data-creator-id=comment.us
         '
         = "@#{comment.user.username}"
       = ' · '
-      a href=comment_permalink(comment)
+      a href=comment_link(comment)
         = time_ago_in_words comment.created_at
     .comment-body
       = markdown_format comment.body

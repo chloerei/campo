@@ -1,11 +1,9 @@
-- topic = comment.commentable
-
-a.list-group-item.commentable href=comment_permalink(comment)
+a.list-group-item.commentable href=comment_link(comment)
   .list-group-item-icon
-    i.fa.fa-comments-o
+    i.fa.fa-comment-o
   .list-group-item-content
     .list-group-item-heading
-      b = comment.commentable.title
+      b = comment_title(comment)
       span.text-muted
         = ' · '
         = time_ago_in_words comment.created_at

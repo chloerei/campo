@@ -4,7 +4,7 @@ li.list-group-item.like id="like-#{like.id}"
   .list-group-item-remove data-visible-to="creator"
     a.btn href=user_like_path(username: like.user.username, id: like) data-remote="true" data-method="delete"
       i.fa.fa-times
-  a.list-group-item-link href=comment_permalink(comment)
+  a.list-group-item-link href=comment_link(comment)
     .list-group-item-icon
       i.fa.fa-comment-o
     .list-group-item-content
