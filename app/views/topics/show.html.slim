@@ -2,6 +2,9 @@
   .col-md-9
     .panel.panel-campo
       .panel-heading
+        - if login?
+          .pull-right
+            = render 'subscriptions/subscription', subscribable: @topic
         ol.breadcrumb.panel-title
           li
             - if @topic.category
@@ -75,12 +78,6 @@
           | or
           '
           a href=signup_path Sign up
-
-  .col-md-3
-    - if login?
-      .panel.panel-campo
-        .panel-body
-          = render 'subscriptions/subscription', subscribable: @topic
 
 - if login?
   - if @topic.liked_by?(current_user)
