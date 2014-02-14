@@ -17,21 +17,17 @@
 
   .navbar-nav > li {
     > a {
-      color: #555;
-      padding-bottom: $navbar-padding-vertical - 4px;
-      border-bottom: 4px solid transparent;
-      @include transition(border-color 0.3s);
+      color: $gray-light;
 
       &:hover {
-        color: #333;
+        color: $link-color;
         background-color: transparent;
-        border-color: $link-color;
       }
     }
 
     &.active {
       > a {
-        border-color: $link-color;
+        color: $link-color;
       }
     }
   }
@@ -41,7 +37,7 @@
   }
 
   .navbar-brand {
-    color: $gray;
+    color: $gray-dark;
     font-weight: 500;
   }
 
@@ -76,10 +72,6 @@
 
   @media (max-width: $grid-float-breakpoint) {
     .navbar-nav {
-      li.active a {
-        border-color: transparent;
-      }
-
       .open .dropdown-menu {
         position: absolute;
         border: 1px solid $dropdown-fallback-border; // IE8 fallback
