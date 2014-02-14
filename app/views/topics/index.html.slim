@@ -4,11 +4,18 @@
       .panel-heading.clearfix
         .pull-right
           = paginate @topics, theme: 'campo'
-        ul.nav.nav-pills
-          li class=('active' if params[:sort].nil?)
-            a href=url_for(sort: nil) Hot
-          li class=('active' if params[:sort] == 'newest')
-            a href=url_for(sort: 'newest') Newest
+        - if @category
+          ol.breadcrumb.panel-title
+            li
+              a href=topics_path Topics
+            li.active = @category.name
+        - else
+          h3.panel-title Topics
+        ul.breadcrumb
+          li class=('active' if params[:tab] == 'hot')
+            a href=url_for(tab: 'hot') Hot
+          li class=('active' if params[:tab] == 'newest')
+            a href=url_for(tab: 'newest') Newest
       .panel-body
         .list-group.list-group-campo
           = render @topics
@@ -29,7 +36,7 @@
               | All topics
           - Category.order(topics_count: :desc).each do |category|
             li class=('active' if @category == category)
-              a href=category_path(category_id: category.slug)
+              a href=categoried_topics_path(category_id: category.slug)
                 span.pull-right = category.topics_count
                 = category.name
 

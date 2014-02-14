@@ -1,7 +1,7 @@
 - placement ||= 'bottom'
 = paginator.render do
   nav.pagination-campo
-    a.btn data-behaviors="pagination-popover" data-placement=placement
+    a.btn data-behaviors="pagination-popover" data-placement=placement data-toggle="button"
       | Page
       '
       = current_page

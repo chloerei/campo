@@ -26,11 +26,14 @@ Rails.application.routes.draw do
   end
 
   resources :topics, only: [:index, :show, :new, :create, :edit, :update], concerns: [:commentable, :likeable, :subscribable] do
+    collection do
+      get 'categoried/:category_id', to: 'topics#index', as: :categoried
+    end
+
     member do
       delete :trash
     end
   end
-  get 'topics/categoried/:category_id', to: 'topics#index', as: :category
 
   resources :comments, only: [:edit, :update], concerns: [:likeable] do
     member do
