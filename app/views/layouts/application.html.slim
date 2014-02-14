@@ -24,36 +24,42 @@ html
             span.icon-bar
           a.navbar-brand href="/"
             | Campo
+        ul.nav.navbar-nav.navbar-right
+          - if login?
+            li
+              a.notifications-bell href=notifications_path
+                i.fa.fa-bell-o
+                - if unread_notifications_count > 0
+                  .badge = unread_notifications_count > 99 ? '99+' : unread_notifications_count
+            li.dropdown
+              a.dropdown-toggle data-toggle="dropdown" href='#'
+                i.fa.fa-cog
+              ul.dropdown-menu.dropdown-menu-right
+                li
+                  a.item.item-user href=user_root_path(username: current_user.username)
+                    img.img-rounded alt="avatar" src=current_user.gravatar_url(size: 32)
+                    .item-user-content
+                      b = current_user.name
+                li.divider
+                li
+                  a href=user_likes_path(username: current_user.username) Likes
+                li
+                  a Settings
+                li.divider
+                li
+                  a.item href=logout_path data-method="delete"
+                    | Sign out
+          - else
+            li
+              a.item href=signup_path
+                | Sign up
+            li
+              a.item href=login_path
+                | Sign in
         #navbar.collapse.navbar-collapse
           ul.nav.navbar-nav
             li
               a href=topics_path Topics
-          ul.nav.navbar-nav.navbar-right
-            - if login?
-              li
-                a href=user_root_path(username: current_user.username)
-                  i.fa.fa-user
-                  '
-                  = current_user.name
-              li
-                a.notifications-bell href=notifications_path
-                  i.fa.fa-bell-o
-                  - if unread_notifications_count > 0
-                    .badge = unread_notifications_count > 99 ? '99+' : unread_notifications_count
-              li.dropdown
-                a.dropdown-toggle data-toggle="dropdown" href='#'
-                  i.fa.fa-cog
-                ul.dropdown-menu
-                  li
-                    a.item href=logout_path data-method="delete"
-                      | Sign out
-            - else
-              li
-                a.item href=signup_path
-                  | Sign up
-              li
-                a.item href=login_path
-                  | Sign in
 
     .container
       = yield
