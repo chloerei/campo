@@ -26,7 +26,7 @@ html
             | Campo
         ul.nav.navbar-nav.navbar-right
           - if login?
-            li
+            li class=('active' if controller_name == 'notifications')
               a.notifications-bell href=notifications_path
                 i.fa.fa-bell-o
                 - if unread_notifications_count > 0
@@ -58,8 +58,9 @@ html
                 | Sign in
         #navbar.collapse.navbar-collapse
           ul.nav.navbar-nav
-            li
-              a href=topics_path Topics
+            li class=('active' if controller_name == 'topics')
+              a href=topics_path
+                | Topics
 
     .container
       = yield
