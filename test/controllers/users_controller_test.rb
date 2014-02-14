@@ -38,23 +38,23 @@ class UsersControllerTest < ActionController::TestCase
     user = create(:user)
 
     # exist
-    get :check_email, email: user.email, format: 'json'
-    assert_equal false, JSON.parse(@response.body)['uniqueness']
+    get :check_email, user: { email: user.email }, format: 'json'
+    assert_equal 'false', @response.body
 
     # noexist
-    get :check_email, email: build(:user).email, format: 'json'
-    assert_equal true, JSON.parse(@response.body)['uniqueness']
+    get :check_email, user: { email: build(:user).email }, format: 'json'
+    assert_equal 'true', @response.body
   end
 
   test "should check username" do
     user = create(:user)
 
     # exist
-    get :check_username, username: user.username, format: 'json'
-    assert_equal false, JSON.parse(@response.body)['uniqueness']
+    get :check_username, user: { username: user.username }, format: 'json'
+    assert_equal 'false', @response.body
 
     # noexist
-    get :check_username, username: build(:user).username, format: 'json'
-    assert_equal true, JSON.parse(@response.body)['uniqueness']
+    get :check_username, user: { username: build(:user).username }, format: 'json'
+    assert_equal 'true', @response.body
   end
 end

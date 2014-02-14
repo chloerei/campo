@@ -19,9 +19,7 @@ class UsersController < ApplicationController
   def check_email
     respond_to do |format|
       format.json do
-        render json: {
-          uniqueness: !User.exists?(email: params[:email])
-        }
+        render json: !User.exists?(email: params[:user][:email])
       end
     end
   end
@@ -29,9 +27,7 @@ class UsersController < ApplicationController
   def check_username
     respond_to do |format|
       format.json do
-        render json: {
-          uniqueness: !User.exists?(username: params[:username])
-        }
+        render json: !User.exists?(username: params[:user][:username])
       end
     end
   end

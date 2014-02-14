@@ -2,19 +2,39 @@
   .col-md-6.col-md-offset-3
     .panel.panel-campo
       .panel-heading
-        | Sign up
+        h3.panel-title
+          | Sign up
       .panel-body
-        = form_for @user do |f|
+        = form_for @user, html: { id: 'new-user-form' } do |f|
           .form-group
-            = f.label :name
+            = f.label :name, class: 'control-label'
             = f.text_field :name, placeholder: 'Name', tabindex: 1, class: 'form-control'
           .form-group
-            = f.label :email
+            = f.label :email, class: 'control-label'
             = f.text_field :email, placeholder: 'Email', tabindex: 2, class: 'form-control'
           .form-group
-            = f.label :username
+            = f.label :username, class: 'control-label'
             = f.text_field :username, placeholder: 'Username', tabindex: 3, class: 'form-control'
           .form-group
-            = f.label :password
+            = f.label :password, class: 'control-label'
             = f.password_field :password, placeholder: 'Password', tabindex: 4, class: 'form-control'
           = f.submit 'Create Account', class: 'btn btn-success', tabindex: 5
+
+      coffee:
+        $('#new-user-form').validate
+          rules:
+            'user[name]':
+              required: true
+            'user[email]':
+              required: true
+              remote: '/users/check_email'
+            'user[username]':
+              required: true
+              remote: '/users/check_username'
+            'user[password]':
+              required: true
+          messages:
+            'user[email]':
+              remote: 'Already taken'
+            'user[username]':
+              remote: 'Already taken'
