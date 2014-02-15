@@ -9,9 +9,9 @@ class User < ActiveRecord::Base
   has_many :likes, dependent: :delete_all
   has_many :like_topics, through: :likes, source: :likeable, source_type: 'Topic'
 
-  validates :username, uniqueness: { case_sensitive: false }, presence: true, format: { with: /\A[a-zA-Z0-9-]+\z/ }
+  validates :username, uniqueness: { case_sensitive: false }, presence: true, format: { with: /\A[a-z0-9-]+\z/i }
   validates :name, presence: true
-  validates :email, uniqueness: { case_sensitive: false }, presence: true, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }
+  validates :email, uniqueness: { case_sensitive: false }, presence: true, format: { with: /\A([^@\s]+)@((?:[a-z0-9-]+\.)+[a-z]{2,})\z/i }
 
   scope :unlocked, -> { where(locked_at: nil) }
   scope :locked, -> { where.not(locked_at: nil) }

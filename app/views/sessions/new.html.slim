@@ -2,13 +2,17 @@
   .col-md-6.col-md-offset-3
     .panel.panel-campo
       .panel-heading
-        | Sign in
+        h3.panel-title
+          | Sign in
       .panel-body
-        = form_tag login_path, class: 'ui form'
+        - if defined?(@user)
+          .alert.alert-danger
+            | Incorrect username or password
+        = form_tag login_path
           .form-group
             = label_tag :login
-            = text_field_tag :login, params[:login], placeholder: 'Username or Email', tabindex: 1, class: 'form-control'
+            = text_field_tag :login, params[:login], placeholder: 'Your username or email', tabindex: 1, class: 'form-control'
           .form-group
             = label_tag :password
-            = password_field_tag :password, nil, placeholder: 'Password', tabindex: 4, class: 'form-control'
+            = password_field_tag :password, nil, placeholder: 'Your password', tabindex: 4, class: 'form-control'
           = submit_tag 'Sign in', class: 'btn btn-success', tabindex: 5

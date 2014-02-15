@@ -8,33 +8,46 @@
         = form_for @user, html: { id: 'new-user-form' } do |f|
           .form-group
             = f.label :name, class: 'control-label'
-            = f.text_field :name, placeholder: 'Name', tabindex: 1, class: 'form-control'
+            = f.text_field :name, placeholder: 'Your full name', tabindex: 1, class: 'form-control'
           .form-group
             = f.label :email, class: 'control-label'
-            = f.text_field :email, placeholder: 'Email', tabindex: 2, class: 'form-control'
+            = f.text_field :email, placeholder: 'Your email', tabindex: 2, class: 'form-control'
           .form-group
             = f.label :username, class: 'control-label'
-            = f.text_field :username, placeholder: 'Username', tabindex: 3, class: 'form-control'
+            = f.text_field :username, placeholder: 'Pick a username', tabindex: 3, class: 'form-control'
           .form-group
             = f.label :password, class: 'control-label'
-            = f.password_field :password, placeholder: 'Password', tabindex: 4, class: 'form-control'
+            = f.password_field :password, placeholder: 'Create a password', tabindex: 4, class: 'form-control'
           = f.submit 'Create Account', class: 'btn btn-success', tabindex: 5
 
-      coffee:
-        $('#new-user-form').validate
-          rules:
-            'user[name]':
-              required: true
-            'user[email]':
-              required: true
+      javascript:
+        $('#new-user-form').validate({
+          rules: {
+            'user[name]': {
+              required: true,
+            },
+            'user[email]': {
+              required: true,
+              format: /^([^@\s]+)@((?:[a-z0-9-]+\.)+[a-z]{2,})$/i,
               remote: '/users/check_email'
-            'user[username]':
+            },
+            'user[username]': {
+              required: true,
+              remote: '/users/check_username',
+              format: /^[a-z0-9-]+$/i
+            },
+            'user[password]': {
               required: true
-              remote: '/users/check_username'
-            'user[password]':
-              required: true
-          messages:
-            'user[email]':
-              remote: 'Already taken'
-            'user[username]':
-              remote: 'Already taken'
+            }
+          },
+          messages: {
+            'user[email]': {
+              remote: 'This Email already exists',
+              format: 'Please enter a valid email address.'
+            },
+            'user[username]': {
+              remote: 'This Username already exists',
+              format: 'Username may only contain alphanumeric characters or dashes'
+            }
+          }
+        });
