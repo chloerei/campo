@@ -43,24 +43,14 @@ class TopicsController < ApplicationController
   end
 
   def create
-    @topic = current_user.topics.new topic_params
-
-    if @topic.save
-      redirect_to @topic
-    else
-      render :new
-    end
+    @topic = current_user.topics.create topic_params
   end
 
   def edit
   end
 
   def update
-    if @topic.update_attributes topic_params
-      redirect_to @topic
-    else
-      render :edit
-    end
+    @topic.update_attributes topic_params
   end
 
   def trash

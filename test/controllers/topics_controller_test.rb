@@ -29,11 +29,10 @@ class TopicsControllerTest < ActionController::TestCase
   test "should create topic" do
     login_as create(:user)
     assert_difference "Topic.count" do
-      post :create, topic: attributes_for(:topic)
+      xhr :post, :create, topic: attributes_for(:topic)
     end
     topic = Topic.last
     assert_equal topic.user, topic.user
-    assert_redirected_to topic
   end
 
   test "should edit topic" do
@@ -46,11 +45,10 @@ class TopicsControllerTest < ActionController::TestCase
   test "should update topic" do
     topic = create(:topic)
     login_as topic.user
-    patch :update, id: topic, topic: { title: 'change', body: 'change' }
+    xhr :patch, :update, id: topic, topic: { title: 'change', body: 'change' }
     topic.reload
     assert_equal 'change', topic.title
     assert_equal 'change', topic.body
-    assert_redirected_to topic
   end
 
   test "should not create topic for locked user" do

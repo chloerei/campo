@@ -8,6 +8,7 @@ class Comment < ActiveRecord::Base
 
   validates :commentable_type, inclusion: { in: %w(Topic) }
   validates :commentable, :user, presence: true
+  validates :body, presence: true
 
   after_create :create_mention_notification, :create_comment_notification
 

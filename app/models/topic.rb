@@ -7,6 +7,8 @@ class Topic < ActiveRecord::Base
   belongs_to :category, counter_cache: true
   has_many :comments, as: 'commentable'
 
+  validates :title, :body, presence: true
+
   after_create :owner_subscribe
 
   def calculate_hot

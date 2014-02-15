@@ -1,0 +1,3 @@
+<% if @topic.errors.empty? %>
+  Turbolinks.visit('<%= topic_path(@topic) %>');
+<% end %>
