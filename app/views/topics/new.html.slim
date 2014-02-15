@@ -5,7 +5,7 @@
         ol.breadcrumb.panel-title
           li
             - if @category
-              a href=category_path(category_id: @category.slug)
+              a href=categoried_topics_path(category_id: @category.slug)
                 = @category.name
             - else
               a href=topics_path
