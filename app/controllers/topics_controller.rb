@@ -15,7 +15,7 @@ class TopicsController < ApplicationController
       params[:tab] = 'hot'
     end
 
-    case params[:sort]
+    case params[:tab]
     when 'hot'
       @topics = @topics.order(hot: :desc)
     when 'newest'
