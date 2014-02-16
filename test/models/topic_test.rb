@@ -6,6 +6,18 @@ class TopicTest < ActiveSupport::TestCase
     assert topic.calculate_hot > 0
   end
 
+  test "should update counter cache" do
+    category = create(:category)
+    topic = create(:topic, category: category)
+    assert_equal 1, category.reload.topics_count
+    topic.trash
+    assert_equal 0, category.reload.topics_count
+    topic.restore
+    assert_equal 1, category.reload.topics_count
+    topic.destroy
+    assert_equal 0, category.reload.topics_count
+  end
+
   test "should update hot after comment change" do
     topic = create(:topic, comments_count: 1)
     hot = topic.hot
