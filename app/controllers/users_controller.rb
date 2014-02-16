@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :no_login_required
+  before_filter :no_login_required, only: [:new, :create]
 
   def new
     store_location params[:return_to] if params[:return_to].present?
@@ -19,7 +19,7 @@ class UsersController < ApplicationController
   def check_email
     respond_to do |format|
       format.json do
-        render json: !User.exists?(email: params[:user][:email])
+        render json: !User.where(email_lower: params[:user][:email].downcase).where.not(id: params[:id]).exists?
       end
     end
   end
@@ -27,7 +27,7 @@ class UsersController < ApplicationController
   def check_username
     respond_to do |format|
       format.json do
-        render json: !User.exists?(username: params[:user][:username])
+        render json: !User.where(username_lower: params[:user][:username].downcase).where.not(id: params[:id]).exists?
       end
     end
   end

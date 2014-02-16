@@ -15,22 +15,22 @@ class Admin::UsersController < Admin::ApplicationController
 
   def update
     @user.update_attributes params.require(:user).permit(:name, :username, :email, :bio)
-    redirect_to admin_user_url(@user)
+    redirect_via_turbolinks_to admin_user_url(@user)
   end
 
   def destroy
     @user.destroy
-    redirect_to admin_users_path
+    redirect_via_turbolinks_to admin_users_path
   end
 
   def lock
     @user.lock
-    redirect_to admin_user_url(@user)
+    redirect_via_turbolinks_to admin_user_url(@user)
   end
 
   def unlock
     @user.unlock
-    redirect_to admin_user_url(@user)
+    redirect_via_turbolinks_to admin_user_url(@user)
   end
 
   private

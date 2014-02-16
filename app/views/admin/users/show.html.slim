@@ -8,7 +8,7 @@
               | Users
           li.active = @user.name
       .panel-body
-        = form_for [:admin, @user] do |f|
+        = form_for [:admin, @user], remote: true, html: { class: 'user-form' } do |f|
           .form-group
             label Avatar
             p
@@ -38,8 +38,41 @@
             dd = @user.locked_at
         hr
         - if @user.locked?
-          a.btn.btn-default.btn-block href=lock_admin_user_path(@user) data-method="delete" Unlock
+          a.btn.btn-default.btn-block href=lock_admin_user_path(@user) data-remote="true" data-method="delete" Unlock
         - else
-          a.btn.btn-default.btn-block href=lock_admin_user_path(@user) data-method="patch" Lock
+          a.btn.btn-default.btn-block href=lock_admin_user_path(@user) data-remote="true" data-method="patch" Lock
         hr
-        a.btn.btn-danger.btn-block href=admin_user_path(@user) data-method="delete" data-confirm="Are you sure you want to destroy this user and all contents?" Destroy
+        a.btn.btn-danger.btn-block href=admin_user_path(@user) data-remote="true" data-method="delete" data-confirm="Are you sure you want to destroy this user and all contents?" Destroy
+
+
+javascript:
+  $('form.user-form').validate({
+    rules: {
+      'user[name]': {
+        required: true,
+      },
+      'user[email]': {
+        required: true,
+        format: /^([^@\s]+)@((?:[a-z0-9-]+\.)+[a-z]{2,})$/i,
+        remote: '/users/check_email?id=#{@user.id}'
+      },
+      'user[username]': {
+        required: true,
+        remote: '/users/check_username?id=#{@user.id}',
+        format: /^[a-z0-9-]+$/i
+      },
+      'user[password]': {
+        required: true
+      }
+    },
+    messages: {
+      'user[email]': {
+        remote: 'This Email already exists',
+        format: 'Please enter a valid email address.'
+      },
+      'user[username]': {
+        remote: 'This Username already exists',
+        format: 'Username may only contain alphanumeric characters or dashes'
+      }
+    }
+  });
