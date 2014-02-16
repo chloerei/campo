@@ -10,7 +10,31 @@ class Comment < ActiveRecord::Base
   validates :commentable, :user, presence: true
   validates :body, presence: true
 
-  after_create :create_mention_notification, :create_comment_notification
+  after_create :increment_counter_cache, :create_mention_notification, :create_comment_notification
+  after_destroy :decrement_counter_cache, unless: :trashed?
+
+  set_callback :trash, :after, :decrement_counter_cache
+  set_callback :restore, :after, :increment_counter_cache
+
+  def increment_counter_cache
+    if commentable.has_attribute? :comments_count
+      commentable.class.update_counters commentable.id, comments_count: 1
+    end
+
+    if commentable.respond_to? :after_comments_count_change
+      commentable.after_comments_count_change
+    end
+  end
+
+  def decrement_counter_cache
+    if commentable.has_attribute? :comments_count
+      commentable.class.update_counters commentable.id, comments_count: -1
+    end
+
+    if commentable.respond_to? :after_comments_count_change
+      commentable.after_comments_count_change
+    end
+  end
 
   def page(per = Comment.default_per_page)
     @page ||= ((commentable.comments.where("id < ?", id).count) / per + 1)

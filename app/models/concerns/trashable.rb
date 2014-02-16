@@ -4,14 +4,20 @@ module Trashable
   included do
     scope :trashed, -> { where.not(trashed_at: nil) }
     scope :no_trashed, -> { where(trashed_at: nil) }
+
+    define_callbacks :trash, :restore
   end
 
   def trash
-    update_attribute :trashed_at, current_time_from_proper_timezone
+    run_callbacks(:trash) do
+      update_attribute :trashed_at, current_time_from_proper_timezone
+    end
   end
 
   def restore
-    update_attribute :trashed_at, nil
+    run_callbacks(:restore) do
+      update_attribute :trashed_at, nil
+    end
   end
 
   def trashed?

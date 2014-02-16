@@ -1,12 +1,18 @@
 require 'test_helper'
 
 class TopicTest < ActiveSupport::TestCase
-  test "should calculate hot" do
+  test "should update hot after create" do
     topic = create(:topic)
     assert topic.calculate_hot > 0
-    old_hot = topic.hot
-    topic.comments_count += 1
-    assert topic.calculate_hot > old_hot
+  end
+
+  test "should update hot after comment change" do
+    topic = create(:topic, comments_count: 1)
+    hot = topic.hot
+    comment = create(:comment, commentable: topic)
+    assert topic.reload.hot > hot
+    comment.destroy
+    assert_equal hot, topic.hot
   end
 
   test "should trash" do

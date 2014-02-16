@@ -1,6 +1,26 @@
 require 'test_helper'
 
 class CommentTest < ActiveSupport::TestCase
+  test "should increment commentable counter cache" do
+    topic = create(:topic)
+    create :comment, commentable: topic
+    assert_equal 1, topic.reload.comments_count
+  end
+
+  test "should decrement commentable counter cache" do
+    topic = create(:topic)
+    comment = create :comment, commentable: topic
+    comment.trash
+    assert_equal 0, topic.reload.comments_count
+
+    comment.restore
+    assert_equal 1, topic.reload.comments_count
+
+    comment.trash
+    comment.destroy
+    assert_equal 0, topic.reload.comments_count
+  end
+
   test "should count page" do
     topic = create(:topic)
     3.times { create :comment, commentable: topic }
