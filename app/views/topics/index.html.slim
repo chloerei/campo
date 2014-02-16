@@ -18,10 +18,15 @@
             a href=url_for(tab: 'newest') Newest
       .panel-body
         .list-group.list-group-campo
-          = render @topics
-      .panel-footer.clearfix
-        .pull-right
-          = paginate @topics, theme: 'campo', placement: 'top'
+          - if @topics.empty?
+            .list-group-item.text-center.text-muted.empty-message
+              | No topic yet.
+          - else
+            = render @topics
+      - if @topics.total_pages > 1
+        .panel-footer.clearfix
+          .pull-right
+            = paginate @topics, theme: 'campo', placement: 'top'
   .col-md-3
     .panel.panel-campo
       .panel-body

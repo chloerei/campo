@@ -8,11 +8,16 @@
         h3.panel-title Likes
       .panel-body
         ul.list-group.list-group-campo data-creator-id=@user.id
-          - @likes.each do |like|
-            = render "users/likes/like/#{like.likeable_type.downcase}", like: like
-      .panel-footer.clearfix
-        .pull-right
-          = paginate @likes, theme: 'campo', params: { anchor: 'likes' }, placement: 'top'
+          - if @likes.empty?
+            li.list-group-item.text-center.text-muted.empty-message
+              | No like yet.
+          - else
+            - @likes.each do |like|
+              = render "users/likes/like/#{like.likeable_type.downcase}", like: like
+      - if @likes.total_pages > 1
+        .panel-footer.clearfix
+          .pull-right
+            = paginate @likes, theme: 'campo', params: { anchor: 'likes' }, placement: 'top'
 
   .col-md-3
     = render 'users/sidebar', user: @user

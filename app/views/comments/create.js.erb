@@ -1,4 +1,4 @@
 <% if @comment.errors.empty? %>
-  $('#comments-for-<%= @comment.commentable_type.downcase %>-<%= @comment.commentable_id %>').append('<%= j render @comment %>');
+  $('#comments-for-<%= @comment.commentable_type.downcase %>-<%= @comment.commentable_id %>').append('<%= j render @comment %>').find('.empty-message').remove();
   $('#new_comment textarea').val('');
 <% end %>

@@ -8,10 +8,15 @@
         h3.panel-title Topics
       .panel-body
         .list-group.list-group-campo
-          = render partial: 'topics/topic', collection: @topics
-      .panel-footer.clearfix
-        .pull-right
-          = paginate @topics, theme: 'campo', params: { anchor: 'topics' }, placement: 'top'
+          - if @topics.empty?
+            .list-group-item.text-center.text-muted.empty-message
+              | No topic yet.
+          - else
+            = render partial: 'topics/topic', collection: @topics
+      - if @topics.total_pages > 1
+        .panel-footer.clearfix
+          .pull-right
+            = paginate @topics, theme: 'campo', params: { anchor: 'topics' }, placement: 'top'
 
   .col-md-3
     = render 'users/sidebar', user: @user

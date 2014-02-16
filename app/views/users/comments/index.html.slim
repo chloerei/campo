@@ -8,10 +8,15 @@
         h3.panel-title Comments
       .panel-body
         .list-group.list-group-campo
-          = render @comments
-      .panel-footer.clearfix
-        .pull-right
-          = paginate @comments, theme: 'campo', params: { anchor: 'comments' }, placement: 'top'
+          - if @comments.empty?
+            .list-group-item.text-center.text-muted.empty-message
+              | No comment yet.
+          - else
+            = render @comments
+      - if @comments.total_pages > 1
+        .panel-footer.clearfix
+          .pull-right
+            = paginate @comments, theme: 'campo', params: { anchor: 'comments' }, placement: 'top'
 
   .col-md-3
     = render 'users/sidebar', user: @user
