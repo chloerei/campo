@@ -88,3 +88,11 @@
 
   javascript:
     campo.Likes.updateLikes('comment', #{current_user.likes.where(likeable_type: 'Comment', likeable_id: @comments.pluck(:id)).pluck(:likeable_id)});
+
+    $('#new_comment').validate({
+      rules: {
+        'comment[body]': {
+          required: true
+        }
+      }
+    });

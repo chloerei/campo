@@ -10,3 +10,12 @@
       = f.submit 'Save changes', class: 'btn btn-success'
       '
       a.btn.btn-default href=cancel_comment_path(comment) data-remote="true" Cancel
+
+javascript:
+  $('#edit_comment_#{comment.id}').validate({
+    rules: {
+      'comment[body]': {
+        required: true
+      }
+    }
+  });
