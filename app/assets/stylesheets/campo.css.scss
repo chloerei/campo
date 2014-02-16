@@ -4,6 +4,27 @@
   @include box-shadow(0 0 10px rgba(0, 0, 0, 0.1));
 
   &.navbar-inverse {
+    background: #222;
+
+    .navbar-brand {
+      color: $gray-lighter;
+    }
+
+    .navbar-nav > li {
+      > a {
+        color: $gray-light;
+
+        &:hover {
+          color: $gray-lighter;
+        }
+      }
+
+      &.active {
+        > a {
+          color: $gray-lighter;
+        }
+      }
+    }
   }
 
   .navbar-toggle {

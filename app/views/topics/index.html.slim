@@ -3,7 +3,11 @@
     .panel.panel-campo
       .panel-heading.clearfix
         .pull-right
-          = paginate @topics, theme: 'campo'
+          .btn-group
+            a.btn.btn-default class=('active' if params[:tab] == 'hot') href=url_for(tab: 'hot')
+              | Hot
+            a.btn.btn-default class=('active' if params[:tab] == 'newest') href=url_for(tab: 'newest')
+              | Newest
         - if @category
           ol.breadcrumb.panel-title
             li
@@ -11,11 +15,6 @@
             li.active = @category.name
         - else
           h3.panel-title Topics
-        ul.breadcrumb
-          li class=('active' if params[:tab] == 'hot')
-            a href=url_for(tab: 'hot') Hot
-          li class=('active' if params[:tab] == 'newest')
-            a href=url_for(tab: 'newest') Newest
       .panel-body
         .list-group.list-group-campo
           - if @topics.empty?
@@ -26,7 +25,7 @@
       - if @topics.total_pages > 1
         .panel-footer.clearfix
           .pull-right
-            = paginate @topics, theme: 'campo', placement: 'top'
+            = paginate @topics, theme: 'campo'
   .col-md-3
     .panel.panel-campo
       .panel-body

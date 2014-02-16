@@ -11,9 +11,7 @@
               a href=clear_notifications_path data-remote="true" data-method="delete" data-confirm="Are you sure you want to clear notifications?" Delete all notifications
   .col-md-9.col-md-pull-3
     .panel.panel-campo
-      .panel-heading.clearfix
-        .pull-right
-          = paginate @notifications, theme: 'campo'
+      .panel-heading
         h3.panel-title Notifications
       .panel-body
         ul.list-group.list-group-campo

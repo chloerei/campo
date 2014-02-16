@@ -2,9 +2,7 @@
   .col-md-9
     = render 'users/profile', user: @user
     #comments.panel.panel-campo
-      .panel-heading.clearfix
-        .pull-right
-          = paginate @comments, theme: 'campo', params: { anchor: 'comments' }
+      .panel-heading
         h3.panel-title Comments
       .panel-body
         .list-group.list-group-campo
@@ -16,7 +14,7 @@
       - if @comments.total_pages > 1
         .panel-footer.clearfix
           .pull-right
-            = paginate @comments, theme: 'campo', params: { anchor: 'comments' }, placement: 'top'
+            = paginate @comments, theme: 'campo', params: { anchor: 'comments' }
 
   .col-md-3
     = render 'users/sidebar', user: @user

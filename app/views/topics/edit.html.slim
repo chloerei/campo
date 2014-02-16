@@ -4,6 +4,12 @@
       .panel-heading
         ol.breadcrumb.panel-title
           li
+            a href=topics_path Topics
+          - if @topic.category
+            li
+              a href=categoried_topics_path(category_id: @topic.category.slug)
+                = @topic.category.name
+          li
             a href=topic_path(@topic)
               = @topic.title
           li.active Edit
