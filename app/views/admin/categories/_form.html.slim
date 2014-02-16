@@ -1,4 +1,4 @@
-= form_for category, url: url_for([:admin, category]) do |f|
+= form_for category, url: url_for([:admin, category]), html: { class: 'category-form' } do |f|
   .form-group
     = f.label :name
     = f.text_field :name, class: 'form-control', tabIndex: 1
@@ -12,3 +12,15 @@
     = f.submit 'Create category', class: 'btn btn-success', tabIndex: 4
   - else
     = f.submit 'Save changes', class: 'btn btn-success', tabIndex: 4
+
+javascript:
+  $('form.category-form').validate({
+    rules: {
+      'category[name]': {
+        required: true
+      },
+      'category[slug]': {
+        required: true
+      }
+    }
+  });
