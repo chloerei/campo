@@ -39,3 +39,21 @@
     padding: $padding-base-vertical $padding-base-horizontal;
   }
 }
+
+.has-error .markdown-area {
+  border-color: $state-danger-text;
+
+  &.focus {
+    border-color: darken($state-danger-text, 10%);
+    @include box-shadow(inset 0 1px 1px rgba(0,0,0,.075), 0 0 6px lighten($state-danger-text, 20%));
+  }
+
+  textarea {
+    @include box-shadow(none);
+
+    &:focus {
+      border: none;
+      @include box-shadow(none);
+    }
+  }
+}
