@@ -43,4 +43,8 @@ class Topic < ActiveRecord::Base
   def after_comments_count_change
     reload.update_hot
   end
+
+  def total_pages
+    (comments_count / Comment.default_per_page) + 1
+  end
 end
