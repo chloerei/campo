@@ -2,7 +2,9 @@
   .col-md-9
     = render 'users/profile', user: @user
     #topics.panel.panel-campo
-      .panel-heading
+      .panel-heading.clearfix
+        .pull-right
+          = paginate @topics, theme: 'campo', params: { anchor: 'topics' }, placement: 'bottom'
         h3.panel-title Topics
       .panel-body
         ul.list-group.list-group-campo

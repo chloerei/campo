@@ -2,7 +2,9 @@
   .col-md-9
     = render 'users/profile', user: @user
     #likes.panel.panel-campo
-      .panel-heading
+      .panel-heading.clearfix
+        .pull-right
+          = paginate @likes, theme: 'campo', params: { anchor: 'likes' }, placement: 'bottom'
         h3.panel-title Likes
       .panel-body
         ul.list-group.list-group-campo data-creator-id=@user.id

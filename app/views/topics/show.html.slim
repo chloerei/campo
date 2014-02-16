@@ -43,7 +43,9 @@
                     i.fa.fa-trash-o
 
     .panel.panel-campo#comments
-      .panel-heading
+      .panel-heading.clearfix
+        .pull-right
+          = paginate @comments, theme: 'campo', params: { anchor: 'comments' }, placement: 'bottom'
         h3.panel-title Comments
       .panel-body
         ul.list-group.list-group-campo id="comments-for-topic-#{@topic.id}"

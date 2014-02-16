@@ -1,7 +1,9 @@
 .row
   .col-md-9
     .panel.panel-campo
-      .panel-heading
+      .panel-heading.clearfix
+        .pull-right
+          = paginate @users, theme: 'campo', placement: 'bottom'
         h2.panel-title Users
       .panel-body
         .list-group.list-group-campo
