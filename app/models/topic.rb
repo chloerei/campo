@@ -2,6 +2,8 @@ class Topic < ActiveRecord::Base
   include Likeable
   include Trashable
   include Subscribable
+  include Elasticsearch::Model
+  include Elasticsearch::Model::Callbacks
 
   belongs_to :user
   belongs_to :category

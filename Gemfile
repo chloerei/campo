@@ -60,6 +60,10 @@ gem 'nokogiri', '~> 1.6.1'
 # Gravatar
 gem 'gravtastic', '~> 3.2.6'
 
+# Elasticsearch
+gem 'elasticsearch-model', git: 'git://github.com/elasticsearch/elasticsearch-rails.git'
+gem 'elasticsearch-rails', git: 'git://github.com/elasticsearch/elasticsearch-rails.git'
+
 group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/jonleighton/spring
   gem 'spring'

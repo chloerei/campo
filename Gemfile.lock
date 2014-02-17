@@ -1,4 +1,14 @@
 GIT
+  remote: git://github.com/elasticsearch/elasticsearch-rails.git
+  revision: fc966380167b4dedd07380c4bd6b4a0c40351364
+  specs:
+    elasticsearch-model (0.1.0.rc1)
+      activesupport (> 3)
+      elasticsearch (> 0.4)
+      hashie
+    elasticsearch-rails (0.1.0.rc1)
+
+GIT
   remote: git://github.com/rails/arel.git
   revision: f0ba9e4e56cf4dfa266147fad7e8f58ca577d614
   specs:
@@ -91,6 +101,14 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.7.0)
+    elasticsearch (1.0.0)
+      elasticsearch-api (= 1.0.0)
+      elasticsearch-transport (= 1.0.0)
+    elasticsearch-api (1.0.0)
+      multi_json
+    elasticsearch-transport (1.0.0)
+      faraday
+      multi_json
     em-websocket (0.5.0)
       eventmachine (>= 0.12.9)
       http_parser.rb (~> 0.5.3)
@@ -102,6 +120,8 @@ GEM
     factory_girl_rails (4.3.0)
       factory_girl (~> 4.3.0)
       railties (>= 3.0.0)
+    faraday (0.9.0)
+      multipart-post (>= 1.2, < 3)
     ffi (1.9.3)
     font-awesome-sass (4.0.2)
       sass-rails (>= 3.1.1)
@@ -117,6 +137,7 @@ GEM
       em-websocket (~> 0.5)
       guard (~> 2.0)
       multi_json (~> 1.8)
+    hashie (2.0.5)
     hike (1.2.3)
     http_parser.rb (0.5.3)
     i18n (0.6.9)
@@ -143,6 +164,7 @@ GEM
     mini_portile (0.5.2)
     minitest (5.2.2)
     multi_json (1.8.4)
+    multipart-post (2.0.0)
     nokogiri (1.6.1)
       mini_portile (~> 0.5.0)
     pg (0.17.1)
@@ -198,6 +220,8 @@ DEPENDENCIES
   bcrypt-ruby (~> 3.1.2)
   bootstrap-sass (~> 3.1.0)
   coffee-rails!
+  elasticsearch-model!
+  elasticsearch-rails!
   factory_girl_rails (~> 4.3.0)
   font-awesome-sass (~> 4.0.2)
   gravtastic (~> 3.2.6)
