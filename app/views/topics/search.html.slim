@@ -1,0 +1,27 @@
+.row
+  .col-md-9
+    .panel.panel-campo
+      .panel-heading
+        h3.panel-title
+          | Search:
+          '
+          = params[:q]
+      .panel-body
+        .list-group.list-group-campo
+          - if @topics.empty?
+            .list-group-item.text-center.text-muted.empty-message
+              | No topic yet.
+          - else
+            = render @topics
+      - if @topics.total_pages > 1
+        .panel-footer.clearfix
+          .pull-right
+            = paginate @topics, theme: 'campo'
+  .col-md-3
+    .panel.panel-campo
+      .panel-body
+        = form_tag search_topics_path, method: 'get' do
+          = text_field_tag :q, nil, class: 'form-control', placeholder: 'Search'
+    .panel.panel-campo
+      .panel-body
+        a.btn.btn-success.btn-block href=new_topic_path Create Topic

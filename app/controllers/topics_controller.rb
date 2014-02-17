@@ -23,6 +23,22 @@ class TopicsController < ApplicationController
     end
   end
 
+  def search
+    @topics = Topic.search(
+      query: {
+        multi_match: {
+          query: params[:q].to_s,
+          fields: ['title', 'body']
+        }
+      },
+      filter: {
+        missing: {
+          field: 'trashed_at'
+        }
+      }
+    ).page(params[:page]).records
+  end
+
   def show
     @topic = Topic.find params[:id]
 
