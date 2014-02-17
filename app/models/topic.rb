@@ -49,4 +49,20 @@ class Topic < ActiveRecord::Base
   def total_pages
     (comments_count / Comment.default_per_page) + 1
   end
+
+  def more_like_this
+    Topic.search(
+      query: {
+        more_like_this: {
+          fields: ['title', 'body'],
+          like_text: title + ' ' + body
+        }
+      },
+      filter: {
+        missing: {
+          field: 'trashed_at'
+        }
+      }
+    )
+  end
 end

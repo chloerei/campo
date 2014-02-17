@@ -82,6 +82,22 @@
           | or
           '
           a href=signup_path Sign up
+  .col-md-3
+    .panel.panel-campo
+      .panel-heading
+        h4.panel-title
+          | Relate topics
+      .panel-body
+        .list-group.list-group-campo
+          - more_like_this_topics = @topic.more_like_this.limit(5).records
+          - if more_like_this_topics.any?
+            - more_like_this_topics.each do |topic|
+              a.list-group-item href=topic_path(topic)
+                = topic.title
+          - else
+            .list-group-item.text-center.text-muted
+              | No more topics
+
 
 - if login?
   - if @topic.liked_by?(current_user)
