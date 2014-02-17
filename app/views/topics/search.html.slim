@@ -1,11 +1,16 @@
 .row
   .col-md-9
     .panel.panel-campo
-      .panel-heading
-        h3.panel-title
-          | Search:
-          '
-          = params[:q]
+      .panel-heading.clearfix
+        .pull-right
+          = paginate @topics, theme: 'campo', placement: 'bottom'
+        ol.breadcrumb.panel-title
+          li
+            a href=topics_path Topics
+          li.active
+            | Search:
+            '
+            = params[:q]
       .panel-body
         .list-group.list-group-campo
           - if @topics.empty?
@@ -18,10 +23,7 @@
           .pull-right
             = paginate @topics, theme: 'campo'
   .col-md-3
-    .panel.panel-campo
-      .panel-body
-        = form_tag search_topics_path, method: 'get' do
-          = text_field_tag :q, nil, class: 'form-control', placeholder: 'Search'
+    = render 'sidebar_search'
     .panel.panel-campo
       .panel-body
         a.btn.btn-success.btn-block href=new_topic_path Create Topic
