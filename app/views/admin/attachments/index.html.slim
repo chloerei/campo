@@ -1,0 +1,26 @@
+.panel.panel-campo
+  .panel-heading.clearfix
+    .pull-right
+      = paginate @attachments, theme: 'campo'
+    h3.panel-title
+      | Attachments
+
+  .panel-body
+    .row
+      - @attachments.in_groups_of(3, false) do |group|
+        - group.each do |attachment|
+          .col-md-4 id="attachment-#{attachment.id}"
+            .thumbnail
+              a href=attachment.file.url
+                img src=attachment.file.url alt=attachment['file']
+              .caption
+                h4 = attachment['file']
+                a.text-muted href=admin_user_path(attachment.user)
+                  = attachment.user.name
+                a.pull-right.text-muted href=admin_attachment_path(attachment) data-remote="true" data-method="delete" data-confirm="Are you sure you want to delete this attachment?"
+                  i.fa.fa-times
+        .clearfix
+
+  .panel-footer.clearfix
+    .pull-right
+      = paginate @attachments, theme: 'campo'

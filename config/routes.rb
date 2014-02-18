@@ -99,6 +99,8 @@ Rails.application.routes.draw do
         patch :restore
       end
     end
+
+    resources :attachments, only: [:index, :destroy]
   end
 
   if Rails.env.development?
