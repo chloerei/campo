@@ -50,6 +50,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :attachments, only: [:create]
+
   root 'topics#index'
 
   scope path: '~:username', module: 'users', as: 'user' do

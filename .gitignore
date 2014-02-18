@@ -19,3 +19,6 @@
 /config/database.yml
 /config/secrets.yml
 /config/config.yml
+
+# Ignore uploads
+/public/uploads

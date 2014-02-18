@@ -64,6 +64,10 @@ gem 'gravtastic', '~> 3.2.6'
 gem 'elasticsearch-model', git: 'git://github.com/elasticsearch/elasticsearch-rails.git'
 gem 'elasticsearch-rails', git: 'git://github.com/elasticsearch/elasticsearch-rails.git'
 
+# File upload
+gem 'carrierwave', '~> 0.9.0'
+gem 'mini_magick', '~> 3.7.0'
+
 group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/jonleighton/spring
   gem 'spring'

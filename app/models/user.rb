@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   has_many :notifications, dependent: :delete_all
   has_many :likes, dependent: :delete_all
   has_many :like_topics, through: :likes, source: :likeable, source_type: 'Topic'
+  has_many :attachments, dependent: :delete_all
 
   validates :username, uniqueness: { case_sensitive: false }, presence: true, format: { with: /\A[a-z0-9-]+\z/i }
   validates :name, presence: true
