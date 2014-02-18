@@ -26,9 +26,15 @@ $(document).on 'change', '.markdown-area .file-upload input', (event) ->
     formData = new FormData()
     formData.append 'attachment[file]', this
     fileName = this.name
-    imageText = "![#{fileName}]()"
-    imageText = "\n\n" + imageText if textarea.val() != ''
-    textarea.val(textarea.val() + imageText).trigger('autosize.resize')
+    imageTag = "![#{fileName}]()"
+
+    pos = textarea[0].selectionStart
+    before = textarea.val().slice(0, pos)
+    after = textarea.val().slice(pos, -1)
+    before = before + "\n" if before != ''
+    after = "\n" + after if after != ''
+    textarea.val(before + imageTag + after).trigger('autosize.resize')
+    textarea[0].selectionStart = (before + imageTag).length
 
     $.ajax
       url: '/attachments'
@@ -38,4 +44,10 @@ $(document).on 'change', '.markdown-area .file-upload input', (event) ->
       contentType: false
       data: formData
       success: (data) ->
-        textarea.val(textarea.val().replace("![#{fileName}]()", "![#{fileName}](#{data.url})")).trigger('autosize.resize')
+        pos = textarea[0].selectionStart
+        imagePos = textarea.val().indexOf(imageTag)
+        textarea.val(textarea.val().replace(imageTag, "![#{fileName}](#{data.url})")).trigger('autosize.resize')
+        if imagePos < pos
+          textarea[0].selectionStart = textarea[0].selectionEnd = pos + data.url.length
+        else
+          textarea[0].selectionStart = textarea[0].selectionEnd = pos
