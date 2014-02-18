@@ -14,7 +14,7 @@
     .tab-pane.active id=write_pane_id
       = form.text_area name, class: 'form-control', placeholder: 'Type here...', data: { behaviors: 'autosize' }, tabIndex: tabIndex
       .file-upload
-        = file_field_tag :file
+        = file_field_tag :file, multiple: true
         .text.text-muted
           | Attach images by
           '

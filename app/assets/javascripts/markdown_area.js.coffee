@@ -18,3 +18,24 @@ $(document).on 'click', '.markdown-area a[data-behaviors~="preview"]', (e) ->
     success: (data) ->
       preview.html(data)
       preview.css height: 'auto'
+
+$(document).on 'change', '.markdown-area .file-upload input', (event) ->
+  textarea = $(this).closest('.markdown-area').find('textarea')
+
+  $.each event.target.files, ->
+    formData = new FormData()
+    formData.append 'attachment[file]', this
+    fileName = this.name
+    imageText = "![#{fileName}]()"
+    imageText = "\n\n" + imageText if textarea.val() != ''
+    textarea.val(textarea.val() + imageText).trigger('autosize.resize')
+
+    $.ajax
+      url: '/attachments'
+      type: 'POST'
+      dataType: 'json'
+      processData: false
+      contentType: false
+      data: formData
+      success: (data) ->
+        textarea.val(textarea.val().replace("![#{fileName}]()", "![#{fileName}](#{data.url})")).trigger('autosize.resize')
