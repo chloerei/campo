@@ -1,8 +1,8 @@
-$(document).on 'focus', '.markdown-area', ->
-  $(this).addClass('focus')
+$(document).on 'focus', '.markdown-area textarea', ->
+  $(this).closest('.markdown-area').addClass('focus')
 
-$(document).on 'blur', '.markdown-area', ->
-  $(this).removeClass('focus')
+$(document).on 'blur', '.markdown-area textarea', ->
+  $(this).closest('.markdown-area').removeClass('focus')
 
 $(document).on 'click', '.markdown-area a[data-behaviors~="preview"]', (e) ->
   area = $(this).closest('.markdown-area')

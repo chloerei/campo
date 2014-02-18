@@ -13,5 +13,12 @@
   .tab-content
     .tab-pane.active id=write_pane_id
       = form.text_area name, class: 'form-control', placeholder: 'Type here...', data: { behaviors: 'autosize' }, tabIndex: tabIndex
+      .file-upload
+        = file_field_tag :file
+        .text.text-muted
+          | Attach images by
+          '
+          a selecting them
+          | .
     .tab-pane id=preview_pane_id
       article.preview
