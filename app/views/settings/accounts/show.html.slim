@@ -5,11 +5,19 @@
         h3.panel-title
           | Account
       .panel-body
-        = form_for current_user, remote: true, url: settings_account_path, html: { class: 'form-horizontal user-form' } do |f|
+        = form_for current_user, url: settings_account_path, html: { multipart: true, class: 'form-horizontal user-form' } do |f|
           .form-group
             label.control-label.col-sm-3 Avatar
-            .col-sm-6
-              img.img-rounded alt="avatar" src=current_user.avatar.bigger.url
+            .col-sm-6.user-image-uploader
+              .image
+                img.img-rounded alt="avatar" src=current_user.avatar.bigger.url
+              .uploader
+                = f.file_field :avatar
+                .checkbox
+                  label
+                    = f.check_box :remove_avatar
+                    '
+                    | Remove avatar
           .form-group
             = f.label :username, class: 'control-label col-sm-3'
             .col-sm-6

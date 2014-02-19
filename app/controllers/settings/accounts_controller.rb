@@ -5,7 +5,10 @@ class Settings::AccountsController < ApplicationController
   end
 
   def update
-    current_user.update_attributes params.require(:user).permit(:username, :email, :name, :bio)
-    redirect_via_turbolinks_to settings_account_url
+    if current_user.update_attributes params.require(:user).permit(:username, :email, :name, :bio, :avatar, :remove_avatar)
+      redirect_to settings_account_path
+    else
+      render :show
+    end
   end
 end

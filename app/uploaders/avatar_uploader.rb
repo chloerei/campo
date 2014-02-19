@@ -20,7 +20,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
 
   VERSION_SIZES.each do |version_name, size|
     version version_name do
-      process :scale => [size, size]
+      process resize_to_fill: [size, size]
     end
   end
 

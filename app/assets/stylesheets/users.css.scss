@@ -16,3 +16,15 @@
   font-weight: bold;
   margin-bottom: $line-height-computed / 2;
 }
+
+.user-image-uploader {
+  .image {
+    width: 96px;
+    height: 96px;
+    float: left;
+  }
+
+  .uploader {
+    margin-left: 110px;
+  }
+}
