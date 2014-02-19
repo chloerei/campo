@@ -37,6 +37,8 @@
           .form-group
             .col-sm-6.col-sm-push-3
               = f.submit 'Save changes', class: 'btn btn-primary'
+  .col-md-3
+    = render 'settings/sidebar'
 
 javascript:
   $('form.user-form').validate({
