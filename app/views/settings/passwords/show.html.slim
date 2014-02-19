@@ -1,0 +1,34 @@
+.row
+  .col-md-9
+    .panel.panel-campo
+      .panel-heading
+        h3.panel-title
+          | Password
+      .panel-body
+        = form_for @user, url: settings_password_path, html: { class: 'form-horizontal password-form' } do |f|
+          .form-group
+            = label_tag :current_password, :current_password, class: 'control-label col-sm-3'
+            .col-sm-6
+              = text_field_tag :current_password, nil, class: 'form-control'
+          .form-group
+            = f.label :password, class: 'control-label col-sm-3'
+            .col-sm-6
+              = f.text_field :password, class: 'form-control'
+          .form-group
+            = f.label :password_confirmation, class: 'control-label col-sm-3'
+            .col-sm-6
+              = f.text_field :password_confirmation, class: 'form-control'
+          .form-group
+            .col-sm-6.col-sm-push-3
+              = f.submit 'Save changes', class: 'btn btn-primary'
+
+javascript:
+  $('form.password-form').validate({
+    rules: {
+      'current_password': 'required',
+      'user[password]': 'required',
+      'user[password_confirmation]': {
+        equalTo: '#user_password'
+      }
+    }
+  });
