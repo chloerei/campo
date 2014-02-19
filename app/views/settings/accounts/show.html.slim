@@ -9,7 +9,7 @@
           .form-group
             label.control-label.col-sm-3 Avatar
             .col-sm-6
-              img.img-rounded alt="avatar" src=current_user.gravatar_url(size: 80)
+              img.img-rounded alt="avatar" src=current_user.avatar.bigger.url
           .form-group
             = f.label :username, class: 'control-label col-sm-3'
             .col-sm-6

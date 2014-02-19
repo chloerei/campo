@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   include Gravtastic
   gravtastic secure: true, default: 'wavatar', rating: 'G', size: 48
+  mount_uploader :avatar, AvatarUploader
 
   has_secure_password
   has_many :topics, dependent: :delete_all
