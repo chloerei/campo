@@ -42,9 +42,11 @@ html
                       b = current_user.name
                 li.divider
                 li
-                  a href=user_likes_path(username: current_user.username) Likes
+                  a href=user_likes_path(username: current_user.username)
+                    | Likes
                 li
-                  a Settings
+                  a href=settings_account_path
+                    | Settings
                 li.divider
                 li
                   a.item href=logout_path data-method="delete"

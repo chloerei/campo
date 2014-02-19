@@ -62,6 +62,10 @@ Rails.application.routes.draw do
     root to: 'topics#index'
   end
 
+  namespace :settings do
+    resource :account, only: [:show, :update]
+  end
+
   namespace :admin do
     root to: 'dashboard#show'
 

@@ -8,7 +8,12 @@ $.validator.setDefaults
   errorElement: "span"
   errorClass: "help-block"
   errorPlacement: (error, element) ->
-    error.appendTo(element.closest('.form-group'))
+    if element.closest('.markdown-area').length
+      error.insertAfter(element.closest('.markdown-area'))
+    else if element.parent('.input-group').length
+      error.insertAfter(element.parent())
+    else
+      error.insertAfter(element)
 
 jQuery.validator.addMethod "format", ((value, element, param) ->
   @optional(element) or param.test(value)

@@ -1,0 +1,63 @@
+.row
+  .col-md-9
+    .panel.panel-campo
+      .panel-heading
+        h3.panel-title
+          | Account
+      .panel-body
+        = form_for current_user, remote: true, url: settings_account_path, html: { class: 'form-horizontal user-form' } do |f|
+          .form-group
+            label.control-label.col-sm-3 Avatar
+            .col-sm-6
+              img.img-rounded alt="avatar" src=current_user.gravatar_url(size: 80)
+          .form-group
+            = f.label :username, class: 'control-label col-sm-3'
+            .col-sm-6
+              = f.text_field :username, class: 'form-control'
+          .form-group
+            = f.label :email, class: 'control-label col-sm-3'
+            .col-sm-6
+              = f.text_field :email, class: 'form-control'
+          .form-group
+            = f.label :name, class: 'control-label col-sm-3'
+            .col-sm-6
+              = f.text_field :name, class: 'form-control'
+          .form-group
+            = f.label :bio, class: 'control-label col-sm-3'
+            .col-sm-6
+              = f.text_area :bio, class: 'form-control'
+          .form-group
+            .col-sm-6.col-sm-push-3
+              = f.submit 'Save changes', class: 'btn btn-primary'
+
+javascript:
+  $('form.user-form').validate({
+    rules: {
+      'user[name]': {
+        required: true,
+      },
+      'user[email]': {
+        required: true,
+        format: /^([^@\s]+)@((?:[a-z0-9-]+\.)+[a-z]{2,})$/i,
+        remote: '/users/check_email?id=#{current_user.id}'
+      },
+      'user[username]': {
+        required: true,
+        remote: '/users/check_username?id=#{current_user.id}',
+        format: /^[a-z0-9-]+$/i
+      },
+      'user[password]': {
+        required: true
+      }
+    },
+    messages: {
+      'user[email]': {
+        remote: 'This Email already exists',
+        format: 'Please enter a valid email address.'
+      },
+      'user[username]': {
+        remote: 'This Username already exists',
+        format: 'Username may only contain alphanumeric characters or dashes'
+      }
+    }
+  });
