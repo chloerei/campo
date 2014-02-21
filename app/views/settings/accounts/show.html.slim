@@ -5,6 +5,7 @@
         h3.panel-title
           | Account
       .panel-body
+        = render 'share/flash_messages'
         = form_for @user, url: settings_account_path, html: { class: 'form-horizontal user-form' } do |f|
           .form-group
             = f.label :username, class: 'control-label col-sm-3'
@@ -17,7 +18,7 @@
           .form-group
             = label_tag :current_password, :current_password, class: 'control-label col-sm-3'
             .col-sm-6
-              = text_field_tag :current_password, nil, class: 'form-control'
+              = password_field_tag :current_password, nil, class: 'form-control', autocomplete: 'off'
           .form-group
             .col-sm-6.col-sm-push-3
               = f.submit 'Save changes', class: 'btn btn-primary'
