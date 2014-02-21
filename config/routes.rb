@@ -65,6 +65,7 @@ Rails.application.routes.draw do
   namespace :settings do
     resource :account, only: [:show, :update]
     resource :password, only: [:show, :update]
+    resource :profile, only: [:show, :update]
   end
 
   namespace :admin do

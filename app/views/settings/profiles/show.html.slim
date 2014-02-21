@@ -1,0 +1,42 @@
+.row
+  .col-md-9
+    .panel.panel-campo
+      .panel-heading
+        h3.panel-title
+          | Profile
+      .panel-body
+        = form_for @user, url: settings_profile_path, html: { multipart: true, class: 'form-horizontal user-form' } do |f|
+          .form-group
+            label.control-label.col-sm-3 Avatar
+            .col-sm-6.user-image-uploader
+              .image
+                img.img-rounded alt="avatar" src=current_user.avatar.bigger.url
+              .uploader
+                = f.file_field :avatar
+                .checkbox
+                  label
+                    = f.check_box :remove_avatar
+                    '
+                    | Remove avatar
+          .form-group
+            = f.label :name, class: 'control-label col-sm-3'
+            .col-sm-6
+              = f.text_field :name, class: 'form-control'
+          .form-group
+            = f.label :bio, class: 'control-label col-sm-3'
+            .col-sm-6
+              = f.text_area :bio, class: 'form-control'
+          .form-group
+            .col-sm-6.col-sm-push-3
+              = f.submit 'Save changes', class: 'btn btn-primary'
+  .col-md-3
+    = render 'settings/sidebar'
+
+javascript:
+  $('form.user-form').validate({
+    rules: {
+      'user[name]': {
+        required: true,
+      }
+    }
+  });

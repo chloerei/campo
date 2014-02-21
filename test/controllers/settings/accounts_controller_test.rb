@@ -11,7 +11,7 @@ class Settings::AccountsControllerTest < ActionController::TestCase
   end
 
   test "should update settings account" do
-    patch :update, user: { name: 'change' }
-    assert_equal 'change', current_user.name
+    patch :update, user: { username: 'change' }
+    assert_equal 'change', current_user.reload.username
   end
 end
