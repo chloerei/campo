@@ -5,7 +5,7 @@
         h3.panel-title
           | Account
       .panel-body
-        = form_for current_user, url: settings_account_path, html: { multipart: true, class: 'form-horizontal user-form' } do |f|
+        = form_for @user, url: settings_account_path, html: { multipart: true, class: 'form-horizontal user-form' } do |f|
           .form-group
             label.control-label.col-sm-3 Avatar
             .col-sm-6.user-image-uploader
