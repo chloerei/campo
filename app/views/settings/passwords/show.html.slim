@@ -7,6 +7,7 @@
       .panel-body
         = form_for @user, url: settings_password_path, html: { class: 'form-horizontal password-form' } do |f|
           = render 'share/flash_messages'
+          = render 'share/form_error_messages', form: f
           .form-group
             = label_tag :current_password, :current_password, class: 'control-label col-sm-3'
             .col-sm-6

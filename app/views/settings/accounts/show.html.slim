@@ -5,8 +5,9 @@
         h3.panel-title
           | Account
       .panel-body
-        = render 'share/flash_messages'
         = form_for @user, url: settings_account_path, html: { class: 'form-horizontal user-form' } do |f|
+          = render 'share/flash_messages'
+          = render 'share/form_error_messages', form: f
           .form-group
             = f.label :username, class: 'control-label col-sm-3'
             .col-sm-6

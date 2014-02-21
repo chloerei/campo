@@ -1,0 +1,6 @@
+- if form.object.errors.any?
+  .alert.alert-warning
+    a.close data-dismiss="alert"
+      | &times;
+    - form.object.errors.full_messages.each do |message|
+      p = message
