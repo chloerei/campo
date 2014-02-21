@@ -6,4 +6,10 @@ class Settings::ApplicationController < ApplicationController
   def set_user
     @user = current_user
   end
+
+  def current_password_required
+    unless params[:current_password] && @user.authenticate(params[:current_password])
+      render :show
+    end
+  end
 end
