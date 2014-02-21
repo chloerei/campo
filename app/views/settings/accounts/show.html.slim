@@ -15,6 +15,10 @@
             .col-sm-6
               = f.text_field :email, class: 'form-control'
           .form-group
+            = label_tag :current_password, :current_password, class: 'control-label col-sm-3'
+            .col-sm-6
+              = text_field_tag :current_password, nil, class: 'form-control'
+          .form-group
             .col-sm-6.col-sm-push-3
               = f.submit 'Save changes', class: 'btn btn-primary'
   .col-md-3
@@ -32,7 +36,8 @@ javascript:
         required: true,
         remote: '/users/check_username?id=#{current_user.id}',
         format: /^[a-z0-9-]+$/i
-      }
+      },
+      'current_password': 'required'
     },
     messages: {
       'user[email]': {
