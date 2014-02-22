@@ -19,7 +19,7 @@ $(document).on 'click', '.markdown-area a[data-behaviors~="preview"]', (e) ->
       preview.html(data)
       preview.css height: 'auto'
 
-$(document).on 'change', '.markdown-area .file-upload input', (event) ->
+$(document).on 'change', '.markdown-area .file-upload input[type=file]', (event) ->
   textarea = $(this).closest('.markdown-area').find('textarea')
 
   $.each event.target.files, ->
@@ -51,3 +51,6 @@ $(document).on 'change', '.markdown-area .file-upload input', (event) ->
           textarea[0].selectionStart = textarea[0].selectionEnd = pos + data.url.length
         else
           textarea[0].selectionStart = textarea[0].selectionEnd = pos
+
+  # Clear input, or ujs submit will be abort.
+  $(this).replaceWith($(this).val('').clone())
