@@ -10,12 +10,12 @@ class TopicsController < ApplicationController
       @topics = @topics.where(category: @category)
     end
 
-    # Set default sort
-    unless %w(hot newest).include? params[:sort].to_s
-      params[:sort] = 'hot'
+    # Set default tab
+    unless %w(hot newest).include? params[:tab].to_s
+      params[:tab] = 'hot'
     end
 
-    case params[:sort]
+    case params[:tab]
     when 'hot'
       @topics = @topics.order(hot: :desc)
     when 'newest'
