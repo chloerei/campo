@@ -4,10 +4,19 @@
       .panel-heading.clearfix
         .pull-right
           .btn-group
-            a.btn.btn-default class=('active' if params[:tab] == 'hot') href=url_for(tab: 'hot')
-              | Hot
-            a.btn.btn-default class=('active' if params[:tab] == 'newest') href=url_for(tab: 'newest')
-              | Newest
+            a.btn.btn-default.dropdown-toggle data-toggle="dropdown"
+              i.fa.fa-sort-amount-desc
+              '
+              = params[:sort]
+              '
+              i.fa.fa-caret-down
+            ul.dropdown-menu.dropdown-menu-right
+              li
+                a href=url_for(sort: 'hot')
+                  | Hot
+              li
+                a href=url_for(sort: 'newest')
+                  | Newest
         - if @category
           ol.breadcrumb.panel-title
             li
