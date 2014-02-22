@@ -1,5 +1,5 @@
 class TopicsController < ApplicationController
-  before_filter :login_required, :no_locked_required, except: [:index, :show]
+  before_filter :login_required, :no_locked_required, except: [:index, :show, :search]
   before_filter :find_topic, only: [:edit, :update, :trash]
 
   def index
