@@ -6,6 +6,7 @@
           | Sign up
       .panel-body
         = form_for @user, html: { id: 'new-user-form' } do |f|
+          = render 'share/form_error_messages', form: f
           .form-group
             = f.label :name, class: 'control-label'
             = f.text_field :name, placeholder: 'Your full name', tabindex: 1, class: 'form-control'

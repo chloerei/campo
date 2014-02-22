@@ -16,6 +16,7 @@ class SessionsController < ApplicationController
       remember_me
       redirect_back_or_default root_url
     else
+      flash.now[:warning] = 'Incorrect username or password'
       render :new
     end
   end

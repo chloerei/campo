@@ -5,10 +5,8 @@
         h3.panel-title
           | Sign in
       .panel-body
-        - if defined?(@user)
-          .alert.alert-danger
-            | Incorrect username or password
         = form_tag login_path
+          = render 'share/flash_messages'
           .form-group
             = label_tag :login
             = text_field_tag :login, params[:login], placeholder: 'Your username or email', tabindex: 1, class: 'form-control'
