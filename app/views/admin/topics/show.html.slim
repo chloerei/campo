@@ -9,6 +9,8 @@
           li.active = @topic.title
       .panel-body
         = form_for [:admin, @topic], html: { class: 'topic-form' } do |f|
+          = render 'share/flash_messages'
+          = render 'share/form_error_messages', form: f
           .row
             .col-md-9
               .form-group
@@ -18,7 +20,13 @@
                 = f.collection_select :category_id, Category.order(topics_count: :desc), :id, :name, { prompt: 'No category' }, class: 'form-control', tabIndex: 2
           .form-group
             = markdown_area f, :body, tabIndex: 3
-          = f.submit 'Save changes', class: 'btn btn-success', tabIndex: 4
+          .clearfix
+            = f.submit 'Save changes', class: 'btn btn-success', tabIndex: 4
+            .pull-right
+              - if @topic.trashed?
+                a.btn.btn-default href=restore_admin_topic_path(@topic) data-method="patch" Restore
+              - else
+                a.btn.btn-default href=trash_admin_topic_path(@topic) data-method="delete" data-confirm="Are you sure you want to trash this topic?" Trash
 
   .col-md-3
     .panel.panel-campo
@@ -29,13 +37,11 @@
             a href=admin_user_path(@topic.user) = @topic.user.name
           dt Created at
           dd = @topic.created_at
+          - if @topic.trashed?
+            dt Trashed at
+            dd = @topic.trashed_at
           dt Comments
           dd = @topic.comments_count
-        hr
-        - if @topic.trashed?
-          a.btn.btn-default.btn-block href=restore_admin_topic_path(@topic) data-method="patch" Restore
-        - else
-          a.btn.btn-default.btn-block href=trash_admin_topic_path(@topic) data-method="delete" data-confirm="Are you sure you want to trash this topic?" Trash
 
 javascript:
   $('form.topic-form').validate({

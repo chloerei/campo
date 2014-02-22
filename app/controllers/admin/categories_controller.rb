@@ -16,6 +16,7 @@ class Admin::CategoriesController < Admin::ApplicationController
     @category = Category.new category_params
 
     if @category.save
+      flash[:success] = 'Category have been successfully created'
       redirect_to admin_category_path(@category)
     else
       render :new
@@ -27,6 +28,7 @@ class Admin::CategoriesController < Admin::ApplicationController
 
   def update
     if @category.update_attributes category_params
+      flash[:success] = 'Category have been successfully updated'
       redirect_to admin_category_path(@category)
     else
       render :edit
@@ -35,6 +37,7 @@ class Admin::CategoriesController < Admin::ApplicationController
 
   def destroy
     @category.destroy
+    flash[:success] = "Category #{@category.name} have been successfully destroy"
     redirect_to admin_categories_path
   end
 

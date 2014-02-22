@@ -9,9 +9,17 @@
           li.active = truncate @comment.body
       .panel-body
         = form_for [:admin, @comment], html: { class: 'comment-form' } do |f|
+          = render 'share/flash_messages'
+          = render 'share/form_error_messages', form: f
           .form-group
             = markdown_area f, :body, tabIndex: 1
-          = f.submit 'Save changes', class: 'btn btn-success', tabIndex: 2
+          .clearfix
+            = f.submit 'Save changes', class: 'btn btn-success', tabIndex: 2
+            .pull-right
+              - if @comment.trashed?
+                a.btn.btn-default href=restore_admin_comment_path(@comment) data-method="patch" Restore
+              - else
+                a.btn.btn-default href=trash_admin_comment_path(@comment) data-method="delete" data-confirm="Are you sure you want to trash this comment?" Trash
 
   .col-md-3
     .panel.panel-campo
@@ -25,13 +33,9 @@
           dd = link_to_commentable @comment.commentable
           dt Created At
           dd = @comment.created_at
-          dt Trashed At
-          dd = @comment.trashed_at
-        hr
-        - if @comment.trashed?
-          a.btn.btn-default.btn-block href=restore_admin_comment_path(@comment) data-method="patch" Restore
-        - else
-          a.btn.btn-default.btn-block href=trash_admin_comment_path(@comment) data-method="delete" data-confirm="Are you sure you want to trash this comment?" Trash
+          - if @comment.trashed?
+            dt Trashed At
+            dd = @comment.trashed_at
 
 javascript:
   $('form.comment-form').validate({

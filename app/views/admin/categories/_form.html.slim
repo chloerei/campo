@@ -1,4 +1,6 @@
 = form_for category, url: url_for([:admin, category]), html: { class: 'category-form' } do |f|
+  = render 'share/flash_messages'
+  = render 'share/form_error_messages', form: f
   .form-group
     = f.label :name
     = f.text_field :name, class: 'form-control', tabIndex: 1
@@ -8,10 +10,13 @@
   .form-group
     = f.label :description
     = markdown_area f, :description, tabIndex: 3
-  - if category.new_record?
-    = f.submit 'Create category', class: 'btn btn-success', tabIndex: 4
-  - else
-    = f.submit 'Save changes', class: 'btn btn-success', tabIndex: 4
+  .clearfix
+    - if category.new_record?
+      = f.submit 'Create category', class: 'btn btn-success', tabIndex: 4
+    - else
+      = f.submit 'Save changes', class: 'btn btn-success', tabIndex: 4
+      .pull-right
+        a.btn.btn-danger href=admin_category_path(@category) data-method="delete" data-confirm="Are you sure you want to delete this category?" Destroy
 
 javascript:
   $('form.category-form').validate({

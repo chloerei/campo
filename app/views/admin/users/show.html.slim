@@ -8,11 +8,21 @@
               | Users
           li.active = @user.name
       .panel-body
-        = form_for [:admin, @user], remote: true, html: { class: 'user-form' } do |f|
+        = form_for [:admin, @user], html: { multipart: true, class: 'user-form' } do |f|
+          = render 'share/flash_messages'
+          = render 'share/form_error_messages', form: f
           .form-group
-            label Avatar
-            p
-              img.img-rounded alt="avatar" src=@user.gravatar_url height="48" width="48"
+            label.control-label Avatar
+            .user-image-uploader
+              .image
+                img.img-rounded alt="avatar" src=@user.avatar.bigger.url
+              .uploader
+                = f.file_field :avatar
+                .checkbox
+                  label
+                    = f.check_box :remove_avatar
+                    '
+                    | Remove avatar
           .form-group
             = f.label :name
             = f.text_field :name, class: 'form-control', tabIndex: 1
@@ -26,24 +36,25 @@
           .form-group
             = f.label :bio
             = f.text_area :bio, class: 'form-control', tabIndex: 4
-          = f.submit 'Save changes', class: 'btn btn-success', tabIndex: 5
+          .clearfix
+            = f.submit 'Save changes', class: 'btn btn-success', tabIndex: 5
+            .pull-right
+              - if @user.locked?
+                a.btn.btn-default href=lock_admin_user_path(@user) data-method="delete" Unlock
+              - else
+                a.btn.btn-default href=lock_admin_user_path(@user)  data-method="patch" Lock
+              '
+              a.btn.btn-danger href=admin_user_path(@user) data-method="delete" data-confirm="Are you sure you want to destroy this user and all contents?" Destroy
+
   .col-md-3
     .panel
       .panel-body
         dl
-          dt Created at
+          dt Sign up
           dd = @user.created_at
           - if @user.locked?
             dt Locked at
             dd = @user.locked_at
-        hr
-        - if @user.locked?
-          a.btn.btn-default.btn-block href=lock_admin_user_path(@user) data-remote="true" data-method="delete" Unlock
-        - else
-          a.btn.btn-default.btn-block href=lock_admin_user_path(@user) data-remote="true" data-method="patch" Lock
-        hr
-        a.btn.btn-danger.btn-block href=admin_user_path(@user) data-remote="true" data-method="delete" data-confirm="Are you sure you want to destroy this user and all contents?" Destroy
-
 
 javascript:
   $('form.user-form').validate({

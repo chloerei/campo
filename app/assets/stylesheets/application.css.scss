@@ -18,3 +18,8 @@ $font-size-base: 15px;
 body {
   background: #eee;
 }
+
+.text-hide-overflow {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

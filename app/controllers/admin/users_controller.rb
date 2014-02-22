@@ -14,23 +14,30 @@ class Admin::UsersController < Admin::ApplicationController
   end
 
   def update
-    @user.update_attributes params.require(:user).permit(:name, :username, :email, :bio)
-    redirect_via_turbolinks_to admin_user_url(@user)
+    if @user.update_attributes params.require(:user).permit(:name, :username, :email, :bio, :avatar, :remove_avatar)
+      flash[:success] = 'Change have been successfully saved'
+      redirect_to admin_user_url(@user)
+    else
+      render :show
+    end
   end
 
   def destroy
     @user.destroy
-    redirect_via_turbolinks_to admin_users_path
+    flash[:success] = "User #{@user.username} have been successfully destroy"
+    redirect_to admin_users_path
   end
 
   def lock
     @user.lock
-    redirect_via_turbolinks_to admin_user_url(@user)
+    flash[:success] = 'User have been successfully locked'
+    redirect_to admin_user_url(@user)
   end
 
   def unlock
     @user.unlock
-    redirect_via_turbolinks_to admin_user_url(@user)
+    flash[:success] = 'User have been successfully unlocked'
+    redirect_to admin_user_url(@user)
   end
 
   private
