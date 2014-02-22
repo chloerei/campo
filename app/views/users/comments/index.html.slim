@@ -2,9 +2,7 @@
   .col-md-9
     = render 'users/profile', user: @user
     #comments.panel.panel-campo
-      .panel-heading.clerfix
-        .pull-right
-          = paginate @comments, theme: 'campo', params: { anchor: 'comments' }, placement: 'bottom'
+      .panel-heading
         h3.panel-title Comments
       .panel-body
         .list-group.list-group-campo
