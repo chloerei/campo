@@ -75,6 +75,9 @@ group :development do
   # Livereload
   gem 'guard-livereload', require: false
   gem 'rack-livereload'
+
+  # i18n extractor
+  gem 'i18n-tasks', '~> 0.2.19'
 end
 
 group :development, :test do
