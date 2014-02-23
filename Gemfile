@@ -68,6 +68,9 @@ gem 'elasticsearch-rails', git: 'git://github.com/elasticsearch/elasticsearch-ra
 gem 'carrierwave', '~> 0.9.0'
 gem 'mini_magick', '~> 3.7.0'
 
+# User locale detect
+gem 'http_accept_language', '~> 2.0.1'
+
 group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/jonleighton/spring
   gem 'spring'

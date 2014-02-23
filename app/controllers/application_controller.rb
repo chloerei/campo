@@ -5,6 +5,8 @@ class ApplicationController < ActionController::Base
 
   helper_method :login?, :current_user
 
+  before_filter :set_locale
+
   private
 
   class AccessDenied < Exception; end
@@ -97,5 +99,9 @@ class ApplicationController < ActionController::Base
       expires: 2.weeks.from_now,
       httponly: true
     }
+  end
+
+  def set_locale
+    I18n.locale = current_user.try(:locale) || http_accept_language.compatible_language_from(I18n.available_locales) || I18n.default_locale
   end
 end

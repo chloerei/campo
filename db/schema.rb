@@ -115,6 +115,7 @@ ActiveRecord::Schema.define(version: 20140218070616) do
     t.string   "password_digest"
     t.text     "bio"
     t.string   "avatar"
+    t.string   "locale"
     t.datetime "locked_at"
     t.datetime "created_at"
     t.datetime "updated_at"
