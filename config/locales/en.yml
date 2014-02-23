@@ -1,6 +1,16 @@
 ---
 en:
-  create_account: Create account
+  activerecord:
+    attributes:
+      user:
+        avatar: Avatar
+        bio: Bio
+        email: Email
+        locale: Locale
+        name: Name
+        password: Password
+        password_confirmation: Password confirmation
+        username: Username
   layouts:
     application:
       likes: Likes
@@ -9,6 +19,9 @@ en:
       sign_in: Sign in
       sign_up: Sign up
       topics: Topics
+  locales:
+    en: English
+    zh-CN: Chinese(Simplified)
   markdown:
     area:
       attach_images_by: Attach images by
@@ -25,6 +38,25 @@ en:
   sessions:
     new:
       sign_in: Sign in
+  settings:
+    accounts:
+      show:
+        account: Account
+        current_password: Current password
+        save_changes: Save changes
+    passwords:
+      show:
+        current_password: Current password
+        password: Password
+        save_changes: Save changes
+    profiles:
+      show:
+        profile: Profile
+        save_changes: Save changes
+    sidebar:
+      account: Account
+      password: Password
+      profile: Profile
   subscriptions:
     subscription:
       ignoring: Ignoring
@@ -68,6 +100,8 @@ en:
       your_account_had_been_locked: Your account had been locked
     sidebar_search:
       search: Search
+    topic:
+      comments_count: "%{count} comments"
   users:
     comments:
       index:
@@ -78,6 +112,7 @@ en:
         likes: Likes
         no_like_yet: No like yet
     new:
+      create_account: Create account
       sign_up: Sign up
     profile:
       edit_profile: Edit profile

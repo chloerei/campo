@@ -1,6 +1,16 @@
 ---
 zh-CN:
-  create_account: "创建帐号"
+  activerecord:
+    attributes:
+      user:
+        avatar: '头像'
+        bio: '简介'
+        email: Email
+        locale: "语言"
+        name: "全名"
+        password: "密码"
+        password_confirmation: "密码确认"
+        username: "用户名"
   layouts:
     application:
       likes: "收藏"
@@ -9,6 +19,9 @@ zh-CN:
       sign_in: "登录"
       sign_up: "注册"
       topics: "话题"
+  locales:
+    en: "英文"
+    zh-CN: "简体中文"
   markdown:
     area:
       attach_images_by: "添加图片"
@@ -24,6 +37,25 @@ zh-CN:
   sessions:
     new:
       sign_in: "登录"
+  settings:
+    accounts:
+      show:
+        account: "帐号"
+        current_password: "当前密码"
+        save_changes: "保存修改"
+    passwords:
+      show:
+        current_password: "当前密码"
+        password: "密码"
+        save_changes: "保存修改"
+    profiles:
+      show:
+        profile: "个人资料"
+        save_changes: "保存修改"
+    sidebar:
+      account: "帐号"
+      password: "密码"
+      profile: "个人资料"
   subscriptions:
     subscription:
       ignoring: "忽略"
@@ -63,7 +95,9 @@ zh-CN:
       topics: "话题"
       your_account_had_been_locked: "你的帐号已被锁定"
     sidebar_search:
-      search: '搜索'
+      search: "搜索"
+    topic:
+      comments_count: "%{count} 条评论"
   users:
     comments:
       index:
@@ -74,6 +108,7 @@ zh-CN:
         likes: "收藏"
         no_like_yet: "还没有收藏"
     new:
+      create_account: "创建帐号"
       sign_up: "注册"
     profile:
       edit_profile: "编辑个人资料"

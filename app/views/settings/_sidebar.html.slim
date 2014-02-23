@@ -3,10 +3,10 @@
     ul.nav.nav-pills.nav-stacked
       li class=('active' if controller_name == 'accounts')
         a href=settings_account_path
-          | Account
+          = t '.account'
       li class=('active' if controller_name == 'passwords')
         a href=settings_password_path
-          | Password
+          = t '.password'
       li class=('active' if controller_name == 'profiles')
         a href=settings_profile_path
-          | Profile
+          = t '.profile'

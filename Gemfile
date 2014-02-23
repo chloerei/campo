@@ -71,6 +71,9 @@ gem 'mini_magick', '~> 3.7.0'
 # User locale detect
 gem 'http_accept_language', '~> 2.0.1'
 
+# i18n
+gem 'rails-i18n', '~> 4.0.1'
+
 group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/jonleighton/spring
   gem 'spring'

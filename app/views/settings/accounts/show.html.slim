@@ -3,7 +3,7 @@
     .panel.panel-campo
       .panel-heading
         h3.panel-title
-          | Account
+          = t '.account'
       .panel-body
         = form_for @user, url: settings_account_path, html: { class: 'form-horizontal user-form' } do |f|
           = render 'share/flash_messages'
@@ -19,14 +19,14 @@
           .form-group
             = f.label :locale, class: 'control-label col-sm-3'
             .col-sm-6
-              = f.select :locale, I18n.available_locales.map { |locale| [t("locale.#{locale}"), locale] }, {}, class: 'form-control'
+              = f.select :locale, I18n.available_locales.map { |locale| [t("locales.#{locale}"), locale] }, {}, class: 'form-control'
           .form-group
-            = label_tag :current_password, :current_password, class: 'control-label col-sm-3'
+            = label_tag :current_password, t('.current_password'), class: 'control-label col-sm-3'
             .col-sm-6
               = password_field_tag :current_password, nil, class: 'form-control', autocomplete: 'off'
           .form-group
             .col-sm-6.col-sm-push-3
-              = f.submit 'Save changes', class: 'btn btn-primary'
+              = f.submit t('.save_changes'), class: 'btn btn-primary'
   .col-md-3
     = render 'settings/sidebar'
 

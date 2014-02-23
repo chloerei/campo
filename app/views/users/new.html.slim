@@ -19,7 +19,7 @@
           .form-group
             = f.label :password, class: 'control-label'
             = f.password_field :password, placeholder: 'Create a password', tabindex: 4, class: 'form-control'
-          = f.submit t('create_account'), class: 'btn btn-success', tabindex: 5
+          = f.submit t('.create_account'), class: 'btn btn-success', tabindex: 5
 
       javascript:
         $('#new-user-form').validate({
