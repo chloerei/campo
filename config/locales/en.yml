@@ -80,12 +80,15 @@ en:
     index:
       all_topics: All topics
       hot: Hot
-      new_topic: New topic
       newest: Newest
       no_topic_yet: No topic yet
       topics: Topics
     new:
       new: New
+    search:
+      no_matching_results: No matching results
+      search: Search
+      topics: Topics
     show:
       add_this_comment: Add this comment
       are_you_sure_you_want_to_delete_this_topic: Are you sure you want to delete
@@ -98,6 +101,8 @@ en:
       to_comment: To comment
       topics: Topics
       your_account_had_been_locked: Your account had been locked
+    sidebar_new:
+      new_topic: New topic
     sidebar_search:
       search: Search
     topic:

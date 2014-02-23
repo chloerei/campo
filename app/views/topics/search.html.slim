@@ -4,16 +4,17 @@
       .panel-heading
         ol.breadcrumb.panel-title
           li
-            a href=topics_path Topics
+            a href=topics_path
+              = t '.topics'
           li.active
-            | Search:
+            = t '.search'
             '
             = params[:q]
       .panel-body
         .list-group.list-group-campo
           - if @topics.empty?
             .list-group-item.text-center.text-muted.empty-message
-              | No topic yet.
+              = t '.no_matching_results'
           - else
             = render @topics
       - if @topics.total_pages > 1
@@ -22,6 +23,4 @@
             = paginate @topics, theme: 'campo'
   .col-md-3
     = render 'sidebar_search'
-    .panel.panel-campo
-      .panel-body
-        a.btn.btn-success.btn-block href=new_topic_path Create Topic
+    = render 'sidebar_new'

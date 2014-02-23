@@ -30,10 +30,7 @@
             = paginate @topics, theme: 'campo'
   .col-md-3
     = render 'sidebar_search'
-    .panel.panel-campo
-      .panel-body
-        a.btn.btn-success.btn-block href=new_topic_path(category_id: @category.try(:slug))
-          = t '.new_topic'
+    = render 'sidebar_new'
 
     .panel.panel-campo
       .panel-body

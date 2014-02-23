@@ -3,8 +3,8 @@ zh-CN:
   activerecord:
     attributes:
       user:
-        avatar: '头像'
-        bio: '简介'
+        avatar: "头像"
+        bio: "简介"
         email: Email
         locale: "语言"
         name: "全名"
@@ -77,12 +77,15 @@ zh-CN:
     index:
       all_topics: "所有话题"
       hot: "热门"
-      new_topic: "新话题"
       newest: "最新"
       no_topic_yet: "还没有话题"
       topics: "话题"
     new:
       new: "新建"
+    search:
+      no_matching_results: "没有匹配结果"
+      search: "搜索"
+      topics: "话题"
     show:
       add_this_comment: "添加评论"
       are_you_sure_you_want_to_delete_this_topic: "确认删除这个话题？"
@@ -94,6 +97,8 @@ zh-CN:
       to_comment: "后发表评论"
       topics: "话题"
       your_account_had_been_locked: "你的帐号已被锁定"
+    sidebar_new:
+      new_topic: "新话题"
     sidebar_search:
       search: "搜索"
     topic:
