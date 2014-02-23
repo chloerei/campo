@@ -1,0 +1,10 @@
+---
+zh-CN:
+  layouts:
+    application:
+      likes: 收藏
+      logout: 退出
+      settings: 设置
+      sign_in: 登录
+      sign_up: 注册
+      topics: 话题

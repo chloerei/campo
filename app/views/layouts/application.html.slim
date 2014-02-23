@@ -18,7 +18,6 @@ html
       .container
         .navbar-header
           button.navbar-toggle type="button" data-toggle="collapse" data-target="#navbar"
-            span.sr-only toggle navigation
             span.icon-bar
             span.icon-bar
             span.icon-bar
@@ -43,26 +42,26 @@ html
                 li.divider
                 li
                   a href=user_likes_path(username: current_user.username)
-                    | Likes
+                    = t '.likes'
                 li
                   a href=settings_account_path
-                    | Settings
+                    = t '.settings'
                 li.divider
                 li
                   a.item href=logout_path data-method="delete"
-                    | Sign out
+                    = t '.logout'
           - else
             li
               a.item href=signup_path
-                | Sign up
+                = t '.sign_up'
             li
               a.item href=login_path
-                | Sign in
+                = t '.sign_in'
         #navbar.collapse.navbar-collapse
           ul.nav.navbar-nav
             li class=('active' if controller_name == 'topics')
               a href=topics_path
-                | Forum
+                = t '.topics'
 
     .container
       = yield
