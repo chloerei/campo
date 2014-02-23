@@ -3,7 +3,7 @@
     .panel.panel-campo
       .panel-heading
         h3.panel-title
-          | Sign in
+          = t '.sign_in'
       .panel-body
         = form_tag login_path
           = render 'share/flash_messages'
@@ -13,4 +13,4 @@
           .form-group
             = label_tag :password
             = password_field_tag :password, nil, placeholder: 'Your password', tabindex: 4, class: 'form-control'
-          = submit_tag 'Sign in', class: 'btn btn-success', tabindex: 5
+          = submit_tag t('.sign_in'), class: 'btn btn-success', tabindex: 5

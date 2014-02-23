@@ -1,5 +1,6 @@
 ---
 en:
+  create_account: Create account
   layouts:
     application:
       likes: Likes
@@ -8,3 +9,83 @@ en:
       sign_in: Sign in
       sign_up: Sign up
       topics: Topics
+  markdown:
+    area:
+      attach_images_by: Attach images by
+      preview: Preview
+      select_them: Select them
+      write: Write
+  notifications:
+    index:
+      are_you_sure_you_want_to_delete_all_notifications: Are you sure you want to
+        delete all notifications
+      delete_all_notification: Delete all notification
+      mark_all_as_read: Mark all as read
+      notifications: Notifications
+  sessions:
+    new:
+      sign_in: Sign in
+  subscriptions:
+    subscription:
+      ignoring: Ignoring
+      not_watching: Not watching
+      stop_ignoring: Stop ignoring
+      unwatch: Unwatch
+      watch: Watch
+      watching: Watching
+      you_do_not_receive_any_notifications: You do not receive any notifications
+      you_only_receive_notifications_if_you_are_mentioned: You only receive notifications
+        if you are mentioned
+      you_will_receive_notifications_for_all_comments: You will receive notifications
+        for all comments
+  topics:
+    edit:
+      edit: Edit
+    form:
+      create_topic: Create topic
+      no_category: No category
+      save_changes: Save changes
+    index:
+      all_topics: All topics
+      hot: Hot
+      new_topic: New topic
+      newest: Newest
+      no_topic_yet: No topic yet
+      topics: Topics
+    new:
+      new: New
+    show:
+      add_this_comment: Add this comment
+      are_you_sure_you_want_to_delete_this_topic: Are you sure you want to delete
+        this topic?
+      comments: Comments
+      no_comment_yet: No comment yet
+      no_more_topics: No more topics
+      or: Or
+      related_topics: Related topics
+      to_comment: To comment
+      topics: Topics
+      your_account_had_been_locked: Your account had been locked
+    sidebar_search:
+      search: Search
+  users:
+    comments:
+      index:
+        comments: Comments
+        no_comment_yet: No comment yet
+    likes:
+      index:
+        likes: Likes
+        no_like_yet: No like yet
+    new:
+      sign_up: Sign up
+    profile:
+      edit_profile: Edit profile
+    sidebar:
+      comments: Comments
+      likes: Likes
+      topics: Topics
+    topics:
+      index:
+        no_topic_yet: No topic yet
+        topics: Topics

@@ -3,12 +3,13 @@
     = render 'users/profile', user: @user
     #likes.panel.panel-campo
       .panel-heading
-        h3.panel-title Likes
+        h3.panel-title
+          = t '.likes'
       .panel-body
         ul.list-group.list-group-campo data-creator-id=@user.id
           - if @likes.empty?
             li.list-group-item.text-center.text-muted.empty-message
-              | No like yet.
+              = t '.no_like_yet'
           - else
             - @likes.each do |like|
               = render "users/likes/like/#{like.likeable_type.downcase}", like: like

@@ -11,7 +11,7 @@ li.list-group-item.notification id="notification_#{notification.id}" class=('rea
       .list-group-item-heading
         b = comment.user.name
         '
-        | commented on
+        = t '.commented on'
         '
         b = comment_title(comment)
         '

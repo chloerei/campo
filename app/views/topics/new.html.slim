@@ -9,7 +9,8 @@
             li
               a href=categoried_topics_path(category_id: @topic.category.slug)
                 = @topic.category.name
-          li.active New Topic
+          li.active
+            = t '.new'
 
       .panel-body
         = render 'form', topic: @topic

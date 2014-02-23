@@ -3,7 +3,7 @@
     .panel.panel-campo
       .panel-heading
         h3.panel-title
-          | Sign up
+          = t '.sign_up'
       .panel-body
         = form_for @user, html: { id: 'new-user-form' } do |f|
           = render 'share/form_error_messages', form: f
@@ -19,7 +19,7 @@
           .form-group
             = f.label :password, class: 'control-label'
             = f.password_field :password, placeholder: 'Create a password', tabindex: 4, class: 'form-control'
-          = f.submit 'Create Account', class: 'btn btn-success', tabindex: 5
+          = f.submit t('create_account'), class: 'btn btn-success', tabindex: 5
 
       javascript:
         $('#new-user-form').validate({

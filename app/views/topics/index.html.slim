@@ -6,22 +6,22 @@
           ul.nav.nav-pills
             li class=('active' if params[:tab] == 'hot')
               a href=url_for(tab: 'hot')
-                | Hot
+                = t '.hot'
             li class=('active' if params[:tab] == 'newest')
               a href=url_for(tab: 'newest')
-                | Newest
+                = t '.newest'
         - if @category
           ol.breadcrumb.panel-title
             li
               a href=topics_path Topics
             li.active = @category.name
         - else
-          h3.panel-title Topics
+          h3.panel-title = t '.topics'
       .panel-body
         .list-group.list-group-campo
           - if @topics.empty?
             .list-group-item.text-center.text-muted.empty-message
-              | No topic yet.
+              = t '.no_topic_yet'
           - else
             = render @topics
       - if @topics.total_pages > 1
@@ -32,7 +32,8 @@
     = render 'sidebar_search'
     .panel.panel-campo
       .panel-body
-        a.btn.btn-success.btn-block href=new_topic_path(category_id: @category.try(:slug)) Create Topic
+        a.btn.btn-success.btn-block href=new_topic_path(category_id: @category.try(:slug))
+          = t '.new_topic'
 
     .panel.panel-campo
       .panel-body
@@ -40,7 +41,7 @@
           li class=('active' unless @category)
             a href=topics_path
               span.pull-right = Topic.no_trashed.count
-              | All topics
+              = t '.all_topics'
           - Category.order(topics_count: :desc).each do |category|
             li class=('active' if @category == category)
               a href=categoried_topics_path(category_id: category.slug)

@@ -7,18 +7,19 @@
 .markdown-area
   ul.nav.nav-tabs
     li.active
-      a href="##{write_pane_id}" data-toggle="tab" Write
+      a href="##{write_pane_id}" data-toggle="tab"
+        = t '.write'
     li
-      a href="##{preview_pane_id}" data-toggle="tab" data-behaviors="preview" Preview
+      a href="##{preview_pane_id}" data-toggle="tab" data-behaviors="preview"
+        = t '.preview'
   .tab-content
     .tab-pane.active id=write_pane_id
-      = form.text_area name, class: 'form-control', placeholder: 'Type here...', data: { behaviors: 'autosize' }, tabIndex: tabIndex
+      = form.text_area name, class: 'form-control', data: { behaviors: 'autosize' }, tabIndex: tabIndex
       .file-upload
         = file_field_tag :file, multiple: true
         .text.text-muted
-          | Attach images by
+          = t '.attach_images_by'
           '
-          a selecting them
-          | .
+          a = t '.select_them'
     .tab-pane id=preview_pane_id
       article.preview

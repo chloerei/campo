@@ -3,16 +3,19 @@
     .panel
       .panel-body
         .btn-group
-          a.btn.btn-default href=mark_notifications_path data-remote="true" data-method="post" Mark all as read
+          a.btn.btn-default href=mark_notifications_path data-remote="true" data-method="post"
+            = t '.mark_all_as_read'
           a.btn.btn-default.dropdown-toggle data-toggle="dropdown"
             i.fa.fa-caret-down
           ul.dropdown-menu
             li
-              a href=clear_notifications_path data-remote="true" data-method="delete" data-confirm="Are you sure you want to clear notifications?" Delete all notifications
+              a href=clear_notifications_path data-remote="true" data-method="delete" data-confirm=t('.are_you_sure_you_want_to_delete_all_notifications')
+                = t '.delete_all_notification'
   .col-md-9.col-md-pull-3
     .panel.panel-campo
       .panel-heading
-        h3.panel-title Notifications
+        h3.panel-title
+          = t '.notifications'
       .panel-body
         ul.list-group.list-group-campo
           - @notifications.each do |notification|

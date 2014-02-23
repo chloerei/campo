@@ -12,6 +12,7 @@
           li
             a href=topic_path(@topic)
               = @topic.title
-          li.active Edit
+          li.active
+            = t '.edit'
       .panel-body
         = render 'form', topic: @topic

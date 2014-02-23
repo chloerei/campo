@@ -1,10 +1,87 @@
 ---
 zh-CN:
+  create_account: "创建帐号"
   layouts:
     application:
-      likes: 收藏
-      logout: 退出
-      settings: 设置
-      sign_in: 登录
-      sign_up: 注册
-      topics: 话题
+      likes: "收藏"
+      logout: "退出"
+      settings: "设置"
+      sign_in: "登录"
+      sign_up: "注册"
+      topics: "话题"
+  markdown:
+    area:
+      attach_images_by: "添加图片"
+      preview: "预览"
+      select_them: "选择文件"
+      write: "编辑"
+  notifications:
+    index:
+      are_you_sure_you_want_to_delete_all_notifications: "你确定要删除所有通知吗？"
+      delete_all_notification: "删除所有通知"
+      mark_all_as_read: "标记所有为已读"
+      notifications: "通知"
+  sessions:
+    new:
+      sign_in: "登录"
+  subscriptions:
+    subscription:
+      ignoring: "忽略"
+      not_watching: "未关注"
+      stop_ignoring: "停止忽略"
+      unwatch: "不关注"
+      watch: "关注"
+      watching: "关注中"
+      you_do_not_receive_any_notifications: "你不会收到任何通知"
+      you_only_receive_notifications_if_you_are_mentioned: "你只会在被提及的时候收到通知"
+      you_will_receive_notifications_for_all_comments: "每当有新评论时你都会收到通知"
+  topics:
+    edit:
+      edit: "编辑"
+    form:
+      create_topic: "创建话题"
+      no_category: "不分类"
+      save_changes: "保存修改"
+    index:
+      all_topics: "所有话题"
+      hot: "热门"
+      new_topic: "新话题"
+      newest: "最新"
+      no_topic_yet: "还没有话题"
+      topics: "话题"
+    new:
+      new: "新建"
+    show:
+      add_this_comment: "添加评论"
+      are_you_sure_you_want_to_delete_this_topic: "确认删除这个话题？"
+      comments: "评论"
+      no_comment_yet: "还没有评论"
+      no_more_topics: "没有更多话题"
+      or: "或"
+      related_topics: "相关话题"
+      to_comment: "后发表评论"
+      topics: "话题"
+      your_account_had_been_locked: "你的帐号已被锁定"
+    sidebar_search:
+      search: '搜索'
+  users:
+    comments:
+      index:
+        comments: "评论"
+        no_comment_yet: "还没有评论"
+    likes:
+      index:
+        likes: "收藏"
+        no_like_yet: "还没有收藏"
+    new:
+      sign_up: "注册"
+    profile:
+      edit_profile: "编辑个人资料"
+    sidebar:
+      comments: "评论"
+      likes: "收藏"
+      topics: "话题"
+    topics:
+      index:
+        no_topic_yet: "还没有话题"
+        topics: "话题"

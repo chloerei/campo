@@ -3,12 +3,13 @@
     = render 'users/profile', user: @user
     #topics.panel.panel-campo
       .panel-heading
-        h3.panel-title Topics
+        h3.panel-title
+          = t '.topics'
       .panel-body
         .list-group.list-group-campo
           - if @topics.empty?
             .list-group-item.text-center.text-muted.empty-message
-              | No topic yet.
+              = t '.no_topic_yet'
           - else
             = render partial: 'topics/topic', collection: @topics
       - if @topics.total_pages > 1

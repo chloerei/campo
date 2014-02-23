@@ -4,7 +4,8 @@
       .panel-heading
         ol.breadcrumb.panel-title
           li
-            a href=topics_path Topics
+            a href=topics_path
+              = t '.topics'
           - if @topic.category
             li
               a href=categoried_topics_path(category_id: @topic.category.slug)
@@ -36,17 +37,18 @@
                         = @topic.likes_count
                   a.btn data-visible-to="creator" href=edit_topic_path(@topic)
                     i.fa.fa-pencil
-                  a.btn data-visible-to="creator" href=trash_topic_path(@topic) data-remote="true" data-method="delete" data-confirm="Are you sure you want to delete this topic?"
+                  a.btn data-visible-to="creator" href=trash_topic_path(@topic) data-remote="true" data-method="delete" data-confirm=t('.are_you_sure_you_want_to_delete_this_topic')
                     i.fa.fa-trash-o
 
     .panel.panel-campo#comments
       .panel-heading
-        h3.panel-title Comments
+        h3.panel-title
+          = t '.comments'
       .panel-body
         ul.list-group.list-group-campo id="comments-for-topic-#{@topic.id}"
           - if @comments.empty?
             li.list-group-item.text-center.text-muted.empty-message
-              | No comment yet.
+              = t '.no_comment_yet'
           - else
             = render @comments
       - if @comments.total_pages > 1
@@ -66,17 +68,17 @@
                   = form_for @topic.comments.new, url: topic_comments_path(@topic), remote: true do |f|
                     .form-group
                       = markdown_area f, :body
-                    = f.submit 'Add this comment', class: 'btn btn-success', tabIndex: 2
+                    = f.submit t('.add_this_comment'), class: 'btn btn-success', tabIndex: 2
           - else
-            | Your account is locked.
+            = t '.your_account_had_been_locked'
         - else
-          | Need
-          '
           a href=login_path Login
           '
-          | or
+          = t '.or'
           '
           a href=signup_path Sign up
+          '
+          = t '.to_comment'
   .col-md-3
     - if login?
       .panel.panel-campo
@@ -85,7 +87,7 @@
     .panel.panel-campo
       .panel-heading
         h4.panel-title
-          | Relate topics
+          = t '.related_topics'
       .panel-body
         .list-group.list-group-campo
           - more_like_this_topics = @topic.more_like_this.limit(5).records
@@ -95,8 +97,7 @@
                 = topic.title
           - else
             .list-group-item.text-center.text-muted
-              | No more topics
-
+              = t '.no_more_topics'
 
 - if login?
   - if @topic.liked_by?(current_user)
