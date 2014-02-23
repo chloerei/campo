@@ -34,6 +34,7 @@ en:
         delete all notifications
       delete_all_notification: Delete all notification
       mark_all_as_read: Mark all as read
+      no_notifications: No notifications
       notifications: Notifications
   sessions:
     new:

@@ -33,6 +33,7 @@ zh-CN:
       are_you_sure_you_want_to_delete_all_notifications: "你确定要删除所有通知吗？"
       delete_all_notification: "删除所有通知"
       mark_all_as_read: "标记所有为已读"
+      no_notifications: '没有通知'
       notifications: "通知"
   sessions:
     new:

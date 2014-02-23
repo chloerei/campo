@@ -46,11 +46,11 @@
           = t '.comments'
       .panel-body
         ul.list-group.list-group-campo id="comments-for-topic-#{@topic.id}"
-          - if @comments.empty?
+          - if @comments.any?
+            = render @comments
+          - else
             li.list-group-item.text-center.text-muted.empty-message
               = t '.no_comment_yet'
-          - else
-            = render @comments
       - if @comments.total_pages > 1
         .panel-footer.clearfix
           .pull-right

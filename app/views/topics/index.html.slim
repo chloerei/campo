@@ -19,11 +19,11 @@
           h3.panel-title = t '.topics'
       .panel-body
         .list-group.list-group-campo
-          - if @topics.empty?
+          - if @topics.any?
+            = render @topics
+          - else
             .list-group-item.text-center.text-muted.empty-message
               = t '.no_topic_yet'
-          - else
-            = render @topics
       - if @topics.total_pages > 1
         .panel-footer.clearfix
           .pull-right

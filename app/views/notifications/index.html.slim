@@ -18,8 +18,12 @@
           = t '.notifications'
       .panel-body
         ul.list-group.list-group-campo
-          - @notifications.each do |notification|
-              = render "notifications/notification/#{notification.name}", notification: notification
+          - if @notifications.any?
+            - @notifications.each do |notification|
+                = render "notifications/notification/#{notification.name}", notification: notification
+          - else
+            li.list-group-item.text-center.text-muted.empty-message
+              = t '.no_notifications'
       .panel-footer.clearfix
         .pull-right
           = paginate @notifications, theme: 'campo'
