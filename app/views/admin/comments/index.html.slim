@@ -4,7 +4,8 @@
   .col-md-9
     .panel.panel-campo
       .panel-heading
-        h2.panel-title Comments
+        h2.panel-title
+          = t '.comments'
       .panel-body
         .list-group.list-group-campo
           - @comments.each do |comment|
@@ -25,6 +26,8 @@
       .panel-body
         ul.nav.nav-pills.nav-stacked
           li class=('active' if action_name == 'index')
-            a href=admin_comments_path Normal
+            a href=admin_comments_path
+              = t '.normal'
           li class=('active' if action_name == 'trashed')
-            a href=trashed_admin_comments_path Trashed
+            a href=trashed_admin_comments_path
+              = t '.trashed'

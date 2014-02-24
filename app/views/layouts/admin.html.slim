@@ -18,7 +18,6 @@ html
       .container
         .navbar-header
           button.navbar-toggle type="button" data-toggle="collapse" data-target="#navbar"
-            span.sr-only toggle navigation
             span.icon-bar
             span.icon-bar
             span.icon-bar
@@ -27,18 +26,24 @@ html
         #navbar.collapse.navbar-collapse
           ul.nav.navbar-nav
             li class=('active' if controller_name == 'users')
-              a href=admin_users_path Users
+              a href=admin_users_path
+                = t '.users'
             li class=('active' if controller_name == 'categories')
-              a href=admin_categories_path Categories
+              a href=admin_categories_path
+                = t '.categories'
             li class=('active' if controller_name == 'topics')
-              a href=admin_topics_path Topics
+              a href=admin_topics_path
+                = t '.topics'
             li class=('active' if controller_name == 'comments')
-              a href=admin_comments_path Comments
+              a href=admin_comments_path
+                = t '.comments'
             li class=('active' if controller_name == 'attachments')
-              a href=admin_attachments_path Attachment
+              a href=admin_attachments_path
+                = t '.attachments'
           ul.nav.navbar-nav.navbar-right
             li
-              a href=root_path Back to site
+              a href=root_path
+                = t '.back_to_site'
 
     .container
       = yield

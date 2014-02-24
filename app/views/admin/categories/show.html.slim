@@ -5,7 +5,7 @@
         ol.breadcrumb.panel-title
           li
             a href=admin_categories_path
-              | Categories
+              = t '.categories'
           li.active = @category.name
       .panel-body
         = render 'form', category: @category
@@ -13,5 +13,5 @@
     .panel.panel-campo
       .panel-body
         dl
-          dt Topics
+          dt = t '.topics'
           dd = @category.topics_count

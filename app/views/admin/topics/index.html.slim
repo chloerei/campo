@@ -4,7 +4,8 @@
   .col-md-9
     .panel.panel-campo
       .panel-heading
-        h2.panel-title Topics
+        h2.panel-title
+          = t '.topics'
       .panel-body
         .list-group.list-group-campo
           - @topics.each do |topic|
@@ -29,6 +30,8 @@
       .panel-body
         ul.nav.nav-pills.nav-stacked
           li class=('active' if action_name == 'index')
-            a href=admin_topics_path Normal
+            a href=admin_topics_path
+               = t '.normal'
           li class=('active' if action_name == 'trashed')
-            a href=trashed_admin_topics_path Trashed
+            a href=trashed_admin_topics_path
+               =t '.trashed'

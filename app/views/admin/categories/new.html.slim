@@ -5,7 +5,8 @@
         ol.breadcrumb.panel-title
           li
             a href=admin_categories_path
-              | Categories
-          li.active New Category
+              = t '.categories'
+          li.active
+            = t '.new'
       .panel-body
         = render 'form', category: @category

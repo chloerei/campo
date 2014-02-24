@@ -5,7 +5,7 @@
         ol.breadcrumb.panel-title
           li
             a href=admin_comments_path
-              | Comments
+              = t '.comments'
           li.active = truncate @comment.body
       .panel-body
         = form_for [:admin, @comment], html: { class: 'comment-form' } do |f|
@@ -14,27 +14,29 @@
           .form-group
             = markdown_area f, :body, tabIndex: 1
           .clearfix
-            = f.submit 'Save changes', class: 'btn btn-success', tabIndex: 2
+            = f.submit t('.save_changes'), class: 'btn btn-success', tabIndex: 2
             .pull-right
               - if @comment.trashed?
-                a.btn.btn-default href=restore_admin_comment_path(@comment) data-method="patch" Restore
+                a.btn.btn-default href=restore_admin_comment_path(@comment) data-method="patch"
+                  = t '.restore'
               - else
-                a.btn.btn-default href=trash_admin_comment_path(@comment) data-method="delete" data-confirm="Are you sure you want to trash this comment?" Trash
+                a.btn.btn-default href=trash_admin_comment_path(@comment) data-method="delete" data-confirm=t('.are_you_sure_you_want_to_delete_this_comment')
+                  = t '.delete'
 
   .col-md-3
     .panel.panel-campo
       .panel-body
         dl
-          dt User
+          dt = t '.user'
           dd
             a href=admin_user_path(@comment.user)
               = @comment.user.name
-          dt Commentable
+          dt = t '.commentable'
           dd = link_to_commentable @comment.commentable
-          dt Created At
+          dt = t '.created_at'
           dd = @comment.created_at
           - if @comment.trashed?
-            dt Trashed At
+            dt = t '.trashed_at'
             dd = @comment.trashed_at
 
 javascript:

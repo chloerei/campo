@@ -5,14 +5,14 @@
         ol.breadcrumb.panel-title
           li
             a href=admin_users_path
-              | Users
+              = t '.users'
           li.active = @user.name
       .panel-body
         = form_for [:admin, @user], html: { multipart: true, class: 'user-form' } do |f|
           = render 'share/flash_messages'
           = render 'share/form_error_messages', form: f
           .form-group
-            label.control-label Avatar
+            = f.label :avatar, class: 'control-label'
             .user-image-uploader
               .image
                 img.img-rounded alt="avatar" src=@user.avatar.bigger.url
@@ -22,7 +22,7 @@
                   label
                     = f.check_box :remove_avatar
                     '
-                    | Remove avatar
+                    = t '.remove_avatar'
           .form-group
             = f.label :name
             = f.text_field :name, class: 'form-control', tabIndex: 1
@@ -37,23 +37,26 @@
             = f.label :bio
             = f.text_area :bio, class: 'form-control', tabIndex: 4
           .clearfix
-            = f.submit 'Save changes', class: 'btn btn-success', tabIndex: 5
+            = f.submit t('.save_changes'), class: 'btn btn-success', tabIndex: 5
             .pull-right
               - if @user.locked?
-                a.btn.btn-default href=lock_admin_user_path(@user) data-method="delete" Unlock
+                a.btn.btn-default href=lock_admin_user_path(@user) data-method="delete"
+                  = t '.unlock'
               - else
-                a.btn.btn-default href=lock_admin_user_path(@user)  data-method="patch" Lock
+                a.btn.btn-default href=lock_admin_user_path(@user)  data-method="patch"
+                  = t '.lock'
               '
-              a.btn.btn-danger href=admin_user_path(@user) data-method="delete" data-confirm="Are you sure you want to destroy this user and all contents?" Destroy
+              a.btn.btn-danger href=admin_user_path(@user) data-method="delete" data-confirm=t('.are_you_sure_you_want_to_destroy_this_user_and_all_contents')
+                = t '.destroy'
 
   .col-md-3
     .panel
       .panel-body
         dl
-          dt Sign up
+          dt = t '.created_at'
           dd = @user.created_at
           - if @user.locked?
-            dt Locked at
+            dt = t '.locked_at'
             dd = @user.locked_at
 
 javascript:

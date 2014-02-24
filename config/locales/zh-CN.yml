@@ -2,6 +2,10 @@
 zh-CN:
   activerecord:
     attributes:
+      category:
+        description: "描述"
+        name: "名称"
+        slug: "标识"
       user:
         avatar: "头像"
         bio: "简介"
@@ -11,7 +15,83 @@ zh-CN:
         password: "密码"
         password_confirmation: "密码确认"
         username: "用户名"
+  admin:
+    attachments:
+      index:
+        are_you_sure_you_want_to_delete_this_attachment: '你确定要删除这个附件吗？'
+        attachments: '附件'
+    categories:
+      form:
+        are_you_sure_you_want_to_destroy_this_category: "你确定要销毁这个分类吗？"
+        create_category: "创建分类"
+        destroy: "销毁"
+        save_changes: "保存修改"
+      index:
+        categories: "分类"
+        new_category: "新建分类"
+        topics_count: "%{count} 话题"
+      new:
+        categories: "分类"
+        new: "新建"
+      show:
+        categories: "分类"
+        topics: "话题"
+    comments:
+      index:
+        comments: "评论"
+        normal: "正常"
+        trashed: "回收站"
+      show:
+        are_you_sure_you_want_to_delete_this_comment: "你确定要删除这个评论吗？"
+        commentable: "评论对象"
+        comments: "评论"
+        created_at: "创建于"
+        delete: "删除"
+        restore: "还原"
+        save_changes: "保存修改"
+        trashed_at: "删除于"
+        user: "用户"
+    dashboard:
+      show:
+        dashboard: "控制台"
+    topics:
+      index:
+        normal: "正常"
+        topics: "话题"
+        trashed: "回收站"
+      show:
+        are_you_sure_you_want_to_delete_this_topic: "你确定要删除这个话题吗？"
+        comments: "评论"
+        created_at: "创建于"
+        delete: "删除"
+        restore: "还原"
+        save_changes: "保存修改"
+        topics: "话题"
+        trashed_at: "删除于"
+        user: "用户"
+    users:
+      index:
+        locked: "被锁定"
+        normal: "正常"
+        users: "用户"
+      show:
+        are_you_sure_you_want_to_destroy_this_user_and_all_contents: "你确定要删除这个用户及其所有内容吗？"
+        created_at: "创建于"
+        destroy: "销毁"
+        lock: "锁定"
+        locked_at: "锁定于"
+        remove_avatar: "移除头像"
+        save_changes: "保存修改"
+        unlock: "解锁"
+        users: "用户"
   layouts:
+    admin:
+      attachments: "附件"
+      back_to_site: "回到站点"
+      categories: "分类"
+      comments: "评论"
+      topics: "话题"
+      users: "用户"
     application:
       likes: "收藏"
       logout: "退出"
@@ -33,7 +113,7 @@ zh-CN:
       are_you_sure_you_want_to_delete_all_notifications: "你确定要删除所有通知吗？"
       delete_all_notification: "删除所有通知"
       mark_all_as_read: "标记所有为已读"
-      no_notifications: '没有通知'
+      no_notifications: "没有通知"
       notifications: "通知"
   sessions:
     new:

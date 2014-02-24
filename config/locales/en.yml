@@ -2,6 +2,10 @@
 en:
   activerecord:
     attributes:
+      category:
+        description: Description
+        name: Name
+        slug: Slug
       user:
         avatar: Avatar
         bio: Bio
@@ -11,7 +15,88 @@ en:
         password: Password
         password_confirmation: Password confirmation
         username: Username
+  admin:
+    attachments:
+      index:
+        are_you_sure_you_want_to_delete_this_attachment: Are you sure you want to
+          delete this attachment
+        attachments: Attachments
+    categories:
+      form:
+        are_you_sure_you_want_to_destroy_this_category: Are you sure you want to destroy
+          this category
+        create_category: Create category
+        destroy: Destroy
+        save_changes: Save changes
+      index:
+        categories: Categories
+        new_category: New category
+        topics_count: "%{count} topics"
+      new:
+        categories: Categories
+        new: New
+      show:
+        categories: Categories
+        topics: Topics
+    comments:
+      index:
+        comments: Comments
+        normal: Normal
+        trashed: Trashed
+      show:
+        are_you_sure_you_want_to_delete_this_comment: Are you sure you want to delete
+          this comment
+        commentable: Commentable
+        comments: Comments
+        created_at: Created at
+        delete: Delete
+        restore: Restore
+        save_changes: Save changes
+        trashed_at: Trashed at
+        user: User
+    dashboard:
+      show:
+        dashboard: Dashboard
+    topics:
+      index:
+        normal: Normal
+        topics: Topics
+        trashed: Trashed
+      show:
+        are_you_sure_you_want_to_delete_this_topic: Are you sure you want to delete
+          this topic
+        comments: Comments
+        created_at: Created at
+        delete: Delete
+        restore: Restore
+        save_changes: Save changes
+        topics: Topics
+        trashed_at: Trashed at
+        user: User
+    users:
+      index:
+        locked: Locked
+        normal: Normal
+        users: Users
+      show:
+        are_you_sure_you_want_to_destroy_this_user_and_all_contents: Are you sure
+          you want to destroy this user and all contents
+        created_at: Created at
+        destroy: Destroy
+        lock: Lock
+        locked_at: Locked at
+        remove_avatar: Remove avatar
+        save_changes: Save changes
+        unlock: Unlock
+        users: Users
   layouts:
+    admin:
+      attachments: Attachments
+      back_to_site: Back to site
+      categories: Categories
+      comments: Comments
+      topics: Topics
+      users: Users
     application:
       likes: Likes
       logout: Logout

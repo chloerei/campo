@@ -5,7 +5,7 @@
         ol.breadcrumb.panel-title
           li
             a href=admin_topics_path
-              | Topics
+              = t '.topics'
           li.active = @topic.title
       .panel-body
         = form_for [:admin, @topic], html: { class: 'topic-form' } do |f|
@@ -21,26 +21,28 @@
           .form-group
             = markdown_area f, :body, tabIndex: 3
           .clearfix
-            = f.submit 'Save changes', class: 'btn btn-success', tabIndex: 4
+            = f.submit t('.save_changes'), class: 'btn btn-success', tabIndex: 4
             .pull-right
               - if @topic.trashed?
-                a.btn.btn-default href=restore_admin_topic_path(@topic) data-method="patch" Restore
+                a.btn.btn-default href=restore_admin_topic_path(@topic) data-method="patch"
+                   = t '.restore'
               - else
-                a.btn.btn-default href=trash_admin_topic_path(@topic) data-method="delete" data-confirm="Are you sure you want to trash this topic?" Trash
+                a.btn.btn-default href=trash_admin_topic_path(@topic) data-method="delete" data-confirm=t('.are_you_sure_you_want_to_delete_this_topic')
+                  = t '.delete'
 
   .col-md-3
     .panel.panel-campo
       .panel-body
         dl
-          dt User
+          dt = t '.user'
           dd
             a href=admin_user_path(@topic.user) = @topic.user.name
-          dt Created at
+          dt = t '.created_at'
           dd = @topic.created_at
           - if @topic.trashed?
-            dt Trashed at
+            dt t '.trashed_at'
             dd = @topic.trashed_at
-          dt Comments
+          dt = t '.comments'
           dd = @topic.comments_count
 
 javascript:
