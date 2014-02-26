@@ -112,5 +112,10 @@
         'comment[body]': {
           required: true
         }
+      },
+      messages: {
+        'comment[body]': {
+          required: '#{Comment.new.errors.generate_message :body, :blank}'
+        }
       }
     });

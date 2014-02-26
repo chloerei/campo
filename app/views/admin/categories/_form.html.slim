@@ -28,5 +28,13 @@ javascript:
       'category[slug]': {
         required: true
       }
+    },
+    messages: {
+      'category[name]': {
+        required: '#{@category.errors.generate_message :name, :blank}'
+      },
+      'category[slug]': {
+        required: '#{@category.errors.generate_message :slug, :blank}'
+      }
     }
   });

@@ -40,5 +40,10 @@ javascript:
       'user[name]': {
         required: true,
       }
+    },
+    messages: {
+      'user[name]': {
+        required: '#{@user.errors.generate_message :name, :blank}'
+      }
     }
   });

@@ -11,15 +11,15 @@
           .form-group
             = label_tag :current_password, t('.current_password'), class: 'control-label col-sm-3'
             .col-sm-6
-              = text_field_tag :current_password, nil, class: 'form-control'
+              = password_field_tag :current_password, nil, class: 'form-control'
           .form-group
             = f.label :password, class: 'control-label col-sm-3'
             .col-sm-6
-              = f.text_field :password, class: 'form-control'
+              = f.password_field :password, class: 'form-control'
           .form-group
             = f.label :password_confirmation, class: 'control-label col-sm-3'
             .col-sm-6
-              = f.text_field :password_confirmation, class: 'form-control'
+              = f.password_field :password_confirmation, class: 'form-control'
           .form-group
             .col-sm-6.col-sm-push-3
               = f.submit t('.save_changes'), class: 'btn btn-primary'
@@ -33,6 +33,13 @@ javascript:
       'user[password]': 'required',
       'user[password_confirmation]': {
         equalTo: '#user_password'
+      }
+    },
+    messages: {
+      'current_password': '#{@user.errors.generate_message :password, :blank}',
+      'user[password]': '#{@user.errors.generate_message :password, :blank}',
+      'user[password_confirmation]': {
+        equalTo: '#{@user.errors.generate_message :password_confirmation, :confirmation}'
       }
     }
   });

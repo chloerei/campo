@@ -45,5 +45,10 @@ javascript:
       'comment[body]': {
         required: true
       }
+    },
+    messages: {
+      'comment[body]': {
+        required: '#{@comment.errors.generate_message :body, :blank}'
+      }
     }
   });

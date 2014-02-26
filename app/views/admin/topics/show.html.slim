@@ -54,5 +54,13 @@ javascript:
       'topic[body]': {
         required: true
       }
+    },
+    messages: {
+      'topic[title]': {
+        required: '#{@topic.errors.generate_message :title, :blank}'
+      },
+      'topic[body]': {
+        required: '#{@topic.errors.generate_message :body, :blank}'
+      }
     }
   });

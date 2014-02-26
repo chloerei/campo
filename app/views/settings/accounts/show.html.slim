@@ -46,13 +46,18 @@ javascript:
       'current_password': 'required'
     },
     messages: {
-      'user[email]': {
-        remote: 'This Email already exists',
-        format: 'Please enter a valid email address.'
-      },
       'user[username]': {
-        remote: 'This Username already exists',
-        format: 'Username may only contain alphanumeric characters or dashes'
+        required: '#{@user.errors.generate_message :username, :blank}',
+        remote: '#{@user.errors.generate_message :username, :taken}',
+        format: '#{@user.errors.generate_message :username, :format}'
+      },
+      'user[email]': {
+        required: '#{@user.errors.generate_message :email, :blank}',
+        remote: '#{@user.errors.generate_message :email, :taken}',
+        format: '#{@user.errors.generate_message :email, :format}'
+      },
+      'current_password': {
+        required: '#{@user.errors.generate_message :password, :blank}'
       }
     }
   });
