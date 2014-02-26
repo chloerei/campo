@@ -80,6 +80,7 @@ en:
         comments: Comments
         created_at: Created at
         delete: Delete
+        no_category: No category
         restore: Restore
         save_changes: Save changes
         topics: Topics
@@ -142,7 +143,10 @@ en:
     flashes:
       incorrect_user_name_or_password: Incorrect user name or password
     new:
+      login: Login
+      password: Password
       sign_in: Sign in
+      username_or_email: Username or email
   settings:
     accounts:
       flashes:

@@ -76,6 +76,7 @@ zh-CN:
         comments: "评论"
         created_at: "创建于"
         delete: "删除"
+        no_category: "不分类"
         restore: "还原"
         save_changes: "保存修改"
         topics: "话题"
@@ -136,7 +137,10 @@ zh-CN:
     flashes:
       incorrect_user_name_or_password: "错误的用户名或密码"
     new:
+      login: "帐号"
+      password: "密码"
       sign_in: "登录"
+      username_or_email: "用户名或邮箱"
   settings:
     accounts:
       flashes:
