@@ -15,7 +15,7 @@ class Admin::TopicsController < Admin::ApplicationController
 
   def update
     if @topic.update_attributes params.require(:topic).permit(:title, :category_id, :body)
-      flash[:success] = 'Topic have been successfully updated'
+      flash[:success] = I18n.t('admin.topics.flashes.successfully_updated')
       redirect_to admin_topic_url(@topic)
     else
       render :show
@@ -24,13 +24,13 @@ class Admin::TopicsController < Admin::ApplicationController
 
   def trash
     @topic.trash
-    flash[:success] = 'Topic have been successfully trashed'
+    flash[:success] = I18n.t('admin.topics.flashes.successfully_trashed')
     redirect_to admin_topic_path(@topic)
   end
 
   def restore
     @topic.restore
-    flash[:success] = 'Topic have been successfully restored'
+    flash[:success] = I18n.t('admin.topics.flashes.successfully_restored')
     redirect_to admin_topic_path(@topic)
   end
 

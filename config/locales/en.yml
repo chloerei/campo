@@ -22,6 +22,10 @@ en:
           delete this attachment
         attachments: Attachments
     categories:
+      flashes:
+        successfully_created: Successfully created
+        successfully_destroy: Successfully destroy
+        successfully_updated: Successfully updated
       form:
         are_you_sure_you_want_to_destroy_this_category: Are you sure you want to destroy
           this category
@@ -39,6 +43,10 @@ en:
         categories: Categories
         topics: Topics
     comments:
+      flashes:
+        successfully_restored: Successfully restored
+        successfully_trashed: Successfully trashed
+        successfully_updated: Successfully updated
       index:
         comments: Comments
         normal: Normal
@@ -58,6 +66,10 @@ en:
       show:
         dashboard: Dashboard
     topics:
+      flashes:
+        successfully_restored: Successfully restored
+        successfully_trashed: Successfully trashed
+        successfully_updated: Successfully updated
       index:
         normal: Normal
         topics: Topics
@@ -74,6 +86,11 @@ en:
         trashed_at: Trashed at
         user: User
     users:
+      flashes:
+        successfully_destroy: Successfully destroy
+        successfully_locked: Successfully locked
+        successfully_unlocked: Successfully unlocked
+        successfully_updated: Successfully updated
       index:
         locked: Locked
         normal: Normal
@@ -122,20 +139,30 @@ en:
       no_notifications: No notifications
       notifications: Notifications
   sessions:
+    flashes:
+      incorrect_user_name_or_password: Incorrect user name or password
     new:
       sign_in: Sign in
   settings:
     accounts:
+      flashes:
+        successfully_updated: Successfully updated
       show:
         account: Account
         current_password: Current password
         save_changes: Save changes
+    flashes:
+      incorrect_current_password: Incorrect current password
     passwords:
+      flashes:
+        successfully_updated: Successfully updated
       show:
         current_password: Current password
         password: Password
         save_changes: Save changes
     profiles:
+      flashes:
+        successfully_updated: Successfully updated
       show:
         profile: Profile
         save_changes: Save changes

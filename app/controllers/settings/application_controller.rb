@@ -9,7 +9,7 @@ class Settings::ApplicationController < ApplicationController
 
   def current_password_required
     unless params[:current_password] && @user.authenticate(params[:current_password])
-      flash.now[:warning] = 'Password is incorrect, please enter current password to save changes.'
+      flash.now[:warning] = I18n.t('settings.flashes.incorrect_current_password')
       render :show
     end
   end

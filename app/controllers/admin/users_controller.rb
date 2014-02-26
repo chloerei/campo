@@ -15,7 +15,7 @@ class Admin::UsersController < Admin::ApplicationController
 
   def update
     if @user.update_attributes params.require(:user).permit(:name, :username, :email, :bio, :avatar, :remove_avatar)
-      flash[:success] = 'Change have been successfully saved'
+      flash[:success] = I18n.t('admin.users.flashes.successfully_updated')
       redirect_to admin_user_url(@user)
     else
       render :show
@@ -24,19 +24,19 @@ class Admin::UsersController < Admin::ApplicationController
 
   def destroy
     @user.destroy
-    flash[:success] = "User #{@user.username} have been successfully destroy"
+    flash[:success] = I18n.t('admin.users.flashes.successfully_destroy')
     redirect_to admin_users_path
   end
 
   def lock
     @user.lock
-    flash[:success] = 'User have been successfully locked'
+    flash[:success] = I18n.t('admin.users.flashes.successfully_locked')
     redirect_to admin_user_url(@user)
   end
 
   def unlock
     @user.unlock
-    flash[:success] = 'User have been successfully unlocked'
+    flash[:success] = I18n.t('admin.users.flashes.successfully_unlocked')
     redirect_to admin_user_url(@user)
   end
 

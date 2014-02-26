@@ -6,7 +6,7 @@ class Settings::PasswordsController < Settings::ApplicationController
 
   def update
     if @user.update_attributes params.require(:user).permit(:password, :password_confirmation)
-      flash[:success] = 'Your settings have been successfully saved'
+      flash[:success] = I18n.t('settings.passwords.flashes.successfully_updated')
       redirect_to settings_password_url
     else
       render :show

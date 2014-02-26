@@ -16,7 +16,7 @@ class Admin::CategoriesController < Admin::ApplicationController
     @category = Category.new category_params
 
     if @category.save
-      flash[:success] = 'Category have been successfully created'
+      flash[:success] = I18n.t('admin.categories.flashes.successfully_created')
       redirect_to admin_category_path(@category)
     else
       render :new
@@ -28,7 +28,7 @@ class Admin::CategoriesController < Admin::ApplicationController
 
   def update
     if @category.update_attributes category_params
-      flash[:success] = 'Category have been successfully updated'
+      flash[:success] = I18n.t('admin.categories.flashes.successfully_updated')
       redirect_to admin_category_path(@category)
     else
       render :edit
@@ -37,7 +37,7 @@ class Admin::CategoriesController < Admin::ApplicationController
 
   def destroy
     @category.destroy
-    flash[:success] = "Category #{@category.name} have been successfully destroy"
+    flash[:success] = I18n.t('admin.categories.flashes.successfully_destroy')
     redirect_to admin_categories_path
   end
 

@@ -6,7 +6,7 @@ class Settings::AccountsController < Settings::ApplicationController
 
   def update
     if @user.update_attributes params.require(:user).permit(:username, :email, :locale)
-      flash[:success] = 'Your settings have been successfully saved'
+      flash[:success] = I18n.t('settings.accounts.flashes.successfully_updated')
       redirect_to settings_account_path
     else
       render :show

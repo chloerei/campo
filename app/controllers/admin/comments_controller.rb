@@ -15,7 +15,7 @@ class Admin::CommentsController < Admin::ApplicationController
 
   def update
     if @comment.update_attributes params.require(:comment).permit(:body)
-      flash[:success] = 'Comment have been successfully updated'
+      flash[:success] = I18n.t('admin.comments.flashes.successfully_updated')
       redirect_to admin_comment_path(@comment)
     else
       render :show
@@ -24,13 +24,13 @@ class Admin::CommentsController < Admin::ApplicationController
 
   def trash
     @comment.trash
-    flash[:success] = 'Comment have been successfully trashed'
+    flash[:success] = I18n.t('admin.comments.flashes.successfully_trashed')
     redirect_to admin_comment_path(@comment)
   end
 
   def restore
     @comment.restore
-    flash[:success] = 'Comment have been successfully restore'
+    flash[:success] = I18n.t('admin.comments.flashes.successfully_restored')
     redirect_to admin_comment_path(@comment)
   end
 
