@@ -11,18 +11,18 @@
           .form-group
             = label_tag :current_password, t('.current_password'), class: 'control-label col-sm-3'
             .col-sm-6
-              = password_field_tag :current_password, nil, class: 'form-control'
+              = password_field_tag :current_password, nil, class: 'form-control', tabIndex: 1
           .form-group
             = f.label :password, class: 'control-label col-sm-3'
             .col-sm-6
-              = f.password_field :password, class: 'form-control'
+              = f.password_field :password, class: 'form-control', tabIndex: 2
           .form-group
             = f.label :password_confirmation, class: 'control-label col-sm-3'
             .col-sm-6
-              = f.password_field :password_confirmation, class: 'form-control'
+              = f.password_field :password_confirmation, class: 'form-control', tabIndex: 3
           .form-group
             .col-sm-6.col-sm-push-3
-              = f.submit t('.save_changes'), class: 'btn btn-primary'
+              = f.submit t('.save_changes'), class: 'btn btn-primary', tabIndex: 4
   .col-md-3
     = render 'settings/sidebar'
 
