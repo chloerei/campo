@@ -5,7 +5,7 @@ module Trashable
     scope :trashed, -> { where(trashed: true) }
     scope :no_trashed, -> { where(trashed: false) }
 
-    define_callbacks :trash, :restore
+    define_model_callbacks :trash, :restore
   end
 
   def trash

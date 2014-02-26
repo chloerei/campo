@@ -13,8 +13,8 @@ class Comment < ActiveRecord::Base
   after_create :increment_counter_cache, :create_mention_notification, :create_comment_notification
   after_destroy :decrement_counter_cache, unless: :trashed?
 
-  set_callback :trash, :after, :decrement_counter_cache
-  set_callback :restore, :after, :increment_counter_cache
+  after_trash :decrement_counter_cache
+  after_restore :increment_counter_cache
 
   def increment_counter_cache
     if commentable.has_attribute? :comments_count
