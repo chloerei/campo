@@ -46,8 +46,8 @@
                 a.btn.btn-default href=lock_admin_user_path(@user)  data-method="patch"
                   = t '.lock'
               '
-              a.btn.btn-danger href=admin_user_path(@user) data-method="delete" data-confirm=t('.are_you_sure_you_want_to_destroy_this_user_and_all_contents')
-                = t '.destroy'
+              a.btn.btn-danger href=admin_user_path(@user) data-method="delete" data-confirm=t('.permanently_delete_confirm')
+                = t '.permanently_delete'
 
   .col-md-3
     .panel

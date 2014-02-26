@@ -16,8 +16,8 @@
     - else
       = f.submit t('.save_changes'), class: 'btn btn-success', tabIndex: 4
       .pull-right
-        a.btn.btn-danger href=admin_category_path(@category) data-method="delete" data-confirm=t('.are_you_sure_you_want_to_destroy_this_category')
-          = t '.destroy'
+        a.btn.btn-danger href=admin_category_path(@category) data-method="delete" data-confirm=t('.permanently_delete_confirm')
+          = t '.permanently_delete'
 
 javascript:
   $('form.category-form').validate({

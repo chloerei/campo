@@ -20,7 +20,7 @@
                 a.btn.btn-default href=restore_admin_comment_path(@comment) data-method="patch"
                   = t '.restore'
               - else
-                a.btn.btn-default href=trash_admin_comment_path(@comment) data-method="delete" data-confirm=t('.are_you_sure_you_want_to_delete_this_comment')
+                a.btn.btn-default href=trash_admin_comment_path(@comment) data-method="delete" data-confirm=t('.delete_confirm')
                   = t '.delete'
 
   .col-md-3
@@ -36,7 +36,7 @@
           dt = t '.created_at'
           dd = @comment.created_at
           - if @comment.trashed?
-            dt = t '.trashed_at'
+            dt = t '.deleted_at'
             dd = @comment.trashed_at
 
 javascript:

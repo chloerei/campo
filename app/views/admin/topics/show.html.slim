@@ -27,7 +27,7 @@
                 a.btn.btn-default href=restore_admin_topic_path(@topic) data-method="patch"
                    = t '.restore'
               - else
-                a.btn.btn-default href=trash_admin_topic_path(@topic) data-method="delete" data-confirm=t('.are_you_sure_you_want_to_delete_this_topic')
+                a.btn.btn-default href=trash_admin_topic_path(@topic) data-method="delete" data-confirm=t('.delete_confirm')
                   = t '.delete'
 
   .col-md-3
@@ -40,7 +40,7 @@
           dt = t '.created_at'
           dd = @topic.created_at
           - if @topic.trashed?
-            dt t '.trashed_at'
+            dt t '.deleted_at'
             dd = @topic.trashed_at
           dt = t '.comments'
           dd = @topic.comments_count

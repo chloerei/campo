@@ -37,7 +37,7 @@
                         = @topic.likes_count
                   a.btn data-visible-to="creator" href=edit_topic_path(@topic)
                     i.fa.fa-pencil
-                  a.btn data-visible-to="creator" href=trash_topic_path(@topic) data-remote="true" data-method="delete" data-confirm=t('.are_you_sure_you_want_to_delete_this_topic')
+                  a.btn data-visible-to="creator" href=trash_topic_path(@topic) data-remote="true" data-method="delete" data-confirm=t('.delete_confirm')
                     i.fa.fa-trash-o
 
     .panel.panel-campo#comments

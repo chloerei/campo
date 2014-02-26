@@ -24,5 +24,5 @@ li.list-group-item.comment id="comment-#{comment.id}" data-creator-id=comment.us
               = comment.likes_count
         a.btn href=edit_comment_path(comment) data-remote="true" data-visible-to="creator"
           i.fa.fa-pencil
-        a.btn href=trash_comment_path(comment) data-remote="true" data-method="delete" data-visible-to="creator" data-confirm="Are you sure you want to delete this comment?"
+        a.btn href=trash_comment_path(comment) data-remote="true" data-method="delete" data-visible-to="creator" data-confirm=t('.delete_confirm')
           i.fa.fa-trash-o

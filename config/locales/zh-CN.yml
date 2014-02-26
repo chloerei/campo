@@ -18,17 +18,17 @@ zh-CN:
   admin:
     attachments:
       index:
-        are_you_sure_you_want_to_delete_this_attachment: "你确定要删除这个附件吗？"
         attachments: "附件"
+        delete_confirm: "你确定要删除此附件吗？"
     categories:
       flashes:
         successfully_created: "成功创建分类"
         successfully_destroy: "成功彻底删除分类"
         successfully_updated: "成功更新分类"
       form:
-        are_you_sure_you_want_to_destroy_this_category: "你确定要销毁这个分类吗？"
         create_category: "创建分类"
-        destroy: "彻底删除"
+        permanently_delete: "彻底删除"
+        permanently_delete_confirm: "你确定要彻底删除此分类吗？"
         save_changes: "保存修改"
       index:
         categories: "分类"
@@ -47,17 +47,17 @@ zh-CN:
         successfully_updated: "成功更新评论"
       index:
         comments: "评论"
+        delete: "删除"
         normal: "正常"
-        trashed: "回收站"
       show:
-        are_you_sure_you_want_to_delete_this_comment: "你确定要删除这个评论吗？"
         commentable: "评论对象"
         comments: "评论"
         created_at: "创建于"
         delete: "删除"
+        delete_confirm: "你确定要删除此评论吗？"
+        deleted_at: "删除于"
         restore: "还原"
         save_changes: "保存修改"
-        trashed_at: "删除于"
         user: "用户"
     dashboard:
       show:
@@ -68,19 +68,19 @@ zh-CN:
         successfully_trashed: "成功删除话题"
         successfully_updated: "成功更新话题"
       index:
+        delete: "删除"
         normal: "正常"
         topics: "话题"
-        trashed: "回收站"
       show:
-        are_you_sure_you_want_to_delete_this_topic: "你确定要删除这个话题吗？"
         comments: "评论"
         created_at: "创建于"
         delete: "删除"
+        delete_confirm: "你确定要删除次话题吗？"
+        deleted_at: "删除于"
         no_category: "不分类"
         restore: "还原"
         save_changes: "保存修改"
         topics: "话题"
-        trashed_at: "删除于"
         user: "用户"
     users:
       flashes:
@@ -93,16 +93,18 @@ zh-CN:
         normal: "正常"
         users: "用户"
       show:
-        are_you_sure_you_want_to_destroy_this_user_and_all_contents: "你确定要删除这个用户及其所有内容吗？"
         created_at: "创建于"
-        destroy: "销毁"
         lock: "锁定"
         locked_at: "锁定于"
+        permanently_delete: "彻底删除"
+        permanently_delete_confirm: "你确定要彻底删除此用户吗？"
         remove_avatar: "移除头像"
         save_changes: "保存修改"
         unlock: "解锁"
         users: "用户"
   comments:
+    comment:
+      delete_confirm: "你确定要删除此评论吗？"
     form:
       add_this_comment: "添加评论"
       cancel: "取消"
@@ -133,8 +135,8 @@ zh-CN:
       write: "编辑"
   notifications:
     index:
-      are_you_sure_you_want_to_delete_all_notifications: "你确定要删除所有通知吗？"
-      delete_all_notification: "删除所有通知"
+      delete_all: "删除所有"
+      delete_all_confirm: "你确定要删除所有通知吗？"
       mark_all_as_read: "标记所有为已读"
       no_notifications: "没有通知"
       notifications: "通知"
@@ -205,8 +207,8 @@ zh-CN:
       topics: "话题"
     show:
       add_this_comment: "添加评论"
-      are_you_sure_you_want_to_delete_this_topic: "确认删除这个话题？"
       comments: "评论"
+      delete_confirm: "你确定要删除此话题吗？"
       no_comment_yet: "还没有评论"
       no_more_topics: "没有更多话题"
       or: "或"
