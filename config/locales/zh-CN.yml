@@ -102,6 +102,11 @@ zh-CN:
         save_changes: "保存修改"
         unlock: "解锁"
         users: "用户"
+  comments:
+    form:
+      add_this_comment: "添加评论"
+      cancel: "取消"
+      save_changes: "保存修改"
   layouts:
     admin:
       attachments: "附件"

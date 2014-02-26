@@ -107,6 +107,11 @@ en:
         save_changes: Save changes
         unlock: Unlock
         users: Users
+  comments:
+    form:
+      add_this_comment: Add this comment
+      cancel: Cancel
+      save_changes: Save changes
   layouts:
     admin:
       attachments: Attachments

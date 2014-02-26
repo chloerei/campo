@@ -5,11 +5,12 @@
     .form-group
       = markdown_area f, :body
     - if comment.new_record?
-      = f.submit 'Add this comment', class: 'btn btn-success', tabIndex: 2
+      = f.submit t('.add_this_comment'), class: 'btn btn-success'
     - else
-      = f.submit 'Save changes', class: 'btn btn-success'
+      = f.submit t('.save_changes'), class: 'btn btn-success'
       '
-      a.btn.btn-default href=cancel_comment_path(comment) data-remote="true" Cancel
+      a.btn.btn-default href=cancel_comment_path(comment) data-remote="true"
+        = t '.cancel'
 
 javascript:
   $('#edit_comment_#{comment.id}').validate({

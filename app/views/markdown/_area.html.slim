@@ -2,7 +2,7 @@
 - resource_name = resource.class.name.downcase
 - write_pane_id = "write_#{resource_name}_#{resource.try(:id) || 'new'}"
 - preview_pane_id = "preview_#{resource_name}_#{resource.try(:id) || 'new'}"
-- tabIndex ||= 1
+- tabIndex ||= nil
 
 .markdown-area
   ul.nav.nav-tabs
@@ -16,7 +16,7 @@
     .tab-pane.active id=write_pane_id
       = form.text_area name, class: 'form-control', data: { behaviors: 'autosize' }, tabIndex: tabIndex
       .file-upload
-        = file_field_tag :file, multiple: true
+        = file_field_tag :file, multiple: true, tabIndex: 99
         .text.text-muted
           = t '.attach_images_by'
           '
