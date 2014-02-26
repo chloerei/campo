@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 20140218070616) do
     t.string   "commentable_type"
     t.text     "body"
     t.integer  "likes_count",      default: 0
-    t.datetime "trashed_at"
+    t.boolean  "trashed",          default: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -97,7 +97,7 @@ ActiveRecord::Schema.define(version: 20140218070616) do
     t.integer  "comments_count",      default: 0
     t.integer  "likes_count",         default: 0
     t.integer  "subscriptions_count", default: 0
-    t.datetime "trashed_at"
+    t.boolean  "trashed",             default: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

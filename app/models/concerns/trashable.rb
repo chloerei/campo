@@ -2,25 +2,21 @@ module Trashable
   extend ActiveSupport::Concern
 
   included do
-    scope :trashed, -> { where.not(trashed_at: nil) }
-    scope :no_trashed, -> { where(trashed_at: nil) }
+    scope :trashed, -> { where(trashed: true) }
+    scope :no_trashed, -> { where(trashed: false) }
 
     define_callbacks :trash, :restore
   end
 
   def trash
     run_callbacks(:trash) do
-      update_attribute :trashed_at, current_time_from_proper_timezone
+      update_attribute :trashed, true
     end
   end
 
   def restore
     run_callbacks(:restore) do
-      update_attribute :trashed_at, nil
+      update_attribute :trashed, false
     end
-  end
-
-  def trashed?
-    trashed_at.present?
   end
 end

@@ -59,8 +59,8 @@ class Topic < ActiveRecord::Base
         }
       },
       filter: {
-        missing: {
-          field: 'trashed_at'
+        term: {
+          trashed: false
         }
       }
     )

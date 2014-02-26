@@ -39,11 +39,10 @@
             a href=admin_user_path(@topic.user) = @topic.user.name
           dt = t '.created_at'
           dd = @topic.created_at
-          - if @topic.trashed?
-            dt t '.deleted_at'
-            dd = @topic.trashed_at
           dt = t '.comments'
           dd = @topic.comments_count
+          - if @topic.trashed?
+            span.label.label-default = t('.trashed')
 
 javascript:
   $('form.topic-form').validate({

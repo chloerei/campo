@@ -55,9 +55,9 @@ zh-CN:
         created_at: "创建于"
         delete: "删除"
         delete_confirm: "你确定要删除此评论吗？"
-        deleted_at: "删除于"
         restore: "还原"
         save_changes: "保存修改"
+        trashed: "已删除"
         user: "用户"
     dashboard:
       show:
@@ -76,11 +76,11 @@ zh-CN:
         created_at: "创建于"
         delete: "删除"
         delete_confirm: "你确定要删除次话题吗？"
-        deleted_at: "删除于"
         no_category: "不分类"
         restore: "还原"
         save_changes: "保存修改"
         topics: "话题"
+        trashed: "已删除"
         user: "用户"
     users:
       flashes:

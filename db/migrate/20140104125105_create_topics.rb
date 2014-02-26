@@ -9,7 +9,7 @@ class CreateTopics < ActiveRecord::Migration
       t.integer :comments_count, default: 0
       t.integer :likes_count, default: 0
       t.integer :subscriptions_count, default: 0
-      t.datetime :trashed_at
+      t.boolean :trashed, default: false
 
       t.timestamps
     end

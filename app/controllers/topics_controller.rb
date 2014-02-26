@@ -32,8 +32,8 @@ class TopicsController < ApplicationController
         }
       },
       filter: {
-        missing: {
-          field: 'trashed_at'
+        term: {
+          trashed: false
         }
       }
     ).page(params[:page]).records

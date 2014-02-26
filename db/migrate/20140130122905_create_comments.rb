@@ -5,7 +5,7 @@ class CreateComments < ActiveRecord::Migration
       t.belongs_to :commentable, polymorphic: true, index: true
       t.text :body
       t.integer :likes_count, default: 0
-      t.datetime :trashed_at
+      t.boolean :trashed, default: false
 
       t.timestamps
     end

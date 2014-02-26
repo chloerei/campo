@@ -36,8 +36,7 @@
           dt = t '.created_at'
           dd = @comment.created_at
           - if @comment.trashed?
-            dt = t '.deleted_at'
-            dd = @comment.trashed_at
+            span.label.label-default = t('.trashed')
 
 javascript:
   $('form.comment-form').validate({
