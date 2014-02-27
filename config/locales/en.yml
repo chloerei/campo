@@ -147,6 +147,7 @@ en:
       password_reset: Password reset
       save_changes: Save changes
     flashes:
+      successfully_update: Successfully update
       token_invalid: Token invalid
       user_email_not_found: User email not found
     new:
@@ -162,6 +163,7 @@ en:
     flashes:
       incorrect_user_name_or_password: Incorrect user name or password
     new:
+      forgot_password: Forgot password
       login: Login
       password: Password
       sign_in: Sign in
@@ -244,9 +246,13 @@ en:
       comments_count: "%{count} comments"
   user_mailer:
     password_reset:
-      body_text: Body text
-      footer_text: Footer text
-      subject: Subject
+      subject: Password reset
+      text_body: |
+        Somebody asked to reset your password. If it was not you, you can safely ignore this email.
+
+        Click the following link to choose a new password:
+
+        %{url}
   users:
     comments:
       index:

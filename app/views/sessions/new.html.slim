@@ -14,3 +14,6 @@
             = label_tag t('.password')
             = password_field_tag :password, nil, placeholder: t('.password'), tabindex: 2, class: 'form-control'
           = submit_tag t('.sign_in'), class: 'btn btn-success', tabindex: 5
+        hr
+        a href=new_password_path
+          = t '.forgot_password'
