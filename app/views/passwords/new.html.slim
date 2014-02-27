@@ -1,0 +1,13 @@
+.row
+  .col-md-6.col-md-offset-3
+    .panel.panel-campo
+      .panel-heading
+        h3.panel-title
+          = t '.password_reset'
+      .panel-body
+        = form_tag password_path do
+          .form-group
+            = label_tag :email, t('.email'), class: 'control-label'
+            = text_field_tag :email, nil, placeholder: t('.your_email'), class: 'form-control'
+          .form-group
+            = submit_tag t('.send_reset_email'), class: 'btn btn-default'

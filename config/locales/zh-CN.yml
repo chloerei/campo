@@ -140,6 +140,18 @@ zh-CN:
       mark_all_as_read: "标记所有为已读"
       no_notifications: "没有通知"
       notifications: "通知"
+  passwords:
+    flashes:
+      user_email_not_found: User email not found
+    new:
+      email: Email
+      password_reset: Password reset
+      send_reset_email: Send reset email
+      your_email: Your email
+    show:
+      password_reset: Password reset
+      password_reset_email_has_been_sent_message: Password reset email has been sent
+        message
   sessions:
     flashes:
       incorrect_user_name_or_password: "错误的用户名或密码"
@@ -222,6 +234,11 @@ zh-CN:
       search: "搜索"
     topic:
       comments_count: "%{count} 条评论"
+  user_mailer:
+    password_reset:
+      body_text: Body text
+      footer_text: Footer text
+      subject: Subject
   users:
     comments:
       index:

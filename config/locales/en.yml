@@ -142,6 +142,18 @@ en:
       mark_all_as_read: Mark all as read
       no_notifications: No notifications
       notifications: Notifications
+  passwords:
+    flashes:
+      user_email_not_found: User email not found
+    new:
+      email: Email
+      password_reset: Password reset
+      send_reset_email: Send reset email
+      your_email: Your email
+    show:
+      password_reset: Password reset
+      password_reset_email_has_been_sent_message: Password reset email has been sent
+        message
   sessions:
     flashes:
       incorrect_user_name_or_password: Incorrect user name or password
@@ -226,6 +238,11 @@ en:
       search: Search
     topic:
       comments_count: "%{count} comments"
+  user_mailer:
+    password_reset:
+      body_text: Body text
+      footer_text: Footer text
+      subject: Subject
   users:
     comments:
       index:

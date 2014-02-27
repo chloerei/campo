@@ -2,6 +2,7 @@ search:
   include:
     - '*.rb'
     - '*.slim'
+    - '*.text.erb'
 
 ignore_unused:
   - activerecord.attributes.*
