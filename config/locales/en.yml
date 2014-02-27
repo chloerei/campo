@@ -113,6 +113,7 @@ en:
       save_changes: Save changes
   layouts:
     admin:
+      admin: "%{name} Admin"
       attachments: Attachments
       back_to_site: Back to site
       categories: Categories
@@ -248,7 +249,7 @@ en:
     password_reset:
       subject: Password reset
       text_body: |
-        Somebody asked to reset your password.
+        Somebody asked to reset your password on %{host} .
 
         If it was not you, you can safely ignore this email.
 

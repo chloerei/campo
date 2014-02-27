@@ -111,6 +111,7 @@ zh-CN:
       save_changes: "保存修改"
   layouts:
     admin:
+      admin: "%{name} 管理"
       attachments: "附件"
       back_to_site: "回到站点"
       categories: "分类"
@@ -243,7 +244,7 @@ zh-CN:
     password_reset:
       subject: "密码重置"
       text_body: |
-        有人请求重置你的密码。
+        有人请求重置你在 %{host} 的密码。
 
         如果不是你，你可以直接忽略本邮件。
 
