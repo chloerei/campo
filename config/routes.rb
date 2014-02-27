@@ -112,5 +112,6 @@ Rails.application.routes.draw do
 
   if Rails.env.development?
     get 'qunit', to: 'qunit#index'
+    mount UserMailerPreview => 'user_mailer_preview'
   end
 end

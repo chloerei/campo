@@ -248,7 +248,9 @@ en:
     password_reset:
       subject: Password reset
       text_body: |
-        Somebody asked to reset your password. If it was not you, you can safely ignore this email.
+        Somebody asked to reset your password.
+
+        If it was not you, you can safely ignore this email.
 
         Click the following link to choose a new password:
 

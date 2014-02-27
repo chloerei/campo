@@ -84,6 +84,9 @@ group :development do
 
   # i18n extractor
   gem 'i18n-tasks', '~> 0.2.19'
+
+  # Visual email testing
+  gem 'mail_view', '~> 2.0.4'
 end
 
 group :development, :test do
