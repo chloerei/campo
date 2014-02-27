@@ -24,4 +24,38 @@ class PasswordsControllerTest < ActionController::TestCase
     end
     assert_template :new
   end
+
+  test "should not get edit page if token invalid" do
+    user = create(:user)
+    get :edit, email: user.email
+    assert_redirected_to new_password_path
+  end
+
+  test "should not get edit page if token expired" do
+    user = create(:user)
+    user.generate_password_reset_token
+    user.update_attribute :password_reset_token_created_at, 3.days.ago
+    get :edit, email: user.email
+    assert_redirected_to new_password_path
+  end
+
+  test "should get edit page" do
+    user = create(:user)
+    user.generate_password_reset_token
+    get :edit, email: user.email, token: user.password_reset_token
+    assert_response :success, @response.body
+  end
+
+  test "should not update password if token invalid" do
+    user = create(:user)
+    post :update, email: user.email, user: { password: 'change', password_confirmation: 'change' }
+    assert !user.reload.authenticate('change')
+  end
+
+  test "should update password" do
+    user = create(:user)
+    user.generate_password_reset_token
+    post :update, email: user.email, token: user.password_reset_token, user: { password: 'change', password_confirmation: 'change' }
+    assert user.reload.authenticate('change')
+  end
 end

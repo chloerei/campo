@@ -141,7 +141,11 @@ zh-CN:
       no_notifications: "没有通知"
       notifications: "通知"
   passwords:
+    edit:
+      password_reset: Password reset
+      save_changes: Save changes
     flashes:
+      token_invalid: Token invalid
       user_email_not_found: User email not found
     new:
       email: Email

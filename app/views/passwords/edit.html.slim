@@ -1,0 +1,38 @@
+.row
+  .col-md-6.col-md-offset-3
+    .panel.panel-campo
+      .panel-heading
+        h3.panel-title
+          = t '.password_reset'
+      .panel-body
+        = form_for @user, url: password_path, html: { class: 'password-form' } do |f|
+          = render 'share/flash_messages'
+          = render 'share/form_error_messages', form: f
+          .form-group
+            = f.label :password, class: 'control-label'
+            = f.password_field :password, class: 'form-control'
+          .form-group
+            = f.label :password_confirmation, class: 'control-label'
+            = f.password_field :password_confirmation, class: 'form-control'
+          .form-group
+            = submit_tag t('.save_changes'), class: 'btn btn-default'
+
+javascript:
+  $('form.password-form').validate({
+    rules: {
+      'user[password]': {
+        required: true
+      },
+      'user[password_confirmation]': {
+        equalTo: '#user_password'
+      }
+    },
+    messages: {
+      'user[password]': {
+        required: '#{@user.errors.generate_message :password, :blank}'
+      },
+      'user[password_confirmation]': {
+        equalTo: '#{@user.errors.generate_message :password_confirmation, :confirmation}'
+      }
+    }
+  });

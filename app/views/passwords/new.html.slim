@@ -6,6 +6,7 @@
           = t '.password_reset'
       .panel-body
         = form_tag password_path do
+          = render 'share/flash_messages'
           .form-group
             = label_tag :email, t('.email'), class: 'control-label'
             = text_field_tag :email, nil, placeholder: t('.your_email'), class: 'form-control'

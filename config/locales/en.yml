@@ -143,7 +143,11 @@ en:
       no_notifications: No notifications
       notifications: Notifications
   passwords:
+    edit:
+      password_reset: Password reset
+      save_changes: Save changes
     flashes:
+      token_invalid: Token invalid
       user_email_not_found: User email not found
     new:
       email: Email
