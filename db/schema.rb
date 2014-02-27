@@ -117,6 +117,8 @@ ActiveRecord::Schema.define(version: 20140218070616) do
     t.string   "avatar"
     t.string   "locale"
     t.datetime "locked_at"
+    t.string   "password_reset_token"
+    t.datetime "password_reset_token_created_at"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

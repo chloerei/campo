@@ -52,4 +52,9 @@ class User < ActiveRecord::Base
   def locked?
     locked_at.present?
   end
+
+  def generate_password_reset_token
+    update_attributes(password_reset_token: SecureRandom.hex(32),
+                      password_reset_token_created_at: current_time_from_proper_timezone)
+  end
 end

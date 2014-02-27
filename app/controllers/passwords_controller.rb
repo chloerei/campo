@@ -6,6 +6,7 @@ class PasswordsController < ApplicationController
 
   def create
     if @user = User.find_by(email: params[:email])
+      @user.generate_password_reset_token
       UserMailer.password_reset(@user.id).deliver
       redirect_to password_path
     else

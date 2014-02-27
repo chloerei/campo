@@ -11,6 +11,8 @@ class CreateUsers < ActiveRecord::Migration
       t.string :avatar
       t.string :locale
       t.datetime :locked_at
+      t.string :password_reset_token
+      t.datetime :password_reset_token_created_at
 
       t.timestamps
     end
