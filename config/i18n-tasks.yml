@@ -1,3 +1,6 @@
+base_locale: en
+locales: [en, zh-CN]
+
 search:
   include:
     - '*.rb'

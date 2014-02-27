@@ -83,7 +83,7 @@ group :development do
   gem 'rack-livereload'
 
   # i18n extractor
-  gem 'i18n-tasks', '~> 0.2.19'
+  gem 'i18n-tasks', '~> 0.3.2'
 
   # Visual email testing
   gem 'mail_view', '~> 2.0.4'

@@ -151,12 +151,12 @@ GEM
     http_accept_language (2.0.1)
     http_parser.rb (0.5.3)
     i18n (0.6.9)
-    i18n-tasks (0.2.19)
+    i18n-tasks (0.3.2)
       activesupport
       easy_translate (>= 0.4.0)
       erubis
       highline
-      rake
+      slop (>= 3.4.7)
       term-ansicolor
       terminal-table
     jbuilder (1.5.3)
@@ -259,7 +259,7 @@ DEPENDENCIES
   gravtastic (~> 3.2.6)
   guard-livereload
   http_accept_language (~> 2.0.1)
-  i18n-tasks (~> 0.2.19)
+  i18n-tasks (~> 0.3.2)
   jbuilder (~> 1.2)
   jquery-rails
   kaminari (~> 0.15.1)
