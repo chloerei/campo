@@ -1,6 +1,12 @@
 default: &default
+  name: Campo
+  host: localhost
+
+  mailer:
+    default_from: 'no-reply@example.com'
+
   admin_emails:
-    # - admin@exampo.com
+    # - admin@example.com
 
 development:
   <<: *default

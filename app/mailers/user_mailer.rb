@@ -1,5 +1,7 @@
 class UserMailer < ActionMailer::Base
-  default from: "no-reply@example.com"
+  default from: CONFIG['mailer']['default_from']
+
+  helper :markdown
 
   def password_reset(user_id)
     @user = User.find(user_id)
