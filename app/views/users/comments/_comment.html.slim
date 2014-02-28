@@ -1,11 +1,12 @@
-a.list-group-item.commentable href=comment_link(comment)
-  .list-group-item-icon
-    i.fa.fa-comment-o
-  .list-group-item-content
-    .list-group-item-heading
-      b = comment_title(comment)
-      span.text-muted
-        = ' · '
-        = time_ago_tag comment.created_at
-    .text-muted
-      = truncate comment.body, length: 140
+- cache(comment) do
+  a.list-group-item.commentable href=comment_link(comment)
+    .list-group-item-icon
+      i.fa.fa-comment-o
+    .list-group-item-content
+      .list-group-item-heading
+        b = comment_title(comment)
+        span.text-muted
+          = ' · '
+          = time_ago_tag comment.created_at
+      .text-muted
+        = truncate comment.body, length: 140

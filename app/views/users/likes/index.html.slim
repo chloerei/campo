@@ -11,7 +11,8 @@
         ul.list-group.list-group-campo data-creator-id=@user.id
           - if @likes.any?
             - @likes.each do |like|
-              = render "users/likes/like/#{like.likeable_type.downcase}", like: like
+              - cache(like) do
+                = render "users/likes/like/#{like.likeable_type.downcase}", like: like
           - else
             li.list-group-item.text-center.text-muted.empty-message
               = t '.no_like_yet'

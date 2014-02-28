@@ -14,33 +14,34 @@
                 = @topic.category.name
           li.active = @topic.title
       .panel-body
-        .list-group.list-group-campo
-          .list-group-item.comment data-creator-id=@topic.user_id
-            a.list-group-item-avatar href=user_link(@topic.user)
-              img.img-rounded alt="avatar" src=@topic.user.gravatar_url
-            .list-group-item-content
-              .list-group-item-heading
-                a.comment-user href=user_link(@topic.user)
-                  b = @topic.user.name
-                  '
-                  = "@#{@topic.user.username}"
-                = ' · '
-                a href=topic_path(@topic)
-                  = time_ago_tag @topic.created_at
-              .comment-body
-                = markdown_format @topic.body
-              .list-group-item-actions.clearfix
-                .pull-right
-                  a.btn id="like-for-topic-#{@topic.id}" href=topic_like_path(@topic) data-remote="true" data-method="post"
-                    i.fa.fa-heart
+        - cache(@topic) do
+          .list-group.list-group-campo
+            .list-group-item.comment data-creator-id=@topic.user_id
+              a.list-group-item-avatar href=user_link(@topic.user)
+                img.img-rounded alt="avatar" src=@topic.user.gravatar_url
+              .list-group-item-content
+                .list-group-item-heading
+                  a.comment-user href=user_link(@topic.user)
+                    b = @topic.user.name
                     '
-                    span.count
-                      - if @topic.likes_count > 0
-                        = @topic.likes_count
-                  a.btn data-visible-to="creator" href=edit_topic_path(@topic)
-                    i.fa.fa-pencil
-                  a.btn data-visible-to="creator" href=trash_topic_path(@topic) data-remote="true" data-method="delete" data-confirm=t('.delete_confirm')
-                    i.fa.fa-trash-o
+                    = "@#{@topic.user.username}"
+                  = ' · '
+                  a href=topic_path(@topic)
+                    = time_ago_tag @topic.created_at
+                .comment-body
+                  = markdown_format @topic.body
+                .list-group-item-actions.clearfix
+                  .pull-right
+                    a.btn id="like-for-topic-#{@topic.id}" href=topic_like_path(@topic) data-remote="true" data-method="post"
+                      i.fa.fa-heart
+                      '
+                      span.count
+                        - if @topic.likes_count > 0
+                          = @topic.likes_count
+                    a.btn data-visible-to="creator" href=edit_topic_path(@topic)
+                      i.fa.fa-pencil
+                    a.btn data-visible-to="creator" href=trash_topic_path(@topic) data-remote="true" data-method="delete" data-confirm=t('.delete_confirm')
+                      i.fa.fa-trash-o
 
     .panel.panel-campo#comments
       .panel-heading

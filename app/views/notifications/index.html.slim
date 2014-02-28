@@ -20,6 +20,7 @@
         ul.list-group.list-group-campo
           - if @notifications.any?
             - @notifications.each do |notification|
+              - cache(notification) do
                 = render "notifications/notification/#{notification.name}", notification: notification
           - else
             li.list-group-item.text-center.text-muted.empty-message

@@ -1,28 +1,29 @@
-li.list-group-item.comment id="comment-#{comment.id}" data-creator-id=comment.user_id
-  a.list-group-item-avatar href=user_link(comment.user)
-    img.img-rounded alt="avatar" src=comment.user.gravatar_url
-  .list-group-item-content
-    .list-group-item-heading
-      a.comment-user href=user_link(comment.user)
-        b = comment.user.name
-        '
-        = "@#{comment.user.username}"
-      = ' · '
-      a href=comment_link(comment)
-        = time_ago_tag comment.created_at
-    .comment-body
-      = markdown_format comment.body
-    .list-group-item-actions.clearfix
-      .pull-right
-        a.btn data-reply-to="@#{comment.user.username} ##{comment.id} "
-          i.fa.fa-reply
-        a.btn id="like-for-comment-#{comment.id}" href=comment_like_path(comment) data-remote="true" data-method="post"
-          i.fa.fa-heart
+- cache(comment) do
+  li.list-group-item.comment id="comment-#{comment.id}" data-creator-id=comment.user_id
+    a.list-group-item-avatar href=user_link(comment.user)
+      img.img-rounded alt="avatar" src=comment.user.gravatar_url
+    .list-group-item-content
+      .list-group-item-heading
+        a.comment-user href=user_link(comment.user)
+          b = comment.user.name
           '
-          span.count
-            - if comment.likes_count > 0
-              = comment.likes_count
-        a.btn href=edit_comment_path(comment) data-remote="true" data-visible-to="creator"
-          i.fa.fa-pencil
-        a.btn href=trash_comment_path(comment) data-remote="true" data-method="delete" data-visible-to="creator" data-confirm=t('.delete_confirm')
-          i.fa.fa-trash-o
+          = "@#{comment.user.username}"
+        = ' · '
+        a href=comment_link(comment)
+          = time_ago_tag comment.created_at
+      .comment-body
+        = markdown_format comment.body
+      .list-group-item-actions.clearfix
+        .pull-right
+          a.btn data-reply-to="@#{comment.user.username} ##{comment.id} "
+            i.fa.fa-reply
+          a.btn id="like-for-comment-#{comment.id}" href=comment_like_path(comment) data-remote="true" data-method="post"
+            i.fa.fa-heart
+            '
+            span.count
+              - if comment.likes_count > 0
+                = comment.likes_count
+          a.btn href=edit_comment_path(comment) data-remote="true" data-visible-to="creator"
+            i.fa.fa-pencil
+          a.btn href=trash_comment_path(comment) data-remote="true" data-method="delete" data-visible-to="creator" data-confirm=t('.delete_confirm')
+            i.fa.fa-trash-o
