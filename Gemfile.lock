@@ -93,6 +93,9 @@ GEM
     bcrypt-ruby (3.1.2)
     bootstrap-sass (3.1.0.1)
       sass (~> 3.2)
+    bson (1.9.2)
+    bson_ext (1.9.2)
+      bson (~> 1.9.2)
     builder (3.2.2)
     carrierwave (0.9.0)
       activemodel (>= 3.2.0)
@@ -186,6 +189,8 @@ GEM
       subexec (~> 0.2.1)
     mini_portile (0.5.2)
     minitest (5.2.2)
+    mongo (1.9.2)
+      bson (~> 1.9.2)
     mono_logger (1.1.0)
     multi_json (1.8.4)
     multipart-post (2.0.0)
@@ -271,6 +276,7 @@ DEPENDENCIES
   arel!
   bcrypt-ruby (~> 3.1.2)
   bootstrap-sass (~> 3.1.0)
+  bson_ext
   carrierwave (~> 0.9.0)
   coffee-rails!
   elasticsearch-model!
@@ -287,6 +293,7 @@ DEPENDENCIES
   kaminari (~> 0.15.1)
   mail_view (~> 2.0.4)
   mini_magick (~> 3.7.0)
+  mongo
   nokogiri (~> 1.6.1)
   pg
   rack-livereload
