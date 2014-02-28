@@ -1,3 +1,12 @@
+class AdminConstraint
+  def self.matches?(request)
+    if request.session[:user_id]
+      user = User.find request.session[:user_id]
+      user && user.admin?
+    end
+  end
+end
+
 Rails.application.routes.draw do
   get 'signup', to: 'users#new', as: 'signup'
   get 'login', to: 'sessions#new', as: 'login'
@@ -110,8 +119,12 @@ Rails.application.routes.draw do
     resources :attachments, only: [:index, :destroy]
   end
 
+  constraints(AdminConstraint) do
+    mount Resque::Server.new, at: 'resque'
+  end
+
   if Rails.env.development?
     get 'qunit', to: 'qunit#index'
-    mount UserMailerPreview => 'user_mailer_preview'
+    mount UserMailerPreview, at: 'user_mailer_preview'
   end
 end
