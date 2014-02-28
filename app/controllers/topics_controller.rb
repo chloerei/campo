@@ -3,7 +3,7 @@ class TopicsController < ApplicationController
   before_filter :find_topic, only: [:edit, :update, :trash]
 
   def index
-    @topics = Topic.no_trashed.page(params[:page])
+    @topics = Topic.page(params[:page])
 
     if params[:category_id]
       @category = Category.find_by! slug_lower: params[:category_id].downcase
@@ -42,11 +42,11 @@ class TopicsController < ApplicationController
   def show
     @topic = Topic.find params[:id]
 
-    if params[:comment_id] and comment = @topic.comments.no_trashed.find_by(id: params.delete(:comment_id))
+    if params[:comment_id] and comment = @topic.comments.find_by(id: params.delete(:comment_id))
       params[:page] = comment.page
     end
 
-    @comments = @topic.comments.no_trashed.order(id: :asc).page(params[:page])
+    @comments = @topic.comments.order(id: :asc).page(params[:page])
 
     respond_to do |format|
       format.html

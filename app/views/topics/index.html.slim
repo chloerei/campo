@@ -47,7 +47,7 @@
         ul.nav.nav-pills.nav-stacked
           li class=('active' unless @category)
             a href=topics_path
-              span.pull-right = Topic.no_trashed.count
+              span.pull-right = Topic.count
               = t '.all_topics'
           - Category.order(topics_count: :desc).each do |category|
             li class=('active' if @category == category)

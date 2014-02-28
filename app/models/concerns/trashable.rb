@@ -2,8 +2,9 @@ module Trashable
   extend ActiveSupport::Concern
 
   included do
-    scope :trashed, -> { where(trashed: true) }
-    scope :no_trashed, -> { where(trashed: false) }
+    default_scope { where(trashed: false) }
+    scope :trashed, -> { unscope(where: :trashed).where(trashed: true) }
+    scope :with_trashed, -> { unscope(where: :trashed) }
 
     define_model_callbacks :trash, :restore
   end
