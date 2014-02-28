@@ -1,4 +1,6 @@
 <% if @comment.errors.empty? %>
   $('#comments-for-<%= @comment.commentable_type.downcase %>-<%= @comment.commentable_id %>').append('<%= j render @comment %>').find('.empty-message').remove();
   $('#new_comment textarea').val('');
+  $('#new_comment .preview').val('');
+  $('#new_comment [data-toggle="tab"]:first').tab('show');
 <% end %>
