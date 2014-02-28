@@ -28,11 +28,11 @@ Rails.application.configure do
   config.assets.debug = true
 
   # test javascript
-  Rails.application.config.assets.paths << Rails.root.join('test', 'javascripts')
+  config.assets.paths << Rails.root.join('test', 'javascripts')
 
   # LiveReload
   config.middleware.use Rack::LiveReload
-
-  # Slim pretty output
-  Slim::Engine.set_default_options pretty: true, sort_attrs: true
 end
+
+# Slim pretty output
+Slim::Engine.set_default_options pretty: true, sort_attrs: true
