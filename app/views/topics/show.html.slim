@@ -28,7 +28,7 @@
                   = ' · '
                   a href=topic_path(@topic)
                     = time_ago_tag @topic.created_at
-                .comment-body
+                article.comment-body
                   = markdown_format @topic.body
                 .list-group-item-actions.clearfix
                   .pull-right

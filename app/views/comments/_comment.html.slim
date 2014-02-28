@@ -11,7 +11,7 @@
         = ' · '
         a href=comment_link(comment)
           = time_ago_tag comment.created_at
-      .comment-body
+      article.comment-body
         = markdown_format comment.body
       .list-group-item-actions.clearfix
         .pull-right
