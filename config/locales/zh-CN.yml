@@ -210,10 +210,12 @@ zh-CN:
   topics:
     edit:
       edit_topic: "编辑话题"
+      topics: "话题"
     form:
       create_topic: "创建话题"
       no_category: "不分类"
       save_changes: "保存修改"
+      title: "标题"
     index:
       all_topics: "所有话题"
       hot: "热门"
@@ -270,8 +272,12 @@ zh-CN:
         no_like_yet: "还没有收藏"
         user_s_likes: "%{name} 的收藏"
     new:
+      choose_a_password: "选一个密码"
       create_account: "创建帐号"
+      pick_a_username: "挑一个用户名"
       sign_up: "注册"
+      your_email: "你的邮箱地址"
+      your_full_name: "你的全名"
     profile:
       edit_profile: "编辑个人资料"
     sidebar:

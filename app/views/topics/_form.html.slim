@@ -2,7 +2,7 @@
   .row
     .col-md-9
       .form-group
-        = f.text_field :title, class: 'form-control', placeholder: 'Title', tabIndex: 1
+        = f.text_field :title, class: 'form-control', placeholder: t('.title'), tabIndex: 1
     .col-md-3
       .form-group
         = f.collection_select :category_id, Category.order(topics_count: :desc), :id, :name, { prompt: t('.no_category') }, class: 'form-control', tabIndex: 2

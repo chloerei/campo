@@ -22,7 +22,8 @@
         - if @category
           ol.breadcrumb.panel-title
             li
-              a href=topics_path Topics
+              a href=topics_path
+                = t '.topics'
             li.active = @category.name
         - else
           h3.panel-title = t '.topics'

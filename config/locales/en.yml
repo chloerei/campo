@@ -215,10 +215,12 @@ en:
   topics:
     edit:
       edit_topic: Edit topic
+      topics: Topics
     form:
       create_topic: Create topic
       no_category: No category
       save_changes: Save changes
+      title: Title
     index:
       all_topics: All topics
       hot: Hot
@@ -274,8 +276,12 @@ en:
         no_like_yet: No like yet
         user_s_likes: "%{name}'s likes"
     new:
+      choose_a_password: Choose a password
       create_account: Create account
+      pick_a_username: Pick a username
       sign_up: Sign up
+      your_email: Your email
+      your_full_name: Your full name
     profile:
       edit_profile: Edit profile
     sidebar:
