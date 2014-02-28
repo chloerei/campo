@@ -1,3 +1,5 @@
+- @page_title = t '.edit_topic'
+
 .row
   .col-md-9
     .panel.panel-campo
@@ -13,6 +15,6 @@
             a href=topic_path(@topic)
               = @topic.title
           li.active
-            = t '.edit'
+            = t '.edit_topic'
       .panel-body
         = render 'form', topic: @topic

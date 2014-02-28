@@ -2,7 +2,7 @@ doctype html
 html
   head
     title
-      = CONFIG['name']
+      = @page_title ? "#{@page_title} - #{CONFIG['title']}" : CONFIG['title']
     = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
     = javascript_include_tag "application", "data-turbolinks-track" => true
     meta name="viewport" content="width=device-width, initial-scale=1.0"
@@ -22,7 +22,7 @@ html
             span.icon-bar
             span.icon-bar
           a.navbar-brand href="/"
-            = CONFIG['name']
+            = CONFIG['title']
         ul.nav.navbar-nav.navbar-right
           - if login?
             li class=('active' if controller_name == 'notifications')

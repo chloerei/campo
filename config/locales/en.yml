@@ -37,7 +37,7 @@ en:
         topics_count: "%{count} topics"
       new:
         categories: Categories
-        new: New
+        new_category: New category
       show:
         categories: Categories
         topics: Topics
@@ -175,6 +175,7 @@ en:
         successfully_updated: Successfully updated
       show:
         account: Account
+        account_settings: Account settings
         current_password: Current password
         save_changes: Save changes
     flashes:
@@ -185,12 +186,14 @@ en:
       show:
         current_password: Current password
         password: Password
+        password_settings: Password settings
         save_changes: Save changes
     profiles:
       flashes:
         successfully_updated: Successfully updated
       show:
         profile: Profile
+        profile_settings: Profile settings
         save_changes: Save changes
     sidebar:
       account: Account
@@ -211,7 +214,7 @@ en:
         for all comments
   topics:
     edit:
-      edit: Edit
+      edit_topic: Edit topic
     form:
       create_topic: Create topic
       no_category: No category
@@ -219,11 +222,14 @@ en:
     index:
       all_topics: All topics
       hot: Hot
+      hot_topics: Hot topics
       newest: Newest
+      newest_topics: Newest topics
       no_topic_yet: No topic yet
       topics: Topics
     new:
-      new: New
+      new_topic: New topic
+      topics: Topics
     search:
       no_matching_results: No matching results
       search: Search
@@ -261,10 +267,12 @@ en:
       index:
         comments: Comments
         no_comment_yet: No comment yet
+        user_s_comments: "%{name}'s comments"
     likes:
       index:
         likes: Likes
         no_like_yet: No like yet
+        user_s_likes: "%{name}'s likes"
     new:
       create_account: Create account
       sign_up: Sign up
@@ -278,3 +286,4 @@ en:
       index:
         no_topic_yet: No topic yet
         topics: Topics
+        user_s_topics: "%{name}'s topics"

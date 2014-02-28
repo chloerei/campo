@@ -1,3 +1,5 @@
+- @page_title = t '.new_category'
+
 .row
   .col-md-9
     .panel.panel-campo
@@ -7,6 +9,6 @@
             a href=admin_categories_path
               = t '.categories'
           li.active
-            = t '.new'
+            = t '.new_category'
       .panel-body
         = render 'form', category: @category

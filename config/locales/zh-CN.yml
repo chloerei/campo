@@ -32,11 +32,11 @@ zh-CN:
         save_changes: "保存修改"
       index:
         categories: "分类"
-        new_category: "新建分类"
+        new_category: "新分类"
         topics_count: "%{count} 话题"
       new:
         categories: "分类"
-        new: "新建"
+        new_category: "新分类"
       show:
         categories: "分类"
         topics: "话题"
@@ -172,6 +172,7 @@ zh-CN:
         successfully_updated: "成功更新帐号"
       show:
         account: "帐号"
+        account_settings: "帐号设置"
         current_password: "当前密码"
         save_changes: "保存修改"
     flashes:
@@ -182,12 +183,14 @@ zh-CN:
       show:
         current_password: "当前密码"
         password: "密码"
+        password_settings: "密码设置"
         save_changes: "保存修改"
     profiles:
       flashes:
         successfully_updated: "成功更新个人资料"
       show:
         profile: "个人资料"
+        profile_settings: "个人资料设置"
         save_changes: "保存修改"
     sidebar:
       account: "帐号"
@@ -206,7 +209,7 @@ zh-CN:
       you_will_receive_notifications_for_all_comments: "每当有新评论时你都会收到通知"
   topics:
     edit:
-      edit: "编辑"
+      edit_topic: "编辑话题"
     form:
       create_topic: "创建话题"
       no_category: "不分类"
@@ -214,11 +217,14 @@ zh-CN:
     index:
       all_topics: "所有话题"
       hot: "热门"
+      hot_topics: "热门话题"
       newest: "最新"
+      newest_topics: "最新话题"
       no_topic_yet: "还没有话题"
       topics: "话题"
     new:
-      new: "新建"
+      new_topic: "新话题"
+      topics: "话题"
     search:
       no_matching_results: "没有匹配结果"
       search: "搜索"
@@ -256,10 +262,13 @@ zh-CN:
       index:
         comments: "评论"
         no_comment_yet: "还没有评论"
+        user_s_comments: "%{name} 的评论"
     likes:
       index:
         likes: "收藏"
+        no_comment_yet: "还没有评论"
         no_like_yet: "还没有收藏"
+        user_s_likes: "%{name} 的收藏"
     new:
       create_account: "创建帐号"
       sign_up: "注册"
@@ -273,3 +282,4 @@ zh-CN:
       index:
         no_topic_yet: "还没有话题"
         topics: "话题"
+        user_s_topics: "%{name} 的话题"

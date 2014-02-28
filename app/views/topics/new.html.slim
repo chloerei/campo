@@ -1,16 +1,19 @@
+- @page_title = t '.new_topic'
+
 .row
   .col-md-9
     .panel.panel-campo
       .panel-heading
         ol.breadcrumb.panel-title
           li
-            a href=topics_path Topics
+            a href=topics_path
+              = t '.topics'
           - if @topic.category
             li
               a href=categoried_topics_path(category_id: @topic.category.slug)
                 = @topic.category.name
           li.active
-            = t '.new'
+            = t '.new_topic'
 
       .panel-body
         = render 'form', topic: @topic

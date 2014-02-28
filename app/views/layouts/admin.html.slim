@@ -2,7 +2,7 @@ doctype html
 html
   head
     title
-      = t '.admin', name: CONFIG['name']
+      = @page_title ? "#{@page_title} - #{t('.admin', name: CONFIG['title'])}" : t('.admin', name: CONFIG['title'])
     = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
     = javascript_include_tag "application", "data-turbolinks-track" => true
     meta name="viewport" content="width=device-width, initial-scale=1.0"
@@ -22,7 +22,7 @@ html
             span.icon-bar
             span.icon-bar
           a.navbar-brand href=admin_root_path
-            = t '.admin', name: CONFIG['name']
+            = t '.admin', name: CONFIG['title']
         #navbar.collapse.navbar-collapse
           ul.nav.navbar-nav
             li class=('active' if controller_name == 'users')
