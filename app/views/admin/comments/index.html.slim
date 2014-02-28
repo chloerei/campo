@@ -19,7 +19,7 @@
               .text-muted
                 = comment.user.name
                 = ' · '
-                = time_ago_in_words comment.created_at
+                = time_ago_tag comment.created_at
       .panel-footer.clearfix
         .pull-right
           = paginate @comments, theme: 'campo'

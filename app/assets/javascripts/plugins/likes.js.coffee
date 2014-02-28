@@ -8,4 +8,3 @@ campo.Likes =
   updateLikes: (likeable, ids, liked = true) ->
     for id in ids
       @updateLike(likeable, id, liked)
-

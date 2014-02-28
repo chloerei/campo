@@ -11,6 +11,6 @@ a.list-group-item.topic href=topic_path(topic)
         = ' · '
       = topic.user.name
       = ' · '
-      = time_ago_in_words topic.created_at
+      = time_ago_tag topic.created_at
       = ' · '
       = t '.comments_count', count: topic.comments_count

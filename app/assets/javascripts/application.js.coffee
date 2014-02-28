@@ -4,5 +4,11 @@
 #= require bootstrap
 #= require jquery.autosize
 #= require jquery.validate
+#= require jquery.timeago
 #= require campo
-#= require_tree .
+#= require_tree ./plugins
+
+$(document).on 'page:update', ->
+  $('[data-behaviors~=autosize]').autosize()
+
+  $("time[data-behaviors~=timeago]").timeago();

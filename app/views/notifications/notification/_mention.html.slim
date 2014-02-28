@@ -15,7 +15,7 @@ li.list-group-item.notification id="notification_#{notification.id}" class=('rea
         '
         b = comment_title(comment)
         '
-        = time_ago_in_words comment.created_at
+        = time_ago_tag comment.created_at
         '
         | ago
       .text-muted

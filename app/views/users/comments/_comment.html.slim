@@ -6,6 +6,6 @@ a.list-group-item.commentable href=comment_link(comment)
       b = comment_title(comment)
       span.text-muted
         = ' · '
-        = time_ago_in_words comment.created_at
+        = time_ago_tag comment.created_at
     .text-muted
       = truncate comment.body, length: 140

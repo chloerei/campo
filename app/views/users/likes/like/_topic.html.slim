@@ -11,6 +11,6 @@ li.list-group-item.like id="like-#{like.id}"
         b = topic.title
         span.text-muted
           = ' · '
-          = time_ago_in_words topic.created_at
+          = time_ago_tag topic.created_at
       .text-muted
         = truncate topic.body, length: 140

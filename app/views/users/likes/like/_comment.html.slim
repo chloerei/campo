@@ -11,6 +11,6 @@ li.list-group-item.like id="like-#{like.id}"
         b = comment_title(comment)
         span.text-muted
           = ' · '
-          = time_ago_in_words comment.created_at
+          = time_ago_tag comment.created_at
       .text-muted
         = truncate comment.body, length: 140
