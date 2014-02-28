@@ -2,11 +2,16 @@ default: &default
   name: Campo
   host: localhost
 
+  admin_emails:
+    # - admin@example.com
+
   mailer:
     default_from: 'no-reply@example.com'
 
-  admin_emails:
-    # - admin@example.com
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    db: 0
 
 development:
   <<: *default

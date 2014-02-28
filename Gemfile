@@ -74,6 +74,10 @@ gem 'http_accept_language', '~> 2.0.1'
 # i18n
 gem 'rails-i18n', '~> 4.0.1'
 
+# redis
+gem 'redis', '~> 3.0.7'
+gem 'hiredis', '~> 0.4.5'
+
 # Background jobs
 gem 'resque', '~> 1.25.1'
 
