@@ -11,12 +11,10 @@ li.list-group-item.notification id="notification_#{notification.id}" class=('rea
       .list-group-item-heading
         b = comment.user.name
         '
-        = t '.mentioned you on'
+        = t '.mentioned_you_on'
         '
         b = comment_title(comment)
         '
         = time_ago_tag comment.created_at
-        '
-        | ago
       .text-muted
         = truncate comment.body, length: 140

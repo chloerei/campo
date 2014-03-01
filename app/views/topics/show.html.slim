@@ -75,11 +75,13 @@
           - else
             = t '.your_account_had_been_locked'
         - else
-          a href=login_path Login
+          a href=signup_path(return_to: request.original_url)
+            = t '.sign_up'
           '
           = t '.or'
           '
-          a href=signup_path Sign up
+          a href=login_path(return_to: request.original_url)
+            = t '.login'
           '
           = t '.to_comment'
   .col-md-3

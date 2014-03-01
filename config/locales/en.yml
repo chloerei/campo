@@ -111,6 +111,10 @@ en:
       add_this_comment: Add this comment
       cancel: Cancel
       save_changes: Save changes
+  karminari:
+    campo:
+      paginator:
+        page: Page %{page}
   layouts:
     admin:
       admin: "%{name} Admin"
@@ -143,6 +147,11 @@ en:
       mark_all_as_read: Mark all as read
       no_notifications: No notifications
       notifications: Notifications
+    notification:
+      comment:
+        commented_on: Commented on
+      mention:
+        mentioned_you_on: Mentioned you on
   passwords:
     edit:
       password_reset: Password reset
@@ -240,10 +249,12 @@ en:
       add_this_comment: Add this comment
       comments: Comments
       delete_confirm: Are you sure you want to delete this topic?
+      login: Login
       no_comment_yet: No comment yet
       no_more_topics: No more topics
       or: Or
       related_topics: Related topics
+      sign_up: Sign up
       to_comment: To comment
       topics: Topics
       your_account_had_been_locked: Your account had been locked

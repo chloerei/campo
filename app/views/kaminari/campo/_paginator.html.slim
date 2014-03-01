@@ -1,13 +1,7 @@
 = paginator.render do
   nav.pagination-campo
     a.btn data-behaviors="pagination-popover" data-placement="top" data-toggle="button"
-      | Page
-      '
-      = current_page
-      '
-      | /
-      '
-      = total_pages
+      = I18n.t 'karminari.campo.paginator.page', page: "#{current_page} / #{total_pages}"
     .popover
       .popover-content
         ul.pages

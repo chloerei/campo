@@ -109,6 +109,10 @@ zh-CN:
       add_this_comment: "添加评论"
       cancel: "取消"
       save_changes: "保存修改"
+  karminari:
+    campo:
+      paginator:
+        page: "第 %{page} 页"
   layouts:
     admin:
       admin: "%{name} 管理"
@@ -141,6 +145,11 @@ zh-CN:
       mark_all_as_read: "标记所有为已读"
       no_notifications: "没有通知"
       notifications: "通知"
+    notification:
+      comment:
+        commented_on: "评论了"
+      mention:
+        mentioned_you_on: "提及你于"
   passwords:
     edit:
       password_reset: "密码重置"
@@ -235,10 +244,12 @@ zh-CN:
       add_this_comment: "添加评论"
       comments: "评论"
       delete_confirm: "你确定要删除此话题吗？"
+      login: 登陆
       no_comment_yet: "还没有评论"
       no_more_topics: "没有更多话题"
       or: "或"
       related_topics: "相关话题"
+      sign_up: 注册
       to_comment: "后发表评论"
       topics: "话题"
       your_account_had_been_locked: "你的帐号已被锁定"
