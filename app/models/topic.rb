@@ -55,13 +55,14 @@ class Topic < ActiveRecord::Base
       query: {
         more_like_this: {
           fields: ['title', 'body'],
-          like_text: title + ' ' + body
+          like_text: title + '\n' + body
         }
       },
       filter: {
-        term: {
-          trashed: false
-        }
+        and: [
+          { term: { trashed: false } },
+          { not: { term: { id: id } } }
+        ]
       }
     )
   end
