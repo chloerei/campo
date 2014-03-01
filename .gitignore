@@ -15,10 +15,13 @@
 /log/*.log
 /tmp
 
-# Ignore database and secrets config
+# Ignore database and secrets config.
 /config/database.yml
 /config/secrets.yml
 /config/config.yml
 
-# Ignore uploads
+# Ignore uploads.
 /public/uploads
+
+# Ingore Vagrant config.
+/.vagrant
