@@ -3,12 +3,18 @@
 USER=vagrant
 DEPLOY_PATH=/var/www/campo
 
+apt-get update
+apt-get install -y curl postgresql libpq-dev redis-server memcached nginx git-core openjdk-7-jre-headless nodejs
+
+cd /tmp
+wget https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-1.0.1.deb
+dpkg -i elasticsearch-1.0.1.deb
+update-rc.d elasticsearch defaults
+service elasticsearch start
+
 su postgres <<EOF
   createuser -d -R -S $USER
 EOF
-
-apt-get update
-apt-get install -y curl postgresql redis-server memcached nginx git-core
 
 su $USER <<EOF
   curl -sSL https://get.rvm.io | bash -s stable
