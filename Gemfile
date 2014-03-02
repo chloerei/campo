@@ -106,3 +106,7 @@ end
 group :development, :test do
   gem 'factory_girl_rails', '~> 4.3.0'
 end
+
+group :production do
+  gem 'unicorn', '~> 4.8.2'
+end
