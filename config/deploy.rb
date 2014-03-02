@@ -13,7 +13,7 @@ namespace :deploy do
   desc 'Restart application'
   task :restart do
     on roles(:app), in: :sequence, wait: 5 do
-      execute :sudo, :service, :unicorn_campo, :restart
+      execute '/etc/init.d/unicorn_campo', :restart
     end
   end
 

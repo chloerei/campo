@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-USER=vagrant
+USER=deploy
 DEPLOY_PATH=/var/www/campo
 
 apt-get update
@@ -30,6 +30,6 @@ chown $USER:$USER $DEPLOY_PATH
 wget -O /etc/init.d/unicorn_campo https://raw.github.com/chloerei/campo/master/script/unicorn.sh
 chmod +x /etc/init.d/unicorn_campo
 
-wget -O /etc/nginx/sites-available/campo.conf https://raw.github.com/chloerei/campo/master/script/unicorn.sh
+wget -O /etc/nginx/sites-available/campo.conf https://raw.github.com/chloerei/campo/master/config/nginx.conf
 ln -s /etc/nginx/sites-available/campo.conf /etc/nginx/sites-enabled/
 service nginx restart
