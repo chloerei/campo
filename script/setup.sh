@@ -14,6 +14,7 @@ service elasticsearch start
 
 su postgres <<EOF
   createuser -d -R -S $USER
+  createdb campo_production -O $USER
 EOF
 
 su $USER <<EOF
@@ -25,3 +26,10 @@ EOF
 
 mkdir -p $DEPLOY_PATH
 chown $USER:$USER $DEPLOY_PATH
+
+wget -O /etc/init.d/unicorn_campo https://raw.github.com/chloerei/campo/master/script/unicorn.sh
+chmod +x /etc/init.d/unicorn_campo
+
+wget -O /etc/nginx/sites-available/campo.conf https://raw.github.com/chloerei/campo/master/script/unicorn.sh
+ln -s /etc/nginx/sites-available/campo.conf /etc/nginx/sites-enabled/
+service nginx restart
