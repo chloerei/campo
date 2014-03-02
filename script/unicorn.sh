@@ -6,7 +6,7 @@ TIMEOUT=${TIMEOUT-60}
 APP_ROOT=/var/www/campo/current
 PID=$APP_ROOT/tmp/pids/unicorn.pid
 USER=vagrant
-CMD="cd $APP_ROOT ; bundle exec unicorn -D -c $APP_ROOT/config/unicorn.rb"
+CMD="cd $APP_ROOT ; RAILS_ENV=production bundle exec unicorn -D -c $APP_ROOT/config/unicorn.rb"
 action="$1"
 set -u
 
