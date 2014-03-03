@@ -1,4 +1,15 @@
 #!/bin/bash
+
+### BEGIN INIT INFO
+# Provides:          <%= application %>
+# Required-Start:    $all
+# Required-Stop:     $network $local_fs $syslog
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: Start the <%= application %> unicorns at boot
+# Description:       Enable <%= application %> at boot time.
+### END INIT INFO
+
 set -e
 set -u
 
