@@ -13,6 +13,7 @@ namespace :deploy do
   desc "Upload example config to shared/config"
   task :upload_config do
     on roles(:app) do
+      execute "mkdir -p #{deploy_to}/shared/config"
       upload! File.new('config/database.example.yml'), "#{deploy_to}/shared/config/database.yml"
       upload! File.new('config/secrets.example.yml'), "#{deploy_to}/shared/config/secrets.yml"
       upload! File.new('config/config.example.yml'), "#{deploy_to}/shared/config/config.yml"

@@ -1,4 +1,15 @@
-task :provision => %w(provision:update provision:postgresql provision:elasticsearch provision:rvm provision:server provision:unicorn_init_script provision:nginx_conf)
+
+desc "Do all provision"
+task :provision do
+  invoke 'provision:update'
+  invoke 'provision:postgresql'
+  invoke 'provision:elasticsearch'
+  invoke 'provision:rvm'
+  invoke 'provision:server'
+  invoke 'provision:unicorn_init_script'
+  invoke 'provision:nginx_conf'
+  invoke 'provision:deploy_to'
+end
 
 namespace :provision do
   task :as_root do
@@ -42,11 +53,12 @@ namespace :provision do
   desc "Install rvm"
   task :rvm => :as_root do
     on roles(:all) do |host|
-      execute('apt-get -y install curl')
+      # Install all dependency, disable autolibs, avoid sudo
+      execute('apt-get -y install curl gawk g++ make libreadline6-dev libyaml-dev libsqlite3-dev sqlite3 autoconf libgdbm-dev libncurses5-dev automake libtool bison pkg-config libffi-dev')
       as user: host.user do
         execute(*%W(curl -sSL https://get.rvm.io | bash -s stable))
       end
-      execute("su - #{host.user} -c 'rvm use --default --install 2.1.1'")
+      execute("su - #{host.user} -c 'rvm use --autolibs=disable --default --install 2.1.1'")
     end
   end
 
@@ -54,6 +66,7 @@ namespace :provision do
   task :server => :as_root do
     on roles(:all) do |host|
       execute('apt-get install -y redis-server memcached nginx git-core nodejs')
+      execute('service nginx start')
     end
   end
 
@@ -68,7 +81,7 @@ namespace :provision do
       }).instance_eval { binding }
       unicorn_config   = ERB.new(File.new(unicorn_template_path).read).result(unicorn_config_binding)
       upload! StringIO.new(unicorn_config), "/etc/init.d/unicorn_#{fetch(:application)}"
-      execute("chmod +x /etc/init.d/unicorn_#{fetch(:application)}")
+      execute("chmod 755 /etc/init.d/unicorn_#{fetch(:application)}")
       execute("update-rc.d unicorn_#{fetch(:application)} defaults")
     end
   end
