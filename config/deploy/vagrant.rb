@@ -5,5 +5,3 @@ server '192.168.33.10', {
     keys: %w(~/.vagrant.d/insecure_private_key)
   }
 }
-
-set :rails_env, 'production'

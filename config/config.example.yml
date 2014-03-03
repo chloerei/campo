@@ -1,5 +1,5 @@
 default: &default
-  name: Campo
+  title: Campo
   host: localhost
 
   admin_emails:
