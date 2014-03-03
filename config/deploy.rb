@@ -9,39 +9,43 @@ set :rails_env, 'production'
 set :linked_files, %w{config/database.yml config/config.yml config/secrets.yml}
 set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/uploads}
 
-task :provision => %w(provision:update provision:postgresql provision:elasticsearch provision:rvm provision:server provision:unicorn_campo provision:nginx_conf)
+task :provision => %w(provision:update provision:postgresql provision:elasticsearch provision:rvm provision:server provision:unicorn_init_script provision:nginx_conf)
 
 task :foo do
   puts fetch(:application)
 end
 
 namespace :provision do
-  desc "Update apt-get"
-  task :update do
+  task :as_root do
     on roles(:all) do |host|
-      host.user = 'root'
+      # Overwrite ssh username
+      host.define_singleton_method :username do
+        'root'
+      end
+    end
+  end
+
+  desc "Update apt-get"
+  task :update => :as_root do
+    on roles(:all) do |host|
       execute(*%W(apt-get update))
     end
   end
 
   desc "Install postgresql"
-  task :postgresql do
+  task :postgresql => :as_root do
     on roles(:all) do |host|
-      host.user = 'root'
-
       execute('apt-get install -y postgresql libpq-dev')
       as user: 'postgres' do
-        execute(*%W(createuser -d -R -S deploy))
-        execute(*%w(createdb campo_production -O deploy))
+        test(*%W(createuser -d -R -S deploy))
+        test(*%w(createdb campo_production -O deploy))
       end
     end
   end
 
   desc "Install elasticsearch"
-  task :elasticsearch do
+  task :elasticsearch => :as_root do
     on roles(:all) do |host|
-      host.user = 'root'
-
       execute('apt-get install -y openjdk-7-jre-headless')
       execute('wget https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-1.0.1.deb -O elasticsearch-1.0.1.deb -q')
       execute('dpkg -i elasticsearch-1.0.1.deb')
@@ -51,37 +55,29 @@ namespace :provision do
   end
 
   desc "Install rvm"
-  task :rvm do
+  task :rvm => :as_root do
     on roles(:all) do |host|
-      deploy_user = host.user
-      host.user = 'root'
-
       execute('apt-get -y install curl')
-      as user: deploy_user do
+      as user: host.user do
         execute(*%W(curl -sSL https://get.rvm.io | bash -s stable))
       end
-      execute("su - #{deploy_user} -c 'rvm use --default --install 2.1.1'")
+      execute("su - #{host.user} -c 'rvm use --default --install 2.1.1'")
     end
   end
 
   desc "Install redis nginx memcache git nodejs and upload conf"
-  task :server do
+  task :server => :as_root do
     on roles(:all) do |host|
-      host.user = 'root'
-
       execute('apt-get install -y redis-server memcached nginx git-core nodejs')
     end
   end
 
   desc "Install unicorn init script"
-  task :unicorn_init_script do
+  task :unicorn_init_script => :as_root do
     on roles(:all) do |host|
-      deploy_user = host.user
-      host.user = 'root'
-
       unicorn_template_path = File.expand_path('config/unicorn_init.sh.erb')
       unicorn_config_binding = OpenStruct.new({
-        user: deploy_user,
+        user: host.user,
         deploy_to: fetch(:deploy_to)
       }).instance_eval { binding }
       unicorn_config   = ERB.new(File.new(unicorn_template_path).read).result(unicorn_config_binding)
@@ -92,10 +88,8 @@ namespace :provision do
   end
 
   desc "Install nginx conf"
-  task :nginx_conf do
+  task :nginx_conf => :as_root do
     on roles(:all) do |host|
-      host.user = 'root'
-
       config_binding = OpenStruct.new({
         deploy_to: fetch(:deploy_to)
       }).instance_eval { binding }
@@ -106,13 +100,10 @@ namespace :provision do
   end
 
   desc "Prepare deploy to"
-  task :deploy_to do
+  task :deploy_to => :as_root do
     on roles(:all) do |host|
-      deploy_user = host.user
-      host.user = 'root'
-
       execute('mkdir -p /var/www/campo')
-      execute("chown #{deploy_user}:#{deploy_user} #{fetch(:deploy_to)}")
+      execute("chown #{host.user}:#{host.user} #{deploy_to}")
     end
   end
 end
@@ -126,6 +117,21 @@ namespace :deploy do
       upload! File.new('config/secrets.example.yml'), "#{deploy_to}/shared/config/secrets.yml"
       upload! File.new('config/config.example.yml'), "#{deploy_to}/shared/config/config.yml"
       info "Now edit the config files in #{shared_path}."
+    end
+  end
+
+  desc "Start application"
+  task :start do
+    on roles(:app), in: :sequence, wait: 5 do
+      puts capture(:whoami)
+      execute "/etc/init.d/unicorn_#{fetch(:application)}", :start
+    end
+  end
+
+  desc "Stop application"
+  task :stop do
+    on roles(:app), in: :sequence, wait: 5 do
+      execute "/etc/init.d/unicorn_#{fetch(:application)}", :stop
     end
   end
 

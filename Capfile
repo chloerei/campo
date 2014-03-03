@@ -4,7 +4,7 @@ require 'capistrano/setup'
 # Includes default deployment tasks
 require 'capistrano/deploy'
 
-if !ARGV.any? { |task| task =~ /provision/ }
+unless ARGV.any? { |task| task =~ /provision/ }
   require 'capistrano/rvm'
   require 'capistrano/bundler'
   require 'capistrano/rails/assets'

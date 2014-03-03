@@ -7,7 +7,7 @@ USER=<%= user %>
 
 TIMEOUT=${TIMEOUT-60}
 PID=$APP_ROOT/tmp/pids/unicorn.pid
-CMD="cd $APP_ROOT; bundle exec unicorn -D -c $APP_ROOT/config/unicorn.rb -E production"
+CMD="cd $APP_ROOT; ~/.rvm/bin/rvm default do bundle exec unicorn -D -c $APP_ROOT/config/unicorn.rb -E production"
 OLD_PIN="$PID.oldbin"
 
 sig () {
