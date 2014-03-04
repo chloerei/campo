@@ -20,17 +20,17 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
      vb.customize ["modifyvm", :id, "--memory", "1024"]
   end
 
-  config.vm.define 'dev' do |dev|
-    config.vm.network :private_network, ip: '192.168.33.10'
+  config.vm.define 'dev', primary: true do |dev|
+    dev.vm.network :private_network, ip: '192.168.33.10'
 
     # Install Dependency
-    config.vm.provision :shell, path: 'bin/setup.sh', args: '/vagrant', privileged: false
+    dev.vm.provision :shell, path: 'bin/setup.sh', args: '/vagrant', privileged: false
   end
 
-  config.vm.define 'web' do |dev|
-    config.vm.network :private_network, ip: '192.168.33.11'
+  config.vm.define 'web' do |web|
+    web.vm.network :private_network, ip: '192.168.33.11'
 
     # Enable root login for cap provision task
-    config.vm.provision :shell, inline: 'cp /home/vagrant/.ssh /root -r'
+    web.vm.provision :shell, inline: 'cp /home/vagrant/.ssh /root -r'
   end
 end
