@@ -44,9 +44,7 @@ namespace :deploy do
       desc "#{action} resque worker"
       task action do
         on roles(:app) do
-          puts "before execute"
           execute "/etc/init.d/resque_#{fetch(:application)}", action
-          puts "after execute"
         end
       end
     end
