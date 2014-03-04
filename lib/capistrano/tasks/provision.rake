@@ -86,6 +86,22 @@ namespace :provision do
     end
   end
 
+  desc "Install resques init script"
+  task :resque_init_script => :as_root do
+    on roles(:all) do |host|
+      resque_template_path = File.expand_path('config/resque_init.sh.erb')
+      resque_config_binding = OpenStruct.new({
+        user: host.user,
+        deploy_to: deploy_to,
+        application: fetch(:application)
+      }).instance_eval { binding }
+      resque_config   = ERB.new(File.new(resque_template_path).read).result(resque_config_binding)
+      upload! StringIO.new(resque_config), "/etc/init.d/resque_#{fetch(:application)}"
+      execute("chmod 755 /etc/init.d/resque_#{fetch(:application)}")
+      execute("update-rc.d resque_#{fetch(:application)} defaults")
+    end
+  end
+
   desc "Install nginx conf"
   task :nginx_conf => :as_root do
     on roles(:all) do |host|
