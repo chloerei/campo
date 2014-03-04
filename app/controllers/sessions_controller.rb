@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
   def new
-    store_location params[:return_to] if params[:return_to].present?
+    store_location params[:return_to]
   end
 
   def create

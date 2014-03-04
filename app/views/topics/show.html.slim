@@ -75,12 +75,12 @@
           - else
             = t '.your_account_had_been_locked'
         - else
-          a href=signup_path(return_to: request.original_url)
+          a href=signup_path(return_to: request.fullpath)
             = t '.sign_up'
           '
           = t '.or'
           '
-          a href=login_path(return_to: request.original_url)
+          a href=login_path(return_to: request.fullpath)
             = t '.login'
           '
           = t '.to_comment'

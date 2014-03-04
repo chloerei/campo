@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_filter :no_login_required, only: [:new, :create]
 
   def new
-    store_location params[:return_to] if params[:return_to].present?
+    store_location params[:return_to]
     @user = User.new
   end
 

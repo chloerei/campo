@@ -13,8 +13,7 @@ class ApplicationController < ActionController::Base
 
   def login_required
     unless login?
-      store_location
-      redirect_to login_url
+      redirect_to login_url(return_to: (request.fullpath if request.get?))
     end
   end
 
@@ -76,17 +75,12 @@ class ApplicationController < ActionController::Base
     @current_user ||= User.find_by_access_token(params[:access_token]) if params[:access_token]
   end
 
-  def store_location(path = nil)
-    session[:return_to] = path || request.fullpath
+  def store_location(path)
+    session[:return_to] = path
   end
 
   def redirect_back_or_default(default)
-    redirect_to(session[:return_to] || default)
-    session[:return_to] = nil
-  end
-
-  def redirect_referrer_or_default(default)
-    redirect_to(request.referrer || default)
+    redirect_to(session.delete(:return_to) || default)
   end
 
   def forget_me

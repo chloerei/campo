@@ -54,10 +54,10 @@ html
                     = t '.logout'
           - else
             li
-              a.item href=signup_path(return_to: request.original_url)
+              a.item href=signup_path(return_to: params[:return_to] || return_to_path(request.fullpath))
                 = t '.sign_up'
             li
-              a.item href=login_path(return_to: request.original_url)
+              a.item href=login_path(return_to: params[:return_to] || return_to_path(request.fullpath))
                 = t '.sign_in'
         #navbar.collapse.navbar-collapse
           ul.nav.navbar-nav
