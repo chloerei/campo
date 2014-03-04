@@ -15,6 +15,14 @@ en:
         password: Password
         password_confirmation: Password confirmation
         username: Username
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              format: "invalid email format"
+            username:
+              format: "may only contain alphanumeric characters or dashes and cannot begin with a dash"
   admin:
     attachments:
       index:

@@ -15,6 +15,14 @@ zh-CN:
         password: "密码"
         password_confirmation: "密码确认"
         username: "用户名"
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              format: "无效的邮件格式"
+            username:
+              format: "只能使用字母、数字或 - 号，并且不能以 - 号开头"
   admin:
     attachments:
       index:
@@ -244,12 +252,12 @@ zh-CN:
       add_this_comment: "添加评论"
       comments: "评论"
       delete_confirm: "你确定要删除此话题吗？"
-      login: 登陆
+      login: "登陆"
       no_comment_yet: "还没有评论"
       no_more_topics: "没有更多话题"
       or: "或"
       related_topics: "相关话题"
-      sign_up: 注册
+      sign_up: "注册"
       to_comment: "后发表评论"
       topics: "话题"
       your_account_had_been_locked: "你的帐号已被锁定"
