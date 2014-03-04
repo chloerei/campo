@@ -34,10 +34,10 @@ case "$1" in
     for i in $(seq 1 $COUNT); do
       pidfile=$(printf "$PIDFILE" $i)
 
-      if test -s "$pidfile" && kill -0 `cat $pidfile`; then
-        echo "Worker $i alread running"
+      if test -s "$pidfile" && run "kill -0 `cat $pidfile`"; then
+        echo "Worker `cat $pidfile` alread running"
       else
-        run "cd $APP_ROOT; QUEUE=$QUEUES PIDFILE=$pidfile TERM_CHILD=1 BACKGROUND=yes ~/.rvm/bin/rvm default do bundle exec rake environment resque:work"
+        run "cd $APP_ROOT; ~/.rvm/bin/rvm default do bundle exec rake environment resque:work QUEUE=$QUEUES PIDFILE=$pidfile TERM_CHILD=1 BACKGROUND=yes RAILS_ENV=production > /dev/null 2>&1"
         echo "Start worker `cat $pidfile`"
       fi
     done
@@ -54,11 +54,10 @@ case "$1" in
     ;;
   restart|reload)
     $0 stop
-    sleep 1
     $0 start
     ;;
   *)
-    echo >&2 "Usage: $0 <start|stop|restart|upgrade|force-stop|reopen-logs>"
+    echo >&2 "Usage: $0 <start|stop|restart|reload>"
     exit 1
     ;;
 esac

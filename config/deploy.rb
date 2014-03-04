@@ -21,27 +21,34 @@ namespace :deploy do
     end
   end
 
-  desc "Start application"
-  task :start do
-    on roles(:app), in: :sequence, wait: 5 do
-      puts capture(:whoami)
-      execute "/etc/init.d/unicorn_#{fetch(:application)}", :start
-    end
-  end
-
-  desc "Stop application"
-  task :stop do
-    on roles(:app), in: :sequence, wait: 5 do
-      execute "/etc/init.d/unicorn_#{fetch(:application)}", :stop
-    end
-  end
-
-  desc 'Restart application'
+  desc "Restart unicorn and resque"
   task :restart do
-    on roles(:app), in: :sequence, wait: 5 do
-      execute "/etc/init.d/unicorn_#{fetch(:application)}", :restart
+    invoke 'deploy:unicorn:restart'
+    invoke 'deploy:resque:restart'
+  end
+  after :publishing, :restart
+
+  namespace :unicorn do
+    %w( start stop restart upgrade ).each do |action|
+      desc "#{action} unicorn"
+      task action do
+        on roles(:app) do
+          execute "/etc/init.d/unicorn_#{fetch(:application)}", action
+        end
+      end
     end
   end
 
-  after :publishing, :restart
+  namespace :resque do
+    %w( start stop restart ).each do |action|
+      desc "#{action} resque worker"
+      task action do
+        on roles(:app) do
+          puts "before execute"
+          execute "/etc/init.d/resque_#{fetch(:application)}", action
+          puts "after execute"
+        end
+      end
+    end
+  end
 end
