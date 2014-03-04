@@ -2,7 +2,6 @@ class UserMailer < ActionMailer::Base
   include Resque::Mailer
 
   helper :markdown
-  default from: CONFIG['mailer']['default_from']
 
   def password_reset(user_id)
     @user = User.find(user_id)

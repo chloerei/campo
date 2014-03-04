@@ -77,13 +77,4 @@ Rails.application.configure do
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
-
-  # Mail from localhost postfix,
-  # Change this if you use other email deliver servie
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-    address: 'localhost',
-    port: 25,
-    enable_starttls_auto: false
-  }
 end
