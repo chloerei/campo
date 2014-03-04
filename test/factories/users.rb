@@ -8,6 +8,6 @@ FactoryGirl.define do
   end
 
   factory :admin, parent: 'user' do
-    email CONFIG['admin_emails'].first
+    email 'admin@example.com'
   end
 end
