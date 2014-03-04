@@ -21,7 +21,7 @@
           .form-group
             = f.label :locale, class: 'control-label col-sm-3'
             .col-sm-6
-              = f.select :locale, I18n.available_locales.map { |locale| [t("locales.#{locale}"), locale] }, { selected: locale }, class: 'form-control', tabIndex: 3
+              = f.select :locale, I18n.available_locales.map { |locale| [t("locales.#{locale}"), locale] }, { }, class: 'form-control', tabIndex: 3
           .form-group
             = label_tag :current_password, t('.current_password'), class: 'control-label col-sm-3'
             .col-sm-6

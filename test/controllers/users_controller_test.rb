@@ -19,6 +19,14 @@ class UsersControllerTest < ActionController::TestCase
     assert login?
   end
 
+  test "should create user with locale" do
+    @request.headers['http_accept_language.parser'] = HttpAcceptLanguage::Parser.new('zh-CN')
+    assert_difference "User.count" do
+      post :create, user: attributes_for(:user)
+    end
+    assert_equal 'zh-CN', User.last.locale
+  end
+
   test "should redirect back after signup" do
     session[:return_to] = '/foo'
     post :create, user: attributes_for(:user)
