@@ -27,6 +27,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     dev.vm.provision :shell, path: 'bin/setup.sh', args: '/vagrant', privileged: false
   end
 
+  # Fix postgresql default encoding
+  config.vm.provision 'shell', inline: 'update-locale LC_ALL="en_US.utf8"'
+
   config.vm.define 'web' do |web|
     web.vm.network :private_network, ip: '192.168.33.11'
 

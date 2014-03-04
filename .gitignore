@@ -23,5 +23,8 @@
 # Ignore uploads.
 /public/uploads
 
-# Ingore Vagrant config.
+# Ignore Vagrant config.
 /.vagrant
+
+# Ignore deploy config.
+/config/deploy

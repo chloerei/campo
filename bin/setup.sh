@@ -16,7 +16,6 @@ sudo service elasticsearch start
 cd -
 
 sudo su postgres -c "createuser -d -R -S `whoami`"
-sudo su postgres -c "createdb campo_production -O `whoami`"
 
 curl -sSL https://get.rvm.io | bash -s stable
 source ~/.rvm/scripts/rvm
@@ -28,3 +27,6 @@ bundle install
 cp config/database.example.yml config/database.yml
 cp config/secrets.example.yml config/secrets.yml
 cp config/config.example.yml config/config.yml
+
+rake db:create db:migrate
+rails s
