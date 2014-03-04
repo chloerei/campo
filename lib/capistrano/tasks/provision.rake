@@ -8,7 +8,7 @@ task :provision do
   invoke 'provision:server'
   invoke 'provision:unicorn_init_script'
   invoke 'provision:nginx_conf'
-  invoke 'provision:deploy_to'
+  invoke 'provision:prepare_deploy_to'
 end
 
 namespace :provision do
@@ -24,7 +24,7 @@ namespace :provision do
   desc "Update apt-get"
   task :update => :as_root do
     on roles(:all) do |host|
-      execute(*%W(apt-get update))
+      execute('apt-get update')
     end
   end
 
@@ -33,8 +33,8 @@ namespace :provision do
     on roles(:all) do |host|
       execute('apt-get install -y postgresql libpq-dev')
       as user: 'postgres' do
-        test(*%W(createuser -d -R -S deploy))
-        test(*%w(createdb campo_production -O deploy))
+        test(*%W(createuser -d -R -S #{host.user}))
+        test(*%W(createdb campo_production -O #{host.user}))
       end
     end
   end
@@ -90,18 +90,18 @@ namespace :provision do
   task :nginx_conf => :as_root do
     on roles(:all) do |host|
       config_binding = OpenStruct.new({
-        deploy_to: fetch(:deploy_to)
+        deploy_to: deploy_to
       }).instance_eval { binding }
       config = ERB.new(File.new('config/nginx.conf.erb').read).result(config_binding)
       upload! StringIO.new(config), "/etc/nginx/sites-enabled/#{fetch(:application)}.conf"
-      exec('service nginx reload')
+      execute('service nginx reload')
     end
   end
 
   desc "Prepare deploy to"
-  task :deploy_to => :as_root do
+  task :prepare_deploy_to => :as_root do
     on roles(:all) do |host|
-      execute('mkdir -p /var/www/campo')
+      execute("mkdir -p #{deploy_to}")
       execute("chown #{host.user}:#{host.user} #{deploy_to}")
     end
   end
