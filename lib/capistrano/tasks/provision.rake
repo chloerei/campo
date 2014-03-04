@@ -50,6 +50,13 @@ namespace :provision do
     end
   end
 
+  desc "Install Postfix"
+  task :postfix => :as_root do
+    on roles(:all) do |host|
+      execute('DEBIAN_FRONTEND=noninteractive apt-get install -y postfix')
+    end
+  end
+
   desc "Install rvm"
   task :rvm => :as_root do
     on roles(:all) do |host|
