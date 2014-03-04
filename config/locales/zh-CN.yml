@@ -163,7 +163,7 @@ zh-CN:
       password_reset: "密码重置"
       save_changes: "保存修改"
     flashes:
-      successfully_update: "成功更新，现在可以使用新密码登陆！"
+      successfully_update: "成功更新，现在可以使用新密码登录！"
       token_invalid: "密码重置地址过期或无效，请重新发送重置邮件。"
       user_email_not_found: "没有找到此用户。"
     new:
@@ -252,7 +252,7 @@ zh-CN:
       add_this_comment: "添加评论"
       comments: "评论"
       delete_confirm: "你确定要删除此话题吗？"
-      login: "登陆"
+      login: "登录"
       no_comment_yet: "还没有评论"
       no_more_topics: "没有更多话题"
       or: "或"
