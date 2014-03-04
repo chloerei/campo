@@ -2,6 +2,10 @@ ENV["RAILS_ENV"] ||= "test"
 require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
 
+if CONFIG['admin_emails'].blank?
+  CONFIG['admin_emails'] = %w(admin@example.com)
+end
+
 class ActiveSupport::TestCase
   ActiveRecord::Migration.check_pending!
 
