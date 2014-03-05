@@ -1,6 +1,6 @@
 default: &default
   title: Campo
-  host: "localhost:3000"
+  host: localhost:3000
 
   admin_emails:
     # - admin@example.com
@@ -8,7 +8,7 @@ default: &default
   mailer:
     # For localhost postfix
     smtp_settings:
-      address: "localhost:3000"
+      address: localhost
       port: 25
       enable_starttls_auto: false
       #domain:
@@ -18,7 +18,7 @@ default: &default
     default_options:
       from: no-reply@example.com
     default_url_options:
-      host: "localhost:3000"
+      host: localhost:3000
 
   redis:
     host: 127.0.0.1
