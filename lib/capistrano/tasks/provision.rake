@@ -9,6 +9,7 @@ task :provision do
   invoke 'provision:unicorn_init_script'
   invoke 'provision:nginx_conf'
   invoke 'provision:prepare_deploy_to'
+  invoke 'provision:iptables'
 end
 
 namespace :provision do
@@ -126,6 +127,32 @@ namespace :provision do
     on roles(:all) do |host|
       execute("mkdir -p #{deploy_to}")
       execute("chown #{host.user}:#{host.user} #{deploy_to}")
+    end
+  end
+
+  desc "Iptable firewalls"
+  task :iptables => :as_root do
+    on roles(:web) do
+      rules = <<RULE
+*filter
+:INPUT DROP [1:174]
+:FORWARD DROP [0:0]
+:OUTPUT ACCEPT [95:7263]
+-A INPUT -p tcp -m multiport --dports 22,80,443 -j ACCEPT
+-A INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
+-A INPUT -p icmp -j ACCEPT
+-A INPUT -s 127.0.0.1/32 -i lo -j ACCEPT
+COMMIT
+RULE
+      upload! StringIO.new(rules), '/etc/iptables.firewall.rules'
+      execute 'iptables-restore < /etc/iptables.firewall.rules'
+
+      firewall = <<FIREWALL
+#!/bin/sh
+/sbin/iptables-restore < /etc/iptables.firewall.rules
+FIREWALL
+      upload! StringIO.new(firewall), '/etc/network/if-pre-up.d/firewall'
+      execute 'chmod +x /etc/network/if-pre-up.d/firewall'
     end
   end
 end
