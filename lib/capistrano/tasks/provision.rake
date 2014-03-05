@@ -7,6 +7,7 @@ task :provision do
   invoke 'provision:rvm'
   invoke 'provision:server'
   invoke 'provision:unicorn_init_script'
+  invoke 'provision:resque_init_script'
   invoke 'provision:nginx_conf'
   invoke 'provision:prepare_deploy_to'
   invoke 'provision:iptables'
