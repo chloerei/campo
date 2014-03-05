@@ -4,6 +4,7 @@ task :provision do
   invoke 'provision:update'
   invoke 'provision:postgresql'
   invoke 'provision:elasticsearch'
+  invoke 'provision:postfix'
   invoke 'provision:rvm'
   invoke 'provision:server'
   invoke 'provision:unicorn_init_script'
@@ -74,7 +75,7 @@ namespace :provision do
   desc "Install redis nginx memcache git nodejs and upload conf"
   task :server => :as_root do
     on roles(:all) do |host|
-      execute('apt-get install -y redis-server memcached nginx git-core nodejs')
+      execute('apt-get install -y redis-server memcached nginx git-core nodejs imagemagick')
       execute('service nginx start')
     end
   end
