@@ -31,4 +31,3 @@ cp config/secrets.example.yml config/secrets.yml
 cp config/config.example.yml config/config.yml
 
 rake db:create db:migrate
-rails s

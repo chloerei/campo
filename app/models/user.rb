@@ -38,7 +38,7 @@ class User < ActiveRecord::Base
   end
 
   def admin?
-    CONFIG['admin_emails'].include? email
+    CONFIG['admin_emails'] && CONFIG['admin_emails'].include?(email)
   end
 
   def lock

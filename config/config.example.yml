@@ -2,9 +2,6 @@ default: &default
   title: Campo
   host: localhost:3000
 
-  admin_emails:
-    # - admin@example.com
-
   mailer:
     # For localhost postfix
     smtp_settings:
@@ -27,9 +24,16 @@ default: &default
 
 development:
   <<: *default
+  admin_emails:
+    - admin@example.com
 
 test:
   <<: *default
+  admin_emails:
+    - admin@example.com
 
 production:
   <<: *default
+
+  admin_emails:
+    # - admin@example.com
