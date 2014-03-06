@@ -8,8 +8,7 @@ fi
 # Fix postgresql default encoding because update-locale not effect without logout
 export LC_ALL=en_US.UTF-8
 sudo apt-get update
-sudo apt-get install -y curl postgresql libpq-dev redis-server memcached git-core openjdk-7-jre-headless nodejs imagemagick
-sudo DEBIAN_FRONTEND=noninteractive apt-get install -y postfix
+sudo DEBIAN_FRONTEND=noninteractive apt-get install -y curl postgresql libpq-dev redis-server memcached git-core openjdk-7-jre-headless nodejs imagemagick postfix
 
 cd /tmp
 wget https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-1.0.1.deb
