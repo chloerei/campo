@@ -20,9 +20,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     vb.customize ["modifyvm", :id, "--memory", "1024"]
   end
 
-  # Fix postgresql default encoding
-  config.vm.provision 'shell', inline: 'update-locale LC_ALL="en_US.utf8"'
-
   config.vm.define 'dev', primary: true do |dev|
     dev.vm.hostname = 'vagrant-dev'
     dev.vm.network :forwarded_port, guest: 3000, host: 3000
@@ -36,6 +33,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     web.vm.hostname = 'vagrant-web'
     web.vm.network :private_network, ip: '192.168.33.10'
 
+    # Fix postgresql default encoding
+    config.vm.provision 'shell', inline: 'update-locale LC_ALL="en_US.utf8"'
     # Enable root login for cap provision task
     web.vm.provision :shell, inline: 'cp /home/vagrant/.ssh /root -r'
   end

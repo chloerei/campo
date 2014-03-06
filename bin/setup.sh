@@ -5,6 +5,8 @@ if [ ! -z "$1" ]; then
   cd $1
 fi
 
+# Fix postgresql default encoding
+sudo update-locale LC_ALL="en_US.utf8"
 sudo apt-get update
 sudo apt-get install -y curl postgresql libpq-dev redis-server memcached git-core openjdk-7-jre-headless nodejs imagemagick
 sudo DEBIAN_FRONTEND=noninteractive apt-get install -y postfix
