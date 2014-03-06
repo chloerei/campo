@@ -12,11 +12,17 @@ set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public
 namespace :deploy do
   desc "Upload example config to shared/config"
   task :upload_config do
+    secrets = File.read('config/secrets.example.yml')
+    secrets.gsub!(/secret_key_base: \w+/) do |m|
+      "secret_key_base: #{`bundle exec rake secret`}"
+    end
+
     on roles(:app) do
       execute "mkdir -p #{deploy_to}/shared/config"
       upload! File.new('config/database.example.yml'), "#{deploy_to}/shared/config/database.yml"
-      upload! File.new('config/secrets.example.yml'), "#{deploy_to}/shared/config/secrets.yml"
       upload! File.new('config/config.example.yml'), "#{deploy_to}/shared/config/config.yml"
+      upload! StringIO.new(secrets), "#{deploy_to}/shared/config/secrets.yml"
+
       info "Now edit the config files in #{shared_path}."
     end
   end
