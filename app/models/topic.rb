@@ -13,6 +13,7 @@ class Topic < ActiveRecord::Base
 
   after_create :increment_counter_cache, :update_hot, :owner_subscribe
   after_destroy :decrement_counter_cache, unless: :trashed?
+  after_touch :update_hot
 
   after_trash :decrement_counter_cache
   after_restore :increment_counter_cache
@@ -35,15 +36,13 @@ class Topic < ActiveRecord::Base
   end
 
   def update_hot
+    # reload because comments_count has been cache in associations
+    reload
     update_attribute :hot, calculate_hot
   end
 
   def owner_subscribe
     subscribe_by user
-  end
-
-  def after_comments_count_change
-    reload.update_hot
   end
 
   def total_pages

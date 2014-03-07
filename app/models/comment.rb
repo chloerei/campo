@@ -22,9 +22,7 @@ class Comment < ActiveRecord::Base
       commentable.class.update_counters commentable.id, comments_count: 1
     end
 
-    if commentable.respond_to? :after_comments_count_change
-      commentable.after_comments_count_change
-    end
+    commentable.touch
   end
 
   def decrement_counter_cache
@@ -32,9 +30,7 @@ class Comment < ActiveRecord::Base
       commentable.class.update_counters commentable.id, comments_count: -1
     end
 
-    if commentable.respond_to? :after_comments_count_change
-      commentable.after_comments_count_change
-    end
+    commentable.touch
   end
 
   def delete_all_notifications

@@ -21,6 +21,13 @@ class CommentTest < ActiveSupport::TestCase
     assert_equal 0, topic.reload.comments_count
   end
 
+  test "should touch commentable" do
+    time = 1.day.ago
+    topic = create(:topic, updated_at: time)
+    create(:comment, commentable: topic)
+    assert topic.updated_at > time
+  end
+
   test "should count page" do
     topic = create(:topic)
     3.times { create :comment, commentable: topic }
