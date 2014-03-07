@@ -233,6 +233,14 @@
   }
 }
 
+.list-group-campo.recordable {
+  a.list-group-item:visited {
+    .list-group-item-heading {
+      color: $gray-light;
+    }
+  }
+}
+
 .pagination-campo {
   .btn-pages {
     &:hover {

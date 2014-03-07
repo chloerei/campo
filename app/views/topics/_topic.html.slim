@@ -1,5 +1,5 @@
 - cache [topic, locale] do
-  a.list-group-item.topic href=topic_path(topic)
+  a.list-group-item.topic href=topic_path(topic, page: (topic.total_pages if topic.total_pages > 1), anchor: (topic.comments_count if topic.comments_count > 0))
     .list-group-item-avatar
       img.img-rounded alt="avatar" src=topic.user.avatar.normal.url
     .list-group-item-content
