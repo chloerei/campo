@@ -15,7 +15,7 @@ class Topic < ActiveRecord::Base
   after_destroy :decrement_counter_cache, unless: :trashed?
   after_touch :update_hot
 
-  after_trash :decrement_counter_cache
+  after_trash :decrement_counter_cache, :delete_all_likes
   after_restore :increment_counter_cache
 
   def increment_counter_cache
@@ -28,6 +28,10 @@ class Topic < ActiveRecord::Base
     if category
       Category.update_counters category.id, topics_count: -1
     end
+  end
+
+  def delete_all_likes
+    likes.delete_all
   end
 
   def calculate_hot

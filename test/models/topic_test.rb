@@ -63,4 +63,12 @@ class TopicTest < ActiveSupport::TestCase
     topic.ignore_by user
     assert topic.ignored_by? user
   end
+
+  test "should delete_all likes after trash" do
+    topic = create(:topic)
+    create :like, likeable: topic
+    assert_difference "Like.count", -1 do
+      topic.trash
+    end
+  end
 end

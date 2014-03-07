@@ -78,4 +78,12 @@ class CommentTest < ActiveSupport::TestCase
       comment.destroy
     end
   end
+
+  test "should delete_all likes after trash" do
+    comment = create(:comment)
+    create :like, likeable: comment
+    assert_difference "Like.count", -1 do
+      comment.trash
+    end
+  end
 end
