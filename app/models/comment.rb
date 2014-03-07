@@ -3,6 +3,7 @@ class Comment < ActiveRecord::Base
   include Trashable
   include MarkdownHelper
 
+  has_many :notifications, as: 'subject', dependent: :delete_all
   belongs_to :user
   belongs_to :commentable, polymorphic: true
 
@@ -13,7 +14,7 @@ class Comment < ActiveRecord::Base
   after_create :increment_counter_cache, :create_mention_notification, :create_comment_notification
   after_destroy :decrement_counter_cache, unless: :trashed?
 
-  after_trash :decrement_counter_cache
+  after_trash :decrement_counter_cache, :delete_all_notifications
   after_restore :increment_counter_cache
 
   def increment_counter_cache
@@ -34,6 +35,10 @@ class Comment < ActiveRecord::Base
     if commentable.respond_to? :after_comments_count_change
       commentable.after_comments_count_change
     end
+  end
+
+  def delete_all_notifications
+    notifications.delete_all
   end
 
   def page(per = Comment.default_per_page)

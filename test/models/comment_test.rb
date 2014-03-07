@@ -53,4 +53,22 @@ class CommentTest < ActiveSupport::TestCase
       create(:comment, commentable: topic)
     end
   end
+
+  test "should delete all related notifications after trash" do
+    # notification name: comment
+    comment = create(:comment)
+
+    assert_difference "Notification.count", -1 do
+      comment.trash
+    end
+  end
+
+  test "should delete all related notifications after destroy" do
+    # notification name: comment
+    comment = create(:comment)
+
+    assert_difference "Notification.count", -1 do
+      comment.destroy
+    end
+  end
 end
