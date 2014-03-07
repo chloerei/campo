@@ -182,6 +182,10 @@ en:
       password_reset_email_has_been_sent_message: Password reset email has been sent
         message
   sessions:
+    access_limiter:
+      are_you: Are you
+      forgot_password: forgot password?
+      try_too_many_times: Try too many times
     flashes:
       incorrect_user_name_or_password: Incorrect user name or password
     new:

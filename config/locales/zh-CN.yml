@@ -178,6 +178,10 @@ zh-CN:
       password_reset: "密码重置"
       password_reset_email_has_been_sent_message: "密码重置邮件已发送，请注意查收。"
   sessions:
+    access_limiter:
+      are_you: "你是否"
+      forgot_password: "忘记密码？"
+      try_too_many_times: "尝试次数过多"
     flashes:
       incorrect_user_name_or_password: "错误的用户名或密码"
     new:

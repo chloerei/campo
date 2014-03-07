@@ -30,4 +30,17 @@ class SessionsControllerTest < ActionController::TestCase
     post :create, login: 'Username', password: '12345678'
     assert_redirected_to '/foo'
   end
+
+  test "should access limit" do
+    ip = '1.2.3.4'
+    key = "sessions:limiter:#{ip}"
+    request.headers['REMOTE_ADDR'] = ip
+    $redis.del(key)
+    assert_equal nil, $redis.get(key)
+    post :create, login: 'Username', password: '12345678'
+    assert_equal 1, $redis.get(key).to_i
+    $redis.set(key, 5)
+    post :create, login: 'Username', password: '12345678'
+    assert_template :access_limiter
+  end
 end
