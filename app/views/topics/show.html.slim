@@ -14,7 +14,7 @@
                 = @topic.category.name
           li.active = @topic.title
       .panel-body
-        - cache(@topic) do
+        - cache [@topic, locale] do
           .list-group.list-group-campo
             .list-group-item.comment data-creator-id=@topic.user_id
               a.list-group-item-avatar href=user_link(@topic.user)
@@ -94,7 +94,7 @@
         h4.panel-title
           = t '.related_topics'
       .panel-body
-        - cache([@topic, 'related_topics']) do
+        - cache [@topic, 'related_topics', locale] do
           .list-group.list-group-campo
             - more_like_this_topics = @topic.more_like_this.limit(5).records
             - if more_like_this_topics.any?

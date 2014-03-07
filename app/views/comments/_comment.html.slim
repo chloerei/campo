@@ -1,4 +1,4 @@
-- cache(comment) do
+- cache [comment, locale] do
   li.list-group-item.comment id="comment-#{comment.id}" data-creator-id=comment.user_id
     a.list-group-item-avatar href=user_link(comment.user)
       img.img-rounded alt="avatar" src=comment.user.avatar.normal.url
