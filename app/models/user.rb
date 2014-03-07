@@ -33,7 +33,7 @@ class User < ActiveRecord::Base
 
   def self.find_by_remember_token(token)
     user = find_by_id(token.split('$').first)
-    (user && user.remember_token == token) ? user : nil
+    (user && Rack::Utils.secure_compare(user.remember_token, token)) ? user : nil
   end
 
   def admin?
