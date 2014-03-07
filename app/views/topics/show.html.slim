@@ -18,7 +18,7 @@
           .list-group.list-group-campo
             .list-group-item.comment data-creator-id=@topic.user_id
               a.list-group-item-avatar href=user_link(@topic.user)
-                img.img-rounded alt="avatar" src=@topic.user.gravatar_url
+                img.img-rounded alt="avatar" src=@topic.user.avatar.normal.url
               .list-group-item-content
                 .list-group-item-heading
                   a.comment-user href=user_link(@topic.user)
@@ -66,7 +66,7 @@
             .list-group.list-group-campo
               .list-group-item
                 a.list-group-item-avatar href=user_link(current_user)
-                  img.img-rounded alt="avatar" src=current_user.gravatar_url
+                  img.img-rounded alt="avatar" src=current_user.avatar.normal.url
                 .list-group-item-content
                   = form_for @topic.comments.new, url: topic_comments_path(@topic), remote: true do |f|
                     .form-group

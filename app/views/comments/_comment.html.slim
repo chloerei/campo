@@ -1,7 +1,7 @@
 - cache(comment) do
   li.list-group-item.comment id="comment-#{comment.id}" data-creator-id=comment.user_id
     a.list-group-item-avatar href=user_link(comment.user)
-      img.img-rounded alt="avatar" src=comment.user.gravatar_url
+      img.img-rounded alt="avatar" src=comment.user.avatar.normal.url
     .list-group-item-content
       .list-group-item-heading
         a.comment-user href=user_link(comment.user)

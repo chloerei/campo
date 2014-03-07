@@ -38,7 +38,7 @@ html
               ul.dropdown-menu.dropdown-menu-right
                 li
                   a.item.item-user href=user_root_path(username: current_user.username)
-                    img.img-rounded alt="avatar" src=current_user.gravatar_url(size: 32)
+                    img.img-rounded alt="avatar" src=current_user.avatar.normal.url
                     .item-user-content
                       b = current_user.name
                 li.divider
