@@ -4,8 +4,8 @@ class User < ActiveRecord::Base
   mount_uploader :avatar, AvatarUploader
 
   has_secure_password
-  has_many :topics, dependent: :delete_all
-  has_many :comments, dependent: :delete_all
+  has_many :topics, dependent: :destroy
+  has_many :comments, dependent: :destroy
   has_many :notifications, dependent: :delete_all
   has_many :likes, dependent: :delete_all
   has_many :attachments, dependent: :delete_all
