@@ -1,7 +1,7 @@
 - cache [comment, locale] do
   a.list-group-item.commentable href=comment_link(comment)
-    .list-group-item-icon
-      i.fa.fa-comment-o
+    .list-group-item-avatar
+      img.img-rounded alt="avatar" src=comment.user.avatar.normal.url
     .list-group-item-content
       .list-group-item-heading
         b = comment_title(comment)
