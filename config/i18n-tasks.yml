@@ -8,4 +8,4 @@ search:
     - '*.text.erb'
 
 ignore_unused:
-  - activerecord.attributes.*
+  - activerecord.*

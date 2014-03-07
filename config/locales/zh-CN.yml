@@ -117,6 +117,9 @@ zh-CN:
       add_this_comment: "添加评论"
       cancel: "取消"
       save_changes: "保存修改"
+  helpers:
+    comments:
+      deleted_entry: "[已删除内容]"
   karminari:
     campo:
       paginator:

@@ -10,6 +10,8 @@ module CommentsHelper
     case comment.commentable
     when Topic
       comment.commentable.title
+    else
+      t 'helpers.comments.deleted_entry'
     end
   end
 end

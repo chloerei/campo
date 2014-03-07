@@ -20,9 +20,10 @@ en:
         user:
           attributes:
             email:
-              format: "invalid email format"
+              format: invalid email format
             username:
-              format: "may only contain alphanumeric characters or dashes and cannot begin with a dash"
+              format: may only contain alphanumeric characters or dashes and cannot
+                begin with a dash
   admin:
     attachments:
       index:
@@ -119,6 +120,9 @@ en:
       add_this_comment: Add this comment
       cancel: Cancel
       save_changes: Save changes
+  helpers:
+    comments:
+      deleted_entry: "[Deleted entry]"
   karminari:
     campo:
       paginator:
