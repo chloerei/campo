@@ -1,22 +1,18 @@
 source 'https://rubygems.org'
 
-gem 'rails',            github: "rails/rails"
-gem 'arel',             github: "rails/arel"
+gem 'rails', '4.1.0.rc1'
 
 # Use postgresql as the database for Active Record
 gem 'pg'
 
-# Use edge version of sprockets-rails
-gem 'sprockets-rails',  github: "rails/sprockets-rails"
-
 # Use SCSS for stylesheets
-gem 'sass-rails',       github: "rails/sass-rails"
+gem 'sass-rails', '~> 4.0.1'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 
 # Use CoffeeScript for .js.coffee assets and views
-gem 'coffee-rails',     github: "rails/coffee-rails"
+gem 'coffee-rails', '~> 4.0.0'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',     platforms: :ruby
