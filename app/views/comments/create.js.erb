@@ -3,4 +3,5 @@
   $('#new_comment textarea').val('');
   $('#new_comment .preview').val('');
   $('#new_comment [data-toggle="tab"]:first').tab('show');
+  history.replaceState(history.state, '', '<%= comment_replace_path(@comment) %>');
 <% end %>
