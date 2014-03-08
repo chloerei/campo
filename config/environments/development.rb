@@ -30,8 +30,9 @@ Rails.application.configure do
   # test javascript
   config.assets.paths << Rails.root.join('test', 'javascripts')
 
-  # LiveReload
-  config.middleware.use Rack::LiveReload
+  # LiveReload, user localhost because livereload can't listen file changed
+  # event in vagrant sync folder, so run `guard start` in host machine.
+  config.middleware.use Rack::LiveReload, host: 'localhost'
 end
 
 # Slim pretty output
