@@ -38,7 +38,7 @@ class PasswordsController < ApplicationController
       @user = User.find_by(email: params[:email], password_reset_token: params[:token])
     end
 
-    unless @user && @user.password_reset_token_created_at > 2.days.ago
+    unless @user && @user.password_reset_token_created_at > 1.hour.ago
       flash[:warning] = I18n.t('passwords.flashes.token_invalid')
       redirect_to new_password_path
     end
