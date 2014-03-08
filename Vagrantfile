@@ -25,8 +25,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.define 'dev', primary: true do |dev|
     dev.vm.hostname = 'vagrant-dev'
-    dev.vm.network :forwarded_port, guest: 3000, host: 3000
+    dev.vm.network :private_network, ip: '192.168.33.10'
     dev.ssh.forward_agent = true
+
+    # Use nfs for performance
+    dev.vm.synced_folder '.', '/vagrant', type: 'nfs'
 
     # Install Dependency
     dev.vm.provision :shell, path: 'bin/setup.sh', args: '/vagrant', privileged: false
@@ -34,7 +37,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.define 'web' do |web|
     web.vm.hostname = 'vagrant-web'
-    web.vm.network :private_network, ip: '192.168.33.10'
+    web.vm.network :private_network, ip: '192.168.33.20'
+
+    web.vm.synced_folder '.', '/vagrant', disabled: true
 
     # Enable root login for cap provision task
     web.vm.provision :shell, inline: 'cp /home/vagrant/.ssh /root -r'
