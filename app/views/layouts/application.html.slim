@@ -16,14 +16,10 @@ html
         };
 
   body
-    nav.navbar.navbar-campo.navbar-static-top
+    nav.navbar.navbar-static-top
       .container
         .navbar-header
-          button.navbar-toggle type="button" data-toggle="collapse" data-target="#navbar"
-            span.icon-bar
-            span.icon-bar
-            span.icon-bar
-          a.navbar-brand href="/"
+          a.navbar-brand href=root_path
             = CONFIG['title']
         ul.nav.navbar-nav.navbar-right
           - if login?
@@ -34,13 +30,15 @@ html
                   .badge = unread_notifications_count > 99 ? '99+' : unread_notifications_count
             li.dropdown
               a.dropdown-toggle data-toggle="dropdown" href='#'
-                i.fa.fa-cog
+                img.img-circle.img-avatar src=current_user.avatar.normal.url
+                '
+                = current_user.name
+                '
+                i.fa.fa-caret-down
               ul.dropdown-menu.dropdown-menu-right
                 li
-                  a.item.item-user href=user_root_path(username: current_user.username)
-                    img.img-rounded alt="avatar" src=current_user.avatar.normal.url
-                    .item-user-content
-                      b = current_user.name
+                  a.item href=user_root_path(username: current_user.username)
+                    = t '.profile'
                 li.divider
                 li
                   a href=user_likes_path(username: current_user.username)
@@ -59,6 +57,9 @@ html
             li
               a.item href=login_path(return_to: params[:return_to] || return_to_path(request.fullpath))
                 = t '.sign_in'
+          li.navbar-toggle
+            a.tiem type="button" data-toggle="collapse" data-target="#navbar"
+              i.fa.fa-bars
         #navbar.collapse.navbar-collapse
           ul.nav.navbar-nav
             li class=('active' if controller_name == 'topics')

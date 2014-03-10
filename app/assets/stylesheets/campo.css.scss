@@ -1,7 +1,7 @@
-.navbar-campo {
-  background: #fff;
-  border-bottom: 1px solid #ddd;
-  @include box-shadow(0 0 10px rgba(0, 0, 0, 0.1));
+.navbar {
+  background: white;
+  border-bottom: none;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
 
   &.navbar-inverse {
     background: #222;
@@ -27,22 +27,25 @@
     }
   }
 
-  .navbar-toggle {
-    margin-right: 0;
-    float: left;
+  .navbar-brand {
+    color: $gray-dark;
+    line-height: 50px;
+    padding: 0 15px;
 
-    .icon-bar {
-      background-color: #ccc;
+    &:hover {
+      text-decoration: none;
     }
   }
 
   .navbar-nav > li {
     > a {
       color: $gray-light;
+      padding: 0 15px;
+      line-height: 50px;
 
       &:hover {
         color: $link-color;
-        background-color: transparent;
+        background: transparent;
       }
     }
 
@@ -53,24 +56,21 @@
     }
   }
 
-  .navbar-header {
-    float: left;
-  }
-
-  .navbar-brand {
-    color: $gray-dark;
-    font-weight: 500;
+  .img-avatar {
+    height: 24px;
+    width: 24px;
   }
 
   .navbar-right {
     float: right;
-    margin-right: -$navbar-padding-horizontal;
+    margin-right: -15px;
 
     > li {
       float: left;
     }
 
     .open .dropdown-toggle {
+      color: $link-color;
       background: transparent;
     }
 
@@ -91,8 +91,18 @@
     }
   }
 
+  .navbar-toggle {
+    display: none;
+  }
+
   @media (max-width: $grid-float-breakpoint) {
+    .navbar-header {
+      float: left;
+    }
+
     .navbar-nav {
+      margin: 0;
+
       .open .dropdown-menu {
         position: absolute;
         border: 1px solid $dropdown-fallback-border; // IE8 fallback
@@ -100,16 +110,25 @@
         background-color: $dropdown-bg;
         @include box-shadow(0 6px 12px rgba(0,0,0,.175));
       }
+
+      > li > a {
+        padding: 0 15px;
+      }
     }
 
     .navbar-right {
-      margin-top: 0;
-      margin-bottom: 0;
+      margin-right: -15px;
+    }
 
-      > li > a {
-        padding-top: $navbar-padding-vertical;
-        padding-bottom: $navbar-padding-vertical;
-      }
+    .navbar-collapse {
+      border: none;
+      padding: 0;
+    }
+
+    .navbar-toggle {
+      display: block;
+      padding: 0;
+      margin: 0;
     }
   }
 }
