@@ -302,6 +302,14 @@
   }
 }
 
-article img {
-  max-width: 100%;
+article {
+  word-wrap: break-word;
+
+  img {
+    max-width: 100%;
+  }
+
+  blockquote {
+    font-size: 1em;
+  }
 }
