@@ -1,6 +1,14 @@
 .list-group-item-avatar
   img.img-rounded alt="avatar" src=comment.user.avatar.normal.url
 .list-group-item-content
+  .list-group-item-heading
+    a.comment-user href=user_link(comment.user)
+      b = comment.user.name
+      '
+      = "@#{comment.user.username}"
+      = ' · '
+      a href=comment_link(comment)
+        = time_ago_tag comment.created_at
   = form_for comment, remote: true do |f|
     .form-group
       = markdown_area f, :body
