@@ -4,13 +4,10 @@
   = form_for comment, remote: true do |f|
     .form-group
       = markdown_area f, :body
-    - if comment.new_record?
-      = f.submit t('.add_this_comment'), class: 'btn btn-success'
-    - else
-      = f.submit t('.save_changes'), class: 'btn btn-success'
-      '
-      a.btn.btn-default href=cancel_comment_path(comment) data-remote="true"
-        = t '.cancel'
+    = f.submit t('.save_changes'), class: 'btn btn-success', 'data-disable-with' => t('.save_changes')
+    '
+    a.btn.btn-default href=cancel_comment_path(comment) data-remote="true"
+      = t '.cancel'
 
 javascript:
   $('#edit_comment_#{comment.id}').validate({

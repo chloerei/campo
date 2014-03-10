@@ -9,11 +9,12 @@
   .form-group
     = markdown_area f, :body, tabIndex: 3
   - if topic.new_record?
-    = f.submit t('.create_topic'), class: 'btn btn-success', tabIndex: 4
+    = f.submit t('.create_topic'), class: 'btn btn-success', tabIndex: 4, 'data-disable-with' => t('.create_topic')
   - else
-    = f.submit t('.save_changes'), class: 'btn btn-success', tabIndex: 4
+    = f.submit t('.save_changes'), class: 'btn btn-success', tabIndex: 4, 'data-disable-with' => t('.save_changes')
     '
-    a.btn.btn-default href=topic_path(@topic) tabIndex="5" Cancel
+    a.btn.btn-default href=topic_path(@topic) tabIndex="5"
+      = t '.cancel'
 
 - form_id = @topic.new_record? ? 'new_topic' : "edit_topic_#{@topic.id}"
 

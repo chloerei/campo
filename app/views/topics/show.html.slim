@@ -71,7 +71,7 @@
                   = form_for @topic.comments.new, url: topic_comments_path(@topic), remote: true do |f|
                     .form-group
                       = markdown_area f, :body
-                    = f.submit t('.add_this_comment'), class: 'btn btn-success'
+                    = f.submit t('.add_this_comment'), class: 'btn btn-success', 'data-disable-with' => t('.add_this_comment')
           - else
             = t '.your_account_had_been_locked'
         - else
