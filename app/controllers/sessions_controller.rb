@@ -8,9 +8,9 @@ class SessionsController < ApplicationController
   def create
     login = params[:login].downcase
     @user = if login.include?('@')
-              User.find_by email_lower: login
+              User.where('lower(email) = ?', login).first
             else
-              User.find_by username_lower: login
+              User.where('lower(username) = ?', login).first
             end
 
     if @user && @user.authenticate(params[:password])

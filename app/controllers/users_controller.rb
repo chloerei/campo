@@ -19,7 +19,7 @@ class UsersController < ApplicationController
   def check_email
     respond_to do |format|
       format.json do
-        render json: !User.where(email_lower: params[:user][:email].downcase).where.not(id: params[:id]).exists?
+        render json: !User.where('lower(email) = ?', params[:user][:email].downcase).where.not(id: params[:id]).exists?
       end
     end
   end
@@ -27,7 +27,7 @@ class UsersController < ApplicationController
   def check_username
     respond_to do |format|
       format.json do
-        render json: !User.where(username_lower: params[:user][:username].downcase).where.not(id: params[:id]).exists?
+        render json: !User.where('lower(username) = ?',  params[:user][:username].downcase).where.not(id: params[:id]).exists?
       end
     end
   end

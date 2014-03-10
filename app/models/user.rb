@@ -17,16 +17,6 @@ class User < ActiveRecord::Base
   scope :unlocked, -> { where(locked_at: nil) }
   scope :locked, -> { where.not(locked_at: nil) }
 
-  def username=(value)
-    write_attribute :username, value
-    write_attribute :username_lower, value.downcase
-  end
-
-  def email=(value)
-    write_attribute :email, value
-    write_attribute :email_lower, value.downcase
-  end
-
   def remember_token
     [id, Digest::SHA512.hexdigest(password_digest)].join('$')
   end

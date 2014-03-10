@@ -5,14 +5,6 @@ class UserTest < ActiveSupport::TestCase
     assert_not_nil create(:user)
   end
 
-  test "should save lower username" do
-    assert_equal "lower", create(:user, username: 'LOWER').username_lower
-  end
-
-  test "should save lower email" do
-    assert_equal "lower@example.com", create(:user, email: 'LOWER@example.com').email_lower
-  end
-
   test "should have remember token" do
     user = create(:user)
     assert_not_nil user.remember_token

@@ -4,6 +4,6 @@ class Users::ApplicationController < ApplicationController
   private
 
   def find_user
-    @user = User.find_by! username_lower: params[:username].downcase
+    @user = User.where('lower(username) = ?', params[:username].downcase).first!
   end
 end

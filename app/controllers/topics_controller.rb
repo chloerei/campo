@@ -6,7 +6,7 @@ class TopicsController < ApplicationController
     @topics = Topic.page(params[:page])
 
     if params[:category_id]
-      @category = Category.find_by! slug_lower: params[:category_id].downcase
+      @category = Category.where('lower(slug) = ?', params[:category_id].downcase).first!
       @topics = @topics.where(category: @category)
     end
 
@@ -54,7 +54,7 @@ class TopicsController < ApplicationController
   end
 
   def new
-    @category = Category.find_by slug_lower: params[:category_id].downcase if params[:category_id].present?
+    @category = Category.where('lower(slug) = ?', params[:category_id].downcase).first if params[:category_id].present?
     @topic = Topic.new category: @category
   end
 
