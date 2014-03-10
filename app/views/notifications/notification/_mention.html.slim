@@ -1,20 +1,20 @@
-- comment = notification.subject
+- cache [notification, locale] do
+  - comment = notification.subject
+  li.list-group-item.notification id="notification_#{notification.id}" class=('read' if notification.read)
+    a.btn.list-group-item-remove href=notification_path(notification) data-remote="true" data-method="delete"
+      i.fa.fa-times
 
-li.list-group-item.notification id="notification_#{notification.id}" class=('read' if notification.read)
-  a.btn.list-group-item-remove href=notification_path(notification) data-remote="true" data-method="delete"
-    i.fa.fa-times
-
-  a.list-group-item-link href=comment_link(comment)
-    .list-group-item-avatar
-      img.img-rounded alt="avatar" src=comment.user.avatar.normal.url
-    .list-group-item-content
-      .list-group-item-heading
-        b = comment.user.name
-        '
-        = t '.mentioned_you_on'
-        '
-        b = comment_title(comment)
-        '
-        = time_ago_tag comment.created_at
-      .text-muted
-        = truncate comment.body, length: 140
+    a.list-group-item-link href=comment_link(comment)
+      .list-group-item-avatar
+        img.img-rounded alt="avatar" src=comment.user.avatar.normal.url
+      .list-group-item-content
+        .list-group-item-heading
+          b = comment.user.name
+          '
+          = t '.mentioned_you_on'
+          '
+          b = comment_title(comment)
+          '
+          = time_ago_tag comment.created_at
+        .text-muted
+          = truncate comment.body, length: 140

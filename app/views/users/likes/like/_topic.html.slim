@@ -1,16 +1,16 @@
-- topic = like.likeable
-
-li.list-group-item.like id="like-#{like.id}"
-  a.btn.list-group-item-remove data-visible-to="creator" href=user_like_path(username: like.user.username, id: like) data-remote="true" data-method="delete"
-    i.fa.fa-times
-  a.list-group-item-link href=topic_path(topic)
-    .list-group-item-avatar
-      img.img-rounded alt="avatar" src=topic.user.avatar.normal.url
-    .list-group-item-content
-      .list-group-item-heading
-        b = topic.title
-        span.text-muted
-          = ' · '
-          = time_ago_tag topic.created_at
-      .text-muted
-        = truncate topic.body, length: 140
+- cache [like, locale] do
+  - topic = like.likeable
+  li.list-group-item.like id="like-#{like.id}"
+    a.btn.list-group-item-remove data-visible-to="creator" href=user_like_path(username: like.user.username, id: like) data-remote="true" data-method="delete"
+      i.fa.fa-times
+    a.list-group-item-link href=topic_path(topic)
+      .list-group-item-avatar
+        img.img-rounded alt="avatar" src=topic.user.avatar.normal.url
+      .list-group-item-content
+        .list-group-item-heading
+          b = topic.title
+          span.text-muted
+            = ' · '
+            = time_ago_tag topic.created_at
+        .text-muted
+          = truncate topic.body, length: 140
