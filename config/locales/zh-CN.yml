@@ -128,7 +128,6 @@ zh-CN:
     admin:
       admin: "%{name} 管理"
       attachments: "附件"
-      back_to_site: "回到站点"
       categories: "分类"
       comments: "评论"
       topics: "话题"
@@ -136,6 +135,7 @@ zh-CN:
     application:
       likes: "收藏"
       logout: "退出"
+      profile: "个人资料"
       settings: "设置"
       sign_in: "登录"
       sign_up: "注册"

@@ -131,7 +131,6 @@ en:
     admin:
       admin: "%{name} Admin"
       attachments: Attachments
-      back_to_site: Back to site
       categories: Categories
       comments: Comments
       topics: Topics
@@ -139,6 +138,7 @@ en:
     application:
       likes: Likes
       logout: Logout
+      profile: Profile
       settings: Settings
       sign_in: Sign in
       sign_up: Sign up
