@@ -6,12 +6,11 @@
       .list-group-item-heading
         b = topic.title
       .text-muted
-        - if topic.category
-          span.label.label-default
-            = topic.category.name
-          = ' · '
         = topic.user.name
         = ' · '
         = time_ago_tag topic.created_at
+        - if topic.category
+          = ' · '
+          = topic.category.name
         = ' · '
         = t '.comments_count', count: topic.comments_count

@@ -20,6 +20,10 @@
                   = ' · '
                   a href=topic_path(@topic)
                     = time_ago_tag @topic.created_at
+                  - if @topic.category
+                    = ' · '
+                    a href=categoried_topics_path(category_id: @topic.category.slug)
+                      = @topic.category.name
                 article.comment-body
                   = markdown_format @topic.body
                 .list-group-item-actions.clearfix
