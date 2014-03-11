@@ -314,6 +314,11 @@ article {
     max-width: 100%;
   }
 
+  code {
+    white-space: normal;
+    word-break: break-all;
+  }
+
   blockquote {
     font-size: 1em;
   }
