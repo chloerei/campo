@@ -22,6 +22,9 @@ default: &default
     port: 6379
     db: 0
 
+  elasticsearch:
+    host: localhost:9200
+
 development:
   <<: *default
   admin_emails:
