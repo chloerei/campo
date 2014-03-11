@@ -11,7 +11,7 @@ class TopicsController < ApplicationController
     end
 
     # Set default tab
-    unless %w(hot newest).include? params[:tab].to_s
+    unless %w(hot newest).include? params[:tab]
       params[:tab] = 'hot'
     end
 
