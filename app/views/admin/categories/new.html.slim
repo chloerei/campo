@@ -4,11 +4,6 @@
   .col-md-9
     .panel.panel-campo
       .panel-heading
-        ol.breadcrumb.panel-title
-          li
-            a href=admin_categories_path
-              = t '.categories'
-          li.active
-            = t '.new_category'
+        h3.panel-title = t '.new_category'
       .panel-body
         = render 'form', category: @category

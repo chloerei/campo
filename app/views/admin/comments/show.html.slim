@@ -4,11 +4,7 @@
   .col-md-9
     .panel.panel-campo
       .panel-heading
-        ol.breadcrumb.panel-title
-          li
-            a href=admin_comments_path
-              = t '.comments'
-          li.active = truncate @comment.body
+        h3.panel-title = t '.comments'
       .panel-body
         = form_for [:admin, @comment], html: { class: 'comment-form' } do |f|
           = render 'share/flash_messages'

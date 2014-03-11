@@ -19,14 +19,11 @@
             li class=('active' if params[:tab] == 'newest')
               a href=url_for(tab: 'newest')
                 = t '.newest'
-        - if @category
-          ol.breadcrumb.panel-title
-            li
-              a href=topics_path
-                = t '.topics'
-            li.active = @category.name
-        - else
-          h3.panel-title = t '.topics'
+        h3.panel-title
+          - if @category
+            = @category.name
+          - else
+            = t '.all_topics'
       .panel-body
         .list-group.list-group-campo.recordable
           - if @topics.any?
