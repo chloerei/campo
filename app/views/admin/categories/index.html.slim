@@ -4,7 +4,7 @@
 
 .row
   .col-md-9
-    .panel.panel-campo
+    .panel
       .panel-heading
         h2.panel-title
           = t '.categories'
@@ -19,7 +19,7 @@
               .text-muted
                 = t '.topics_count', count: category.topics_count
   .col-md-3
-    .panel.panel-campo
+    .panel
       .panel-body
         a.btn.btn-default.btn-success.btn-block href=new_admin_category_path
           = t '.new_category'

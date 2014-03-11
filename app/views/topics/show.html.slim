@@ -2,7 +2,7 @@
 
 .row
   .col-md-9
-    .panel.panel-campo
+    .panel
       .panel-heading
         h1.panel-title = @topic.title
       .panel-body
@@ -39,7 +39,7 @@
                     a.btn data-visible-to="creator" href=trash_topic_path(@topic) data-remote="true" data-method="delete" data-confirm=t('.delete_confirm')
                       i.fa.fa-trash-o
 
-    .panel.panel-campo#comments
+    .panel#comments
       .panel-heading
         h3.panel-title
           = t '.comments'
@@ -55,7 +55,7 @@
           .pull-right
             = paginate @comments, theme: 'campo', params: { anchor: 'comments' }
 
-    .panel.panel-campo
+    .panel
       .panel-body
         - if login?
           - unless current_user.locked?
@@ -87,10 +87,10 @@
           = t '.to_comment'
   .col-md-3
     - if login?
-      .panel.panel-campo
+      .panel
         .panel-body
           = render 'subscriptions/subscription', subscribable: @topic
-    .panel.panel-campo
+    .panel
       .panel-heading
         h4.panel-title
           = t '.related_topics'

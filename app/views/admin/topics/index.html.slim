@@ -4,7 +4,7 @@
 
 .row
   .col-md-9
-    .panel.panel-campo
+    .panel
       .panel-heading
         h2.panel-title
           = t '.topics'
@@ -28,7 +28,7 @@
         .pull-right
           = paginate @topics, theme: 'campo'
   .col-md-3
-    .panel.panel-campo
+    .panel
       .panel-body
         ul.nav.nav-pills.nav-stacked
           li class=('active' if action_name == 'index')
