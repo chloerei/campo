@@ -1,5 +1,5 @@
 class Admin::TopicsController < Admin::ApplicationController
-  before_filter :find_topic, only: [:show, :update, :trash, :restore]
+  before_action :find_topic, only: [:show, :update, :trash, :restore]
 
   def index
     @topics = Topic.order(id: :desc).page(params[:page])

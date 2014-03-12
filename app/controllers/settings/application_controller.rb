@@ -1,5 +1,5 @@
 class Settings::ApplicationController < ApplicationController
-  before_filter :login_required, :set_user
+  before_action :login_required, :set_user
 
   private
 

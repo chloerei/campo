@@ -1,5 +1,5 @@
 class Settings::AccountsController < Settings::ApplicationController
-  before_filter :current_password_required, only: [:update]
+  before_action :current_password_required, only: [:update]
 
   def show
   end

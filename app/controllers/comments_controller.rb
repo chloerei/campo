@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
-  before_filter :login_required, :no_locked_required
-  before_filter :find_comment, only: [:edit, :cancel, :update, :trash]
+  before_action :login_required, :no_locked_required
+  before_action :find_comment, only: [:edit, :cancel, :update, :trash]
 
   def create
     resource, id = request.path.split('/')[1, 2]

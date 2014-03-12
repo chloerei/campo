@@ -1,6 +1,6 @@
 class PasswordsController < ApplicationController
-  before_filter :no_login_required
-  before_filter :check_token, only: [:edit, :update]
+  before_action :no_login_required
+  before_action :check_token, only: [:edit, :update]
 
   def show
   end

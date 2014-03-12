@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :no_login_required, only: [:new, :create]
+  before_action :no_login_required, only: [:new, :create]
 
   def new
     store_location params[:return_to]

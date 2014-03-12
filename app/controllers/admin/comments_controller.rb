@@ -1,5 +1,5 @@
 class Admin::CommentsController < Admin::ApplicationController
-  before_filter :find_comment, except: [:index, :trashed]
+  before_action :find_comment, except: [:index, :trashed]
 
   def index
     @comments = Comment.order(id: :desc).page(params[:page])

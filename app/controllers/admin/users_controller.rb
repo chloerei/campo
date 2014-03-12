@@ -1,5 +1,5 @@
 class Admin::UsersController < Admin::ApplicationController
-  before_filter :find_user, except: [:index, :locked]
+  before_action :find_user, except: [:index, :locked]
 
   def index
     @users = User.unlocked.order(id: :desc).page(params[:page])

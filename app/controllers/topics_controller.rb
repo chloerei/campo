@@ -1,6 +1,6 @@
 class TopicsController < ApplicationController
-  before_filter :login_required, :no_locked_required, except: [:index, :show, :search]
-  before_filter :find_topic, only: [:edit, :update, :trash]
+  before_action :login_required, :no_locked_required, except: [:index, :show, :search]
+  before_action :find_topic, only: [:edit, :update, :trash]
 
   def index
     @topics = Topic.page(params[:page])

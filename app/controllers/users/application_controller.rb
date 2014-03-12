@@ -1,5 +1,5 @@
 class Users::ApplicationController < ApplicationController
-  before_filter :find_user
+  before_action :find_user
 
   private
 

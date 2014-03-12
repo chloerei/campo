@@ -1,5 +1,5 @@
 class AttachmentsController < ApplicationController
-  before_filter :login_required
+  before_action :login_required
 
   def create
     @attachment = current_user.attachments.create params.require(:attachment).permit(:file)

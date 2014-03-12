@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  before_filter :access_limiter, only: [:new, :create]
+  before_action :access_limiter, only: [:new, :create]
 
   def new
     store_location params[:return_to]

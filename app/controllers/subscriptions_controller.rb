@@ -1,5 +1,5 @@
 class SubscriptionsController < ApplicationController
-  before_filter :login_required, :no_locked_required, :find_subscribable
+  before_action :login_required, :no_locked_required, :find_subscribable
 
   def update
     case params[:status]
