@@ -66,7 +66,7 @@ class Topic < ActiveRecord::Base
     (comments_count / Comment.default_per_page) + 1
   end
 
-  def more_like_this
+  def more_like_this(num = 5)
     Topic.search(
       query: {
         more_like_this: {
@@ -80,6 +80,6 @@ class Topic < ActiveRecord::Base
           { not: { term: { id: id } } }
         ]
       }
-    )
+    ).limit(num).records.to_a rescue []
   end
 end
