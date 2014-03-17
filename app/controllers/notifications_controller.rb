@@ -2,7 +2,7 @@ class NotificationsController < ApplicationController
   before_action :login_required
 
   def index
-    @notifications = current_user.notifications.order(id: :desc).page(params[:page])
+    @notifications = current_user.notifications.includes(:subject).order(id: :desc).page(params[:page])
   end
 
   def destroy
@@ -15,7 +15,7 @@ class NotificationsController < ApplicationController
   end
 
   def mark
-    current_user.notifications.unread.update_all(read: true)
+    current_user.notifications.unread.update_all(read: true, updated_at: Time.now.utc)
 
     respond_to do |format|
       format.js

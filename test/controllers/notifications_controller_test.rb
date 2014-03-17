@@ -11,27 +11,6 @@ class NotificationsControllerTest < ActionController::TestCase
     assert_response :success, @response.body
   end
 
-  test "should read notification after get index" do
-    user = create(:user)
-    login_as user
-
-    create(:notification, user: user)
-    assert_difference "user.notifications.unread.count", -1 do
-      get :index
-    end
-
-    per_page = Notification.default_per_page
-
-    (per_page + 1).times { create(:notification, user: user) }
-    assert_difference "user.notifications.unread.count", -per_page do
-      get :index
-    end
-
-    assert_difference "user.notifications.unread.count", -1 do
-      get :index, page: 2
-    end
-  end
-
   test "should destroy notification" do
     user = create(:user)
     notification = create(:notification, user: user)

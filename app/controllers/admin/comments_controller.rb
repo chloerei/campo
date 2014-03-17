@@ -2,11 +2,11 @@ class Admin::CommentsController < Admin::ApplicationController
   before_action :find_comment, except: [:index, :trashed]
 
   def index
-    @comments = Comment.order(id: :desc).page(params[:page])
+    @comments = Comment.includes(:user, :commentable).order(id: :desc).page(params[:page])
   end
 
   def trashed
-    @comments = Comment.trashed.order(id: :desc).page(params[:page])
+    @comments = Comment.trashed.includes(:user, :commentable).order(id: :desc).page(params[:page])
     render :index
   end
 

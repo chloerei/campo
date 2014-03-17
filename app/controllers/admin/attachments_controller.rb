@@ -1,6 +1,6 @@
 class Admin::AttachmentsController < Admin::ApplicationController
   def index
-    @attachments = Attachment.order(id: :desc).page(params[:page])
+    @attachments = Attachment.includes(:user).order(id: :desc).page(params[:page])
   end
 
   def destroy

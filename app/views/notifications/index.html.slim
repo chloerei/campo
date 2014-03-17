@@ -27,5 +27,3 @@
       .panel-footer.clearfix
         .pull-right
           = paginate @notifications, theme: 'campo'
-
-- current_user.notifications.unread.where(id: @notifications.pluck(:id)).update_all(read: true)
