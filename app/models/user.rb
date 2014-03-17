@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
   has_many :likes, dependent: :delete_all
   has_many :attachments, dependent: :delete_all
 
-  validates :username, uniqueness: { case_sensitive: false }, presence: true, format: { with: /\A[a-z0-9-]+\z/i }
+  validates :username, uniqueness: { case_sensitive: false }, presence: true, format: { with: /\A[a-z0-9][a-z0-9-]*\z/i }
   validates :name, presence: true
   validates :email, uniqueness: { case_sensitive: false }, presence: true, format: { with: /\A([^@\s]+)@((?:[a-z0-9-]+\.)+[a-z]{2,})\z/i }
 
