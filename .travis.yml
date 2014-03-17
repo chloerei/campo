@@ -1,0 +1,16 @@
+language: ruby
+
+rvm:
+  - "2.1.1"
+
+services:
+  - redis-server
+  - elasticsearch
+  - memcached
+
+before_script:
+  - psql -c 'create database campo_test;' -U postgres
+  - cp config/config.example.yml config/config.yml
+  - cp config/secrets.example.yml config/secrets.yml
+  - cp config/database.example.yml config/database.yml
+  - sed -i "s/username:/username: postgres" config/database.yml
