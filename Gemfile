@@ -57,8 +57,8 @@ gem 'nokogiri', '~> 1.6.1'
 gem 'gravtastic', '~> 3.2.6'
 
 # Elasticsearch
-gem 'elasticsearch-model', git: 'git://github.com/elasticsearch/elasticsearch-rails.git'
-gem 'elasticsearch-rails', git: 'git://github.com/elasticsearch/elasticsearch-rails.git'
+gem 'elasticsearch-model', '~> 0.1.0'
+gem 'elasticsearch-rails', '~> 0.1.0'
 
 # File upload
 gem 'carrierwave', '~> 0.9.0'
