@@ -28,3 +28,5 @@ class ActionController::TestCase
     )
   end
 end
+
+Topic.__elasticsearch__.create_index!
