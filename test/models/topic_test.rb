@@ -71,4 +71,16 @@ class TopicTest < ActiveSupport::TestCase
       topic.trash
     end
   end
+
+  test "should update counter when change category" do
+    old_category = create(:category)
+    new_category = create(:category)
+    topic = create(:topic, category: old_category)
+
+    assert_difference "new_category.reload.topics_count" do
+      assert_difference "old_category.reload.topics_count", -1 do
+        topic.update_attributes category: new_category
+      end
+    end
+  end
 end

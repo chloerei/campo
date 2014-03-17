@@ -12,6 +12,7 @@ class Topic < ActiveRecord::Base
   validates :title, :body, presence: true
 
   after_create :increment_counter_cache, :update_hot, :owner_subscribe
+  after_update :update_category_counter
   after_destroy :decrement_counter_cache, unless: :trashed?
   after_touch :update_hot
 
@@ -27,6 +28,18 @@ class Topic < ActiveRecord::Base
   def decrement_counter_cache
     if category
       Category.update_counters category.id, topics_count: -1
+    end
+  end
+
+  def update_category_counter
+    if category_id_changed?
+      if category_id_was
+        Category.update_counters category_id_was, topics_count: -1
+      end
+
+      if category_id
+        Category.update_counters category_id, topics_count: 1
+      end
     end
   end
 
