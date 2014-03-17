@@ -51,7 +51,7 @@ class Comment < ActiveRecord::Base
     doc = Nokogiri::HTML.fragment(markdown(body))
     usernames = doc.search('text()').map { |node|
       unless node.ancestors('a, pre, code').any?
-        node.text.scan(/@(\w+)/).flatten
+        node.text.scan(/@([a-z0-9][a-z0-9-]*)/).flatten
       end
     }.flatten.compact.uniq
 

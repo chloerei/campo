@@ -32,7 +32,7 @@ module MarkdownHelper
         text = node.text
 
         # link @username
-        text.gsub!(/@(\w+)/) { |match|
+        text.gsub!(/@([a-z0-9][a-z0-9-]*)/) { |match|
           %Q|<a href="/~#{$1}">#{match}</a>|
         }
 
