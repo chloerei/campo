@@ -5,9 +5,6 @@ rvm:
 
 bundler_args: --without production development
 
-cache:
-  - bundler
-
 services:
   - redis-server
   - elasticsearch
