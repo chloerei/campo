@@ -3,7 +3,7 @@ class TopicsController < ApplicationController
   before_action :find_topic, only: [:edit, :update, :trash]
 
   def index
-    @topics = Topic.page(params[:page])
+    @topics = Topic.includes(:user, :category).page(params[:page])
 
     if params[:category_id]
       @category = Category.where('lower(slug) = ?', params[:category_id].downcase).first!
@@ -46,7 +46,7 @@ class TopicsController < ApplicationController
       params[:page] = comment.page
     end
 
-    @comments = @topic.comments.order(id: :asc).page(params[:page])
+    @comments = @topic.comments.includes(:user).order(id: :asc).page(params[:page])
 
     respond_to do |format|
       format.html
