@@ -17,22 +17,28 @@ module MarkdownHelper
         end
       end
     end
-  end
 
-  class MentionVisitor < TextReplaceVisitor
     def process(text)
-      text.gsub(/@([a-z0-9][a-z0-9-]*)/) { |match|
+      # link mention
+      # @username => <a href="/~username">@username</a>
+      text.gsub!(/@([a-z0-9][a-z0-9-]*)/) { |match|
         %Q|<a href="/~#{$1}">#{match}</a>|
       }
+
+      # link comments
+      # #123 => <a href="?comment_id=123#comment-123">#123</a>
+      text.gsub!(/#(\d+)/) { |match|
+        %Q|<a href="?comment_id=#{$1}#comment-#{$1}">#{match}</a>|
+      }
+
+      text
     end
   end
 
-  class CommentVisitor < TextReplaceVisitor
-    def process(text)
-      text.gsub(/#(\d+)/) { |match|
-        %Q|<a href="?comment_id=#{$1}#comment-#{$1}">#{match}</a>|
-      }
-    end
+  def markdown_text_replace(html)
+    doc = Nokogiri::HTML.fragment(html)
+    doc.accept(TextReplaceVisitor.new)
+    doc.to_html
   end
 
   def markdown(text)
@@ -49,21 +55,9 @@ module MarkdownHelper
   end
 
   def markdown_format(text)
-    sanitize(link_comments(link_mentions(markdown(text))),
+    sanitize(markdown_text_replace(markdown(text)),
              tags: %w(p br img h1 h2 h3 h4 blockquote pre code strong em a ul ol li span),
              attributes: %w(href src class title alt target rel))
-  end
-
-  def link_mentions(text)
-    doc = Nokogiri::HTML.fragment(text)
-    doc.accept(MentionVisitor.new)
-    doc.to_html
-  end
-
-  def link_comments(text)
-    doc = Nokogiri::HTML.fragment(text)
-    doc.accept(CommentVisitor.new)
-    doc.to_html
   end
 
   def markdown_area(form, name, options = {})
