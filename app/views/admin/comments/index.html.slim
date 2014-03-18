@@ -1,35 +1,36 @@
 - @page_title = t '.comments'
 
-= render 'share/flash_messages'
+.container
+  = render 'share/flash_messages'
 
-.row
-  .col-md-9
-    .panel
-      .panel-heading
-        h2.panel-title
-          = t '.comments'
-      .panel-body
-        .list-group.list-group-campo
-          - @comments.each do |comment|
-            a.list-group-item href=admin_comment_path(comment)
-              .list-group-item-heading
-                = comment.id
-                = '. '
-                b = truncate comment.body
-              .text-muted
-                = comment.user.name
-                = ' · '
-                = time_ago_tag comment.created_at
-      .panel-footer.clearfix
-        .pull-right
-          = paginate @comments, theme: 'campo'
-  .col-md-3
-    .panel
-      .panel-body
-        ul.nav.nav-pills.nav-stacked
-          li class=('active' if action_name == 'index')
-            a href=admin_comments_path
-              = t '.normal'
-          li class=('active' if action_name == 'trashed')
-            a href=trashed_admin_comments_path
-              = t '.delete'
+  .row
+    .col-md-9
+      .panel
+        .panel-heading
+          h2.panel-title
+            = t '.comments'
+        .panel-body
+          .list-group.list-group-campo
+            - @comments.each do |comment|
+              a.list-group-item href=admin_comment_path(comment)
+                .list-group-item-heading
+                  = comment.id
+                  = '. '
+                  b = truncate comment.body
+                .text-muted
+                  = comment.user.name
+                  = ' · '
+                  = time_ago_tag comment.created_at
+        .panel-footer.clearfix
+          .pull-right
+            = paginate @comments, theme: 'campo'
+    .col-md-3
+      .panel
+        .panel-body
+          ul.nav.nav-pills.nav-stacked
+            li class=('active' if action_name == 'index')
+              a href=admin_comments_path
+                = t '.normal'
+            li class=('active' if action_name == 'trashed')
+              a href=trashed_admin_comments_path
+                = t '.delete'

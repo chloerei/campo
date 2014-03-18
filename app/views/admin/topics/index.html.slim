@@ -1,39 +1,40 @@
 - @page_title = t '.topics'
 
-= render 'share/flash_messages'
+.container
+  = render 'share/flash_messages'
 
-.row
-  .col-md-9
-    .panel
-      .panel-heading
-        h2.panel-title
-          = t '.topics'
-      .panel-body
-        .list-group.list-group-campo
-          - @topics.each do |topic|
-            a.list-group-item href=admin_topic_path(topic)
-              .list-group-item-heading
-                = topic.id
-                = '. '
-                b = truncate topic.title
-              .text-muted
-                = topic.user.name
-                = ' · '
-                = time_ago_tag topic.created_at
-                = ' · '
-                = topic.comments_count
-                '
-                | comments
-      .panel-footer.clearfix
-        .pull-right
-          = paginate @topics, theme: 'campo'
-  .col-md-3
-    .panel
-      .panel-body
-        ul.nav.nav-pills.nav-stacked
-          li class=('active' if action_name == 'index')
-            a href=admin_topics_path
-               = t '.normal'
-          li class=('active' if action_name == 'trashed')
-            a href=trashed_admin_topics_path
-               =t '.delete'
+  .row
+    .col-md-9
+      .panel
+        .panel-heading
+          h2.panel-title
+            = t '.topics'
+        .panel-body
+          .list-group.list-group-campo
+            - @topics.each do |topic|
+              a.list-group-item href=admin_topic_path(topic)
+                .list-group-item-heading
+                  = topic.id
+                  = '. '
+                  b = truncate topic.title
+                .text-muted
+                  = topic.user.name
+                  = ' · '
+                  = time_ago_tag topic.created_at
+                  = ' · '
+                  = topic.comments_count
+                  '
+                  | comments
+        .panel-footer.clearfix
+          .pull-right
+            = paginate @topics, theme: 'campo'
+    .col-md-3
+      .panel
+        .panel-body
+          ul.nav.nav-pills.nav-stacked
+            li class=('active' if action_name == 'index')
+              a href=admin_topics_path
+                 = t '.normal'
+            li class=('active' if action_name == 'trashed')
+              a href=trashed_admin_topics_path
+                 =t '.delete'

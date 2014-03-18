@@ -1,22 +1,24 @@
 - @page_title = t '.user_s_topics', name: @user.name
-.row
-  .col-md-9
-    = render 'users/profile', user: @user
-    #topics.panel
-      .panel-heading
-        h3.panel-title
-          = t '.topics'
-      .panel-body
-        .list-group.list-group-campo
-          - if @topics.any?
-            = render partial: 'topics/topic', collection: @topics
-          - else
-            .list-group-item.text-center.text-muted.empty-message
-              = t '.no_topic_yet'
-      - if @topics.total_pages > 1
-        .panel-footer.clearfix
-          .pull-right
-            = paginate @topics, theme: 'campo', params: { anchor: 'topics' }
 
-  .col-md-3
-    = render 'users/sidebar', user: @user
+.container
+  .row
+    .col-md-9
+      = render 'users/profile', user: @user
+      #topics.panel
+        .panel-heading
+          h3.panel-title
+            = t '.topics'
+        .panel-body
+          .list-group.list-group-campo
+            - if @topics.any?
+              = render partial: 'topics/topic', collection: @topics
+            - else
+              .list-group-item.text-center.text-muted.empty-message
+                = t '.no_topic_yet'
+        - if @topics.total_pages > 1
+          .panel-footer.clearfix
+            .pull-right
+              = paginate @topics, theme: 'campo', params: { anchor: 'topics' }
+
+    .col-md-3
+      = render 'users/sidebar', user: @user

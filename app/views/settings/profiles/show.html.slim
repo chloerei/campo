@@ -1,40 +1,41 @@
 - @page_title = t '.profile_settings'
 
-.row
-  .col-md-9
-    .panel
-      .panel-heading
-        h3.panel-title
-          = t '.profile'
-      .panel-body
-        = form_for @user, url: settings_profile_path, html: { multipart: true, class: 'form-horizontal user-form' } do |f|
-          = render 'share/flash_messages'
-          = render 'share/form_error_messages', form: f
-          .form-group
-            = f.label :avatar, class: 'control-label col-sm-3'
-            .col-sm-6.user-image-uploader
-              .image
-                img.img-rounded alt="avatar" src=current_user.avatar.bigger.url
-              .uploader
-                = f.file_field :avatar, tabIndex: 1
-                .checkbox
-                  label
-                    = f.check_box :remove_avatar, tabIndex: 2
-                    '
-                    | Remove avatar
-          .form-group
-            = f.label :name, class: 'control-label col-sm-3'
-            .col-sm-6
-              = f.text_field :name, class: 'form-control', tabIndex: 3
-          .form-group
-            = f.label :bio, class: 'control-label col-sm-3'
-            .col-sm-6
-              = f.text_area :bio, class: 'form-control', tabIndex: 4
-          .form-group
-            .col-sm-6.col-sm-push-3
-              = f.submit t('.save_changes'), class: 'btn btn-primary', tabIndex: 5
-  .col-md-3
-    = render 'settings/sidebar'
+.container
+  .row
+    .col-md-9
+      .panel
+        .panel-heading
+          h3.panel-title
+            = t '.profile'
+        .panel-body
+          = form_for @user, url: settings_profile_path, html: { multipart: true, class: 'form-horizontal user-form' } do |f|
+            = render 'share/flash_messages'
+            = render 'share/form_error_messages', form: f
+            .form-group
+              = f.label :avatar, class: 'control-label col-sm-3'
+              .col-sm-6.user-image-uploader
+                .image
+                  img.img-rounded alt="avatar" src=current_user.avatar.bigger.url
+                .uploader
+                  = f.file_field :avatar, tabIndex: 1
+                  .checkbox
+                    label
+                      = f.check_box :remove_avatar, tabIndex: 2
+                      '
+                      | Remove avatar
+            .form-group
+              = f.label :name, class: 'control-label col-sm-3'
+              .col-sm-6
+                = f.text_field :name, class: 'form-control', tabIndex: 3
+            .form-group
+              = f.label :bio, class: 'control-label col-sm-3'
+              .col-sm-6
+                = f.text_area :bio, class: 'form-control', tabIndex: 4
+            .form-group
+              .col-sm-6.col-sm-push-3
+                = f.submit t('.save_changes'), class: 'btn btn-primary', tabIndex: 5
+    .col-md-3
+      = render 'settings/sidebar'
 
 javascript:
   $('form.user-form').validate({

@@ -1,26 +1,27 @@
 - @page_title =  t '.attachments'
 
-.panel
-  .panel-heading
-    h3.panel-title
-      = t '.attachments'
+.container
+  .panel
+    .panel-heading
+      h3.panel-title
+        = t '.attachments'
 
-  .panel-body
-    .row
-      - @attachments.in_groups_of(3, false) do |group|
-        - group.each do |attachment|
-          .col-md-4 id="attachment-#{attachment.id}"
-            .thumbnail
-              a href=attachment.file.url
-                img src=attachment.file.url alt=attachment['file']
-              .caption
-                h4.text-hide-overflow = attachment['file']
-                a.text-muted href=admin_user_path(attachment.user)
-                  = attachment.user.name
-                a.pull-right.text-muted href=admin_attachment_path(attachment) data-remote="true" data-method="delete" data-confirm=t('.delete_confirm')
-                  i.fa.fa-times
-        .clearfix
+    .panel-body
+      .row
+        - @attachments.in_groups_of(3, false) do |group|
+          - group.each do |attachment|
+            .col-md-4 id="attachment-#{attachment.id}"
+              .thumbnail
+                a href=attachment.file.url
+                  img src=attachment.file.url alt=attachment['file']
+                .caption
+                  h4.text-hide-overflow = attachment['file']
+                  a.text-muted href=admin_user_path(attachment.user)
+                    = attachment.user.name
+                  a.pull-right.text-muted href=admin_attachment_path(attachment) data-remote="true" data-method="delete" data-confirm=t('.delete_confirm')
+                    i.fa.fa-times
+          .clearfix
 
-  .panel-footer.clearfix
-    .pull-right
-      = paginate @attachments, theme: 'campo'
+    .panel-footer.clearfix
+      .pull-right
+        = paginate @attachments, theme: 'campo'

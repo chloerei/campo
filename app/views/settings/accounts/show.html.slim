@@ -1,36 +1,37 @@
 - @page_title = t '.account_settings'
 
-.row
-  .col-md-9
-    .panel
-      .panel-heading
-        h3.panel-title
-          = t '.account'
-      .panel-body
-        = form_for @user, url: settings_account_path, html: { class: 'form-horizontal user-form' } do |f|
-          = render 'share/flash_messages'
-          = render 'share/form_error_messages', form: f
-          .form-group
-            = f.label :username, class: 'control-label col-sm-3'
-            .col-sm-6
-              = f.text_field :username, class: 'form-control', tabIndex: 1
-          .form-group
-            = f.label :email, class: 'control-label col-sm-3'
-            .col-sm-6
-              = f.text_field :email, class: 'form-control', tabIndex: 2
-          .form-group
-            = f.label :locale, class: 'control-label col-sm-3'
-            .col-sm-6
-              = f.select :locale, I18n.available_locales.map { |locale| [t("locales.#{locale}"), locale] }, { }, class: 'form-control', tabIndex: 3
-          .form-group
-            = label_tag :current_password, t('.current_password'), class: 'control-label col-sm-3'
-            .col-sm-6
-              = password_field_tag :current_password, nil, class: 'form-control', autocomplete: 'off', tabIndex: 4
-          .form-group
-            .col-sm-6.col-sm-push-3
-              = f.submit t('.save_changes'), class: 'btn btn-primary', tabIndex: 5
-  .col-md-3
-    = render 'settings/sidebar'
+.container
+  .row
+    .col-md-9
+      .panel
+        .panel-heading
+          h3.panel-title
+            = t '.account'
+        .panel-body
+          = form_for @user, url: settings_account_path, html: { class: 'form-horizontal user-form' } do |f|
+            = render 'share/flash_messages'
+            = render 'share/form_error_messages', form: f
+            .form-group
+              = f.label :username, class: 'control-label col-sm-3'
+              .col-sm-6
+                = f.text_field :username, class: 'form-control', tabIndex: 1
+            .form-group
+              = f.label :email, class: 'control-label col-sm-3'
+              .col-sm-6
+                = f.text_field :email, class: 'form-control', tabIndex: 2
+            .form-group
+              = f.label :locale, class: 'control-label col-sm-3'
+              .col-sm-6
+                = f.select :locale, I18n.available_locales.map { |locale| [t("locales.#{locale}"), locale] }, { }, class: 'form-control', tabIndex: 3
+            .form-group
+              = label_tag :current_password, t('.current_password'), class: 'control-label col-sm-3'
+              .col-sm-6
+                = password_field_tag :current_password, nil, class: 'form-control', autocomplete: 'off', tabIndex: 4
+            .form-group
+              .col-sm-6.col-sm-push-3
+                = f.submit t('.save_changes'), class: 'btn btn-primary', tabIndex: 5
+    .col-md-3
+      = render 'settings/sidebar'
 
 javascript:
   $('form.user-form').validate({

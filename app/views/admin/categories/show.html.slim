@@ -1,15 +1,16 @@
 - @page_title = @category.name
 
-.row
-  .col-md-9
-    .panel
-      .panel-heading
-        h3.panel-title = @category.name
-      .panel-body
-        = render 'form', category: @category
-  .col-md-3
-    .panel
-      .panel-body
-        dl
-          dt = t '.topics'
-          dd = @category.topics_count
+.container
+  .row
+    .col-md-9
+      .panel
+        .panel-heading
+          h3.panel-title = @category.name
+        .panel-body
+          = render 'form', category: @category
+    .col-md-3
+      .panel
+        .panel-body
+          dl
+            dt = t '.topics'
+            dd = @category.topics_count

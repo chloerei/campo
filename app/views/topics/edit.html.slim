@@ -1,9 +1,10 @@
 - @page_title = t '.edit_topic'
 
-.row
-  .col-md-9
-    .panel
-      .panel-heading
-        h3.panel-title = t '.edit_topic'
-      .panel-body
-        = render 'form', topic: @topic
+.container
+  .row
+    .col-md-9
+      .panel
+        .panel-heading
+          h3.panel-title = t '.edit_topic'
+        .panel-body
+          = render 'form', topic: @topic

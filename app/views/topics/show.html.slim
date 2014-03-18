@@ -1,110 +1,111 @@
 - @page_title = @topic.title
 
-.row
-  .col-md-9
-    .panel
-      .panel-heading
-        h1.panel-title = @topic.title
-      .panel-body
-        - cache [@topic, locale] do
-          .list-group.list-group-campo
-            .list-group-item.comment data-creator-id=@topic.user_id
-              a.list-group-item-avatar href=user_link(@topic.user)
-                img.img-rounded alt="avatar" src=@topic.user.avatar.normal.url
-              .list-group-item-content
-                .list-group-item-heading
-                  a.comment-user href=user_link(@topic.user)
-                    b = @topic.user.name
-                    '
-                    = "@#{@topic.user.username}"
-                  = ' · '
-                  a href=topic_path(@topic)
-                    = time_ago_tag @topic.created_at
-                  - if @topic.category
-                    = ' · '
-                    a href=categoried_topics_path(category_id: @topic.category.slug)
-                      = @topic.category.name
-                article.comment-body
-                  = markdown_format @topic.body
-                .list-group-item-actions.clearfix
-                  .pull-right
-                    a.btn id="like-for-topic-#{@topic.id}" href=topic_like_path(@topic) data-remote="true" data-method="post"
-                      i.fa.fa-heart
-                      '
-                      span.count
-                        - if @topic.likes_count > 0
-                          = @topic.likes_count
-                    a.btn data-visible-to="creator" href=edit_topic_path(@topic)
-                      i.fa.fa-pencil
-                    a.btn data-visible-to="creator" href=trash_topic_path(@topic) data-remote="true" data-method="delete" data-confirm=t('.delete_confirm')
-                      i.fa.fa-trash-o
-
-    .panel#comments
-      .panel-heading
-        h3.panel-title
-          = t '.comments'
-      .panel-body
-        ul.list-group.list-group-campo id="comments-for-topic-#{@topic.id}"
-          - if @comments.any?
-            = render @comments
-          - else
-            li.list-group-item.text-center.text-muted.empty-message
-              = t '.no_comment_yet'
-      - if @comments.total_pages > 1
-        .panel-footer.clearfix
-          .pull-right
-            = paginate @comments, theme: 'campo', params: { anchor: 'comments' }
-
-    .panel
-      .panel-body
-        - if login?
-          - unless current_user.locked?
+.container
+  .row
+    .col-md-9
+      .panel
+        .panel-heading
+          h1.panel-title = @topic.title
+        .panel-body
+          - cache [@topic, locale] do
             .list-group.list-group-campo
-              .list-group-item.comment
-                a.list-group-item-avatar href=user_link(current_user)
-                  img.img-rounded alt="avatar" src=current_user.avatar.normal.url
+              .list-group-item.comment data-creator-id=@topic.user_id
+                a.list-group-item-avatar href=user_link(@topic.user)
+                  img.img-rounded alt="avatar" src=@topic.user.avatar.normal.url
                 .list-group-item-content
                   .list-group-item-heading
-                    a.comment-user href=user_link(current_user)
-                      b = current_user.name
+                    a.comment-user href=user_link(@topic.user)
+                      b = @topic.user.name
                       '
-                      = "@#{current_user.username}"
-                  = form_for @topic.comments.new, url: topic_comments_path(@topic), remote: true do |f|
-                    .form-group
-                      = markdown_area f, :body
-                    = f.submit t('.add_this_comment'), class: 'btn btn-success', 'data-disable-with' => t('.add_this_comment')
-          - else
-            = t '.your_account_had_been_locked'
-        - else
-          a href=signup_path(return_to: request.fullpath)
-            = t '.sign_up'
-          '
-          = t '.or'
-          '
-          a href=login_path(return_to: request.fullpath)
-            = t '.login'
-          '
-          = t '.to_comment'
-  .col-md-3
-    - if login?
+                      = "@#{@topic.user.username}"
+                    = ' · '
+                    a href=topic_path(@topic)
+                      = time_ago_tag @topic.created_at
+                    - if @topic.category
+                      = ' · '
+                      a href=categoried_topics_path(category_id: @topic.category.slug)
+                        = @topic.category.name
+                  article.comment-body
+                    = markdown_format @topic.body
+                  .list-group-item-actions.clearfix
+                    .pull-right
+                      a.btn id="like-for-topic-#{@topic.id}" href=topic_like_path(@topic) data-remote="true" data-method="post"
+                        i.fa.fa-heart
+                        '
+                        span.count
+                          - if @topic.likes_count > 0
+                            = @topic.likes_count
+                      a.btn data-visible-to="creator" href=edit_topic_path(@topic)
+                        i.fa.fa-pencil
+                      a.btn data-visible-to="creator" href=trash_topic_path(@topic) data-remote="true" data-method="delete" data-confirm=t('.delete_confirm')
+                        i.fa.fa-trash-o
+
+      .panel#comments
+        .panel-heading
+          h3.panel-title
+            = t '.comments'
+        .panel-body
+          ul.list-group.list-group-campo id="comments-for-topic-#{@topic.id}"
+            - if @comments.any?
+              = render @comments
+            - else
+              li.list-group-item.text-center.text-muted.empty-message
+                = t '.no_comment_yet'
+        - if @comments.total_pages > 1
+          .panel-footer.clearfix
+            .pull-right
+              = paginate @comments, theme: 'campo', params: { anchor: 'comments' }
+
       .panel
         .panel-body
-          = render 'subscriptions/subscription', subscribable: @topic
-    .panel
-      .panel-heading
-        h4.panel-title
-          = t '.related_topics'
-      .panel-body
-        - cache [@topic, 'related_topics', locale] do
-          .list-group.list-group-campo
-            - more_like_this_topics = @topic.more_like_this
-            - if more_like_this_topics.any?
-              - more_like_this_topics.each do |topic|
-                a.list-group-item href=topic_path(topic)
-                  = topic.title
+          - if login?
+            - unless current_user.locked?
+              .list-group.list-group-campo
+                .list-group-item.comment
+                  a.list-group-item-avatar href=user_link(current_user)
+                    img.img-rounded alt="avatar" src=current_user.avatar.normal.url
+                  .list-group-item-content
+                    .list-group-item-heading
+                      a.comment-user href=user_link(current_user)
+                        b = current_user.name
+                        '
+                        = "@#{current_user.username}"
+                    = form_for @topic.comments.new, url: topic_comments_path(@topic), remote: true do |f|
+                      .form-group
+                        = markdown_area f, :body
+                      = f.submit t('.add_this_comment'), class: 'btn btn-success', 'data-disable-with' => t('.add_this_comment')
             - else
-              .list-group-item.text-center.text-muted
-                = t '.no_more_topics'
+              = t '.your_account_had_been_locked'
+          - else
+            a href=signup_path(return_to: request.fullpath)
+              = t '.sign_up'
+            '
+            = t '.or'
+            '
+            a href=login_path(return_to: request.fullpath)
+              = t '.login'
+            '
+            = t '.to_comment'
+    .col-md-3
+      - if login?
+        .panel
+          .panel-body
+            = render 'subscriptions/subscription', subscribable: @topic
+      .panel
+        .panel-heading
+          h4.panel-title
+            = t '.related_topics'
+        .panel-body
+          - cache [@topic, 'related_topics', locale] do
+            .list-group.list-group-campo
+              - more_like_this_topics = @topic.more_like_this
+              - if more_like_this_topics.any?
+                - more_like_this_topics.each do |topic|
+                  a.list-group-item href=topic_path(topic)
+                    = topic.title
+              - else
+                .list-group-item.text-center.text-muted
+                  = t '.no_more_topics'
 
 - if login?
   - if @topic.liked_by?(current_user)

@@ -7,52 +7,53 @@
 - if @category
   - @page_title += " #{@category.name}"
 
-.row
-  .col-md-9
-    .panel
-      .panel-heading.clearfix
-        .pull-right
-          ul.nav.nav-pills
-            li class=('active' if params[:tab] == 'hot')
-              a href=url_for(tab: 'hot')
-                = t '.hot'
-            li class=('active' if params[:tab] == 'newest')
-              a href=url_for(tab: 'newest')
-                = t '.newest'
-        h3.panel-title
-          - if @category
-            = @category.name
-          - else
-            = t '.all_topics'
-      .panel-body
-        .list-group.list-group-campo.recordable
-          - if @topics.any?
-            = render @topics
-          - else
-            .list-group-item.text-center.text-muted.empty-message
-              = t '.no_topic_yet'
-      - if @topics.total_pages > 1
-        .panel-footer.clearfix
+.container
+  .row
+    .col-md-9
+      .panel
+        .panel-heading.clearfix
           .pull-right
-            = paginate @topics, theme: 'campo'
-  .col-md-3
-    = render 'sidebar_search'
-    = render 'sidebar_new'
-
-    .panel
-      .panel-body
-        ul.nav.nav-pills.nav-stacked
-          li class=('active' unless @category)
-            a href=topics_path
-              span.pull-right = Topic.count
+            ul.nav.nav-pills
+              li class=('active' if params[:tab] == 'hot')
+                a href=url_for(tab: 'hot')
+                  = t '.hot'
+              li class=('active' if params[:tab] == 'newest')
+                a href=url_for(tab: 'newest')
+                  = t '.newest'
+          h3.panel-title
+            - if @category
+              = @category.name
+            - else
               = t '.all_topics'
-          - Category.order(topics_count: :desc).each do |category|
-            li class=('active' if @category == category)
-              a href=categoried_topics_path(category_id: category.slug)
-                span.pull-right = category.topics_count
-                = category.name
+        .panel-body
+          .list-group.list-group-campo.recordable
+            - if @topics.any?
+              = render @topics
+            - else
+              .list-group-item.text-center.text-muted.empty-message
+                = t '.no_topic_yet'
+        - if @topics.total_pages > 1
+          .panel-footer.clearfix
+            .pull-right
+              = paginate @topics, theme: 'campo'
+    .col-md-3
+      = render 'sidebar_search'
+      = render 'sidebar_new'
 
-    -if @category and @category.description.present?
       .panel
         .panel-body
-          = markdown_format @category.description
+          ul.nav.nav-pills.nav-stacked
+            li class=('active' unless @category)
+              a href=topics_path
+                span.pull-right = Topic.count
+                = t '.all_topics'
+            - Category.order(topics_count: :desc).each do |category|
+              li class=('active' if @category == category)
+                a href=categoried_topics_path(category_id: category.slug)
+                  span.pull-right = category.topics_count
+                  = category.name
+
+      -if @category and @category.description.present?
+        .panel
+          .panel-body
+            = markdown_format @category.description
