@@ -5,6 +5,36 @@ module MarkdownHelper
     include Rouge::Plugins::Redcarpet
   end
 
+  class TextReplaceVisitor
+    def visit(node)
+      if %w(a pre code).include?(node.name)
+        return
+      elsif node.text?
+        node.replace(process(node.content))
+      else
+        node.children.each do |child|
+          child.accept(self)
+        end
+      end
+    end
+  end
+
+  class MentionVisitor < TextReplaceVisitor
+    def process(text)
+      text.gsub(/@([a-z0-9][a-z0-9-]*)/) { |match|
+        %Q|<a href="/~#{$1}">#{match}</a>|
+      }
+    end
+  end
+
+  class CommentVisitor < TextReplaceVisitor
+    def process(text)
+      text.gsub(/#(\d+)/) { |match|
+        %Q|<a href="?comment_id=#{$1}#comment-#{$1}">#{match}</a>|
+      }
+    end
+  end
+
   def markdown(text)
     renderer = HTMLRender.new(hard_wrap: true,
                               filter_html: true,
@@ -26,39 +56,13 @@ module MarkdownHelper
 
   def link_mentions(text)
     doc = Nokogiri::HTML.fragment(text)
-
-    doc.search('text()').each do |node|
-      unless node.ancestors('a, pre, code').any?
-        text = node.text
-
-        # link @username
-        text.gsub!(/@([a-z0-9][a-z0-9-]*)/) { |match|
-          %Q|<a href="/~#{$1}">#{match}</a>|
-        }
-
-        node.replace text
-      end
-    end
-
+    doc.accept(MentionVisitor.new)
     doc.to_html
   end
 
   def link_comments(text)
     doc = Nokogiri::HTML.fragment(text)
-
-    doc.search('text()').each do |node|
-      unless node.ancestors('a, pre, code').any?
-        text = node.text
-
-        # link #comment_id
-        text.gsub!(/#(\d+)/) { |match|
-          %Q|<a href="?comment_id=#{$1}#comment-#{$1}">#{match}</a>|
-        }
-
-        node.replace text
-      end
-    end
-
+    doc.accept(CommentVisitor.new)
     doc.to_html
   end
 
