@@ -7,6 +7,8 @@ It's good for:
 - Build user forum for your website.
 - As code base, customize develop for your business.
 
+[![Build Status](https://travis-ci.org/chloerei/campo.png?branch=master)](https://travis-ci.org/chloerei/campo)
+
 ## Build with
 
 - Ruby 2.1 and Rails 4.1.0-beta1(Will be update after stable release)
