@@ -21,7 +21,7 @@ module MarkdownHelper
     def process(text)
       # link mention
       # @username => <a href="/~username">@username</a>
-      text.gsub!(/@([a-z0-9][a-z0-9-]*)/) { |match|
+      text.gsub!(/@([a-z0-9][a-z0-9-]*)/i) { |match|
         %Q|<a href="/~#{$1}">#{match}</a>|
       }
 
