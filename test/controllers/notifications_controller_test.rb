@@ -20,11 +20,12 @@ class NotificationsControllerTest < ActionController::TestCase
     end
   end
 
-  test "should mark all as read" do
+  test "should mark all as read after get index" do
     user = create(:user)
     login_as user
     3.times { create :notification, user: user }
-    xhr :post, :mark
+    assert_equal 3, user.notifications.unread.count
+    get :index
     assert_equal 0, user.notifications.unread.count
   end
 
