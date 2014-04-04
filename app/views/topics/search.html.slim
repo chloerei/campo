@@ -1,25 +1,26 @@
 - @page_title = "#{t '.search'} #{params[:q]}"
 
-.container
-  .row
-    .col-md-9
-      .panel
-        .panel-heading
-          h3.panel-title
-            = t '.search'
-            '
-            = params[:q]
-        .panel-body
-          .list-group.list-group-campo
-            - if @topics.any?
-              = render @topics
-            - else
-              .list-group-item.text-center.text-muted.empty-message
-                = t '.no_matching_results'
-        - if @topics.total_pages > 1
-          .panel-footer.clearfix
-            .pull-right
-              = paginate @topics, theme: 'campo'
-    .col-md-3
-      = render 'sidebar_search'
-      = render 'sidebar_new'
+.main
+  .container
+    .row
+      .col-md-9
+        .panel
+          .panel-heading
+            h3.panel-title
+              = t '.search'
+              '
+              = params[:q]
+          .panel-body
+            .list-group.list-group-campo
+              - if @topics.any?
+                = render @topics
+              - else
+                .list-group-item.text-center.text-muted.empty-message
+                  = t '.no_matching_results'
+          - if @topics.total_pages > 1
+            .panel-footer.clearfix
+              .pull-right
+                = paginate @topics, theme: 'campo'
+      .col-md-3
+        = render 'sidebar_search'
+        = render 'sidebar_new'

@@ -1,62 +1,63 @@
 - @page_title = @user.name
 
-.container
-  .row
-    .col-md-9
-      .panel
-        .panel-heading
-          h3.panel-title = @user.name
-        .panel-body
-          = form_for [:admin, @user], html: { multipart: true, class: 'user-form' } do |f|
-            = render 'share/flash_messages'
-            = render 'share/form_error_messages', form: f
-            .form-group
-              = f.label :avatar, class: 'control-label'
-              .user-image-uploader
-                .image
-                  img.img-rounded alt="avatar" src=@user.avatar.bigger.url
-                .uploader
-                  = f.file_field :avatar
-                  .checkbox
-                    label
-                      = f.check_box :remove_avatar
-                      '
-                      = t '.remove_avatar'
-            .form-group
-              = f.label :name
-              = f.text_field :name, class: 'form-control', tabIndex: 1
-            .form-group
-              = f.label :username
-              = f.text_field :username, class: 'form-control', tabIndex: 2
+.main
+  .container
+    .row
+      .col-md-9
+        .panel
+          .panel-heading
+            h3.panel-title = @user.name
+          .panel-body
+            = form_for [:admin, @user], html: { multipart: true, class: 'user-form' } do |f|
+              = render 'share/flash_messages'
+              = render 'share/form_error_messages', form: f
+              .form-group
+                = f.label :avatar, class: 'control-label'
+                .user-image-uploader
+                  .image
+                    img.img-rounded alt="avatar" src=@user.avatar.bigger.url
+                  .uploader
+                    = f.file_field :avatar
+                    .checkbox
+                      label
+                        = f.check_box :remove_avatar
+                        '
+                        = t '.remove_avatar'
+              .form-group
+                = f.label :name
+                = f.text_field :name, class: 'form-control', tabIndex: 1
+              .form-group
+                = f.label :username
+                = f.text_field :username, class: 'form-control', tabIndex: 2
 
-            .form-group
-              = f.label :email
-              = f.text_field :email, class: 'form-control', tabIndex: 3
-            .form-group
-              = f.label :bio
-              = f.text_area :bio, class: 'form-control', tabIndex: 4
-            .clearfix
-              = f.submit t('.save_changes'), class: 'btn btn-success', tabIndex: 5
-              .pull-right
-                - if @user.locked?
-                  a.btn.btn-default href=lock_admin_user_path(@user) data-method="delete"
-                    = t '.unlock'
-                - else
-                  a.btn.btn-default href=lock_admin_user_path(@user)  data-method="patch"
-                    = t '.lock'
-                '
-                a.btn.btn-danger href=admin_user_path(@user) data-method="delete" data-confirm=t('.permanently_delete_confirm')
-                  = t '.permanently_delete'
+              .form-group
+                = f.label :email
+                = f.text_field :email, class: 'form-control', tabIndex: 3
+              .form-group
+                = f.label :bio
+                = f.text_area :bio, class: 'form-control', tabIndex: 4
+              .clearfix
+                = f.submit t('.save_changes'), class: 'btn btn-success', tabIndex: 5
+                .pull-right
+                  - if @user.locked?
+                    a.btn.btn-default href=lock_admin_user_path(@user) data-method="delete"
+                      = t '.unlock'
+                  - else
+                    a.btn.btn-default href=lock_admin_user_path(@user)  data-method="patch"
+                      = t '.lock'
+                  '
+                  a.btn.btn-danger href=admin_user_path(@user) data-method="delete" data-confirm=t('.permanently_delete_confirm')
+                    = t '.permanently_delete'
 
-    .col-md-3
-      .panel
-        .panel-body
-          dl
-            dt = t '.created_at'
-            dd = @user.created_at
-            - if @user.locked?
-              dt = t '.locked_at'
-              dd = @user.locked_at
+      .col-md-3
+        .panel
+          .panel-body
+            dl
+              dt = t '.created_at'
+              dd = @user.created_at
+              - if @user.locked?
+                dt = t '.locked_at'
+                dd = @user.locked_at
 
 javascript:
   $('form.user-form').validate({

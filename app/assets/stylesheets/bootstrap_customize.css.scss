@@ -1,7 +1,11 @@
+body {
+  background: #eee;
+}
+
 .navbar {
   background: white;
   border-bottom: none;
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+  margin-bottom: 0;
 
   &.navbar-inverse {
     background: #222;
@@ -16,12 +20,14 @@
 
         &:hover {
           color: $gray-lighter;
+          background: #090909;
         }
       }
 
       &.active {
         > a {
           color: $gray-lighter;
+          background: #090909;
         }
       }
     }
@@ -44,14 +50,15 @@
       line-height: 50px;
 
       &:hover {
-        color: $link-color;
-        background: transparent;
+        color: $gray-dark;
+        background: #f9f9f9;
       }
     }
 
     &.active {
       > a {
-        color: $link-color;
+        color: $gray-dark;
+        background: #f9f9f9;
       }
     }
   }
@@ -70,8 +77,8 @@
     }
 
     .open .dropdown-toggle {
-      color: $link-color;
-      background: transparent;
+      color: $gray-dark;
+      background: #f9f9f9;
     }
 
     .item-user {
@@ -133,15 +140,57 @@
   }
 }
 
-.breadcrumb {
-  background: white;
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+.sub-navbar {
+  background: #f9f9f9;
+
+  .sub-navbar-nav {
+    text-align: center;
+
+    > li {
+      display: inline-block;
+
+      > a {
+        color: $gray-light;
+
+        &:hover {
+          background: transparent;
+          color: $gray-dark;
+          padding-bottom: 8px;
+          border-bottom: 2px solid $link-color;
+        }
+      }
+
+      &.active {
+        a {
+          color: $gray-dark;
+          padding-bottom: 8px;
+          border-bottom: 2px solid $link-color;
+        }
+      }
+    }
+  }
+}
+
+.section {
+  .section-heading {
+    margin-bottom: 21px;
+  }
+
+  .section-title {
+    margin: 0;
+    line-height: 35px;
+  }
+}
+
+.main {
+  padding: $line-height-computed 0;
 }
 
 .panel {
+  border: none;
+
   .panel-heading {
-    margin: 0 -1px;
-    padding: 10px 16px;
+    padding: 10px 15px;
     border-bottom: 1px solid #eee;
 
     .nav li a {
@@ -164,20 +213,28 @@
     font-size: 1.2em;
   }
 
+  .panel-body {
+    .list-group {
+      margin: -15px;
+    }
+  }
+
+  .panel-body + .panel-body {
+    border-top: 1px solid #eee;
+  }
+
   .panel-footer {
-    margin: 0 -1px;
-    padding: 10px 16px;
+    padding: 10px 15px;
     border-top: 1px solid #eee;
     background: transparent;
   }
 }
 
-.list-group-campo {
-  margin: -15px -16px;
+.list-group {
   padding: 0;
 
   .list-group-item {
-    padding: 15px 16px;
+    padding: 15px;
     border: none;
     border-bottom: 1px solid #eee;
     margin-bottom: 0;
@@ -322,4 +379,20 @@ article {
   blockquote {
     font-size: 1em;
   }
+}
+
+.breadcrumb {
+  background: white;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+}
+
+.middle-block {
+  height: 100%;
+  width: 100%;
+  display: table;
+}
+
+.middle-block-inner {
+  display: table-cell;
+  vertical-align: middle;
 }

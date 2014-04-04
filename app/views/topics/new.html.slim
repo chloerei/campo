@@ -1,11 +1,12 @@
 - @page_title = t '.new_topic'
 
-.container
-  .row
-    .col-md-9
-      .panel
-        .panel-heading
-          h3.panel-title = t '.new_topic'
+.main
+  .container
+    .row
+      .col-md-9
+        .panel
+          .panel-heading
+            h3.panel-title = t '.new_topic'
 
-        .panel-body
-          = render 'form', topic: @topic
+          .panel-body
+            = render 'form', topic: @topic

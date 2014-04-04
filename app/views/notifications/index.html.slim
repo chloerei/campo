@@ -1,21 +1,22 @@
-.container
-  .row
-    .col-md-8.col-md-push-2
-      .panel
-        .panel-heading
-          .pull-right
-            a.btn.btn-default href=clear_notifications_path data-remote="true" data-method="delete" data-confirm=t('.delete_all_confirm')
-              = t '.delete_all'
-          h3.panel-title
-            = t '.notifications'
-        .panel-body
-          ul.list-group.list-group-campo
-            - if @notifications.any?
-              - @notifications.each do |notification|
-                = render "notifications/notification/#{notification.name}", notification: notification
-            - else
-              li.list-group-item.text-center.text-muted.empty-message
-                = t '.no_notifications'
-        .panel-footer.clearfix
-          .pull-right
-            = paginate @notifications, theme: 'campo'
+.main
+  .container
+    .row
+      .col-md-8.col-md-push-2
+        .panel
+          .panel-heading
+            .pull-right
+              a.btn.btn-default href=clear_notifications_path data-remote="true" data-method="delete" data-confirm=t('.delete_all_confirm')
+                = t '.delete_all'
+            h3.panel-title
+              = t '.notifications'
+          .panel-body
+            ul.list-group.list-group-campo
+              - if @notifications.any?
+                - @notifications.each do |notification|
+                  = render "notifications/notification/#{notification.name}", notification: notification
+              - else
+                li.list-group-item.text-center.text-muted.empty-message
+                  = t '.no_notifications'
+          .panel-footer.clearfix
+            .pull-right
+              = paginate @notifications, theme: 'campo'

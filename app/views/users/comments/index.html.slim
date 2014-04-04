@@ -1,24 +1,25 @@
 - @page_title = t '.user_s_comments', name: @user.name
 
-.container
-  .row
-    .col-md-9
-      = render 'users/profile', user: @user
-      #comments.panel
-        .panel-heading
-          h3.panel-title
-            = t '.comments'
-        .panel-body
-          .list-group.list-group-campo
-            - if @comments.any?
-              = render @comments
-            - else
-              .list-group-item.text-center.text-muted.empty-message
-                = t '.no_comment_yet'
-        - if @comments.total_pages > 1
-          .panel-footer.clearfix
-            .pull-right
-              = paginate @comments, theme: 'campo', params: { anchor: 'comments' }
+.main
+  .container
+    .row
+      .col-md-9
+        = render 'users/profile', user: @user
+        #comments.panel
+          .panel-heading
+            h3.panel-title
+              = t '.comments'
+          .panel-body
+            .list-group.list-group-campo
+              - if @comments.any?
+                = render @comments
+              - else
+                .list-group-item.text-center.text-muted.empty-message
+                  = t '.no_comment_yet'
+          - if @comments.total_pages > 1
+            .panel-footer.clearfix
+              .pull-right
+                = paginate @comments, theme: 'campo', params: { anchor: 'comments' }
 
-    .col-md-3
-      = render 'users/sidebar', user: @user
+      .col-md-3
+        = render 'users/sidebar', user: @user

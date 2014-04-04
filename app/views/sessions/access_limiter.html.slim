@@ -1,13 +1,14 @@
-.container
-  .row
-    .col-md-6.col-md-offset-3
-      .panel
-        .panel-heading
-          h3.panel-title
-            = t '.try_too_many_times'
-        .panel-body
-          = render 'share/flash_messages'
-          = t '.are_you'
-          '
-          a href=new_password_path
-            = t '.forgot_password'
+.main
+  .container
+    .row
+      .col-md-6.col-md-offset-3
+        .panel
+          .panel-heading
+            h3.panel-title
+              = t '.try_too_many_times'
+          .panel-body
+            = render 'share/flash_messages'
+            = t '.are_you'
+            '
+            a href=new_password_path
+              = t '.forgot_password'

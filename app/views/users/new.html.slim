@@ -1,26 +1,27 @@
-.container
-  .row
-    .col-md-6.col-md-offset-3
-      .panel
-        .panel-heading
-          h3.panel-title
-            = t '.sign_up'
-        .panel-body
-          = form_for @user, html: { id: 'new-user-form' } do |f|
-            = render 'share/form_error_messages', form: f
-            .form-group
-              = f.label :name, class: 'control-label'
-              = f.text_field :name, placeholder: t('.your_full_name'), tabindex: 1, class: 'form-control'
-            .form-group
-              = f.label :email, class: 'control-label'
-              = f.text_field :email, placeholder: t('.your_email'), tabindex: 2, class: 'form-control'
-            .form-group
-              = f.label :username, class: 'control-label'
-              = f.text_field :username, placeholder: t('.pick_a_username'), tabindex: 3, class: 'form-control'
-            .form-group
-              = f.label :password, class: 'control-label'
-              = f.password_field :password, placeholder: t('.choose_a_password'), tabindex: 4, class: 'form-control'
-            = f.submit t('.create_account'), class: 'btn btn-success', tabindex: 5
+.main
+  .container
+    .row
+      .col-md-6.col-md-offset-3
+        .panel
+          .panel-heading
+            h3.panel-title
+              = t '.sign_up'
+          .panel-body
+            = form_for @user, html: { id: 'new-user-form' } do |f|
+              = render 'share/form_error_messages', form: f
+              .form-group
+                = f.label :name, class: 'control-label'
+                = f.text_field :name, placeholder: t('.your_full_name'), tabindex: 1, class: 'form-control'
+              .form-group
+                = f.label :email, class: 'control-label'
+                = f.text_field :email, placeholder: t('.your_email'), tabindex: 2, class: 'form-control'
+              .form-group
+                = f.label :username, class: 'control-label'
+                = f.text_field :username, placeholder: t('.pick_a_username'), tabindex: 3, class: 'form-control'
+              .form-group
+                = f.label :password, class: 'control-label'
+                = f.password_field :password, placeholder: t('.choose_a_password'), tabindex: 4, class: 'form-control'
+              = f.submit t('.create_account'), class: 'btn btn-success', tabindex: 5
 
 javascript:
   $('#new-user-form').validate({

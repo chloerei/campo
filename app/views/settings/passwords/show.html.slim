@@ -1,33 +1,34 @@
 - @page_title = t '.password_settings'
 
-.container
-  .row
-    .col-md-9
-      .panel
-        .panel-heading
-          h3.panel-title
-            = t '.password'
-        .panel-body
-          = form_for @user, url: settings_password_path, html: { class: 'form-horizontal password-form' } do |f|
-            = render 'share/flash_messages'
-            = render 'share/form_error_messages', form: f
-            .form-group
-              = label_tag :current_password, t('.current_password'), class: 'control-label col-sm-3'
-              .col-sm-6
-                = password_field_tag :current_password, nil, class: 'form-control', tabIndex: 1
-            .form-group
-              = f.label :password, class: 'control-label col-sm-3'
-              .col-sm-6
-                = f.password_field :password, class: 'form-control', tabIndex: 2
-            .form-group
-              = f.label :password_confirmation, class: 'control-label col-sm-3'
-              .col-sm-6
-                = f.password_field :password_confirmation, class: 'form-control', tabIndex: 3
-            .form-group
-              .col-sm-6.col-sm-push-3
-                = f.submit t('.save_changes'), class: 'btn btn-primary', tabIndex: 4
-    .col-md-3
-      = render 'settings/sidebar'
+.main
+  .container
+    .row
+      .col-md-9
+        .panel
+          .panel-heading
+            h3.panel-title
+              = t '.password'
+          .panel-body
+            = form_for @user, url: settings_password_path, html: { class: 'form-horizontal password-form' } do |f|
+              = render 'share/flash_messages'
+              = render 'share/form_error_messages', form: f
+              .form-group
+                = label_tag :current_password, t('.current_password'), class: 'control-label col-sm-3'
+                .col-sm-6
+                  = password_field_tag :current_password, nil, class: 'form-control', tabIndex: 1
+              .form-group
+                = f.label :password, class: 'control-label col-sm-3'
+                .col-sm-6
+                  = f.password_field :password, class: 'form-control', tabIndex: 2
+              .form-group
+                = f.label :password_confirmation, class: 'control-label col-sm-3'
+                .col-sm-6
+                  = f.password_field :password_confirmation, class: 'form-control', tabIndex: 3
+              .form-group
+                .col-sm-6.col-sm-push-3
+                  = f.submit t('.save_changes'), class: 'btn btn-primary', tabIndex: 4
+      .col-md-3
+        = render 'settings/sidebar'
 
 javascript:
   $('form.password-form').validate({

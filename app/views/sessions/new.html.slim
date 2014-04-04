@@ -1,20 +1,21 @@
-.container
-  .row
-    .col-md-6.col-md-offset-3
-      .panel
-        .panel-heading
-          h3.panel-title
-            = t '.sign_in'
-        .panel-body
-          = form_tag login_path
-            = render 'share/flash_messages'
-            .form-group
-              = label_tag t('.login')
-              = text_field_tag :login, params[:login], placeholder: t('.username_or_email'), tabindex: 1, class: 'form-control'
-            .form-group
-              = label_tag t('.password')
-              = password_field_tag :password, nil, placeholder: t('.password'), tabindex: 2, class: 'form-control'
-            = submit_tag t('.sign_in'), class: 'btn btn-success', tabindex: 5
-          hr
-          a href=new_password_path
-            = t '.forgot_password'
+.main
+  .container
+    .row
+      .col-md-6.col-md-offset-3
+        .panel
+          .panel-heading
+            h3.panel-title
+              = t '.sign_in'
+          .panel-body
+            = form_tag login_path
+              = render 'share/flash_messages'
+              .form-group
+                = label_tag t('.login')
+                = text_field_tag :login, params[:login], placeholder: t('.username_or_email'), tabindex: 1, class: 'form-control'
+              .form-group
+                = label_tag t('.password')
+                = password_field_tag :password, nil, placeholder: t('.password'), tabindex: 2, class: 'form-control'
+              = submit_tag t('.sign_in'), class: 'btn btn-success', tabindex: 5
+            hr
+            a href=new_password_path
+              = t '.forgot_password'
