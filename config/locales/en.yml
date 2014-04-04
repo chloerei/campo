@@ -46,8 +46,6 @@ en:
         topics_count: "%{count} topics"
       new:
         new_category: New category
-      show:
-        topics: Topics
     comments:
       flashes:
         successfully_restored: Successfully restored
@@ -55,18 +53,14 @@ en:
         successfully_updated: Successfully updated
       index:
         comments: Comments
-        delete: Delete
         normal: Normal
+        trashed: Trashed
       show:
-        commentable: Commentable
         comments: Comments
-        created_at: Created at
         delete: Delete
         delete_confirm: Are you sure you want to delete this comment?
         restore: Restore
         save_changes: Save changes
-        trashed: Trashed
-        user: User
     dashboard:
       show:
         dashboard: Dashboard
@@ -76,19 +70,15 @@ en:
         successfully_trashed: Successfully trashed
         successfully_updated: Successfully updated
       index:
-        delete: Delete
         normal: Normal
         topics: Topics
+        trashed: Trashed
       show:
-        comments: Comments
-        created_at: Created at
         delete: Delete
         delete_confirm: Are you sure you want to delete this comment?
         no_category: No category
         restore: Restore
         save_changes: Save changes
-        trashed: Trashed
-        user: User
     users:
       flashes:
         successfully_destroy: Successfully destroy
@@ -100,9 +90,7 @@ en:
         normal: Normal
         users: Users
       show:
-        created_at: Created at
         lock: Lock
-        locked_at: Locked at
         permanently_delete: Permanently delete
         permanently_delete_confirm: Are you sure you want to permanently delete this
           user?
@@ -216,7 +204,7 @@ en:
         profile: Profile
         profile_settings: Profile settings
         save_changes: Save changes
-    sidebar:
+    sub_navbar:
       account: Account
       password: Password
       profile: Profile
@@ -243,12 +231,12 @@ en:
       save_changes: Save changes
       title: Title
     index:
-      all_topics: All topics
       hot: Hot
       hot_topics: Hot topics
       newest: Newest
       newest_topics: Newest topics
       no_topic_yet: No topic yet
+      topics: Topics
     new:
       new_topic: New topic
     search:
@@ -266,12 +254,11 @@ en:
       sign_up: Sign up
       to_comment: To comment
       your_account_had_been_locked: Your account had been locked
-    sidebar_new:
-      new_topic: New topic
-    sidebar_search:
-      search: Search
     topic:
       comments_count: "%{count} comments"
+    topics_header:
+      all_categories: All categories
+      create_topic: Create topic
   user_mailer:
     password_reset:
       subject: Password reset

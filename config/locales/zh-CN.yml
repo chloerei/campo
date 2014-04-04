@@ -6,9 +6,19 @@ zh-CN:
         description: "描述"
         name: "名称"
         slug: "标识"
+        topics_count: "话题数"
+      comment:
+        commentable: "评论对象"
+        created_at: "创建于"
+        user: "用户"
+      topic:
+        comments_count: "评论数"
+        created_at: "创建于"
+        user: "用户"
       user:
         avatar: "头像"
         bio: "简介"
+        created_at: "创建于"
         email: Email
         locale: "语言"
         name: "全名"
@@ -44,8 +54,6 @@ zh-CN:
         topics_count: "%{count} 话题"
       new:
         new_category: "新分类"
-      show:
-        topics: "话题"
     comments:
       flashes:
         successfully_restored: "成功还原评论"
@@ -53,18 +61,14 @@ zh-CN:
         successfully_updated: "成功更新评论"
       index:
         comments: "评论"
-        delete: "删除"
         normal: "正常"
+        trashed: "回收站"
       show:
-        commentable: "评论对象"
         comments: "评论"
-        created_at: "创建于"
         delete: "删除"
         delete_confirm: "你确定要删除此评论吗？"
         restore: "还原"
         save_changes: "保存修改"
-        trashed: "已删除"
-        user: "用户"
     dashboard:
       show:
         dashboard: "控制台"
@@ -74,19 +78,15 @@ zh-CN:
         successfully_trashed: "成功删除话题"
         successfully_updated: "成功更新话题"
       index:
-        delete: "删除"
         normal: "正常"
         topics: "话题"
+        trashed: "回收站"
       show:
-        comments: "评论"
-        created_at: "创建于"
         delete: "删除"
         delete_confirm: "你确定要删除次话题吗？"
         no_category: "不分类"
         restore: "还原"
         save_changes: "保存修改"
-        trashed: "已删除"
-        user: "用户"
     users:
       flashes:
         successfully_destroy: "成功彻底删除用户"
@@ -98,9 +98,7 @@ zh-CN:
         normal: "正常"
         users: "用户"
       show:
-        created_at: "创建于"
         lock: "锁定"
-        locked_at: "锁定于"
         permanently_delete: "彻底删除"
         permanently_delete_confirm: "你确定要彻底删除此用户吗？"
         remove_avatar: "移除头像"
@@ -212,7 +210,7 @@ zh-CN:
         profile: "个人资料"
         profile_settings: "个人资料设置"
         save_changes: "保存修改"
-    sidebar:
+    sub_navbar:
       account: "帐号"
       password: "密码"
       profile: "个人资料"
@@ -237,12 +235,12 @@ zh-CN:
       save_changes: "保存修改"
       title: "标题"
     index:
-      all_topics: "所有话题"
       hot: "热门"
       hot_topics: "热门话题"
       newest: "最新"
       newest_topics: "最新话题"
       no_topic_yet: "还没有话题"
+      topics: Topics
     new:
       new_topic: "新话题"
     search:
@@ -260,12 +258,11 @@ zh-CN:
       sign_up: "注册"
       to_comment: "后发表评论"
       your_account_had_been_locked: "你的帐号已被锁定"
-    sidebar_new:
-      new_topic: "新话题"
-    sidebar_search:
-      search: "搜索"
     topic:
       comments_count: "%{count} 条评论"
+    topics_header:
+      all_categories: "所有分类"
+      create_topic: "创建话题"
   user_mailer:
     password_reset:
       subject: "密码重置"

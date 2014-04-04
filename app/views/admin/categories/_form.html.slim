@@ -10,6 +10,10 @@
   .form-group
     = f.label :description
     = markdown_area f, :description, tabIndex: 3
+  - unless @category.new_record?
+    .form-group
+      = f.label :topics_count
+      = f.text_field :topics_count, class: 'form-control', disabled: true
   .clearfix
     - if category.new_record?
       = f.submit t('.create_category'), class: 'btn btn-success', tabIndex: 4

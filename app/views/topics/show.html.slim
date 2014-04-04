@@ -3,7 +3,7 @@
 .main
   .container
     .row
-      .col-md-9
+      .col-md-8.col-md-push-2
         .panel
           .panel-heading
             h1.panel-title = @topic.title
@@ -87,11 +87,12 @@
                 = t '.login'
               '
               = t '.to_comment'
-      .col-md-3
+
         - if login?
           .panel
             .panel-body
               = render 'subscriptions/subscription', subscribable: @topic
+
         .panel
           .panel-heading
             h4.panel-title

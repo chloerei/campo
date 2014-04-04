@@ -2,12 +2,12 @@
 
 .main
   .container
-    .panel
-      .panel-heading
-        h3.panel-title
+    .section
+      .section-heading
+        h3.section-title
           = t '.attachments'
 
-      .panel-body
+      .section-body
         .row
           - @attachments.in_groups_of(3, false) do |group|
             - group.each do |attachment|

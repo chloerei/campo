@@ -3,15 +3,9 @@
 .main
   .container
     .row
-      .col-md-9
+      .col-md-8.col-md-push-2
         .panel
           .panel-heading
             h3.panel-title = @category.name
           .panel-body
             = render 'form', category: @category
-      .col-md-3
-        .panel
-          .panel-body
-            dl
-              dt = t '.topics'
-              dd = @category.topics_count

@@ -3,7 +3,7 @@
 .main
   .container
     .row
-      .col-md-9
+      .col-md-8.col-md-push-2
         .panel
           .panel-heading
             h3.panel-title = @user.name
@@ -36,6 +36,13 @@
               .form-group
                 = f.label :bio
                 = f.text_area :bio, class: 'form-control', tabIndex: 4
+              .form-group
+                = f.label :created_at
+                = f.text_field :created_at, class: 'form-control', disabled: true
+              - if @user.locked?
+                .form-group
+                  = f.label :locked_at
+                  = f.text_field :locked_at, class: 'form-control', disabled: true
               .clearfix
                 = f.submit t('.save_changes'), class: 'btn btn-success', tabIndex: 5
                 .pull-right
@@ -51,13 +58,6 @@
 
       .col-md-3
         .panel
-          .panel-body
-            dl
-              dt = t '.created_at'
-              dd = @user.created_at
-              - if @user.locked?
-                dt = t '.locked_at'
-                dd = @user.locked_at
 
 javascript:
   $('form.user-form').validate({

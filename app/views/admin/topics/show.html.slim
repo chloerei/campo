@@ -3,7 +3,7 @@
 .main
   .container
     .row
-      .col-md-9
+      .col-md-8.col-md-push-2
         .panel
           .panel-heading
             h3.panel-title = @topic.title
@@ -11,6 +11,11 @@
             = form_for [:admin, @topic], html: { class: 'topic-form' } do |f|
               = render 'share/flash_messages'
               = render 'share/form_error_messages', form: f
+              .form-group
+                = f.label :user
+                p
+                  a href=admin_user_path(@topic.user)
+                    = @topic.user.name
               .row
                 .col-md-9
                   .form-group
@@ -20,6 +25,12 @@
                     = f.collection_select :category_id, Category.order(topics_count: :desc), :id, :name, { include_blank: t('.no_category') }, class: 'form-control', tabIndex: 2
               .form-group
                 = markdown_area f, :body, tabIndex: 3
+              .form-group
+                = f.label :created_at
+                = f.text_field :created_at, class: 'form-control', disabled: true
+              .form-group
+                = f.label :comments_count
+                = f.text_field :comments_count, class: 'form-control', disabled: true
               .clearfix
                 = f.submit t('.save_changes'), class: 'btn btn-success', tabIndex: 4
                 .pull-right
@@ -29,20 +40,6 @@
                   - else
                     a.btn.btn-default href=trash_admin_topic_path(@topic) data-method="delete" data-confirm=t('.delete_confirm')
                       = t '.delete'
-
-      .col-md-3
-        .panel
-          .panel-body
-            dl
-              dt = t '.user'
-              dd
-                a href=admin_user_path(@topic.user) = @topic.user.name
-              dt = t '.created_at'
-              dd = @topic.created_at
-              dt = t '.comments'
-              dd = @topic.comments_count
-              - if @topic.trashed?
-                span.label.label-default = t('.trashed')
 
 javascript:
   $('form.topic-form').validate({

@@ -1,0 +1,11 @@
+.sub-navbar
+  ul.nav.sub-navbar-nav
+    li class=('active' if controller_name == 'accounts')
+      a href=settings_account_path
+        = t '.account'
+    li class=('active' if controller_name == 'passwords')
+      a href=settings_password_path
+        = t '.password'
+    li class=('active' if controller_name == 'profiles')
+      a href=settings_profile_path
+        = t '.profile'

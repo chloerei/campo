@@ -3,7 +3,7 @@
 .main
   .container
     .row
-      .col-md-9
+      .col-md-8.col-md-push-2
         .panel
           .panel-heading
             h3.panel-title = t '.comments'
@@ -12,7 +12,19 @@
               = render 'share/flash_messages'
               = render 'share/form_error_messages', form: f
               .form-group
+                = f.label :commentable
+                p
+                  = link_to_commentable @comment.commentable
+              .form-group
+                = f.label :user
+                p
+                  a href=admin_user_path(@comment.user)
+                    = @comment.user.name
+              .form-group
                 = markdown_area f, :body, tabIndex: 1
+              .form-group
+                = f.label :created_at
+                = f.text_field :created_at, class: 'form-control', disabled: true
               .clearfix
                 = f.submit t('.save_changes'), class: 'btn btn-success', tabIndex: 2
                 .pull-right
@@ -22,21 +34,6 @@
                   - else
                     a.btn.btn-default href=trash_admin_comment_path(@comment) data-method="delete" data-confirm=t('.delete_confirm')
                       = t '.delete'
-
-      .col-md-3
-        .panel
-          .panel-body
-            dl
-              dt = t '.user'
-              dd
-                a href=admin_user_path(@comment.user)
-                  = @comment.user.name
-              dt = t '.commentable'
-              dd = link_to_commentable @comment.commentable
-              dt = t '.created_at'
-              dd = @comment.created_at
-              - if @comment.trashed?
-                span.label.label-default = t('.trashed')
 
 javascript:
   $('form.comment-form').validate({

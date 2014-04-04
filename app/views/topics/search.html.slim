@@ -3,7 +3,8 @@
 .main
   .container
     .row
-      .col-md-9
+      .col-md-8.col-md-push-2
+        = render 'topics_header'
         .panel
           .panel-heading
             h3.panel-title
@@ -21,6 +22,3 @@
             .panel-footer.clearfix
               .pull-right
                 = paginate @topics, theme: 'campo'
-      .col-md-3
-        = render 'sidebar_search'
-        = render 'sidebar_new'

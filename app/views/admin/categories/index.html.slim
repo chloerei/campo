@@ -5,9 +5,12 @@
     = render 'share/flash_messages'
 
     .row
-      .col-md-9
+      .col-md-8.col-md-push-2
         .panel
-          .panel-heading
+          .panel-heading.claerfix
+            .pull-right
+              a.btn.btn-default.btn-success href=new_admin_category_path
+                = t '.new_category'
             h2.panel-title
               = t '.categories'
           .panel-body
@@ -20,8 +23,3 @@
                     span.text-muted = category.slug
                   .text-muted
                     = t '.topics_count', count: category.topics_count
-      .col-md-3
-        .panel
-          .panel-body
-            a.btn.btn-default.btn-success.btn-block href=new_admin_category_path
-              = t '.new_category'

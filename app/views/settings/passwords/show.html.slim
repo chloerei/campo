@@ -1,9 +1,11 @@
 - @page_title = t '.password_settings'
 
+= render 'settings/sub_navbar'
+
 .main
   .container
     .row
-      .col-md-9
+      .col-md-8.col-md-push-2
         .panel
           .panel-heading
             h3.panel-title
@@ -27,8 +29,6 @@
               .form-group
                 .col-sm-6.col-sm-push-3
                   = f.submit t('.save_changes'), class: 'btn btn-primary', tabIndex: 4
-      .col-md-3
-        = render 'settings/sidebar'
 
 javascript:
   $('form.password-form').validate({

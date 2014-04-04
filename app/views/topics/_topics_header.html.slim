@@ -1,0 +1,31 @@
+.panel
+  .panel-body
+    .row
+      .col-md-3
+        .btn-group.btn-block
+          a.dropdown-toggle.btn.btn-primary.btn-block data-toggle="dropdown" href='#'
+            = @category.try(:name) || t('.all_categories')
+            '
+            i.fa.fa-caret-down
+          ul.dropdown-menu
+            li
+              a href=topics_path
+                = t '.all_categories'
+            - Category.all.each do |category|
+              li
+                a href=categoried_topics_path(category_id: category.slug)
+                  = category.name
+      .col-md-6
+        = form_tag search_topics_path, method: 'get', class: 'search-form', data: { behaviors: 'turboform' } do
+          .input-group
+            = text_field_tag :q, params[:q], class: 'form-control', tabIndex: 1, autocomplete: 'off', autofocus: params[:q].present?
+            .input-group-btn
+              button.btn.btn-default type='submit' tabIndex="2"
+                i.fa.fa-search
+      .col-md-3
+        a.btn.btn-success.btn-block href=new_topic_path(category_id: @category.try(:slug))
+          = t '.create_topic'
+
+  - if @category && @category.description.present?
+    .panel-body
+      = markdown_format @category.description
