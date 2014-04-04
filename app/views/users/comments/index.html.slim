@@ -1,12 +1,22 @@
 - @page_title = t '.user_s_comments', name: @user.name
 
+= render 'users/profile', user: @user
+= render 'users/sub_navbar'
+
 .main
   .container
     .row
-      .col-md-9
-        = render 'users/profile', user: @user
+      .col-md-8.col-md-push-2
         #comments.panel
-          .panel-heading
+          .panel-heading.clearfix
+            .pull-right
+              ul.nav.nav-pills
+                li class=('active' if action_name == 'index')
+                  a href=user_comments_path
+                    = t '.publish'
+                li class=('active' if action_name == 'likes')
+                  a href=likes_user_comments_path
+                    = t '.likes'
             h3.panel-title
               = t '.comments'
           .panel-body
@@ -20,6 +30,3 @@
             .panel-footer.clearfix
               .pull-right
                 = paginate @comments, theme: 'campo', params: { anchor: 'comments' }
-
-      .col-md-3
-        = render 'users/sidebar', user: @user

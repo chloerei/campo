@@ -45,10 +45,8 @@ en:
         new_category: New category
         topics_count: "%{count} topics"
       new:
-        categories: Categories
         new_category: New category
       show:
-        categories: Categories
         topics: Topics
     comments:
       flashes:
@@ -89,7 +87,6 @@ en:
         no_category: No category
         restore: Restore
         save_changes: Save changes
-        topics: Topics
         trashed: Trashed
         user: User
     users:
@@ -112,12 +109,10 @@ en:
         remove_avatar: Remove avatar
         save_changes: Save changes
         unlock: Unlock
-        users: Users
   comments:
     comment:
       delete_confirm: Are you sure you want to delete this comment?
     form:
-      add_this_comment: Add this comment
       cancel: Cancel
       save_changes: Save changes
   helpers:
@@ -136,6 +131,8 @@ en:
       topics: Topics
       users: Users
     application:
+      comments: Comments
+      community: Community
       likes: Likes
       logout: Logout
       profile: Profile
@@ -156,7 +153,6 @@ en:
     index:
       delete_all: Delete all
       delete_all_confirm: Delete all confirm
-      mark_all_as_read: Mark all as read
       no_notifications: No notifications
       notifications: Notifications
     notification:
@@ -240,8 +236,8 @@ en:
   topics:
     edit:
       edit_topic: Edit topic
-      topics: Topics
     form:
+      cancel: Cancel
       create_topic: Create topic
       no_category: No category
       save_changes: Save changes
@@ -253,14 +249,11 @@ en:
       newest: Newest
       newest_topics: Newest topics
       no_topic_yet: No topic yet
-      topics: Topics
     new:
       new_topic: New topic
-      topics: Topics
     search:
       no_matching_results: No matching results
       search: Search
-      topics: Topics
     show:
       add_this_comment: Add this comment
       comments: Comments
@@ -272,7 +265,6 @@ en:
       related_topics: Related topics
       sign_up: Sign up
       to_comment: To comment
-      topics: Topics
       your_account_had_been_locked: Your account had been locked
     sidebar_new:
       new_topic: New topic
@@ -295,13 +287,10 @@ en:
     comments:
       index:
         comments: Comments
-        no_comment_yet: No comment yet
-        user_s_comments: "%{name}'s comments"
-    likes:
-      index:
         likes: Likes
-        no_like_yet: No like yet
-        user_s_likes: "%{name}'s likes"
+        no_comment_yet: No comment yet
+        publish: Publish
+        user_s_comments: "%{name}'s comments"
     new:
       choose_a_password: Choose a password
       create_account: Create account
@@ -311,12 +300,13 @@ en:
       your_full_name: Your full name
     profile:
       edit_profile: Edit profile
-    sidebar:
+    sub_navbar:
       comments: Comments
-      likes: Likes
       topics: Topics
     topics:
       index:
+        likes: Likes
         no_topic_yet: No topic yet
+        publish: Publish
         topics: Topics
         user_s_topics: "%{name}'s topics"

@@ -1,14 +1,18 @@
-.panel
-  .panel-body
-    .user-profile
-      .user-profile-avatar
-        img.img-rounded alt="avatar" src=user.avatar.bigger.url
-      .user-profile-name
-        = user.name
-      .user-profile-bio
-        = simple_format user.bio
-  - if login? and user == current_user
-    .panel-footer.clearfix
-      .pull-right
-        a.btn.btn-default href=settings_profile_path
-          = t '.edit_profile'
+.user-profile
+  .container
+    .row
+      .col-md-8.col-md-push-2
+        .user-profile-avatar
+          img.img-circle alt="avatar" src=user.avatar.bigger.url
+        .user-profile-name
+          = user.name
+          '
+          span.text-muted = "@#{user.username}"
+        .user-profile-bio
+          = simple_format user.bio
+
+        - if login? and user == current_user
+          .clearfix
+            .pull-right
+              a.btn.btn-default href=settings_profile_path
+                = t '.edit_profile'

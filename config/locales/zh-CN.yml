@@ -43,10 +43,8 @@ zh-CN:
         new_category: "新分类"
         topics_count: "%{count} 话题"
       new:
-        categories: "分类"
         new_category: "新分类"
       show:
-        categories: "分类"
         topics: "话题"
     comments:
       flashes:
@@ -87,7 +85,6 @@ zh-CN:
         no_category: "不分类"
         restore: "还原"
         save_changes: "保存修改"
-        topics: "话题"
         trashed: "已删除"
         user: "用户"
     users:
@@ -109,12 +106,10 @@ zh-CN:
         remove_avatar: "移除头像"
         save_changes: "保存修改"
         unlock: "解锁"
-        users: "用户"
   comments:
     comment:
       delete_confirm: "你确定要删除此评论吗？"
     form:
-      add_this_comment: "添加评论"
       cancel: "取消"
       save_changes: "保存修改"
   helpers:
@@ -133,6 +128,8 @@ zh-CN:
       topics: "话题"
       users: "用户"
     application:
+      comments: "评论"
+      community: "社区"
       likes: "收藏"
       logout: "退出"
       profile: "个人资料"
@@ -153,7 +150,6 @@ zh-CN:
     index:
       delete_all: "删除所有"
       delete_all_confirm: "你确定要删除所有通知吗？"
-      mark_all_as_read: "标记所有为已读"
       no_notifications: "没有通知"
       notifications: "通知"
     notification:
@@ -234,8 +230,8 @@ zh-CN:
   topics:
     edit:
       edit_topic: "编辑话题"
-      topics: "话题"
     form:
+      cancel: "取消"
       create_topic: "创建话题"
       no_category: "不分类"
       save_changes: "保存修改"
@@ -247,14 +243,11 @@ zh-CN:
       newest: "最新"
       newest_topics: "最新话题"
       no_topic_yet: "还没有话题"
-      topics: "话题"
     new:
       new_topic: "新话题"
-      topics: "话题"
     search:
       no_matching_results: "没有匹配结果"
       search: "搜索"
-      topics: "话题"
     show:
       add_this_comment: "添加评论"
       comments: "评论"
@@ -266,7 +259,6 @@ zh-CN:
       related_topics: "相关话题"
       sign_up: "注册"
       to_comment: "后发表评论"
-      topics: "话题"
       your_account_had_been_locked: "你的帐号已被锁定"
     sidebar_new:
       new_topic: "新话题"
@@ -289,14 +281,13 @@ zh-CN:
     comments:
       index:
         comments: "评论"
+        likes: "收藏"
         no_comment_yet: "还没有评论"
+        publish: "发布"
         user_s_comments: "%{name} 的评论"
     likes:
       index:
-        likes: "收藏"
         no_comment_yet: "还没有评论"
-        no_like_yet: "还没有收藏"
-        user_s_likes: "%{name} 的收藏"
     new:
       choose_a_password: "选一个密码"
       create_account: "创建帐号"
@@ -306,12 +297,13 @@ zh-CN:
       your_full_name: "你的全名"
     profile:
       edit_profile: "编辑个人资料"
-    sidebar:
+    sub_navbar:
       comments: "评论"
-      likes: "收藏"
       topics: "话题"
     topics:
       index:
+        likes: "收藏"
         no_topic_yet: "还没有话题"
+        publish: "发布"
         topics: "话题"
         user_s_topics: "%{name} 的话题"

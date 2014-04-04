@@ -37,33 +37,39 @@ html
                 i.fa.fa-caret-down
               ul.dropdown-menu.dropdown-menu-right
                 li
-                  a.item href=user_root_path(username: current_user.username)
+                  a href=user_root_path(username: current_user.username)
                     = t '.profile'
                 li.divider
+                li.dropdown-header
+                  = t '.likes'
                 li
-                  a href=user_likes_path(username: current_user.username)
-                    = t '.likes'
+                  a href=likes_user_topics_path(username: current_user.username)
+                    = t '.topics'
+                li
+                  a href=likes_user_comments_path(username: current_user.username)
+                    = t '.comments'
+                li.divider
                 li
                   a href=settings_account_path
                     = t '.settings'
                 li.divider
                 li
-                  a.item href=logout_path data-method="delete"
+                  a href=logout_path data-method="delete"
                     = t '.logout'
           - else
             li
-              a.item href=signup_path(return_to: params[:return_to] || return_to_path(request.fullpath))
+              a href=signup_path(return_to: params[:return_to] || return_to_path(request.fullpath))
                 = t '.sign_up'
             li
-              a.item href=login_path(return_to: params[:return_to] || return_to_path(request.fullpath))
+              a href=login_path(return_to: params[:return_to] || return_to_path(request.fullpath))
                 = t '.sign_in'
           li.navbar-toggle
             a.tiem type="button" data-toggle="collapse" data-target="#navbar"
               i.fa.fa-bars
         #navbar.collapse.navbar-collapse
           ul.nav.navbar-nav
-            li class=('active' if controller_name == 'topics')
+            li class=('active' if request.original_fullpath =~ /^\/topics/)
               a href=topics_path
-                = t '.topics'
+                = t '.community'
 
     = yield
