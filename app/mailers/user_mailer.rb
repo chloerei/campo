@@ -10,12 +10,3 @@ class UserMailer < ActionMailer::Base
          subject: I18n.t('user_mailer.password_reset.subject'))
   end
 end
-
-if Rails.env.development?
-  class UserMailer::Preview < MailView
-    def password_reset
-      user = User.first || FactoryGirl.create(:user)
-      UserMailer.password_reset(user.id)
-    end
-  end
-end
