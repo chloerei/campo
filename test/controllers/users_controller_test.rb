@@ -1,11 +1,6 @@
 require 'test_helper'
 
 class UsersControllerTest < ActionController::TestCase
-  def teardown
-    # reset access limiter
-    $redis.flushdb
-  end
-
   test "should get new page" do
     get :new
     assert_response :success, @response.body

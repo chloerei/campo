@@ -1,6 +1,11 @@
 require 'test_helper'
 
 class SessionsControllerTest < ActionController::TestCase
+  def setup
+    # reset access limiter
+    $redis.flushdb
+  end
+
   test "should get login page" do
     get :new
     assert_response :success, @response.body
@@ -35,7 +40,6 @@ class SessionsControllerTest < ActionController::TestCase
     ip = '1.2.3.4'
     key = "sessions:limiter:#{ip}"
     request.headers['REMOTE_ADDR'] = ip
-    $redis.del(key)
     assert_equal nil, $redis.get(key)
     post :create, login: 'Username', password: '12345678'
     assert_equal 1, $redis.get(key).to_i
