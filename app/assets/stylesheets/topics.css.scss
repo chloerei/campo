@@ -1,3 +1,15 @@
+.topics-header {
+  @media (max-width: $grid-float-breakpoint) {
+    .row > div {
+      margin-bottom: $line-height-computed / 2;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
 .form-topic .markdown-area {
   textarea {
     height: 12em;
