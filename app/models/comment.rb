@@ -14,7 +14,7 @@ class Comment < ActiveRecord::Base
   after_create :increment_counter_cache, :create_mention_notification, :create_comment_notification
   after_destroy :decrement_counter_cache, unless: :trashed?
 
-  after_trash :decrement_counter_cache, :delete_all_notifications, :delete_all_likes
+  after_trash :decrement_counter_cache, :delete_all_notifications
   after_restore :increment_counter_cache
 
   def increment_counter_cache
@@ -35,10 +35,6 @@ class Comment < ActiveRecord::Base
 
   def delete_all_notifications
     notifications.delete_all
-  end
-
-  def delete_all_likes
-    likes.delete_all
   end
 
   def page(per = Comment.default_per_page)

@@ -11,7 +11,7 @@
             li
               a href=topics_path
                 = t '.all_categories'
-            - Category.all.each do |category|
+            - Category.order(topics_count: :desc).each do |category|
               li
                 a href=categoried_topics_path(category_id: category.slug)
                   = category.name
