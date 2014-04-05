@@ -14,6 +14,7 @@ class TopicTest < ActiveSupport::TestCase
     assert_equal 0, category.reload.topics_count
     topic.restore
     assert_equal 1, category.reload.topics_count
+    topic.trash
     topic.destroy
     assert_equal 0, category.reload.topics_count
   end
@@ -71,7 +72,7 @@ class TopicTest < ActiveSupport::TestCase
 
     assert_difference "new_category.reload.topics_count" do
       assert_difference "old_category.reload.topics_count", -1 do
-        topic.update_attributes category: new_category
+        topic.update_attributes category_id: new_category.id
       end
     end
   end

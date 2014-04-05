@@ -6,18 +6,18 @@ class Topic < ActiveRecord::Base
   include Elasticsearch::Model::Callbacks
 
   belongs_to :user
-  belongs_to :category
+  belongs_to :category, counter_cache: true
   has_many :comments, as: 'commentable'
 
   validates :title, :body, presence: true
 
-  after_create :increment_counter_cache, :update_hot, :owner_subscribe
-  after_update :update_category_counter
-  after_destroy :decrement_counter_cache, unless: :trashed?
+  after_create :update_hot, :owner_subscribe
   after_touch :update_hot
 
   after_trash :decrement_counter_cache
   after_restore :increment_counter_cache
+  # Fix double desc counter
+  after_destroy :increment_counter_cache, if: :trashed?
 
   def increment_counter_cache
     if category
@@ -28,18 +28,6 @@ class Topic < ActiveRecord::Base
   def decrement_counter_cache
     if category
       Category.update_counters category.id, topics_count: -1
-    end
-  end
-
-  def update_category_counter
-    if category_id_changed?
-      if category_id_was
-        Category.update_counters category_id_was, topics_count: -1
-      end
-
-      if category_id
-        Category.update_counters category_id, topics_count: 1
-      end
     end
   end
 

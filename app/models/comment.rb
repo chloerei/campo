@@ -5,32 +5,28 @@ class Comment < ActiveRecord::Base
 
   has_many :notifications, as: 'subject', dependent: :delete_all
   belongs_to :user
-  belongs_to :commentable, polymorphic: true
+  belongs_to :commentable, polymorphic: true, counter_cache: true, touch: true
 
   validates :commentable_type, inclusion: { in: %w(Topic) }
   validates :commentable, :user, presence: true
   validates :body, presence: true
 
-  after_create :increment_counter_cache, :create_mention_notification, :create_comment_notification
-  after_destroy :decrement_counter_cache, unless: :trashed?
+  after_create :create_mention_notification, :create_comment_notification
 
   after_trash :decrement_counter_cache, :delete_all_notifications
   after_restore :increment_counter_cache
+  after_destroy :increment_counter_cache, if: :trashed?
 
   def increment_counter_cache
     if commentable.has_attribute? :comments_count
       commentable.class.update_counters commentable.id, comments_count: 1
     end
-
-    commentable.touch
   end
 
   def decrement_counter_cache
     if commentable.has_attribute? :comments_count
       commentable.class.update_counters commentable.id, comments_count: -1
     end
-
-    commentable.touch
   end
 
   def delete_all_notifications
