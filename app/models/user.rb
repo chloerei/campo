@@ -46,8 +46,21 @@ class User < ActiveRecord::Base
     locked_at.present?
   end
 
-  def generate_password_reset_token
-    update_attributes(password_reset_token: SecureRandom.hex(32),
-                      password_reset_token_created_at: current_time_from_proper_timezone)
+  def self.verifier_for(purpose)
+    @verifiers ||= {}
+    @verifiers.fetch(purpose) do |p|
+      @verifiers[p] = Rails.application.message_verifier("#{self.name}-#{p.to_s}")
+    end
+  end
+
+  def password_reset_token
+    self.class.verifier_for('password-reset').generate([id, Time.now])
+  end
+
+  def self.find_by_password_reset_token(token)
+    user_id, timestamp = verifier_for('password-reset').verify(token)
+    User.find_by(id: user_id) if timestamp > 1.hour.ago
+  rescue ActiveSupport::MessageVerifier::InvalidSignature
+    nil
   end
 end

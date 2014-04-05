@@ -33,15 +33,12 @@ class PasswordsControllerTest < ActionController::TestCase
 
   test "should not get edit page if token expired" do
     user = create(:user)
-    user.generate_password_reset_token
-    user.update_attribute :password_reset_token_created_at, 3.days.ago
-    get :edit, email: user.email
+    get :edit, token: User.verifier_for('password-reset').generate([user.id, 2.hours.ago])
     assert_redirected_to new_password_path
   end
 
   test "should get edit page" do
     user = create(:user)
-    user.generate_password_reset_token
     get :edit, email: user.email, token: user.password_reset_token
     assert_response :success, @response.body
   end
@@ -54,7 +51,6 @@ class PasswordsControllerTest < ActionController::TestCase
 
   test "should update password" do
     user = create(:user)
-    user.generate_password_reset_token
     post :update, email: user.email, token: user.password_reset_token, user: { password: 'change', password_confirmation: 'change' }
     assert user.reload.authenticate('change')
   end

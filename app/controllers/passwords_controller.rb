@@ -10,7 +10,6 @@ class PasswordsController < ApplicationController
 
   def create
     if @user = User.find_by(email: params[:email])
-      @user.generate_password_reset_token
       UserMailer.password_reset(@user.id).deliver
       redirect_to password_path
     else
@@ -34,11 +33,7 @@ class PasswordsController < ApplicationController
   private
 
   def check_token
-    if params[:email].present? && params[:token].present?
-      @user = User.find_by(email: params[:email], password_reset_token: params[:token])
-    end
-
-    unless @user && @user.password_reset_token_created_at > 1.hour.ago
+    unless @user = User.find_by_password_reset_token(params[:token])
       flash[:warning] = I18n.t('passwords.flashes.token_invalid')
       redirect_to new_password_path
     end

@@ -14,9 +14,12 @@ class UserTest < ActiveSupport::TestCase
 
   test "should genrate password_reset_token" do
     user = create(:user)
-    assert_nil user.password_reset_token
-    user.generate_password_reset_token
     assert_not_nil user.password_reset_token
-    assert_not_nil user.password_reset_token_created_at
+  end
+
+  test "should find_by_password_reset_token" do
+    user = create(:user)
+    token = user.password_reset_token
+    assert_equal user, User.find_by_password_reset_token(token)
   end
 end

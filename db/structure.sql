@@ -294,8 +294,6 @@ CREATE TABLE users (
     avatar character varying(255),
     locale character varying(255),
     locked_at timestamp without time zone,
-    password_reset_token character varying(255),
-    password_reset_token_created_at timestamp without time zone,
     created_at timestamp without time zone,
     updated_at timestamp without time zone
 );
@@ -575,4 +573,6 @@ INSERT INTO schema_migrations (version) VALUES ('20140208060708');
 INSERT INTO schema_migrations (version) VALUES ('20140218070616');
 
 INSERT INTO schema_migrations (version) VALUES ('20140310070632');
+
+INSERT INTO schema_migrations (version) VALUES ('20140405074043');
 
