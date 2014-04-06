@@ -14,6 +14,20 @@
         = render 'topics_header'
         .panel
           .panel-heading.clearfix
+            .pull-left
+              .btn-group
+                a.dropdown-toggle.btn.btn-primary data-toggle="dropdown" href='#'
+                  = @category.try(:name) || t('.all_categories')
+                  '
+                  i.fa.fa-caret-down
+                ul.dropdown-menu
+                  li
+                    a href=topics_path
+                      = t '.all_categories'
+                  - Category.order(topics_count: :desc).each do |category|
+                    li
+                      a href=categoried_topics_path(category_id: category.slug)
+                        = category.name
             .pull-right
               ul.nav.nav-pills
                 li class=('active' if params[:tab] == 'hot')
@@ -22,8 +36,9 @@
                 li class=('active' if params[:tab] == 'newest')
                   a href=url_for(tab: 'newest')
                     = t '.newest'
-            h3.panel-title
-              = t '.topics'
+          - if @category && @category.description.present?
+            .panel-body
+              = markdown_format @category.description
 
           .panel-body
             .list-group.list-group-campo.recordable

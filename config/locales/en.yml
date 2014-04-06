@@ -231,12 +231,12 @@ en:
       save_changes: Save changes
       title: Title
     index:
+      all_categories: All categories
       hot: Hot
       hot_topics: Hot topics
       newest: Newest
       newest_topics: Newest topics
       no_topic_yet: No topic yet
-      topics: Topics
     new:
       new_topic: New topic
     search:
@@ -257,7 +257,6 @@ en:
     topic:
       comments_count: "%{count} comments"
     topics_header:
-      all_categories: All categories
       create_topic: Create topic
   user_mailer:
     password_reset:

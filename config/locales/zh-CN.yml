@@ -235,12 +235,12 @@ zh-CN:
       save_changes: "保存修改"
       title: "标题"
     index:
+      all_categories: "所有分类"
       hot: "热门"
       hot_topics: "热门话题"
       newest: "最新"
       newest_topics: "最新话题"
       no_topic_yet: "还没有话题"
-      topics: "话题"
     new:
       new_topic: "新话题"
     search:
@@ -261,7 +261,6 @@ zh-CN:
     topic:
       comments_count: "%{count} 条评论"
     topics_header:
-      all_categories: "所有分类"
       create_topic: "创建话题"
   user_mailer:
     password_reset:
