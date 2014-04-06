@@ -1,33 +1,55 @@
 #!/usr/bin/env bash
 
-# Change app root, use for vagrant
-if [ ! -z "$1" ]; then
-  cd $1
-fi
+APP_ROOT=/var/www/campo
+USER=`whoami`
 
-# Fix postgresql default encoding because update-locale not effect without logout
+# Fix postgresql default encoding
+sudo update-locale LC_ALL="en_US.utf8"
 export LC_ALL=en_US.UTF-8
-sudo apt-get update
-sudo DEBIAN_FRONTEND=noninteractive apt-get install -y curl postgresql libpq-dev redis-server memcached git-core openjdk-7-jre-headless nodejs imagemagick postfix
 
-cd /tmp
-wget https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-1.0.1.deb
-sudo dpkg -i elasticsearch-1.0.1.deb
+sudo apt-get update
+
+# Install system packages
+sudo DEBIAN_FRONTEND=noninteractive apt-get install -y redis-server memcached git-core nodejs imagemagick postfix
+
+# Install Elasticsearch
+wget -O - http://packages.elasticsearch.org/GPG-KEY-elasticsearch | sudo apt-key add -
+sudo bash -c "echo 'deb http://packages.elasticsearch.org/elasticsearch/1.0/debian stable main' > /etc/apt/sources.list.d/elasticsearch.list"
+sudo apt-get update
+sudo apt-get install -y openjdk-7-jre-headless elasticsearch
 sudo update-rc.d elasticsearch defaults
 sudo service elasticsearch start
-cd -
 
-sudo su postgres -c "createuser -d -R -S `whoami`"
+# Create postgres role with current user
+sudo apt-get install -y postgresql libpq-dev
+sudo su postgres -c "createuser -d -R -S $USER"
 
+# Install Passenger
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 561F9B9CAC40B2F7
+sudo apt-get install -y apt-transport-https ca-certificates
+sudo bash -c "echo 'deb https://oss-binaries.phusionpassenger.com/apt/passenger precise main' > /etc/apt/sources.list.d/passenger.list"
+sudo apt-get update
+sudo apt-get install -y nginx-extras passenger
+
+# Install rvm and ruby
+sudo apt-get install -y curl
 curl -sSL https://get.rvm.io | bash -s stable
 source ~/.rvm/scripts/rvm
 rvm install 2.1.1
 rvm use --default 2.1.1
 
+# Development prepare
 bundle install
+cp config/database.example.yml $APP_ROOT/shared/config/database.yml
+cp config/secrets.example.yml $APP_ROOT/shared/config/secrets.yml
+cp config/config.example.yml $APP_ROOT/shared/config/config.yml
+bundle exec rake db:setup
 
-cp config/database.example.yml config/database.yml
-cp config/secrets.example.yml config/secrets.yml
-cp config/config.example.yml config/config.yml
-
-rake db:create db:migrate
+# Deployment prepare
+sudo mkdir -p $APP_ROOT
+sudo chown $USER:$USER $APP_ROOT
+mkdir -p $APP_ROOT/shared/config
+cp config/database.example.yml $APP_ROOT/shared/config/database.yml
+cp config/secrets.example.yml $APP_ROOT/shared/config/secrets.yml
+cp config/config.example.yml $APP_ROOT/shared/config/config.yml
+sed -i "s/secret_key_base: \w+/secret_key_base: `bundle exec rake secret`/g" $APP_ROOT/shared/config/secrets.yml
