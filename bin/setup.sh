@@ -20,7 +20,7 @@ sudo apt-get install -y openjdk-7-jre-headless elasticsearch
 sudo update-rc.d elasticsearch defaults
 sudo service elasticsearch start
 
-# Create postgres role with current user
+# Install PostgreSQL
 sudo apt-get install -y postgresql libpq-dev
 sudo su postgres -c "createuser -d -R -S $USER"
 
@@ -52,4 +52,4 @@ mkdir -p $APP_ROOT/shared/config
 cp config/database.example.yml $APP_ROOT/shared/config/database.yml
 cp config/secrets.example.yml $APP_ROOT/shared/config/secrets.yml
 cp config/config.example.yml $APP_ROOT/shared/config/config.yml
-sed -i "s/secret_key_base: \w+/secret_key_base: `bundle exec rake secret`/g" $APP_ROOT/shared/config/secrets.yml
+sed -i "s/secret_key_base: \w\+/secret_key_base: `bundle exec rake secret`/g" $APP_ROOT/shared/config/secrets.yml
