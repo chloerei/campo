@@ -1,20 +1,20 @@
 #!/bin/bash
 
 ### BEGIN INIT INFO
-# Provides:          <%= application %>
+# Provides:          Campo
 # Required-Start:    $all
 # Required-Stop:     $network $local_fs $syslog
 # Default-Start:     2 3 4 5
 # Default-Stop:      0 1 6
-# Short-Description: Start the <%= application %> resque worker at boot
-# Description:       Enable <%= application %> at boot time.
+# Short-Description: Start the Campo resque worker at boot
+# Description:       Enable Campo at boot time.
 ### END INIT INFO
 
 set -e
 set -u
 
-APP_ROOT=<%= deploy_to %>/current
-USER=<%= user %>
+APP_ROOT=/var/www/campo/current
+USER=deploy
 
 TIMEOUT=${TIMEOUT-60}
 PIDFILE="$APP_ROOT/tmp/pids/resque.%d.pid"

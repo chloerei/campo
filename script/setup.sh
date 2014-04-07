@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-APP_ROOT=/var/www/campo
 USER=`whoami`
+APP_ROOT=/var/www/campo
 
 # Fix postgresql default encoding
 sudo update-locale LC_ALL="en_US.utf8"
@@ -38,14 +38,14 @@ source ~/.rvm/scripts/rvm
 rvm install 2.1.1
 rvm use --default 2.1.1
 
-# Development prepare
+# Development environment
+cp config/database.example.yml config/database.yml
+cp config/secrets.example.yml config/secrets.yml
+cp config/config.example.yml config/config.yml
 bundle install
-cp config/database.example.yml $APP_ROOT/shared/config/database.yml
-cp config/secrets.example.yml $APP_ROOT/shared/config/secrets.yml
-cp config/config.example.yml $APP_ROOT/shared/config/config.yml
-bundle exec rake db:setup
+bundle exec rake db:create:all
 
-# Deployment prepare
+# Production environment
 sudo mkdir -p $APP_ROOT
 sudo chown $USER:$USER $APP_ROOT
 mkdir -p $APP_ROOT/shared/config
@@ -53,3 +53,19 @@ cp config/database.example.yml $APP_ROOT/shared/config/database.yml
 cp config/secrets.example.yml $APP_ROOT/shared/config/secrets.yml
 cp config/config.example.yml $APP_ROOT/shared/config/config.yml
 sed -i "s/secret_key_base: \w\+/secret_key_base: `bundle exec rake secret`/g" $APP_ROOT/shared/config/secrets.yml
+
+# Resque init script
+sudo cp config/resque.example.sh /etc/init.d/resque
+sudo chmod +x /etc/init.d/resque
+sudo sed -i "s|APP_ROOT=.\+|APP_ROOT=$APP_ROOT/current|" /etc/init.d/resque
+sudo sed -i "s/USER=\w\+/USER=$USER/" /etc/init.d/resque
+sudo update-rc.d resque defaults
+
+# Nginx config
+sudo cp config/nginx.example.conf /etc/nginx/sites-available/campo
+sudo sed -i "s|root: .\+;|passenger_ruby: $APP_ROOT/public;|" /etc/nginx/sites-available/campo
+sudo ln -s /etc/nginx/sites-available/campo /etc/nginx/sites-enabled
+sudo rm /etc/nginx/sites-enabled/default
+sudo sed -i 's/#passenger_root/passenger_root/' /etc/nginx/nginx.conf
+sudo sed -i "s|#passenger_ruby .\+;|passenger_ruby /home/$USER/.rvm/wrappers/default/ruby;|" /etc/nginx/nginx.conf
+sudo service nginx restart
