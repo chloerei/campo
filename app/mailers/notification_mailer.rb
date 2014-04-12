@@ -9,7 +9,8 @@ class NotificationMailer < ActionMailer::Base
     I18n.locale = @user.locale
     headers(message_id: "#{@comment.commentable_type.downcase.pluralize}/#{@comment.commentable_id}/#{@comment.id}@#{CONFIG['host']}",
             in_reply_to: "#{@comment.commentable_type.downcase.pluralize}/#{@comment.commentable_id}@#{CONFIG['host']}")
-    mail(to: @user.email,
+    mail(from: "#{@comment.user.name} <notification@#{CONFIG['host']}>",
+         to: @user.email,
          subject: "#{@comment.commentable.title} ##{@comment.commentable.id}")
   end
 
@@ -19,7 +20,8 @@ class NotificationMailer < ActionMailer::Base
     I18n.locale = @user.locale
     headers(message_id: "#{@comment.commentable_type.downcase.pluralize}/#{@comment.commentable_id}/#{@comment.id}@#{CONFIG['host']}",
             in_reply_to: "#{@comment.commentable_type.downcase.pluralize}/#{@comment.commentable_id}@#{CONFIG['host']}")
-    mail(to: @user.email,
+    mail(from: "#{@comment.user.name} <notification@#{CONFIG['host']}>",
+         to: @user.email,
          subject: "#{@comment.commentable.title} ##{@comment.commentable.id}")
   end
 end
