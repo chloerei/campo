@@ -296,7 +296,11 @@ CREATE TABLE users (
     locked_at timestamp without time zone,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
-    confirmed boolean DEFAULT false
+    confirmed boolean DEFAULT false,
+    send_comment_email boolean DEFAULT true,
+    send_comment_web boolean DEFAULT true,
+    send_mention_email boolean DEFAULT true,
+    send_mention_web boolean DEFAULT true
 );
 
 
@@ -578,4 +582,6 @@ INSERT INTO schema_migrations (version) VALUES ('20140310070632');
 INSERT INTO schema_migrations (version) VALUES ('20140405074043');
 
 INSERT INTO schema_migrations (version) VALUES ('20140412065000');
+
+INSERT INTO schema_migrations (version) VALUES ('20140412113810');
 

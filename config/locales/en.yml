@@ -188,6 +188,20 @@ en:
         save_changes: Save changes
     flashes:
       incorrect_current_password: Incorrect current password
+    notifications:
+      flashes:
+        successfully_updated: Successfully updated
+      show:
+        comment: Comment
+        email: Email
+        mention: Mention
+        notifications: Notifications
+        notifications_settings: Notifications settings
+        save_changes: Save changes
+        web: Web
+        when_receive_new_comment_on_watching_items: When receive new comment on watching
+          items
+        when_someone_mention_you_with_username: When someone mention you with username
     passwords:
       flashes:
         successfully_updated: Successfully updated
@@ -205,6 +219,7 @@ en:
         save_changes: Save changes
     sub_navbar:
       account: Account
+      notifications: Notifications
       password: Password
       profile: Profile
   share:
@@ -295,7 +310,8 @@ en:
       limiter:
         resend_limiter: Resend limiter
       new:
-        click_resend_button_to_resend_confirmation_email: Click "Resend Email" button to resend confirmation email
+        click_resend_button_to_resend_confirmation_email: Click "Resend Email" button
+          to resend confirmation email
         need_confirm_email: Need confirm Email
       show:
         confirm_fail: Confirm fail
