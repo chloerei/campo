@@ -20,7 +20,7 @@ class CommentNotificationJob
                             name: 'mention')
       end
 
-      if user.send_mention_email?
+      if user.confirmed? && user.send_mention_email?
         NotificationMailer.mention(user.id, comment.id).deliver
       end
     end
@@ -37,7 +37,7 @@ class CommentNotificationJob
                               name: 'comment')
         end
 
-        if user.send_comment_email?
+        if user.confirmed? && user.send_comment_email?
           NotificationMailer.comment(user.id, comment.id).deliver
         end
       end

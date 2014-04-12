@@ -2,7 +2,7 @@ require 'test_helper'
 
 class CommentNotificationJobTest < ActiveSupport::TestCase
   test "should create mention notifications" do
-    user = create(:user)
+    user = create(:user, confirmed: true)
     comment = create(:comment, body: "@#{user.username}")
 
     assert_difference ["user.notifications.named('mention').count", "ActionMailer::Base.deliveries.count"] do
@@ -20,7 +20,7 @@ class CommentNotificationJobTest < ActiveSupport::TestCase
   end
 
   test "shuold create comment notifications for subscribed_users" do
-    user = create(:user)
+    user = create(:user, confirmed: true)
     topic = create(:topic, user: user)
     comment = create(:comment, commentable: topic)
 
