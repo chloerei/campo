@@ -98,6 +98,7 @@ zh-CN:
         normal: "正常"
         users: "用户"
       show:
+        confirmed: "邮件确认"
         lock: "锁定"
         permanently_delete: "彻底删除"
         permanently_delete_confirm: "你确定要彻底删除此用户吗？"

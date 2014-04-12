@@ -34,6 +34,11 @@
                 = f.label :email
                 = f.text_field :email, class: 'form-control', tabIndex: 3
               .form-group
+                .checkbox
+                  label
+                    = f.check_box :confirmed
+                    = t '.confirmed'
+              .form-group
                 = f.label :bio
                 = f.text_area :bio, class: 'form-control', tabIndex: 4
               .form-group

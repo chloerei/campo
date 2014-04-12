@@ -32,7 +32,8 @@ en:
             email:
               format: invalid email format
             username:
-              format: may only contain alphanumeric characters or dashes and cannot begin with a dash
+              format: may only contain alphanumeric characters or dashes and cannot
+                begin with a dash
   admin:
     attachments:
       index:
@@ -46,7 +47,8 @@ en:
       form:
         create_category: Create category
         permanently_delete: Permanently delete
-        permanently_delete_confirm: Are you sure you want to permanently delete this category?
+        permanently_delete_confirm: Are you sure you want to permanently delete this
+          category?
         save_changes: Save changes
       index:
         categories: Categories
@@ -98,9 +100,11 @@ en:
         normal: Normal
         users: Users
       show:
+        confirmed: Confirmed
         lock: Lock
         permanently_delete: Permanently delete
-        permanently_delete_confirm: Are you sure you want to permanently delete this user?
+        permanently_delete_confirm: Are you sure you want to permanently delete this
+          user?
         remove_avatar: Remove avatar
         save_changes: Save changes
         unlock: Unlock
@@ -206,7 +210,8 @@ en:
   share:
     user_confirm_required:
       change_email: Change email
-      description: "Please confirm your email for access all function. Confirm email has been send to %{email} ."
+      description: Please confirm your email for access all function. Confirm email
+        has been send to %{email} .
       resend_email: Resend email
   subscriptions:
     subscription:
@@ -217,8 +222,10 @@ en:
       watch: Watch
       watching: Watching
       you_do_not_receive_any_notifications: You do not receive any notifications
-      you_only_receive_notifications_if_you_are_mentioned: You only receive notifications if you are mentioned
-      you_will_receive_notifications_for_all_comments: You will receive notifications for all comments
+      you_only_receive_notifications_if_you_are_mentioned: You only receive notifications
+        if you are mentioned
+      you_will_receive_notifications_for_all_comments: You will receive notifications
+        for all comments
   topics:
     edit:
       edit_topic: Edit topic
@@ -289,7 +296,8 @@ en:
         resend_limiter: Resend limiter
       show:
         confirm_fail: Confirm fail
-        confirmation_toke_invalid_or_expired_please_resend: Confirmation toke invalid or expired, please resend.
+        confirmation_toke_invalid_or_expired_please_resend: Confirmation toke invalid
+          or expired, please resend.
     new:
       choose_a_password: Choose a password
       create_account: Create account
@@ -308,7 +316,8 @@ en:
         your_email: Your email
       show:
         password_reset: Password reset
-        password_reset_email_has_been_sent_message: Password reset email has been sent.
+        password_reset_email_has_been_sent_message: Password reset email has been
+          sent.
     profile:
       edit_profile: Edit profile
     sub_navbar:

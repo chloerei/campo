@@ -14,7 +14,7 @@ class Admin::UsersController < Admin::ApplicationController
   end
 
   def update
-    if @user.update_attributes params.require(:user).permit(:name, :username, :email, :bio, :avatar, :remove_avatar)
+    if @user.update_attributes params.require(:user).permit(:name, :username, :email, :confirmed, :bio, :avatar, :remove_avatar)
       flash[:success] = I18n.t('admin.users.flashes.successfully_updated')
       redirect_to admin_user_url(@user)
     else
