@@ -5,6 +5,12 @@ class Users::ConfirmationsControllerTest < ActionController::TestCase
     $redis.flushdb
   end
 
+  test "should get new page" do
+    login_as create(:user, confirmed: false)
+    get :new
+    assert_response :success, @response.body
+  end
+
   test "should confirm user if token valid" do
     login_as create(:user, confirmed: false)
     get :show, token: current_user.confirmation_token

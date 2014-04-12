@@ -24,7 +24,7 @@ Rails.application.routes.draw do
 
   namespace :users do
     resource :password, only: [:show, :new, :create, :edit, :update]
-    resource :confirmation, only: [:show, :create]
+    resource :confirmation, only: [:new, :show, :create]
   end
 
   concern :commentable do

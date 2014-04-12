@@ -2,13 +2,17 @@ class Users::ConfirmationsController < ApplicationController
   before_action :login_required
   before_action :access_limiter, only: [:create]
 
+  def new
+    store_location params[:return_to]
+  end
+
   def show
     if params[:token].present?
       @user = User.find_by_confirmation_token(params[:token])
       if @user && @user == current_user
         @user.confirm
         flash[:success] = I18n.t('users.confirmations.confirm_success')
-        redirect_to settings_profile_url
+        redirect_back_or_default root_url
       end
     end
   end

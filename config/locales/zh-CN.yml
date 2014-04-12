@@ -288,6 +288,9 @@ zh-CN:
         resend_success: "确认邮件已发送。"
       limiter:
         resend_limiter: "一分钟只能发送一次确认邮件。"
+      new:
+        click_resend_button_to_resend_confirmation_email: "点击“重新发送邮件”按钮重发确认邮件。"
+        need_confirm_email: "需要验证邮件地址"
       show:
         confirm_fail: "确认失败"
         confirmation_toke_invalid_or_expired_please_resend: "确认码无效或已过期，请重新发送确认邮件。"

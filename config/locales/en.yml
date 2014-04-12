@@ -209,10 +209,10 @@ en:
       profile: Profile
   share:
     user_confirm_required:
-      change_email: Change email
-      description: Please confirm your email for access all function. Confirm email
+      change_email: Change Email
+      description: Please confirm your email for access all function. Confirm Email
         has been send to %{email} .
-      resend_email: Resend email
+      resend_email: Resend Email
   subscriptions:
     subscription:
       ignoring: Ignoring
@@ -294,6 +294,9 @@ en:
         resend_success: Resend success
       limiter:
         resend_limiter: Resend limiter
+      new:
+        click_resend_button_to_resend_confirmation_email: Click "Resend Email" button to resend confirmation email
+        need_confirm_email: Need confirm Email
       show:
         confirm_fail: Confirm fail
         confirmation_toke_invalid_or_expired_please_resend: Confirmation toke invalid

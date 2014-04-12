@@ -13,7 +13,13 @@ class ApplicationController < ActionController::Base
 
   def login_required
     unless login?
-      redirect_to login_url(return_to: (request.fullpath if request.get?))
+      redirect_to login_path(return_to: (request.fullpath if request.get?))
+    end
+  end
+
+  def email_confirm_required
+    if !current_user.confirmed?
+      redirect_to new_users_confirmation_path(return_to: (request.fullpath if request.get?))
     end
   end
 
