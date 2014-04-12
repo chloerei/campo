@@ -1,0 +1,19 @@
+#user-confirm-required
+  .container
+    .alert.alert-warning
+      p
+        = t '.description', email: current_user.email
+      p
+        a.btn.btn-default href=users_confirmation_path data-remote="true" data-method="post"
+          = t '.resend_email'
+        '
+        a.btn href=settings_account_path
+          = t '.change_email'
+
+    #user-confirm-required-modal.modal.fade
+      .modal-dialog
+        .modal-content
+          .modal-header
+            button.close data-dismiss="modal"
+              | &times;
+            .modal-title

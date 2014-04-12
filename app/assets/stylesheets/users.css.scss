@@ -1,3 +1,16 @@
+#user-confirm-required {
+  padding: $line-height-computed 0;
+  background: white;
+
+  .alert {
+    margin: 0;
+  }
+
+  .modal-header {
+    border-bottom: none;
+  }
+}
+
 .user-profile {
   background: white;
   padding: 20px 0;

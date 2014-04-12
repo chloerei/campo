@@ -22,4 +22,15 @@ class UserTest < ActiveSupport::TestCase
     token = user.password_reset_token
     assert_equal user, User.find_by_password_reset_token(token)
   end
+
+  test "shuold generate confirmation token" do
+    user = create(:user)
+    assert_not_nil user.confirmation_token
+  end
+
+  test "should find_by_confirmation_token" do
+    user = create(:user)
+    token = user.confirmation_token
+    assert_equal user, User.find_by_confirmation_token(token)
+  end
 end

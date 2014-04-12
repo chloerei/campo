@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  include Confirmable
   include Gravtastic
   gravtastic secure: true, default: 'wavatar', rating: 'G', size: 48
   mount_uploader :avatar, AvatarUploader

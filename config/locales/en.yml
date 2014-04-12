@@ -6,9 +6,19 @@ en:
         description: Description
         name: Name
         slug: Slug
+        topics_count: Topics count
+      comment:
+        commentable: Commentable
+        created_at: Created at
+        user: User
+      topic:
+        comments_count: Comment count
+        created_at: Created at
+        user: User
       user:
         avatar: Avatar
         bio: Bio
+        created_at: Created at
         email: Email
         locale: Locale
         name: Name
@@ -22,8 +32,7 @@ en:
             email:
               format: invalid email format
             username:
-              format: may only contain alphanumeric characters or dashes and cannot
-                begin with a dash
+              format: may only contain alphanumeric characters or dashes and cannot begin with a dash
   admin:
     attachments:
       index:
@@ -37,8 +46,7 @@ en:
       form:
         create_category: Create category
         permanently_delete: Permanently delete
-        permanently_delete_confirm: Are you sure you want to permanently delete this
-          category?
+        permanently_delete_confirm: Are you sure you want to permanently delete this category?
         save_changes: Save changes
       index:
         categories: Categories
@@ -92,8 +100,7 @@ en:
       show:
         lock: Lock
         permanently_delete: Permanently delete
-        permanently_delete_confirm: Are you sure you want to permanently delete this
-          user?
+        permanently_delete_confirm: Are you sure you want to permanently delete this user?
         remove_avatar: Remove avatar
         save_changes: Save changes
         unlock: Unlock
@@ -148,6 +155,11 @@ en:
         commented_on: Commented on
       mention:
         mentioned_you_on: Mentioned you on
+  passwords:
+    flashes:
+      successfully_update: Successfully update
+      token_invalid: Token invalid
+      user_email_not_found: User email not found
   sessions:
     access_limiter:
       are_you: Are you
@@ -191,6 +203,11 @@ en:
       account: Account
       password: Password
       profile: Profile
+  share:
+    user_confirm_required:
+      change_email: Change email
+      description: "Please confirm your email for access all function. Confirm email has been send to %{email} ."
+      resend_email: Resend email
   subscriptions:
     subscription:
       ignoring: Ignoring
@@ -200,10 +217,8 @@ en:
       watch: Watch
       watching: Watching
       you_do_not_receive_any_notifications: You do not receive any notifications
-      you_only_receive_notifications_if_you_are_mentioned: You only receive notifications
-        if you are mentioned
-      you_will_receive_notifications_for_all_comments: You will receive notifications
-        for all comments
+      you_only_receive_notifications_if_you_are_mentioned: You only receive notifications if you are mentioned
+      you_will_receive_notifications_for_all_comments: You will receive notifications for all comments
   topics:
     edit:
       edit_topic: Edit topic
@@ -242,34 +257,23 @@ en:
     topics_header:
       create_topic: Create topic
   user_mailer:
+    confirmation:
+      subject: Email confirmation
+      text_body: |
+        Somebody sign up in %{host} with your email. If it was not your, safely ignore this email.
+
+        Click the following link to choose a new password:
+
+        %{url}
     password_reset:
       subject: Password reset
       text_body: |
-        Somebody asked to reset your password on %{host} .
-
-        If it was not you, you can safely ignore this email.
+        Somebody asked to reset your password on %{host}. If it was not you, safely ignore this email.
 
         Click the following link to choose a new password:
 
         %{url}
   users:
-    passwords:
-      edit:
-        password_reset: Password reset
-        save_changes: Save changes
-      flashes:
-        successfully_update: Successfully update
-        token_invalid: Token invalid
-        user_email_not_found: User email not found
-      new:
-        email: Email
-        password_reset: Password reset
-        send_reset_email: Send reset email
-        your_email: Your email
-      show:
-        password_reset: Password reset
-        password_reset_email_has_been_sent_message: Password reset email has been sent
-          message
     comments:
       index:
         comments: Comments
@@ -277,6 +281,15 @@ en:
         no_comment_yet: No comment yet
         publish: Publish
         user_s_comments: "%{name}'s comments"
+    confirmations:
+      confirm_success: Confirm success
+      create:
+        resend_success: Resend success
+      limiter:
+        resend_limiter: Resend limiter
+      show:
+        confirm_fail: Confirm fail
+        confirmation_toke_invalid_or_expired_please_resend: Confirmation toke invalid or expired, please resend.
     new:
       choose_a_password: Choose a password
       create_account: Create account
@@ -284,6 +297,18 @@ en:
       sign_up: Sign up
       your_email: Your email
       your_full_name: Your full name
+    passwords:
+      edit:
+        password_reset: Password reset
+        save_changes: Save changes
+      new:
+        email: Email
+        password_reset: Password reset
+        send_reset_email: Send reset email
+        your_email: Your email
+      show:
+        password_reset: Password reset
+        password_reset_email_has_been_sent_message: Password reset email has been sent.
     profile:
       edit_profile: Edit profile
     sub_navbar:

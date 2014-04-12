@@ -72,4 +72,6 @@ html
               a href=topics_path
                 = t '.community'
 
+    - if login? and !current_user.confirmed?
+      = render 'share/user_confirm_required'
     = yield

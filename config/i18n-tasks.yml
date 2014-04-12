@@ -6,6 +6,7 @@ search:
     - '*.rb'
     - '*.slim'
     - '*.text.erb'
+    - '*.js.erb'
 
 ignore_unused:
   - activerecord.*

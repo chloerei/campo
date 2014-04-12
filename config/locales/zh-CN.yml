@@ -155,6 +155,11 @@ zh-CN:
         commented_on: "评论了"
       mention:
         mentioned_you_on: "提及你于"
+  passwords:
+    flashes:
+      successfully_update: "密码更新成功"
+      token_invalid: "验证码无效"
+      user_email_not_found: "没有找到此用户"
   sessions:
     access_limiter:
       are_you: "你是否"
@@ -198,6 +203,11 @@ zh-CN:
       account: "帐号"
       password: "密码"
       profile: "个人资料"
+  share:
+    user_confirm_required:
+      change_email: "修改邮件地址"
+      description: "确认你的邮件地址方可访问所有功能。确认邮件已发往 %{email} 。"
+      resend_email: "重新发送邮件"
   subscriptions:
     subscription:
       ignoring: "忽略"
@@ -247,33 +257,23 @@ zh-CN:
     topics_header:
       create_topic: "创建话题"
   user_mailer:
+    confirmation:
+      subject: "邮箱确认"
+      text_body: |
+        有人使用你的邮箱在 %{host} 注册帐号，如果不是你，请忽略此邮件。
+
+        点击下面的链接确认邮箱地址：
+
+        %{url}
     password_reset:
       subject: "密码重置"
       text_body: |
-        有人请求重置你在 %{host} 的密码。
-
-        如果不是你，你可以直接忽略本邮件。
+        有人请求重置你在 %{host} 的密码，如果不是你，请忽略此邮件。
 
         点击下面的链接来选择一个新密码：
 
         %{url}
   users:
-    passwords:
-      edit:
-        password_reset: "密码重置"
-        save_changes: "保存修改"
-      flashes:
-        successfully_update: "成功更新，现在可以使用新密码登录！"
-        token_invalid: "密码重置地址过期或无效，请重新发送重置邮件。"
-        user_email_not_found: "没有找到此用户。"
-      new:
-        email: Email
-        password_reset: "密码重置"
-        send_reset_email: "发送重置密码"
-        your_email: "你的 Email 地址"
-      show:
-        password_reset: "密码重置"
-        password_reset_email_has_been_sent_message: "密码重置邮件已发送，请注意查收。"
     comments:
       index:
         comments: "评论"
@@ -281,6 +281,15 @@ zh-CN:
         no_comment_yet: "还没有评论"
         publish: "发布"
         user_s_comments: "%{name} 的评论"
+    confirmations:
+      confirm_success: "恭喜，你的邮件地址已确认成功。"
+      create:
+        resend_success: "确认邮件已发送。"
+      limiter:
+        resend_limiter: "一分钟只能发送一次确认邮件。"
+      show:
+        confirm_fail: "确认失败"
+        confirmation_toke_invalid_or_expired_please_resend: "确认码无效或已过期，请重新发送确认邮件。"
     likes:
       index:
         no_comment_yet: "还没有评论"
@@ -291,6 +300,18 @@ zh-CN:
       sign_up: "注册"
       your_email: "你的邮箱地址"
       your_full_name: "你的全名"
+    passwords:
+      edit:
+        password_reset: "密码重置"
+        save_changes: "保存修改"
+      new:
+        email: Email
+        password_reset: "密码重置"
+        send_reset_email: "发送重置密码"
+        your_email: "你的 Email 地址"
+      show:
+        password_reset: "密码重置"
+        password_reset_email_has_been_sent_message: "密码重置邮件已发送，请注意查收。"
     profile:
       edit_profile: "编辑个人资料"
     sub_navbar:
