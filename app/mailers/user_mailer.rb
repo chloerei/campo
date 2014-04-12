@@ -12,6 +12,7 @@ class UserMailer < ActionMailer::Base
 
   def confirmation(user_id)
     @user = User.find(user_id)
+    I18n.locale = @user.locale
     mail(to: @user.email,
          subject: I18n.t('user_mailer.confirmation.subject'))
   end
