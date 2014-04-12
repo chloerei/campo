@@ -1,5 +1,4 @@
 class User < ActiveRecord::Base
-  include Confirmable
   include Gravtastic
   gravtastic secure: true, default: 'wavatar', rating: 'G', size: 48
   mount_uploader :avatar, AvatarUploader
@@ -60,6 +59,21 @@ class User < ActiveRecord::Base
 
   def self.find_by_password_reset_token(token)
     user_id, timestamp = verifier_for('password-reset').verify(token)
+    User.find_by(id: user_id) if timestamp > 1.hour.ago
+  rescue ActiveSupport::MessageVerifier::InvalidSignature
+    nil
+  end
+
+  def confirm
+    update_attribute :confirmed, true
+  end
+
+  def confirmation_token
+    self.class.verifier_for('confirmation').generate([id, Time.now])
+  end
+
+  def self.find_by_confirmation_token(token)
+    user_id, timestamp = verifier_for('confirmation').verify(token)
     User.find_by(id: user_id) if timestamp > 1.hour.ago
   rescue ActiveSupport::MessageVerifier::InvalidSignature
     nil
