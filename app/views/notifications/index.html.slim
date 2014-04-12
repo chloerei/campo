@@ -5,6 +5,9 @@
         .panel
           .panel-heading
             .pull-right
+              a.btn.btn-default href=settings_notifications_path
+                i.fa.fa-cog
+              '
               a.btn.btn-default href=clear_notifications_path data-remote="true" data-method="delete" data-confirm=t('.delete_all_confirm')
                 = t '.delete_all'
             h3.panel-title

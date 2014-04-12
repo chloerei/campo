@@ -23,7 +23,7 @@ html
             = CONFIG['title']
         ul.nav.navbar-nav.navbar-right
           - if login?
-            li class=('active' if controller_name == 'notifications')
+            li class=('active' if request.original_fullpath =~ /^\/notifications/)
               a.notifications-bell href=notifications_path
                 i.fa.fa-bell-o
                 - if unread_notifications_count > 0
