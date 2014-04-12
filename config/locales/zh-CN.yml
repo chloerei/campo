@@ -145,6 +145,13 @@ zh-CN:
       preview: "预览"
       select_them: "选择文件"
       write: "编辑"
+  notification_mailer:
+    comment:
+      subject: Subject
+      view_it_on_web: "查看网页"
+    mention:
+      subject: Subject
+      view_it_on_web: "查看网页"
   notifications:
     index:
       delete_all: "删除所有"

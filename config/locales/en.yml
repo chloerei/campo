@@ -148,6 +148,13 @@ en:
       preview: Preview
       select_them: Select them
       write: Write
+  notification_mailer:
+    comment:
+      subject: Subject
+      view_it_on_web: View it on web
+    mention:
+      subject: Subject
+      view_it_on_web: View it on web
   notifications:
     index:
       delete_all: Delete all
