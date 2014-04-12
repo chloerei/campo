@@ -42,7 +42,7 @@ class Users::ConfirmationsControllerTest < ActionController::TestCase
   end
 
   test "should access limit" do
-    login_as create(:user)
+    login_as create(:user, confirmed: false)
     ip = '1.2.3.4'
     key = "verifies:limiter:#{ip}"
     request.headers['REMOTE_ADDR'] = ip
