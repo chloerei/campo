@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def email_confirm_required
+  def email_confirmed_required
     if !current_user.confirmed?
       redirect_to new_users_confirmation_path(return_to: (request.fullpath if request.get?))
     end

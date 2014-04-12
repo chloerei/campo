@@ -1,5 +1,5 @@
 class Users::ConfirmationsController < ApplicationController
-  before_action :login_required
+  before_action :login_required, :no_confirmed_required
   before_action :access_limiter, only: [:create]
 
   def new
@@ -22,6 +22,12 @@ class Users::ConfirmationsController < ApplicationController
   end
 
   private
+
+  def no_confirmed_required
+    if current_user.confirmed?
+      redirect_to root_url
+    end
+  end
 
   def access_limiter
     key = "verifies:limiter:#{request.remote_ip}"

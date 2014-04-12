@@ -5,6 +5,12 @@ class Users::ConfirmationsControllerTest < ActionController::TestCase
     $redis.flushdb
   end
 
+  test "should redirect to root if already confirmed" do
+    login_as create(:user, confirmed: true)
+    get :new
+    assert_redirected_to root_url
+  end
+
   test "should get new page" do
     login_as create(:user, confirmed: false)
     get :new
