@@ -14,9 +14,11 @@ class CommentNotificationJob
     end
 
     users.each do |user|
-      Notification.create(user: user,
-                          subject: comment,
-                          name: 'mention')
+      if user.send_mention_web?
+        Notification.create(user: user,
+                            subject: comment,
+                            name: 'mention')
+      end
     end
   end
 
@@ -25,9 +27,11 @@ class CommentNotificationJob
       users = comment.commentable.subscribed_users - comment.mention_users - [comment.user]
 
       users.each do |user|
-        Notification.create(user: user,
-                            subject: comment,
-                            name: 'comment')
+        if user.send_comment_web
+          Notification.create(user: user,
+                              subject: comment,
+                              name: 'comment')
+        end
       end
     end
   end
