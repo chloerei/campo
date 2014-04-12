@@ -155,22 +155,6 @@ zh-CN:
         commented_on: "评论了"
       mention:
         mentioned_you_on: "提及你于"
-  passwords:
-    edit:
-      password_reset: "密码重置"
-      save_changes: "保存修改"
-    flashes:
-      successfully_update: "成功更新，现在可以使用新密码登录！"
-      token_invalid: "密码重置地址过期或无效，请重新发送重置邮件。"
-      user_email_not_found: "没有找到此用户。"
-    new:
-      email: Email
-      password_reset: "密码重置"
-      send_reset_email: "发送重置密码"
-      your_email: "你的 Email 地址"
-    show:
-      password_reset: "密码重置"
-      password_reset_email_has_been_sent_message: "密码重置邮件已发送，请注意查收。"
   sessions:
     access_limiter:
       are_you: "你是否"
@@ -274,6 +258,22 @@ zh-CN:
 
         %{url}
   users:
+    passwords:
+      edit:
+        password_reset: "密码重置"
+        save_changes: "保存修改"
+      flashes:
+        successfully_update: "成功更新，现在可以使用新密码登录！"
+        token_invalid: "密码重置地址过期或无效，请重新发送重置邮件。"
+        user_email_not_found: "没有找到此用户。"
+      new:
+        email: Email
+        password_reset: "密码重置"
+        send_reset_email: "发送重置密码"
+        your_email: "你的 Email 地址"
+      show:
+        password_reset: "密码重置"
+        password_reset_email_has_been_sent_message: "密码重置邮件已发送，请注意查收。"
     comments:
       index:
         comments: "评论"

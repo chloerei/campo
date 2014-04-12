@@ -148,23 +148,6 @@ en:
         commented_on: Commented on
       mention:
         mentioned_you_on: Mentioned you on
-  passwords:
-    edit:
-      password_reset: Password reset
-      save_changes: Save changes
-    flashes:
-      successfully_update: Successfully update
-      token_invalid: Token invalid
-      user_email_not_found: User email not found
-    new:
-      email: Email
-      password_reset: Password reset
-      send_reset_email: Send reset email
-      your_email: Your email
-    show:
-      password_reset: Password reset
-      password_reset_email_has_been_sent_message: Password reset email has been sent
-        message
   sessions:
     access_limiter:
       are_you: Are you
@@ -270,6 +253,23 @@ en:
 
         %{url}
   users:
+    passwords:
+      edit:
+        password_reset: Password reset
+        save_changes: Save changes
+      flashes:
+        successfully_update: Successfully update
+        token_invalid: Token invalid
+        user_email_not_found: User email not found
+      new:
+        email: Email
+        password_reset: Password reset
+        send_reset_email: Send reset email
+        your_email: Your email
+      show:
+        password_reset: Password reset
+        password_reset_email_has_been_sent_message: Password reset email has been sent
+          message
     comments:
       index:
         comments: Comments

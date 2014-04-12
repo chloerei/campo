@@ -1,4 +1,4 @@
-class PasswordsController < ApplicationController
+class Users::PasswordsController < ApplicationController
   before_action :no_login_required
   before_action :check_token, only: [:edit, :update]
 
@@ -11,7 +11,7 @@ class PasswordsController < ApplicationController
   def create
     if @user = User.find_by(email: params[:email])
       UserMailer.password_reset(@user.id).deliver
-      redirect_to password_path
+      redirect_to users_password_path
     else
       flash.now[:warning] = I18n.t('passwords.flashes.user_email_not_found')
       render :new
@@ -35,7 +35,7 @@ class PasswordsController < ApplicationController
   def check_token
     unless @user = User.find_by_password_reset_token(params[:token])
       flash[:warning] = I18n.t('passwords.flashes.token_invalid')
-      redirect_to new_password_path
+      redirect_to new_users_password_path
     end
   end
 end

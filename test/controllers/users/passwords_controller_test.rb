@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class PasswordsControllerTest < ActionController::TestCase
+class Users::PasswordsControllerTest < ActionController::TestCase
   test "should get new page" do
     get :new
     assert_response :success, @response.body
@@ -12,7 +12,7 @@ class PasswordsControllerTest < ActionController::TestCase
     assert_difference "ActionMailer::Base.deliveries.size" do
       post :create, email: 'user@example.com'
     end
-    assert_redirected_to password_path
+    assert_redirected_to users_password_path
 
     reset_email = ActionMailer::Base.deliveries.last
     assert_equal 'user@example.com', reset_email.to[0]
@@ -28,13 +28,13 @@ class PasswordsControllerTest < ActionController::TestCase
   test "should not get edit page if token invalid" do
     user = create(:user)
     get :edit, email: user.email
-    assert_redirected_to new_password_path
+    assert_redirected_to new_users_password_path
   end
 
   test "should not get edit page if token expired" do
     user = create(:user)
     get :edit, token: User.verifier_for('password-reset').generate([user.id, 2.hours.ago])
-    assert_redirected_to new_password_path
+    assert_redirected_to new_users_password_path
   end
 
   test "should get edit page" do

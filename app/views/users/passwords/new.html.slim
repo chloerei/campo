@@ -7,7 +7,7 @@
             h3.panel-title
               = t '.password_reset'
           .panel-body
-            = form_tag password_path do
+            = form_tag users_password_path do
               = render 'share/flash_messages'
               .form-group
                 = label_tag :email, t('.email'), class: 'control-label'

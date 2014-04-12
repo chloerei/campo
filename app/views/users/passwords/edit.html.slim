@@ -7,7 +7,7 @@
             h3.panel-title
               = t '.password_reset'
           .panel-body
-            = form_for @user, url: password_path, html: { class: 'password-form' } do |f|
+            = form_for @user, url: users_password_path, html: { class: 'password-form' } do |f|
               = render 'share/flash_messages'
               = render 'share/form_error_messages', form: f
               = hidden_field_tag :email, params[:email]
