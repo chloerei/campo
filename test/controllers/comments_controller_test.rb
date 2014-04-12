@@ -10,6 +10,15 @@ class CommentsControllerTest < ActionController::TestCase
     end
   end
 
+  test "should create notification job after create comment" do
+    login_as create(:user)
+    topic = create(:topic)
+
+    assert_difference "Resque.size(:notification)" do
+      xhr :post, :create, topic_id: topic, comment: { body: 'body' }
+    end
+  end
+
   test "should edit comment" do
     comment = create(:comment)
     login_as comment.user

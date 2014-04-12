@@ -43,27 +43,9 @@ class CommentTest < ActiveSupport::TestCase
     assert_equal [user1, user2].sort, comment.mention_users.sort
   end
 
-  test "should create_mention_notifications" do
-    user = create(:user)
-
-    assert_difference "user.notifications.named('mention').count" do
-    create(:comment, body: "@#{user.username}")
-    end
-  end
-
-  test "shuold create_comment_notifications for subscribed_users" do
-    user = create(:user)
-    topic = create(:topic)
-    topic.subscribe_by user
-
-    assert_difference "user.notifications.named('comment').count" do
-      create(:comment, commentable: topic)
-    end
-  end
-
   test "should delete all related notifications after trash" do
-    # notification name: comment
     comment = create(:comment)
+    create(:notification, subject: comment)
 
     assert_difference "Notification.count", -1 do
       comment.trash
@@ -71,8 +53,8 @@ class CommentTest < ActiveSupport::TestCase
   end
 
   test "should delete all related notifications after destroy" do
-    # notification name: comment
     comment = create(:comment)
+    create(:notification, subject: comment)
 
     assert_difference "Notification.count", -1 do
       comment.destroy
