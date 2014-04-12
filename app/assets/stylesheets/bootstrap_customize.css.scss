@@ -217,6 +217,10 @@ body {
     .list-group {
       margin: -15px;
     }
+
+    .list-group-item {
+      padding: 15px;
+    }
   }
 
   .panel-body + .panel-body {
@@ -234,7 +238,6 @@ body {
   padding: 0;
 
   .list-group-item {
-    padding: 15px;
     border: none;
     border-bottom: 1px solid #eee;
     margin-bottom: 0;
