@@ -10,24 +10,9 @@
 .main
   .container
     .row
-      .col-md-8.col-md-push-2
-        = render 'topics_header'
+      .col-md-9
         .panel
           .panel-heading.clearfix
-            .pull-left
-              .btn-group
-                a.dropdown-toggle.btn.btn-primary data-toggle="dropdown" href='#'
-                  = @category.try(:name) || t('.all_categories')
-                  '
-                  i.fa.fa-caret-down
-                ul.dropdown-menu
-                  li
-                    a href=topics_path
-                      = t '.all_categories'
-                  - Category.order(topics_count: :desc).each do |category|
-                    li
-                      a href=categoried_topics_path(category_id: category.slug)
-                        = category.name
             .pull-right
               ul.nav.nav-pills
                 li class=('active' if params[:tab] == 'hot')
@@ -36,6 +21,9 @@
                 li class=('active' if params[:tab] == 'newest')
                   a href=url_for(tab: 'newest')
                     = t '.newest'
+            h3.panel-title
+              = @category.try(:name) || t('.all_categories')
+
           - if @category && @category.description.present?
             .panel-body
               = markdown_format @category.description
@@ -51,3 +39,20 @@
             .panel-footer.clearfix
               .pull-right
                 = paginate @topics, theme: 'campo'
+
+      .col-md-3
+        = render 'search_form'
+        .panel
+          .panel-body
+            a.btn.btn-success.btn-block href=new_topic_path(category_id: @category.try(:slug))
+              = t '.create_topic'
+        .panel
+          .panel-body
+            ul.nav.nav-pills.nav-stacked
+              li class=('active' unless @category)
+                a href=topics_path
+                  = t '.all_categories'
+              - Category.order(topics_count: :desc).each do |category|
+                li class=('active' if category == @category)
+                  a href=categoried_topics_path(category_id: category.slug)
+                    = category.name

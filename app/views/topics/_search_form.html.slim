@@ -1,0 +1,8 @@
+.panel
+  .panel-body
+    = form_tag search_topics_path, method: 'get', class: 'search-form', data: { behaviors: 'turboform' } do
+      .input-group
+        = text_field_tag :q, params[:q], class: 'form-control', tabIndex: 1, autocomplete: 'off', autofocus: params[:q].present?
+        .input-group-btn
+          button.btn.btn-default type='submit' tabIndex="2"
+            i.fa.fa-search

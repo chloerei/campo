@@ -3,7 +3,7 @@
 .main
   .container
     .row
-      .col-md-8.col-md-push-2
+      .col-md-9
         .panel
           .panel-heading
             h1.panel-title = @topic.title
@@ -88,6 +88,7 @@
               '
               = t '.to_comment'
 
+      .col-md-3
         - if login?
           .panel
             .panel-body
