@@ -147,10 +147,8 @@ zh-CN:
       write: "编辑"
   notification_mailer:
     comment:
-      subject: Subject
       view_it_on_web: "查看网页"
     mention:
-      subject: Subject
       view_it_on_web: "查看网页"
   notifications:
     index:
@@ -220,7 +218,7 @@ zh-CN:
         profile: "个人资料"
         profile_settings: "个人资料设置"
         save_changes: "保存修改"
-    sub_navbar:
+    sidebar:
       account: "帐号"
       notifications: "通知"
       password: "密码"
@@ -252,6 +250,7 @@ zh-CN:
       title: "标题"
     index:
       all_categories: "所有分类"
+      create_topic: "创建话题"
       hot: "热门"
       hot_topics: "热门话题"
       newest: "最新"
@@ -276,8 +275,6 @@ zh-CN:
       your_account_had_been_locked: "你的帐号已被锁定"
     topic:
       comments_count: "%{count} 条评论"
-    topics_header:
-      create_topic: "创建话题"
   user_mailer:
     confirmation:
       subject: "邮箱确认"

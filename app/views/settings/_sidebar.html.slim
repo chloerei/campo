@@ -1,0 +1,17 @@
+.list-group
+  a.list-group-item class=('active' if controller_name == 'accounts') href=settings_account_path
+    .pull-right
+      i.fa.fa-chevron-right
+    = t '.account'
+  a.list-group-item class=('active' if controller_name == 'passwords') href=settings_password_path
+    .pull-right
+      i.fa.fa-chevron-right
+    = t '.password'
+  a.list-group-item class=('active' if controller_name == 'profiles') href=settings_profile_path
+    .pull-right
+      i.fa.fa-chevron-right
+    = t '.profile'
+  a.list-group-item class=('active' if controller_name == 'notifications') href=settings_notifications_path
+    .pull-right
+      i.fa.fa-chevron-right
+    = t '.notifications'

@@ -150,10 +150,8 @@ en:
       write: Write
   notification_mailer:
     comment:
-      subject: Subject
       view_it_on_web: View it on web
     mention:
-      subject: Subject
       view_it_on_web: View it on web
   notifications:
     index:
@@ -224,7 +222,7 @@ en:
         profile: Profile
         profile_settings: Profile settings
         save_changes: Save changes
-    sub_navbar:
+    sidebar:
       account: Account
       notifications: Notifications
       password: Password
@@ -259,6 +257,7 @@ en:
       title: Title
     index:
       all_categories: All categories
+      create_topic: Create topic
       hot: Hot
       hot_topics: Hot topics
       newest: Newest
@@ -283,8 +282,6 @@ en:
       your_account_had_been_locked: Your account had been locked
     topic:
       comments_count: "%{count} comments"
-    topics_header:
-      create_topic: Create topic
   user_mailer:
     confirmation:
       subject: Email confirmation
