@@ -11,4 +11,4 @@
 $(document).on 'page:update', ->
   $('[data-behaviors~=autosize]').autosize()
 
-  $("time[data-behaviors~=timeago]").timeago();
+  $("time[data-behaviors~=timeago]").timeago()
