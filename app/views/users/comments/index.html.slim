@@ -1,12 +1,12 @@
 - @page_title = t '.user_s_comments', name: @user.name
 
-= render 'users/profile', user: @user
-= render 'users/sub_navbar'
-
 .main
   .container
     .row
-      .col-md-8.col-md-push-2
+      .col-md-3
+        = render 'users/profile', user: @user
+        = render 'users/sidebar'
+      .col-md-9
         #comments.panel
           .panel-heading.clearfix
             .pull-right

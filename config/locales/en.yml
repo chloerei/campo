@@ -343,7 +343,7 @@ en:
           sent.
     profile:
       edit_profile: Edit profile
-    sub_navbar:
+    sidebar:
       comments: Comments
       topics: Topics
     topics:

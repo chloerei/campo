@@ -13,12 +13,11 @@
 
 .user-profile {
   background: white;
-  padding: 20px 0;
   text-align: center;
 }
 
 .user-profile-avatar {
-  margin-bottom: $line-height-computed / 2;
+  margin: ($line-height-computed / 2) 0;
 
   img {
     width: 80px;

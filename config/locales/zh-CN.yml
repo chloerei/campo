@@ -336,7 +336,7 @@ zh-CN:
         password_reset_email_has_been_sent_message: "密码重置邮件已发送，请注意查收。"
     profile:
       edit_profile: "编辑个人资料"
-    sub_navbar:
+    sidebar:
       comments: "评论"
       topics: "话题"
     topics:

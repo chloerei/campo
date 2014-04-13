@@ -1,0 +1,9 @@
+.list-group
+  a.list-group-item class=('active' if controller_name == 'topics') href=user_topics_path
+    .pull-right
+      i.fa.fa-chevron-right
+    = t '.topics'
+  a.list-group-item class=('active' if controller_name == 'comments') href=user_comments_path
+    .pull-right
+      i.fa.fa-chevron-right
+    = t '.comments'
