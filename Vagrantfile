@@ -5,16 +5,17 @@
 VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
-  config.vm.box = "precise64"
-  config.vm.box_url = "http://files.vagrantup.com/precise64.box"
+  config.vm.box = "ubuntu/precise64"
 
   config.vm.provider :virtualbox do |vb|
     vb.customize ["modifyvm", :id, "--memory", "1024"]
   end
 
-  # NFS required
   config.vm.network :private_network, ip: '192.168.33.10'
 
-  # Use NFS for performance
-  config.vm.synced_folder '.', '/vagrant', type: 'nfs'
+  # Fix postgresql default encoding
+  config.vm.provision "shell", inline: <<-EOF
+    update-locale LC_ALL="en_US.utf8"
+    LC_ALL=en_US.UTF-8
+  EOF
 end

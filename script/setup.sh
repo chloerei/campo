@@ -3,10 +3,6 @@
 USER=`whoami`
 APP_ROOT=/var/www/campo
 
-# Fix postgresql default encoding
-sudo update-locale LC_ALL="en_US.utf8"
-export LC_ALL=en_US.UTF-8
-
 sudo apt-get update
 
 # Install system packages
@@ -43,7 +39,7 @@ cp config/database.example.yml config/database.yml
 cp config/secrets.example.yml config/secrets.yml
 cp config/config.example.yml config/config.yml
 bundle install
-bundle exec rake db:create:all
+bundle exec rake db:create:all db:setup
 
 # Production environment
 sudo mkdir -p $APP_ROOT
