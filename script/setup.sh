@@ -3,6 +3,10 @@
 USER=`whoami`
 APP_ROOT=/var/www/campo
 
+# Fix postgresql default encoding
+sudo update-locale LC_ALL="en_US.utf8"
+export LC_ALL=en_US.UTF-8
+
 sudo apt-get update
 
 # Install system packages
