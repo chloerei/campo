@@ -13,7 +13,7 @@ class UsersControllerTest < ActionController::TestCase
 
   test "should create user" do
     assert !login?
-    assert_difference "User.count" do
+    assert_difference ["User.count", "ActionMailer::Base.deliveries.size"] do
       post :create, user: attributes_for(:user)
     end
     assert login?
