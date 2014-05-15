@@ -28,7 +28,7 @@ gem 'turbolinks', github: 'chloerei/turbolinks', branch: 'reset-scroll-position'
 gem 'bootstrap-sass', '~> 3.1.0'
 
 # Font Awesome
-gem 'font-awesome-sass', '~> 4.0.2'
+gem 'font-awesome-sass', '~> 4.1.0'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
