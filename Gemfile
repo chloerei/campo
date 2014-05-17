@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.1.0'
+gem 'rails', '4.1.1'
 
 # Use postgresql as the database for Active Record
 gem 'pg'
@@ -45,8 +45,10 @@ gem 'redcarpet', '~> 3.0.0'
 # Code highlight
 gem 'rouge', '~> 1.3.1'
 
-# Use ActiveModel has_secure_password
-gem 'bcrypt-ruby', '~> 3.1.2'
+# require: false so bcrypt is loaded only when has_secure_password is used.
+# This is to avoid ActiveModel (and by extension the entire framework)
+# being dependent on a binary library.
+gem 'bcrypt', '~> 3.1.7', require: false
 
 # Paignator
 gem 'kaminari', '~> 0.15.1'

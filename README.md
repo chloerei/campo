@@ -11,7 +11,7 @@ It's good for:
 
 ## Build with
 
-- Ruby 2.1 and Rails 4.1.0-beta1(Will be update after stable release)
+- Ruby 2.1 and Rails 4.1.1
 - Postgresql 9.1+ for databsae
 - elasticsearch 1.0+ for full text searching
 - Redis for backgound jobs
