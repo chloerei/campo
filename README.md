@@ -30,7 +30,7 @@ Read document here: https://github.com/chloerei/campo/wiki
 
 Buy me some Instant noodles:
 
-https://me.alipay.com/chloerei
+http://chloerei.com/donate/
 
 ## License
 
