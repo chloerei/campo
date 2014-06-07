@@ -1,0 +1,349 @@
+---
+zh-TW:
+  activerecord:
+    attributes:
+      category:
+        description: "描述"
+        name: "名稱"
+        slug: "標識"
+        topics_count: "話題數"
+      comment:
+        commentable: "評論對象"
+        created_at: "建立於"
+        user: "用戶"
+      topic:
+        comments_count: "評論數"
+        created_at: "建立於"
+        user: "用戶"
+      user:
+        avatar: "頭像"
+        bio: "簡介"
+        created_at: "建立於"
+        email: Email
+        locale: "語言"
+        name: "全名"
+        password: "密碼"
+        password_confirmation: "密碼確認"
+        username: "用戶名"
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              format: "無效的郵件格式"
+            username:
+              format: "只能使用字母、數字或 - 號，並且不能以 - 號開頭"
+  admin:
+    attachments:
+      index:
+        attachments: "附件"
+        delete_confirm: "你確定要刪除此附件嗎？"
+    categories:
+      flashes:
+        successfully_created: "成功建立分類"
+        successfully_destroy: "成功徹底刪除分類"
+        successfully_updated: "成功更新分類"
+      form:
+        create_category: "建立分類"
+        permanently_delete: "徹底刪除"
+        permanently_delete_confirm: "你確定要徹底刪除此分類嗎？"
+        save_changes: "保存修改"
+      index:
+        categories: "分類"
+        new_category: "新分類"
+        topics_count: "%{count} 話題"
+      new:
+        new_category: "新分類"
+    comments:
+      flashes:
+        successfully_restored: "成功還原評論"
+        successfully_trashed: "成功刪除評論"
+        successfully_updated: "成功更新評論"
+      index:
+        comments: "評論"
+        normal: "正常"
+        trashed: "回收站"
+      show:
+        comments: "評論"
+        delete: "刪除"
+        delete_confirm: "你確定要刪除此評論嗎？"
+        restore: "還原"
+        save_changes: "保存修改"
+    dashboard:
+      show:
+        dashboard: "控制台"
+    topics:
+      flashes:
+        successfully_restored: "成功還原話題"
+        successfully_trashed: "成功刪除話題"
+        successfully_updated: "成功更新話題"
+      index:
+        normal: "正常"
+        topics: "話題"
+        trashed: "回收站"
+      show:
+        delete: "刪除"
+        delete_confirm: "你確定要刪除次話題嗎？"
+        no_category: "不分類"
+        restore: "還原"
+        save_changes: "保存修改"
+    users:
+      flashes:
+        successfully_destroy: "成功徹底刪除用戶"
+        successfully_locked: "成功鎖定用戶"
+        successfully_unlocked: "成功解鎖用戶"
+        successfully_updated: "成功更新用戶"
+      index:
+        locked: "被鎖定"
+        normal: "正常"
+        users: "用戶"
+      show:
+        confirmed: "郵件確認"
+        lock: "鎖定"
+        permanently_delete: "徹底刪除"
+        permanently_delete_confirm: "你確定要徹底刪除此用戶嗎？"
+        remove_avatar: "移除頭像"
+        save_changes: "保存修改"
+        unlock: "解鎖"
+  comments:
+    comment:
+      delete_confirm: "你確定要刪除此評論嗎？"
+    form:
+      cancel: "取消"
+      save_changes: "保存修改"
+  helpers:
+    comments:
+      deleted_entry: "[已刪除內容]"
+  karminari:
+    campo:
+      paginator:
+        page: "第 %{page} 頁"
+  layouts:
+    admin:
+      admin: "%{name} 管理"
+      attachments: "附件"
+      categories: "分類"
+      comments: "評論"
+      topics: "話題"
+      users: "用戶"
+    application:
+      comments: "評論"
+      community: "社區"
+      likes: "收藏"
+      logout: "退出"
+      profile: "個人資料"
+      settings: "設置"
+      sign_in: "登錄"
+      sign_up: "註冊"
+      topics: "話題"
+  locales:
+    en: "英文"
+    zh-CN: "簡體中文"
+    zh-TW: "正體中文"
+  markdown:
+    area:
+      attach_images_by: "添加圖片"
+      preview: "預覽"
+      select_them: "選擇文件"
+      write: "編輯"
+  notification_mailer:
+    comment:
+      view_it_on_web: "查看網頁"
+    mention:
+      view_it_on_web: "查看網頁"
+  notifications:
+    index:
+      delete_all: "刪除所有"
+      delete_all_confirm: "你確定要刪除所有通知嗎？"
+      no_notifications: "沒有通知"
+      notifications: "通知"
+    notification:
+      comment:
+        commented_on: "評論了"
+      mention:
+        mentioned_you_on: "提及你於"
+  passwords:
+    flashes:
+      successfully_update: "密碼更新成功"
+      token_invalid: "驗證碼無效"
+      user_email_not_found: "沒有找到此用戶"
+  sessions:
+    access_limiter:
+      are_you: "你是否"
+      forgot_password: "忘記密碼？"
+      try_too_many_times: "嘗試次數過多"
+    flashes:
+      incorrect_user_name_or_password: "錯誤的用戶名或密碼"
+    new:
+      forgot_password: "忘記密碼？"
+      login: "帳號"
+      password: "密碼"
+      sign_in: "登錄"
+      username_or_email: "用戶名或郵箱"
+  settings:
+    accounts:
+      flashes:
+        successfully_updated: "成功更新帳號"
+      show:
+        account: "帳號"
+        account_settings: "帳號設置"
+        current_password: "當前密碼"
+        save_changes: "保存修改"
+    flashes:
+      incorrect_current_password: "當前密碼錯誤"
+    notifications:
+      flashes:
+        successfully_updated: "更新成功"
+      show:
+        comment: "評論"
+        email: Email
+        mention: "提及"
+        notifications: "通知"
+        notifications_settings: "通知設置"
+        save_changes: "保存修改"
+        web: "網站"
+        when_receive_new_comment_on_watching_items: "當你關注的內容有新回覆"
+        when_someone_mention_you_with_username: "當有人提到你的用戶名"
+    passwords:
+      flashes:
+        successfully_updated: "成功更新密碼"
+      show:
+        current_password: "當前密碼"
+        password: "密碼"
+        password_settings: "密碼設置"
+        save_changes: "保存修改"
+    profiles:
+      flashes:
+        successfully_updated: "成功更新個人資料"
+      show:
+        profile: "個人資料"
+        profile_settings: "個人資料設置"
+        save_changes: "保存修改"
+    sidebar:
+      account: "帳號"
+      notifications: "通知"
+      password: "密碼"
+      profile: "個人資料"
+  share:
+    user_confirm_required:
+      change_email: "修改郵件地址"
+      description: "確認你的郵件地址方可訪問所有功能。確認郵件已發往 %{email} 。"
+      resend_email: "重新發送郵件"
+  subscriptions:
+    subscription:
+      ignoring: "忽略"
+      not_watching: "未關注"
+      stop_ignoring: "停止忽略"
+      unwatch: "不關注"
+      watch: "關注"
+      watching: "關注中"
+      you_do_not_receive_any_notifications: "你不會收到任何通知"
+      you_only_receive_notifications_if_you_are_mentioned: "你只會在被提及的時候收到通知"
+      you_will_receive_notifications_for_all_comments: "每當有新評論時你都會收到通知"
+  topics:
+    edit:
+      edit_topic: "編輯話題"
+    form:
+      cancel: "取消"
+      create_topic: "建立話題"
+      no_category: "不分類"
+      save_changes: "保存修改"
+      title: "標題"
+    index:
+      all_categories: "所有分類"
+      create_topic: "建立話題"
+      hot: "熱門"
+      hot_topics: "熱門話題"
+      newest: "最新"
+      newest_topics: "最新話題"
+      no_topic_yet: "還沒有話題"
+    new:
+      new_topic: "新話題"
+    search:
+      no_matching_results: "沒有匹配結果"
+      search: "搜索"
+    show:
+      add_this_comment: "添加評論"
+      comments: "評論"
+      delete_confirm: "你確定要刪除此話題嗎？"
+      login: "登錄"
+      no_comment_yet: "還沒有評論"
+      no_more_topics: "沒有更多話題"
+      or: "或"
+      related_topics: "相關話題"
+      sign_up: "註冊"
+      to_comment: "後發表評論"
+      your_account_had_been_locked: "你的帳號已被鎖定"
+    topic:
+      comments_count: "%{count} 條評論"
+  user_mailer:
+    confirmation:
+      subject: "郵箱確認"
+      text_body: |
+        有人使用你的郵箱在 %{host} 註冊帳號，如果不是你，請忽略此郵件。
+
+        點擊下面的鏈接確認郵箱地址：
+
+        %{url}
+    password_reset:
+      subject: "密碼重置"
+      text_body: |
+        有人請求重置你在 %{host} 的密碼，如果不是你，請忽略此郵件。
+
+        點擊下面的鏈接來選擇一個新密碼：
+
+        %{url}
+  users:
+    comments:
+      index:
+        comments: "評論"
+        likes: "收藏"
+        no_comment_yet: "還沒有評論"
+        publish: "發佈"
+        user_s_comments: "%{name} 的評論"
+    confirmations:
+      confirm_success: "恭喜，你的郵件地址已確認成功。"
+      create:
+        resend_success: "確認郵件已發送。"
+      limiter:
+        resend_limiter: "一分鐘只能發送一次確認郵件。"
+      new:
+        click_resend_button_to_resend_confirmation_email: "點擊「重新發送郵件」按鈕重發確認郵件。"
+        need_confirm_email: "需要驗證郵件地址"
+      show:
+        confirm_fail: "確認失敗"
+        confirmation_toke_invalid_or_expired_please_resend: "確認碼無效或已過期，請重新發送確認郵件。"
+    likes:
+      index:
+        no_comment_yet: "還沒有評論"
+    new:
+      choose_a_password: "選一個密碼"
+      create_account: "建立帳號"
+      pick_a_username: "挑一個用戶名"
+      sign_up: "註冊"
+      your_email: "你的郵箱地址"
+      your_full_name: "你的全名"
+    passwords:
+      edit:
+        password_reset: "密碼重置"
+        save_changes: "保存修改"
+      new:
+        email: Email
+        password_reset: "密碼重置"
+        send_reset_email: "發送重置密碼"
+        your_email: "你的 Email 地址"
+      show:
+        password_reset: "密碼重置"
+        password_reset_email_has_been_sent_message: "密碼重置郵件已發送，請注意查收。"
+    profile:
+      edit_profile: "編輯個人資料"
+    sidebar:
+      comments: "評論"
+      topics: "話題"
+    topics:
+      index:
+        likes: "收藏"
+        no_topic_yet: "還沒有話題"
+        publish: "發佈"
+        topics: "話題"
+        user_s_topics: "%{name} 的話題"

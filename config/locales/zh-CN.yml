@@ -139,6 +139,7 @@ zh-CN:
   locales:
     en: "英文"
     zh-CN: "简体中文"
+    zh-TW: "正体中文"
   markdown:
     area:
       attach_images_by: "添加图片"
