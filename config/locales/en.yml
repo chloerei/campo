@@ -142,6 +142,7 @@ en:
   locales:
     en: English
     zh-CN: Chinese(Simplified)
+    zh-TW: Chinese(Traditional)
   markdown:
     area:
       attach_images_by: Attach images by
