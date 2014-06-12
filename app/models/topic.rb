@@ -47,7 +47,7 @@ class Topic < ActiveRecord::Base
   end
 
   def total_pages
-    (comments_count / Comment.default_per_page) + 1
+    (comments_count.to_f / Comment.default_per_page).ceil
   end
 
   def more_like_this(num = 5)
