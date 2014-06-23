@@ -65,3 +65,10 @@ sudo rm /etc/nginx/sites-enabled/default
 sudo sed -i 's/# passenger_root/passenger_root/' /etc/nginx/nginx.conf
 sudo sed -i "s|# passenger_ruby .\+;|passenger_ruby /home/$USER/.rvm/wrappers/default/ruby;|" /etc/nginx/nginx.conf
 sudo service nginx restart
+
+# Firewall
+sudo ufw allow ssh
+sudo ufw allow http
+sudo ufw allow https
+sudo ufw logging on
+sudo ufw enable
