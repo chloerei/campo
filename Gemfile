@@ -50,7 +50,7 @@ gem 'rouge', '~> 1.3.1'
 # being dependent on a binary library.
 gem 'bcrypt', '~> 3.1.7', require: false
 
-# Paignator
+# Paginator
 gem 'kaminari', '~> 0.15.1'
 
 # Nokogiri XML parser
