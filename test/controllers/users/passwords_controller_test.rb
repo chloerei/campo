@@ -18,6 +18,12 @@ class Users::PasswordsControllerTest < ActionController::TestCase
     assert_equal 'user@example.com', reset_email.to[0]
   end
 
+  test "email case-insensitive" do
+    user = create :user, email: 'user@example.com'
+    post :create, email: 'User@example.com'
+    assert_equal user, assigns(:user)
+  end
+
   test "should not create password reset email if user no exists" do
     assert_no_difference "ActionMailer::Base.deliveries.size" do
       post :create, email: 'user@example.com'
