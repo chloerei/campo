@@ -14,23 +14,6 @@ class Topic < ActiveRecord::Base
   after_create :update_hot, :owner_subscribe
   after_touch :update_hot
 
-  after_trash :decrement_counter_cache
-  after_restore :increment_counter_cache
-  # Fix double desc counter
-  after_destroy :increment_counter_cache, if: :trashed?
-
-  def increment_counter_cache
-    if category
-      Category.update_counters category.id, topics_count: 1
-    end
-  end
-
-  def decrement_counter_cache
-    if category
-      Category.update_counters category.id, topics_count: -1
-    end
-  end
-
   def calculate_hot
     order = Math.log10([comments_count, 1].max)
     order + created_at.to_f / 45000

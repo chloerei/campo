@@ -11,21 +11,7 @@ class Comment < ActiveRecord::Base
   validates :commentable, :user, presence: true
   validates :body, presence: true
 
-  after_trash :decrement_counter_cache, :delete_all_notifications
-  after_restore :increment_counter_cache
-  after_destroy :increment_counter_cache, if: :trashed?
-
-  def increment_counter_cache
-    if commentable.has_attribute? :comments_count
-      commentable.class.update_counters commentable.id, comments_count: 1
-    end
-  end
-
-  def decrement_counter_cache
-    if commentable.has_attribute? :comments_count
-      commentable.class.update_counters commentable.id, comments_count: -1
-    end
-  end
+  after_trash :delete_all_notifications
 
   def delete_all_notifications
     notifications.delete_all
