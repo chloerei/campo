@@ -1,45 +1,20 @@
 #!/usr/bin/env bash
 
+source ./script/setup_base.sh
+
 USER=`whoami`
 APP_ROOT=/var/www/campo
+DB_NAME=campo_production
 
-sudo apt-get update
-
-# Install system packages
-sudo DEBIAN_FRONTEND=noninteractive apt-get install -y redis-server memcached git-core nodejs imagemagick postfix
-
-# Install Elasticsearch
-wget -O - http://packages.elasticsearch.org/GPG-KEY-elasticsearch | sudo apt-key add -
-sudo bash -c "echo 'deb http://packages.elasticsearch.org/elasticsearch/1.0/debian stable main' > /etc/apt/sources.list.d/elasticsearch.list"
-sudo apt-get update
-sudo apt-get install -y openjdk-7-jre-headless elasticsearch
-sudo update-rc.d elasticsearch defaults
-sudo service elasticsearch start
-
-# Install PostgreSQL
-sudo apt-get install -y postgresql libpq-dev
-sudo su postgres -c "createuser -d -R -S $USER"
+# Create database
+createdb $DB_NAME
 
 # Install Passenger
 sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 561F9B9CAC40B2F7
 sudo apt-get install -y apt-transport-https ca-certificates
-sudo bash -c "echo 'deb https://oss-binaries.phusionpassenger.com/apt/passenger precise main' > /etc/apt/sources.list.d/passenger.list"
+sudo bash -c "echo 'deb https://oss-binaries.phusionpassenger.com/apt/passenger trusty main' > /etc/apt/sources.list.d/passenger.list"
 sudo apt-get update
 sudo apt-get install -y nginx-extras passenger
-
-# Install rvm and ruby
-sudo apt-get install -y curl
-curl -sSL https://get.rvm.io | bash -s stable
-source ~/.rvm/scripts/rvm
-rvm install 2.1.1
-rvm use --default 2.1.1
-
-# Development environment
-cp config/database.example.yml config/database.yml
-cp config/secrets.example.yml config/secrets.yml
-cp config/config.example.yml config/config.yml
-bundle install
-bundle exec rake db:create:all db:setup
 
 # Production environment
 sudo mkdir -p $APP_ROOT
