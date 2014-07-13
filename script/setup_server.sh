@@ -38,7 +38,6 @@ sudo sed -i "s|root .\+;|root $APP_ROOT/current/public;|" /etc/nginx/sites-avail
 sudo ln -s /etc/nginx/sites-available/campo /etc/nginx/sites-enabled
 sudo rm /etc/nginx/sites-enabled/default
 sudo sed -i 's/# passenger_root/passenger_root/' /etc/nginx/nginx.conf
-sudo sed -i "s|# passenger_ruby .\+;|passenger_ruby /home/$USER/.rvm/wrappers/default/ruby;|" /etc/nginx/nginx.conf
 sudo service nginx restart
 
 # Firewall

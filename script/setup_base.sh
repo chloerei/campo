@@ -19,9 +19,8 @@ sudo service elasticsearch start
 sudo apt-get install -y postgresql libpq-dev
 sudo su postgres -c "createuser -d -R -S $USER"
 
-# Install rvm and ruby
-sudo apt-get install -y curl
-curl -sSL https://get.rvm.io | bash -s stable
-source ~/.rvm/scripts/rvm
-rvm install 2.1.1
-rvm use --default 2.1.1
+# Install ruby
+sudo apt-add-repository -y ppa:brightbox/ruby-ng
+sudo apt-get update
+sudo apt-get install -y ruby2.1 ruby2.1-dev build-essential libxslt-dev libxml2-dev
+sudo gem install bundler rake
