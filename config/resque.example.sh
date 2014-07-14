@@ -37,7 +37,7 @@ case "$1" in
       if test -s "$pidfile" && run "kill -0 `cat $pidfile`"; then
         echo "Worker `cat $pidfile` alread running"
       else
-        run "cd $APP_ROOT; HOME=/home/$USER bundle exec rake environment resque:work QUEUE=$QUEUES PIDFILE=$pidfile TERM_CHILD=1 BACKGROUND=yes RAILS_ENV=production > /dev/null 2>&1"
+        run "cd $APP_ROOT; bundle exec rake environment resque:work QUEUE=$QUEUES PIDFILE=$pidfile TERM_CHILD=1 BACKGROUND=yes RAILS_ENV=production > /dev/null 2>&1"
         echo "Start worker `cat $pidfile`"
       fi
     done
