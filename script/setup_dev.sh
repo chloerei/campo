@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-#source ./script/setup_base.sh
+source ./script/setup_base.sh
 
 # Development environment
 cp config/database.example.yml config/database.yml
