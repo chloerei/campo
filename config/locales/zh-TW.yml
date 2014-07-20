@@ -83,7 +83,7 @@ zh-TW:
         trashed: "回收站"
       show:
         delete: "刪除"
-        delete_confirm: "你確定要刪除次話題嗎？"
+        delete_confirm: "你確定要刪除此話題嗎？"
         no_category: "不分類"
         restore: "還原"
         save_changes: "保存修改"
@@ -132,7 +132,7 @@ zh-TW:
       likes: "收藏"
       logout: "退出"
       profile: "個人資料"
-      settings: "設置"
+      settings: "設定"
       sign_in: "登錄"
       sign_up: "註冊"
       topics: "話題"
@@ -186,7 +186,7 @@ zh-TW:
         successfully_updated: "成功更新帳號"
       show:
         account: "帳號"
-        account_settings: "帳號設置"
+        account_settings: "帳號設定"
         current_password: "當前密碼"
         save_changes: "保存修改"
     flashes:
@@ -199,7 +199,7 @@ zh-TW:
         email: Email
         mention: "提及"
         notifications: "通知"
-        notifications_settings: "通知設置"
+        notifications_settings: "通知設定"
         save_changes: "保存修改"
         web: "網站"
         when_receive_new_comment_on_watching_items: "當你關注的內容有新回覆"
@@ -210,14 +210,14 @@ zh-TW:
       show:
         current_password: "當前密碼"
         password: "密碼"
-        password_settings: "密碼設置"
+        password_settings: "密碼設定"
         save_changes: "保存修改"
     profiles:
       flashes:
         successfully_updated: "成功更新個人資料"
       show:
         profile: "個人資料"
-        profile_settings: "個人資料設置"
+        profile_settings: "個人資料設定"
         save_changes: "保存修改"
     sidebar:
       account: "帳號"
@@ -282,7 +282,7 @@ zh-TW:
       text_body: |
         有人使用你的郵箱在 %{host} 註冊帳號，如果不是你，請忽略此郵件。
 
-        點擊下面的鏈接確認郵箱地址：
+        點擊下面的連結確認郵箱地址：
 
         %{url}
     password_reset:
@@ -290,7 +290,7 @@ zh-TW:
       text_body: |
         有人請求重置你在 %{host} 的密碼，如果不是你，請忽略此郵件。
 
-        點擊下面的鏈接來選擇一個新密碼：
+        點擊下面的連結來選擇一個新密碼：
 
         %{url}
   users:
