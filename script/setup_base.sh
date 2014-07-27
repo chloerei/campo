@@ -5,7 +5,7 @@ USER=`whoami`
 sudo apt-get update
 
 # Install system packages
-sudo DEBIAN_FRONTEND=noninteractive apt-get install -y redis-server memcached git-core nodejs imagemagick postfix
+sudo DEBIAN_FRONTEND=noninteractive apt-get install -y redis-server memcached git-core nodejs imagemagick postfix software-properties-common
 
 # Install Elasticsearch
 wget -O - http://packages.elasticsearch.org/GPG-KEY-elasticsearch | sudo apt-key add -
