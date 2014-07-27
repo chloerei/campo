@@ -18,7 +18,7 @@ It's good for:
 - memcached for cache
 - postfix or other email service(through SMTP) for sending system email
 
-The best deploy environment is Ubuntu 12.04 LTS, require at least 1G memory.
+The best deploy environment is Ubuntu 14.04 LTS, require at least 1G memory.
 
 You don't need to install all denpendency manual, an auto-install scirpt will be show below.
 
