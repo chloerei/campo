@@ -6,20 +6,20 @@ class SessionsController < ApplicationController
   end
 
   def create
-    login = params[:login].downcase
+    login = login_params[:login]
     @user = if login.include?('@')
-              User.where('lower(email) = ?', login).first
+              User.where('lower(email) = lower(?)', login).first
             else
-              User.where('lower(username) = ?', login).first
+              User.where('lower(username) = lower(?)', login).first
             end
 
-    if @user && @user.authenticate(params[:password])
+    if @user && @user.authenticate(login_params[:password])
       login_as @user
       remember_me
       redirect_back_or_default root_url
     else
-      flash[:warning] = I18n.t('sessions.flashes.incorrect_user_name_or_password')
-      redirect_to login_url
+      flash.now[:warning] = I18n.t('sessions.flashes.incorrect_user_name_or_password')
+      render :new
     end
   end
 
@@ -40,5 +40,9 @@ class SessionsController < ApplicationController
         $redis.expire(key, 60)
       end
     end
+  end
+
+  def login_params
+    params.require(:user).permit(:login, :password)
   end
 end

@@ -19,7 +19,7 @@ class SessionsControllerTest < ActionController::TestCase
   test "should create session" do
     create(:user, username: 'Username', password: '12345678')
     assert !login?
-    post :create, login: 'Username', password: '12345678'
+    post :create, user: { login: 'Username', password: '12345678' }
     assert login?
   end
 
@@ -32,7 +32,7 @@ class SessionsControllerTest < ActionController::TestCase
   test "should redirect back after login" do
     session[:return_to] = '/foo'
     create(:user, username: 'username', password: '12345678')
-    post :create, login: 'Username', password: '12345678'
+    post :create, user: { login: 'Username', password: '12345678' }
     assert_redirected_to '/foo'
   end
 
@@ -41,10 +41,10 @@ class SessionsControllerTest < ActionController::TestCase
     key = "sessions:limiter:#{ip}"
     request.headers['REMOTE_ADDR'] = ip
     assert_equal nil, $redis.get(key)
-    post :create, login: 'Username', password: '12345678'
+    post :create, user: { login: 'Username', password: '12345678' }
     assert_equal 1, $redis.get(key).to_i
     $redis.set(key, 5)
-    post :create, login: 'Username', password: '12345678'
+    post :create, user: { login: 'Username', password: '12345678' }
     assert_template :access_limiter
   end
 end

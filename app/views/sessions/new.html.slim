@@ -11,10 +11,10 @@
               = render 'share/flash_messages'
               .form-group
                 = label_tag t('.login')
-                = text_field_tag :login, params[:login], placeholder: t('.username_or_email'), tabindex: 1, class: 'form-control'
+                = text_field_tag 'user[login]', params[:login], placeholder: t('.username_or_email'), tabindex: 1, class: 'form-control'
               .form-group
                 = label_tag t('.password')
-                = password_field_tag :password, nil, placeholder: t('.password'), tabindex: 2, class: 'form-control'
+                = password_field_tag 'user[password]', nil, placeholder: t('.password'), tabindex: 2, class: 'form-control'
               = submit_tag t('.sign_in'), class: 'btn btn-success', tabindex: 5
             hr
             a href=new_users_password_path
