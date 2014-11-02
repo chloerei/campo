@@ -33,4 +33,11 @@ class UserTest < ActiveSupport::TestCase
     token = user.confirmation_token
     assert_equal user, User.find_by_confirmation_token(token)
   end
+
+  test "should include email info in confirmation_token" do
+    user = create(:user)
+    token = user.confirmation_token
+    user.update_attribute :email, 'change@example.org'
+    assert_nil User.find_by_confirmation_token(token)
+  end
 end

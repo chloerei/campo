@@ -69,12 +69,12 @@ class User < ActiveRecord::Base
   end
 
   def confirmation_token
-    self.class.verifier_for('confirmation').generate([id, Time.now])
+    self.class.verifier_for('confirmation').generate([id, email, Time.now])
   end
 
   def self.find_by_confirmation_token(token)
-    user_id, timestamp = verifier_for('confirmation').verify(token)
-    User.find_by(id: user_id) if timestamp > 1.hour.ago
+    user_id, email, timestamp = verifier_for('confirmation').verify(token)
+    User.find_by(id: user_id, email: email) if timestamp > 1.hour.ago
   rescue ActiveSupport::MessageVerifier::InvalidSignature
     nil
   end
